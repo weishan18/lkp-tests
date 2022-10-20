@@ -1,0 +1,23 @@
+pkgname=openssl-speed
+pkgver=3.0.1
+pkgrel=1
+url='http://www.openssl.org/'
+arch=('i386' 'x86_64' 'riscv64')
+license=('Apache License 2.0')
+source=('https://github.com/openssl/openssl.git')
+md5sums=('SKIP')
+
+build()
+{
+	cd $srcdir/openssl
+	git checkout openssl-3.0.1
+        ./config no-zlib
+	make -j $(nproc)
+}
+
+package()
+{
+	benchmark_path="${pkgdir}/lkp/benchmarks/${pkgname}"
+	mkdir -p $benchmark_path
+	cp -arf "$srcdir/openssl/"* $benchmark_path
+}

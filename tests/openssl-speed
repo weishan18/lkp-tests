@@ -1,0 +1,14 @@
+#!/bin/bash
+# - runtime
+# - algorithm
+
+. $LKP_SRC/lib/upload.sh
+. $LKP_SRC/lib/unit.sh
+. $LKP_SRC/lib/reproduce-log.sh
+
+cd $BENCHMARK_ROOT/openssl-speed || die "no $BENCHMARK_ROOT/openssl-speed"
+
+echo "Running openssl-speed benchmark..."
+export LD_LIBRARY_PATH=$BENCHMARK_ROOT/openssl/lib:$LD_LIBRARY_PATH
+log_cmd ./apps/openssl speed -multi $(nproc) -seconds $runtime $algorithm
+
