@@ -15,8 +15,9 @@ sed -i "s/TIMEOUT = 10/TIMEOUT = 60/g" leaking_addresses.pl
 
 run_test()
 {
-	mkdir result
-	log_cmd ./leaking_addresses.pl --output-raw result/scan.out
+	log_cmd su lkp -c "./leaking_addresses.pl --output-raw /tmp/scan.out"
+
+	log_cmd mkdir -p result && mv /tmp/scan.out result
 	log_cmd ./leaking_addresses.pl --input-raw result/scan.out --squash-by-filename | tee result/scan.result
 }
 
