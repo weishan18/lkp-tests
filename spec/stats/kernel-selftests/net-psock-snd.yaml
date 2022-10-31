@@ -1,3 +1,4 @@
+net.make.pass: 1
 net.psock_snd.sh.dgram.pass: 1
 net.psock_snd.sh.raw_min_size.pass: 1
 net.psock_snd.sh.pass: 1

@@ -1,3 +1,4 @@
+ftrace.make.pass: 1
 ftrace.Basic_trace_file_check.pass: 1
 ftrace.Basic_test_for_tracers.pass: 1
 ftrace.Basic_trace_clock_test.pass: 1
@@ -95,3 +96,4 @@ ftrace._instance_event_trigger_-_test_histogram_trigger.pass: 1
 ftrace._instance_event_trigger_-_test_multiple_histogram_triggers.pass: 1
 ftrace._instance_trace_marker_trigger_-_test_histogram_trigger.pass: 1
 ftrace._instance_trace_marker_trigger_-_test_snapshot_trigger.pass: 1
+ftrace.ftracetest.fail: 1

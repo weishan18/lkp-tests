@@ -1,1 +1,1 @@
-memory-hotplug.make_fail: 1
+memory-hotplug.make.fail: 1

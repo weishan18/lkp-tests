@@ -1,3 +1,4 @@
+timens.make.pass: 1
 timens.timens.Passed_for_CLOCK_BOOTTIME_syscall.pass: 1
 timens.timens.Passed_for_CLOCK_BOOTTIME_vdso.pass: 1
 timens.timens.Passed_for_CLOCK_MONOTONIC_syscall.pass: 1

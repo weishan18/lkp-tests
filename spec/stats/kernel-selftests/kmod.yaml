@@ -1,3 +1,4 @@
+kmod.make.pass: 1
 kmod.kmod.sh.kmod_test_0001.fail: 1
 kmod.kmod.sh.kmod_test_0002.pass: 1
 kmod.kmod.sh.kmod_test_0003.pass: 1

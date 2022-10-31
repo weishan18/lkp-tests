@@ -1,3 +1,4 @@
+pidfd.make.pass: 1
 pidfd.pidfd_test.pidfd_poll_check_for_premature_notification_on_child_thread_exec_test_Passed.pass: 1
 pidfd.pidfd_test.pidfd_poll_check_for_premature_notification_on_non-emptygroup_leader_exit_test_Passed.pass: 1
 pidfd.pidfd_test.pidfd_send_signal_check_for_support_test_pidfd_send_signal_syscall_is_supported._Tests_can_be_executed.pass: 1

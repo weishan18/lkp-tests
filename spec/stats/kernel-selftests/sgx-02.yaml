@@ -1,3 +1,4 @@
+sgx.make.pass: 1
 sgx.test_sgx.enclave.unclobbered_vdso.pass: 1
 sgx.test_sgx.enclave.unclobbered_vdso_oversubscribed.pass: 1
 sgx.test_sgx.enclave.unclobbered_vdso_oversubscribed_remove.skip: 1

@@ -1,3 +1,4 @@
+net.make.pass: 1
 net.fcnal-test.sh.IPv4_address_binds.No_VRF.Raw_socket_bind_to_local_address_-_ns-A_IP.pass: 1
 net.fcnal-test.sh.IPv4_address_binds.No_VRF.Raw_socket_bind_to_local_address_after_device_bind_-_ns-A_IP.pass: 1
 net.fcnal-test.sh.IPv4_address_binds.No_VRF.Raw_socket_bind_to_local_address_-_ns-A_loopback_IP.pass: 1

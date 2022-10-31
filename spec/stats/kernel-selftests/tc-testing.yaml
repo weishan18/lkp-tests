@@ -1,3 +1,4 @@
+tc-testing.make.pass: 1
 tc-testing.83be.Create_FQ-PIE_with_invalid_number_of_flows.pass: 1
 tc-testing.8b6e.Create_RED_with_no_flags.pass: 1
 tc-testing.342e.Create_RED_with_adaptive_flag.pass: 1
@@ -95,3 +96,4 @@ tc-testing.28c6.Change_ETS_band_quantum.pass: 1
 tc-testing.4714.Change_ETS_band_without_quantum.pass: 1
 tc-testing.6979.Change_quantum_of_a_strict_ETS_band.pass: 1
 tc-testing.9a7d.Change_ETS_strict_band_without_quantum.pass: 1
+tc-testing.tdc.sh.pass: 1

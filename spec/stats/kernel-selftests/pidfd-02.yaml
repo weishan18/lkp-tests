@@ -1,3 +1,4 @@
+pidfd.make.pass: 1
 pidfd.pidfd_wait.global.wait_simple.pass: 1
 pidfd.pidfd_wait.global.wait_states.pass: 1
 pidfd.pidfd_wait.global.wait_nonblock.pass: 1

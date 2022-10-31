@@ -1,2 +1,3 @@
+mount.make.pass: 1
 mount.run_unprivileged_remount.sh.pass: 1
 mount.run_nosymfollow.sh.pass: 1

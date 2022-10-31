@@ -1,3 +1,4 @@
+exec.make.pass: 1
 exec.null-argv.execve_argv[0]_str_NULL.pass: 1
 exec.null-argv.execve_argv[0]_NULL_NULL.pass: 1
 exec.null-argv.execve_argv[0]_NULL_envp.pass: 1

@@ -14,6 +14,7 @@ net.traceroute.sh.pass: 1
 net.altnames.sh.jq_not_installed.skip: 1
 net.altnames.sh.fail: 1
 net.l2tp.sh.skip: 1
+net.make.pass: 1
 net.reuseaddr_ports_exhausted.sh.global.reuseaddr_ports_exhausted_unreusable.pass: 1
 net.reuseaddr_ports_exhausted.sh.global.reuseaddr_ports_exhausted_reusable_same_euid.pass: 1
 net.reuseaddr_ports_exhausted.sh.global.reuseaddr_ports_exhausted_reusable_different_euid.pass: 1

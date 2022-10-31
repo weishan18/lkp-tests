@@ -1,3 +1,4 @@
+sysctl.make.pass: 1
 sysctl.sysctl.sh.Checking_production_write_strict_setting.pass: 1
 sysctl.sysctl.sh.sysctl_test_0001.0.Writing_test_file.pass: 1
 sysctl.sysctl.sh.sysctl_test_0001.0.Testing_that_0x0000000100000000_fails_as_expected.pass: 1

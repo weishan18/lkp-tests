@@ -1,3 +1,4 @@
+ia64.make.pass: 1
 ia64.aliasing-test./dev/mem_0x0-0xa0000_is_readable.pass: 1
 ia64.aliasing-test./dev/mem_0xa0000-0xc0000_is_mappable.pass: 1
 ia64.aliasing-test./dev/mem_0xc0000-0x100000_is_readable.pass: 1

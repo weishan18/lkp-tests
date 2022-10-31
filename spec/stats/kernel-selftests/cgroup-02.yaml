@@ -1,3 +1,4 @@
+cgroup.make.pass: 1
 cgroup.test_memcontrol.test_memcg_subtree_control.pass: 1
 cgroup.test_memcontrol.test_memcg_current.pass: 1
 cgroup.test_memcontrol.test_memcg_min.fail: 1

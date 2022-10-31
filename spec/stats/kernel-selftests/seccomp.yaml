@@ -1,2 +1,3 @@
+seccomp.make.pass: 1
 seccomp.seccomp_bpf.global.kcmp.pass: 1
 seccomp.seccomp_bpf.pass: 1

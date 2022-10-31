@@ -1,3 +1,4 @@
+netfilter.make.pass: 1
 netfilter.nft_concat_range.sh.performance.net_port.pass: 1
 netfilter.nft_concat_range.sh.performance.net_port.baseline_drop_from_netdev_hook_.packets_per_sec: 1641876
 netfilter.nft_concat_range.sh.performance.net_port.baseline_hash_non-ranged_entries_.packets_per_sec: 1273605

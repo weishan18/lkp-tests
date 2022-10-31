@@ -1,3 +1,4 @@
+sync.make.pass: 1
 sync.sync_test.test_alloc_timeline.pass: 1
 sync.sync_test.test_alloc_fence.pass: 1
 sync.sync_test.test_merge_stress_random_merge.pass: 1

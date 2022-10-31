@@ -1,3 +1,4 @@
+vm.make.pass: 1
 vm.madv_populate.test_prot_read.MADV_POPULATE_READ_with_PROT_READ.pass: 1
 vm.madv_populate.test_prot_read.MADV_POPULATE_WRITE_with_PROT_READ.pass: 1
 vm.madv_populate.test_populate_read.range_initially_not_populated.pass: 1

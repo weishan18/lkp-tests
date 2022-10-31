@@ -1,2 +1,3 @@
+sgx.make.pass: 1
 sgx.test_sgx.enclave.unclobbered_vdso.fail: 1
 sgx.test_sgx.fail: 1

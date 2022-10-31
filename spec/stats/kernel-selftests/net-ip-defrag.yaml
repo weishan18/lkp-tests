@@ -1,3 +1,4 @@
+net.make.pass: 1
 net.ip_defrag.sh.ipv4_defrag.pass: 1
 net.ip_defrag.sh.ipv4_defrag_with_overlaps.pass: 1
 net.ip_defrag.sh.pass: 1
