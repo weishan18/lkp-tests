@@ -25,7 +25,7 @@ $stat_absolute_changes = [
 
 class AxesGrouper
   include Property
-  prop_with :group_axis_keys, :axes_data, :ignore_common_axes
+  prop_with :group_axis_keys, :axes_data, :ignore_common_axes, :compare_runs
 
   private
 
@@ -39,11 +39,19 @@ class AxesGrouper
 
   def group
     map = {}
-    @axes_data.each do |d|
-      as = @ignore_common_axes ? {} : calc_common_axes(d.axes)
-      as.freeze
-      map[as] ||= AxesGroup.new self, as
-      map[as].add_axes_datum d
+    if @compare_runs.to_a.size > 1
+      @compare_runs.size.times do
+        as = {}
+        map[as] ||= AxesGroup.new self, as, 'compare_runs' => @compare_runs
+        map[as].add_axes_datum @axes_data.first
+      end
+    else
+      @axes_data.each do |d|
+        as = @ignore_common_axes ? {} : calc_common_axes(d.axes)
+        as.freeze
+        map[as] ||= AxesGroup.new self, as
+        map[as].add_axes_datum d
+      end
     end
     map.values
   end
@@ -61,10 +69,11 @@ end
 class AxesGroup
   prop_with :axes, :axes_data
 
-  def initialize(grouper, common_axes)
+  def initialize(grouper, common_axes, options = {})
     @grouper = grouper
     @axes = common_axes
     @axes_data = []
+    @compare_runs = options['compare_runs'] || []
   end
 
   def add_axes_datum(datum)
@@ -72,9 +81,13 @@ class AxesGroup
   end
 
   def group_axeses
-    group_axis_keys = @grouper.group_axis_keys
-    @axes_data.map do |d|
-      d.axes.select { |k, _v| group_axis_keys.index k }
+    if @compare_runs.empty?
+      group_axis_keys = @grouper.group_axis_keys
+      @axes_data.map do |d|
+        d.axes.select { |k, _v| group_axis_keys.index k }
+      end
+    else
+      @compare_runs.map { |r| { 'runs' => r.to_s } }
     end
   end
 end
@@ -111,7 +124,7 @@ module Compare
     include Property
     # following properties are parameters for compare
     prop_reader :stat_calc_funcs
-    prop_with :mresult_roots, :compare_axis_keys, :compare_different_rts,
+    prop_with :mresult_roots, :compare_axis_keys, :compare_different_rts, :compare_runs,
               :sort_mresult_roots, :dedup_mresult_roots,
               :use_all_stat_keys, :use_stat_keys,
               :use_testcase_stat_keys, :include_stat_keys,
@@ -128,6 +141,7 @@ module Compare
 
     def initialize(params = nil)
       @compare_different_rts = false
+      @compare_runs = []
       @show_empty_group = false
       @sort_mresult_roots = true
       @dedup_mresult_roots = true
@@ -205,6 +219,7 @@ module Compare
       mrts.uniq! if dedup_mresult_roots
       grouper = AxesGrouper.new
       groups = grouper.set_axes_data(mrts)
+                      .set_compare_runs(@compare_runs)
                       .set_ignore_common_axes(@compare_different_rts)
                       .set_group_axis_keys(@compare_axis_keys)
                       .group
@@ -212,6 +227,7 @@ module Compare
         next if g.axes_data.size < 2
 
         Group.new self, g.axes, g.group_axeses, g.axes_data, \
+                  'compare_runs' => @compare_runs, \
                   'stats_field' => @stats_field, \
                   'allowed_stat' => @allowed_stat, \
                   'exclude_result_roots' => convert_exclude_result_roots
@@ -308,12 +324,27 @@ module Compare
       @axes = axes
       @mresult_roots = mresult_roots
       @compare_axeses = compare_axeses
+      @compare_runs = options['compare_runs'] || []
       @stats_field = options['stats_field'] || ''
       @allowed_stat = options['allowed_stat'] || ''
       @exclude_result_roots = options['exclude_result_roots'] || {}
     end
 
     public
+
+    def each_run_matrixes(run)
+      file = File.join(mresult_roots.first.mresult_root_path, run.to_s, 'matrix.json')
+      content = if File.exist?(file)
+                  File.read(file)
+                elsif File.exist?("#{file}.gz")
+                  Zlib::GzipReader.open("#{file}.gz").read
+                else
+                  ''
+                end
+      YAML.load(content)
+    rescue StandardError
+      {}
+    end
 
     def update_matrix(mresult_root)
       matrix = mresult_root.matrix
@@ -482,10 +513,18 @@ module Compare
       return enum_for(__method__) unless block_given?
 
       calc_funcs = @comparer.stat_calc_funcs
-      ms = matrixes
-      cms = complete_matrixes ms
-      aruns = runs ms
-      cruns = complete_runs cms
+
+      if @compare_runs.empty?
+        ms = matrixes
+        cms = complete_matrixes ms
+        aruns = runs ms
+        cruns = complete_runs cms
+      else
+        ms = @compare_runs.map { |run| each_run_matrixes(run) }
+        cms = ms
+        aruns = 1
+        cruns = 1
+      end
       changed_stat_keys(ms).each do |stat_key|
         failure = function_stat?(stat_key)
         tms = failure ? ms : cms
@@ -1158,6 +1197,14 @@ module Compare
         end
       end.flatten
       _rts.select!(&:exist?)
+
+      if _rts.uniq.size == 1
+        path = _rts.first.mresult_root_path
+        options[:compare_runs] = job_dirs.map do |job_dir|
+          dir = job_dir.sub(/\/$/, '')
+          "#{path}/#{dir.split('/').last}" == File.realpath(dir) ? dir.split('/').last : nil
+        end.compact
+      end
     end
     options[:mresult_roots] = _rts
     options
