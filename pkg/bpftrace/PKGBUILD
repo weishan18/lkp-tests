@@ -9,17 +9,10 @@ depends=('')
 source=('https://github.com/iovisor/bpftrace.git')
 md5sums=('SKIP')
 
-build()
-{
-    cd bpftrace
-    git checkout v0.14_release
-    mkdir build; cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
-}
-
 package()
 {
-    cd bpftrace/build
-    make DESTDIR="$pkgdir/" install
+    targetdir="${pkgdir}/lkp/benchmarks/${pkgname}"
+    mkdir -p $targetdir
+    wget -O $targetdir/bpftrace https://github.com/iovisor/bpftrace/releases/download/v0.16.0/bpftrace
+    chmod +x $targetdir/bpftrace
 }
