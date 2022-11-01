@@ -1,9 +1,11 @@
 #!/bin/sh
 # - runtime
 # - nr_threads
+# - fds
 # - mode
 # - ipc
 # - iterations
+# - loops
 # - datasize
 
 ## Hackbench  is  both  a benchmark and a stress test for the Linux kernel scheduler.
@@ -18,11 +20,12 @@
 # Default datasize for hackbench is 100
 [ -n "$datasize" ] || datasize=100
 
+# Default fds for hackbench is 20 in each group
+[ -n " $fds" ] || fds=20
+
 set_env()
 {
-	# default 40 fds/group
-	fds=40
-	tasks=$((nr_threads * fds))
+	tasks=$((nr_threads * 2 * fds))
 
 	# increase permitted open file number
 	ulimit -n $((tasks + 2048))
@@ -51,7 +54,7 @@ run_hackbench()
 	else
 		hackbench_path=/usr/local/bin/hackbench
 	fi
-	log_cmd $hackbench_path -g $nr_threads --$mode $ipc_option -l $loops -s $datasize
+	log_cmd $hackbench_path -g $nr_threads -f $fds --$mode $ipc_option -l $loops -s $datasize
 }
 
 run_for_time()
@@ -74,7 +77,7 @@ run_for_iterations()
 }
 
 set_env
-set_loops
+[ -n "$loops" ] || set_loops
 
 if [ -n "$iterations" ]; then
 	run_for_iterations
