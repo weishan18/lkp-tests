@@ -24,4 +24,13 @@ end
 
 kb = tasks * messages * bytes >> 10
 best_time = time.min
+worst_time = time.max
+avg_time = time.sum(0.0) / time.size
+# Historically, best time is used to deliver throughput, but
+# it's not obvious that best time is used so explicitely output
+# throughput for all 3 times. Keep throughput as its original
+# meanning to avoid triggering bisect.
 puts "throughput: #{kb / best_time}"
+puts "throughput_best: #{kb / best_time}"
+puts "throughput_avg: #{kb / avg_time}"
+puts "throughput_worst: #{kb / worst_time}"
