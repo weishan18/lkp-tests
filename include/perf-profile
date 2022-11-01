@@ -1,3 +1,4 @@
 suggest_kconfig:
   - PERF_EVENTS: y
   - BPF_SYSCALL: y
+  - RT_GROUP_SCHED: n
