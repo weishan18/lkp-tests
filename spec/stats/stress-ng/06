@@ -1,0 +1,24 @@
+2022-10-29 03:22:56 stress-ng --timeout 60 --times --verify --metrics-brief --memrate 128
+stress-ng: info:  [5865] setting to a 60 second run per stressor
+stress-ng: info:  [5865] dispatching hogs: 128 memrate
+stress-ng: info:  [5865] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: info:  [5865]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: info:  [5865] memrate            1664     60.07   7485.82     33.98        27.70           0.22
+stress-ng: info:  [5865] miscellaneous metrics:
+stress-ng: info:  [5865] memrate             2190.96 write128nt MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1920.37 write64nt MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1861.09 write32nt MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate              789.50 write1024 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate              666.97 write512 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1029.43 write256 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate              980.49 write128 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1007.30 write64 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1043.34 write32 MB per sec (geometic mean)
+stress-ng: info:  [5865] memrate             1064.65 write16 MB per sec (geometic mean)
+stress-ng: info:  [5865] for a 60.42s run time:
+stress-ng: info:  [5865]    7733.74s available CPU time
+stress-ng: info:  [5865]    7485.82s user time   ( 96.79%)
+stress-ng: info:  [5865]      34.00s system time (  0.44%)
+stress-ng: info:  [5865]    7519.82s total time  ( 97.23%)
+stress-ng: info:  [5865] load average: 87.65 26.81 9.35
+stress-ng: info:  [5865] successful run completed in 60.42s (1 min, 0.42 secs)
