@@ -1,4 +1,4 @@
-pkgname=lz4
+pkgname=lz4-test
 pkgver=git
 pkgrel=1
 url='https://github.com/lz4/lz4/'

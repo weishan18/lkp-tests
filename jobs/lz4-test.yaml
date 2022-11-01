@@ -1,10 +1,10 @@
-suite: lz4
-testcase: lz4
+suite: lz4-test
+testcase: lz4-test
 category: benchmark
 
 iterations:
   - 1x
-lz4:
+lz4-test:
   compression:
    - 1
    - 3

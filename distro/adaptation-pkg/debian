@@ -34,7 +34,7 @@ linkbench::
 linpack::
 lmbench3::
 ltp::
-lz4::
+lz4-test::
 makepkg::
 mce-log::
 mce-test::
