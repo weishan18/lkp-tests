@@ -21,7 +21,7 @@
 [ -n "$datasize" ] || datasize=100
 
 # Default fds for hackbench is 20 in each group
-[ -n " $fds" ] || fds=20
+[ -n "$fds" ] || fds=20
 
 set_env()
 {
