@@ -32,7 +32,7 @@ liboop-dev: liboop
 linkbench:
 linpack::
 ltp::
-lz4::
+lz4-test::
 makepkg::
 mce-log::
 mce-test::
