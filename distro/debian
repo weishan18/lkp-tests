@@ -212,7 +212,7 @@ distro_install_depends()
 
 		# some apt mirrors may have issue and fail in the first time of apt install
 		# so try for a second time if the first time fails
-		[[ $? -ne 0 ]] && do_apt_install
+		[[ $? -eq 0 ]] || do_apt_install || return
 	done
 }
 

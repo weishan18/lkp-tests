@@ -66,8 +66,8 @@ update_shared_pkg()
 
 fixup_distro_mirror
 
-distro_install_depends lkp-dev
-distro_install_depends ${benchmark}-dev
+distro_install_depends lkp-dev || die "failed to install lkp-dev pkgs"
+distro_install_depends ${benchmark}-dev || die "failed to install ${benchmark}-dev pkgs"
 
 [[ $arch ]] || arch=$(get_system_arch)
 
