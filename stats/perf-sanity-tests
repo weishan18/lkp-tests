@@ -16,8 +16,11 @@ while (line = $stdin.gets)
     stats.add $2, 'skip'
   when /ignored_by_lkp: (.*)/
     stats.add $1, 'ignored_by_lkp'
+  when /sudo \/usr\/src\/perf_selftests-\S+ test \d+/
+    # 2021-02-10 21:30:02 sudo /usr/src/perf_selftests-x86_64-rhel-8.3-*/tools/perf/perf test 32
+    stats.add 'perf.make', 'pass' unless stats.key?('perf.make')
   when /make perf failed/
-    stats.add 'perf', 'make_fail'
+    stats.add 'perf.make', 'fail'
   end
 end
 
