@@ -47,6 +47,7 @@ netpipe-lam: netpipe
 nvdimm: ndctl
 ocfs2test::
 oltp::
+openssl-speed::
 packetdrill::
 pbzip2::
 pepc::

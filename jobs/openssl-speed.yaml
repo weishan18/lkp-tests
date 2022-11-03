@@ -1,0 +1,9 @@
+suite: openssl-speed
+testcase: openssl-speed
+category: benchmark
+
+openssl-speed:
+  runtime: 30s
+  algorithm:
+   - rsa4096
+   - sha256

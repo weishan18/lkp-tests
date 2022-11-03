@@ -48,6 +48,7 @@ netperf::
 nvdimm: ndctl
 ocfs2test::
 oltp::
+openssl-speed::
 otc_ddt::
 packetdrill::
 pbzip2::

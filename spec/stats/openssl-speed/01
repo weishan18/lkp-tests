@@ -1,0 +1,41 @@
+Running openssl-speed benchmark...
+2022-11-01 23:08:59 ./apps/openssl speed -multi 16 -seconds 30 rsa4096
+Forked child 0
+Forked child 1
+Forked child 2
+Forked child 3
+Forked child 4
+Forked child 5
+Forked child 6
+Forked child 7
+Forked child 8
+Forked child 9
+Forked child 10
+Forked child 11
+Forked child 12
+Forked child 13
+Forked child 14
+Forked child 15
+Got: +F2:4:4096:117.200000:7744.000000 from 0
+Got: +F2:4:4096:124.500000:8241.833333 from 1
+Got: +F2:4:4096:122.600000:8155.266667 from 2
+Got: +F2:4:4096:123.400000:8159.066667 from 3
+Got: +F2:4:4096:123.325558:8154.166667 from 4
+Got: +F2:4:4096:123.300000:8159.700000 from 5
+Got: +F2:4:4096:122.900000:8095.566667 from 6
+Got: +F2:4:4096:123.166667:8136.000000 from 7
+Got: +F2:4:4096:124.700000:8251.933333 from 8
+Got: +F2:4:4096:117.133333:7725.866667 from 9
+Got: +F2:4:4096:123.000000:8155.800000 from 10
+Got: +F2:4:4096:123.100000:8157.300000 from 11
+Got: +F2:4:4096:123.366667:8156.033333 from 12
+Got: +F2:4:4096:122.400000:8141.100000 from 13
+Got: +F2:4:4096:122.866667:8131.766667 from 14
+Got: +F2:4:4096:122.900000:8129.066667 from 15
+version: 3.0.1
+built on: Tue Nov  1 14:54:55 2022 UTC
+options: bn(64,64)
+compiler: gcc -fPIC -pthread -m64 -Wa,--noexecstack -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4 -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DNDEBUG -D_FORTIFY_SOURCE=2
+CPUINFO: OPENSSL_ia32cap=0x7ffaf3ffffebffff:0x405f5ef2bf67eb
+                  sign    verify    sign/s verify/s
+rsa 4096 bits 0.000510s 0.000008s   1959.9 129694.5
