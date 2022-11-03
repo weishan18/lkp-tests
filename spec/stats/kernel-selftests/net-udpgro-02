@@ -1,0 +1,42 @@
+2022-10-23 14:43:47 make -C net
+make: Entering directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da/tools/testing/selftests/net'
+make --no-builtin-rules ARCH=x86 -C ../../../.. headers_install
+make[1]: Entering directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da'
+  INSTALL ./usr/include
+make[1]: Leaving directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da'
+make: Leaving directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da/tools/testing/selftests/net'
+2022-10-23 14:43:48 make quicktest=1 run_tests -C net
+make: Entering directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da/tools/testing/selftests/net'
+make --no-builtin-rules ARCH=x86 -C ../../../.. headers_install
+make[1]: Entering directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da'
+  INSTALL ./usr/include
+make[1]: Leaving directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da'
+TAP version 13
+1..65
+# selftests: net: udpgro.sh
+# ipv4
+#  no GRO                                  object file doesn't contain sec xdp_dummy
+# ok
+#  no GRO chk cmsg                         object file doesn't contain sec xdp_dummy
+# ok
+#  GRO                                     object file doesn't contain sec xdp_dummy
+# ok
+#  GRO chk cmsg                            object file doesn't contain sec xdp_dummy
+# ok
+#  GRO with custom segment size            object file doesn't contain sec xdp_dummy
+# ok
+#  GRO with custom segment size cmsg       object file doesn't contain sec xdp_dummy
+# ok
+#  bad GRO lookup                          object file doesn't contain sec xdp_dummy
+# ok
+#  multiple GRO socks                      object file doesn't contain sec xdp_dummy
+# ok
+# ipv6
+#  no GRO                                  object file doesn't contain sec xdp_dummy
+# ok
+#  no GRO chk cmsg                         object file doesn't contain sec xdp_dummy
+# ok
+#  GRO                                     object file doesn't contain sec xdp_dummy
+# ok
+ok 24 selftests: net: udpgro.sh
+make: Leaving directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-28af66a290606aa16b17877dac4422315acef7da/tools/testing/selftests/net'

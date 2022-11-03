@@ -430,7 +430,16 @@ class NetStater < Stater
       @test_case = $2 || $1
     when /^# \[(PASS|FAIL|SKIP)\]$/,
          /^# (OK|ok|PASS)$/
-      stats.add "#{@test_prefix}.#{@test_case}", $1 if @test_case
+      if @test_subcase
+        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
+      elsif @test_case
+        stats.add "#{@test_prefix}.#{@test_case}", $1
+      end
+    when /#  (\w.*)object file doesn't contain sec xdp_dummy/
+      # selftests: net: udpgro.sh
+      # ipv4
+      #  no GRO                                  object file doesn't contain sec xdp_dummy
+      @test_subcase = $1
     when /^#\s(.*)\[\s*(OK|FAIL|SKIP)\s*\]/
       # selftests: net: test_vxlan_under_vrf.sh
       # Checking HV connectivity                                           [ OK ]
