@@ -1,0 +1,17 @@
+boot_failures: 1
+
+# EIP: blake2s_compress_generic+0x
+EIP:blake2s_compress_generic: 1
+message:EIP:blake2s_compress_generic: [    4.345803][  T204] EIP: blake2s_compress_generic+0x1e9/0x1bb0
+pattern:EIP:blake2s_compress_generic: EIP: blake2s_compress_generic+0x
+
+# EIP: test+0x
+EIP:test: 1
+message:EIP:test: [   26.345803][  T204] EIP: test+0x1e9/0x1bb0
+pattern:EIP:test: EIP: test+0x
+
+timestamp:last: 26.345803
+bootstage:last: 10
+timestamp:EIP:blake2s_compress_generic: 4.345803
+timestamp:EIP:test: 26.345803
+bootstage:EIP:test: 10

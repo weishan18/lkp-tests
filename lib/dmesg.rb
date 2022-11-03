@@ -570,8 +570,12 @@ def put_dmesg_stamps(error_stamps, dmesg_file)
     next if timestamp_level.empty?
 
     at = timestamp_level.keys.bsearch_index { |t| t.to_f > timestamp.to_f } || timestamp_level.size
-    at = at.positive? ? at - 1 : at
-    last_timestamp = timestamp_level.keys[at]
+    if at.positive?
+      last_timestamp = timestamp_level.keys[at - 1]
+    else
+      last_timestamp = timestamp_level.keys[at]
+      next if timestamp_level[last_timestamp] > 1
+    end
     puts "bootstage:#{error_id}: #{timestamp_level[last_timestamp]}"
   end
 end
