@@ -905,7 +905,7 @@ check_subtest()
 	# 2. /dev/watchdog: need support open/ioctl etc file ops, but not all watchdog support it
 	# 3. this test will not complete until issue Ctrl+C to abort it
 	# sched: https://www.spinics.net/lists/kernel/msg4062205.html
-	skip_filter="arm64 sparc64 powerpc media_tests watchdog sched"
+	skip_filter="arm64 sparc64 powerpc media_tests watchdog sched amd-pstate"
 	subtest_in_skip_filter "$skip_filter" && return 1
 	return 0
 }
