@@ -1,4 +1,4 @@
-perf.make.pass: 1
+make.pass: 1
 utils/check_paranoid.pass: 1
 utils/get_cache_info.pass: 1
 sysfs/events.pass: 1
