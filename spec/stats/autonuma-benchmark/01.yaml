@@ -1,0 +1,12 @@
+numa01.seconds: 282.04
+numa01_HARD_BIND.seconds: 118.45
+numa01_INVERSE_BIND.seconds: 196.63
+numa01_THREAD_ALLOC.seconds: 100.75
+numa01_THREAD_ALLOC_HARD_BIND.seconds: 111.86
+numa01_THREAD_ALLOC_INVERSE_BIND.seconds: 193.06
+numa02.seconds: 6.26
+numa02_HARD_BIND.seconds: 3.42
+numa02_INVERSE_BIND.seconds: 5.51
+numa02_SMT.seconds: 6.82
+numa02_SMT_HARD_BIND.seconds: 4.69
+numa02_SMT_INVERSE_BIND.seconds: 6.63

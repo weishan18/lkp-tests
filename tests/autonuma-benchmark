@@ -1,11 +1,14 @@
 #!/bin/sh
 # - test
+# - iterations
 
 . $LKP_SRC/lib/reproduce-log.sh
 
 export PATH=$PATH:/lkp/benchmarks/autonuma-benchmark
 
 ln -sf /usr/bin/gnuplot-qt /usr/bin/gnuplot
+
+[ -n "$iterations" ] || iterations=1
 
 # If test is not specified, will test all available tests.
 : "${test:=all}"
@@ -35,4 +38,7 @@ esac
 
 cd "/lkp/benchmarks/autonuma-benchmark" || die "no /lkp/benchmarks/autonuma-benchmark"
 
-/bin/bash start_bench.sh $option 2>&1
+for i in $(seq $iterations)
+do
+  /bin/bash start_bench.sh $option 2>&1
+done
