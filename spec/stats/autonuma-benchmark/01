@@ -1,0 +1,312 @@
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+313.17
+numa01_HARD_BIND
+120.33
+numa01_INVERSE_BIND
+179.88
+numa01_THREAD_ALLOC
+101.52
+numa01_THREAD_ALLOC_HARD_BIND
+110.97
+numa01_THREAD_ALLOC_INVERSE_BIND
+192.15
+numa02
+6.04
+numa02_HARD_BIND
+3.62
+numa02_INVERSE_BIND
+5.28
+numa02_SMT
+6.46
+numa02_SMT_HARD_BIND
+4.85
+numa02_SMT_INVERSE_BIND
+7.19
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+301.07
+numa01_HARD_BIND
+113.25
+numa01_INVERSE_BIND
+223.55
+numa01_THREAD_ALLOC
+100.56
+numa01_THREAD_ALLOC_HARD_BIND
+112.27
+numa01_THREAD_ALLOC_INVERSE_BIND
+193.72
+numa02
+6.90
+numa02_HARD_BIND
+2.79
+numa02_INVERSE_BIND
+6.13
+numa02_SMT
+6.87
+numa02_SMT_HARD_BIND
+4.53
+numa02_SMT_INVERSE_BIND
+6.10
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+296.72
+numa01_HARD_BIND
+108.99
+numa01_INVERSE_BIND
+187.42
+numa01_THREAD_ALLOC
+99.86
+numa01_THREAD_ALLOC_HARD_BIND
+112.46
+numa01_THREAD_ALLOC_INVERSE_BIND
+193.58
+numa02
+5.34
+numa02_HARD_BIND
+3.89
+numa02_INVERSE_BIND
+5.64
+numa02_SMT
+6.43
+numa02_SMT_HARD_BIND
+4.48
+numa02_SMT_INVERSE_BIND
+6.48
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+283.02
+numa01_HARD_BIND
+122.47
+numa01_INVERSE_BIND
+194.58
+numa01_THREAD_ALLOC
+98.99
+numa01_THREAD_ALLOC_HARD_BIND
+111.46
+numa01_THREAD_ALLOC_INVERSE_BIND
+193.19
+numa02
+5.81
+numa02_HARD_BIND
+3.76
+numa02_INVERSE_BIND
+5.28
+numa02_SMT
+7.00
+numa02_SMT_HARD_BIND
+4.95
+numa02_SMT_INVERSE_BIND
+6.43
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+237.84
+numa01_HARD_BIND
+120.14
+numa01_INVERSE_BIND
+185.90
+numa01_THREAD_ALLOC
+98.83
+numa01_THREAD_ALLOC_HARD_BIND
+112.03
+numa01_THREAD_ALLOC_INVERSE_BIND
+193.09
+numa02
+6.82
+numa02_HARD_BIND
+3.05
+numa02_INVERSE_BIND
+6.06
+numa02_SMT
+7.37
+numa02_SMT_HARD_BIND
+4.68
+numa02_SMT_INVERSE_BIND
+6.66
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+333.88
+numa01_HARD_BIND
+120.50
+numa01_INVERSE_BIND
+198.51
+numa01_THREAD_ALLOC
+101.05
+numa01_THREAD_ALLOC_HARD_BIND
+111.80
+numa01_THREAD_ALLOC_INVERSE_BIND
+192.70
+numa02
+6.59
+numa02_HARD_BIND
+3.61
+numa02_INVERSE_BIND
+5.40
+numa02_SMT
+7.06
+numa02_SMT_HARD_BIND
+4.72
+numa02_SMT_INVERSE_BIND
+7.08
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+246.31
+numa01_HARD_BIND
+114.60
+numa01_INVERSE_BIND
+196.95
+numa01_THREAD_ALLOC
+101.61
+numa01_THREAD_ALLOC_HARD_BIND
+112.18
+numa01_THREAD_ALLOC_INVERSE_BIND
+193.57
+numa02
+6.06
+numa02_HARD_BIND
+3.36
+numa02_INVERSE_BIND
+5.59
+numa02_SMT
+6.63
+numa02_SMT_HARD_BIND
+4.57
+numa02_SMT_INVERSE_BIND
+6.55
+rm -f numa01 numa02 numa01_* numa02_* numa01.prep.c numa02.prep.c nmstat *.txt *.pdf 
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -o numa01
+gcc numa01.prep.c -O2 -lnuma -pthread -DNO_BIND_FORCE_SAME_NODE -DTHREAD_ALLOC -o numa01_THREAD_ALLOC
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa01_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa01_INVERSE_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -o numa01_THREAD_ALLOC_HARD_BIND
+gcc numa01.prep.c -O2 -lnuma -pthread -DTHREAD_ALLOC -DHARD_BIND -DINVERSE_BIND -o numa01_THREAD_ALLOC_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -o numa02
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -o numa02_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DHARD_BIND -DINVERSE_BIND -o numa02_INVERSE_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -o numa02_SMT
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -o numa02_SMT_HARD_BIND
+gcc numa02.prep.c -O2 -lnuma -pthread -DSMT -DHARD_BIND -DINVERSE_BIND -o numa02_SMT_INVERSE_BIND
+gcc nmstat.c -std=gnu99 -O2 -o nmstat
+Hyper-Threading IS enabled.
+numa01
+244.30
+numa01_HARD_BIND
+127.30
+numa01_INVERSE_BIND
+206.24
+numa01_THREAD_ALLOC
+103.56
+numa01_THREAD_ALLOC_HARD_BIND
+111.68
+numa01_THREAD_ALLOC_INVERSE_BIND
+192.46
+numa02
+6.48
+numa02_HARD_BIND
+3.31
+numa02_INVERSE_BIND
+4.72
+numa02_SMT
+6.71
+numa02_SMT_HARD_BIND
+4.71
+numa02_SMT_INVERSE_BIND
+6.55
