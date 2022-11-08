@@ -115,6 +115,20 @@ prepare_for_bpf()
 		linux_headers_mod_dirs=(/usr/src/linux-headers*-bpf)
 		linux_headers_mod_dirs=$(realpath $linux_headers_mod_dirs)
 		[[ "$linux_headers_mod_dirs" ]] && export KDIR=$linux_headers_mod_dirs
+
+		[[ -f $linux_selftests_dir/image/vmlinux.xz ]] && {
+			xz -dkf $linux_selftests_dir/image/vmlinux.xz &&
+			mv $linux_selftests_dir/image/vmlinux $linux_headers_mod_dirs
+		}
+
+		(
+			#  CLNG-BPF [test_maps] bpf_iter_task_vma.o
+			# /bin/sh: 1: ./tools/bpf/resolve_btfids/resolve_btfids: not found
+			cd $linux_selftests_dir &&
+			make -C tools/bpf/resolve_btfids &&
+			mkdir -p $linux_headers_mod_dirs/tools/bpf/resolve_btfids &&
+			cp tools/bpf/resolve_btfids/resolve_btfids $linux_headers_mod_dirs/tools/bpf/resolve_btfids/
+		)
 	fi
 }
 
