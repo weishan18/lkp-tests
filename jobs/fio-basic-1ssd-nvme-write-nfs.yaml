@@ -15,6 +15,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
+    - io_uring_cmd
   test_size: 256g
 
 fio:
