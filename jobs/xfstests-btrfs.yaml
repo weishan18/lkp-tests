@@ -39,3 +39,5 @@ xfstests:
     - btrfs-group-24
     - btrfs-group-25
     - btrfs-group-26
+    - btrfs-group-27
+    - btrfs-group-29
