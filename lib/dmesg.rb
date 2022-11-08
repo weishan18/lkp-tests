@@ -530,12 +530,13 @@ def timestamp_levels(error_stamps, dmesg_file)
   # dmesg file is broken
   return map if first_line.empty?
 
-  initcall_lines = %x[#{grep_cmd(dmesg_file)} -E " initcall [0-9a-zA-Z_]+\\\\+0x.* returned" #{dmesg_file}]
+  initcall_lines = %x[#{grep_cmd(dmesg_file)} -E " initcall (__initstub__.+|)[0-9a-zA-Z_]+\\\\+0x.* returned" #{dmesg_file}]
   unless initcall_lines.empty?
     initcall_level = initcall_levels(dmesg_file)
     if initcall_level
       initcall_lines.each_line do |line|
-        next unless line.resolve_invalid_bytes =~ /\[ *(\d{1,6}\.\d{6})\].* ([0-9a-zA-Z_]+)\+0x/
+        next unless line.resolve_invalid_bytes =~ /\[ *(\d{1,6}\.\d{6})\].* __initstub__.*__[0-9]+_[0-9]+_([0-9a-zA-Z_]+)([0-7]|early)(|s)\+0x/ ||
+                    line.resolve_invalid_bytes =~ /\[ *(\d{1,6}\.\d{6})\].* ([0-9a-zA-Z_]+)\+0x/
 
         timestamp = $1
         initcall = $2

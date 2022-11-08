@@ -1,0 +1,15 @@
+[    0.000000][    T0] Test
+[    2.154626][    T1] calling  __initstub__kmod_core__276_2226_init_hw_perf_eventsearly+0x0/0xa @ 1
+[    2.157807][    T1] initcall __initstub__kmod_core__276_2226_init_hw_perf_eventsearly+0x0/0xa returned 0 after 1000 usecs
+[    4.345803][  T204] EIP: test+0x1e9/0x1bb0
+[   16.797092][    T1] calling  __initstub__kmod_trace__321_9710_trace_eval_sync7s+0x0/0x15 @ 1
+[   16.798367][    T1] initcall __initstub__kmod_trace__321_9710_trace_eval_sync7s+0x0/0x15 returned 0 after 163 usecs
+[   16.799714][    T1] calling  __initstub__kmod_trace__327_10325_late_trace_init7s+0x0/0xc @ 1
+[   16.800876][    T1] initcall __initstub__kmod_trace__327_10325_late_trace_init7s+0x0/0xc returned 0 after 1 usecs
+[   16.802224][    T1] calling  __initstub__kmod_gpiolib_acpi__238_1491_acpi_gpio_handle_deferred_request_irqs7s+0x0/0xc @ 1
+[   16.804761][    T1] initcall __initstub__kmod_gpiolib_acpi__238_1491_acpi_gpio_handle_deferred_request_irqs7s+0x0/0xc returned 0 after 1133 usecs
+[   16.806537][    T1] calling  __initstub__kmod_clk__441_1406_clk_disable_unused7s+0x0/0xc @ 1
+[   16.807693][    T1] initcall __initstub__kmod_clk__441_1406_clk_disable_unused7s+0x0/0xc returned 0 after 42 usecs
+[   16.809039][    T1] calling  __initstub__kmod_core__471_6208_regulator_init_complete7s+0x0/0x22 @ 1
+[   16.810197][    T1] initcall __initstub__kmod_core__471_6208_regulator_init_complete7s+0x0/0x22 returned 0 after 3 usecs
+[   24.359492][  T204] EIP: blake2s_compress_generic+0x1e9/0x1bb0
