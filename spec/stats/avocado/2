@@ -1,0 +1,16 @@
+2022-11-07 19:02:32 avocado run /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw --job-timeout 30
+JOB ID     : 25b14f81370799090ee1897ce3237917aee9f6d7
+JOB LOG    : /tmp/avocado/result/job-2022-11-07T19.02-25b14f8/job.log
+ (1/1) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw: STARTED
+ (1/1) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw:  PASS (0.43 s)
+RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
+JOB TIME   : 1.57 s
+2022-11-07 19:02:34 avocado run /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands --job-timeout 30
+JOB ID     : 4dc61874db96dd2b7b33c2fc0ae6bbb6732b0231
+JOB LOG    : /tmp/avocado/result/job-2022-11-07T19.02-4dc6187/job.log
+ (1/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw: STARTED
+ (2/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands: STARTED
+ (1/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw:  PASS (0.46 s)
+ (2/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands:  PASS (0.54 s)
+RESULTS    : PASS 2 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
+JOB TIME   : 1.72 s

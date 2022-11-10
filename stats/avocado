@@ -10,11 +10,23 @@ stats = LKP::Stats.new
 while (line = $stdin.gets)
   line = line.resolve_invalid_bytes
   case line
+  when /avocado run (\S+) --job-timeout 30/
+    # 2022-11-07 19:02:32 avocado run /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw --job-timeout 30
+    @runtest = $1.split('/').last
   when / (\(\d*\/\d*\))(.*):(.*):  (\w+)(.*)/
-    test_file = $2.strip
+    test_file = $2.split('/').last
     test_content = $3.downcase
     test_status = $4.downcase
-    stats.add "#{test_file}_#{test_content}", test_status
+    if @runtest =~ /raw/
+      # 2022-11-07 19:02:32 avocado run /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw --job-timeout 30
+      # (1/1) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw:  PASS (0.43 s)
+      stats.add "#{test_file}_#{test_content}.raw", test_status
+    else
+      # 2022-11-07 19:02:34 avocado run /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands --job-timeout 30
+      # (1/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands_raw:  PASS (0.46 s)
+      # (2/2) /lkp/benchmarks/avocado/examples/tests/gdbtest.py:GdbTest.test_existing_commands:  PASS (0.54 s)
+      stats.add "#{test_file}_#{test_content}", test_status
+    end
   when /^(ignored_by_lkp): (.*)/
     stats.add $2, $1
   end

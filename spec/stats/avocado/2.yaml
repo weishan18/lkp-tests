@@ -1,0 +1,3 @@
+gdbtest.py_gdbtest.test_existing_commands_raw.raw.pass: 1
+gdbtest.py_gdbtest.test_existing_commands_raw.pass: 1
+gdbtest.py_gdbtest.test_existing_commands.pass: 1
