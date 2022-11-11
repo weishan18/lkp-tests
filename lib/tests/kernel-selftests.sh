@@ -200,12 +200,6 @@ check_kconfig()
 		# Avoid commentary on config
 		[[ "$line" =~ ^"CONFIG_" ]] || continue
 
-		# CONFIG_BPF_LSM may casuse kernel panic, disable it by default
-		# Failed to allocate manager object: No data available
-		# [!!!!!!] Failed to allocate manager object, freezing.
-		# Freezing execution.
-		[[ "$line" =~ "CONFIG_BPF_LSM" ]] && continue
-
 		# only kernel <= v5.0 has CONFIG_NFT_CHAIN_NAT_IPV4 and CONFIG_NFT_CHAIN_NAT_IPV6
 		[[ "$line" =~ "CONFIG_NFT_CHAIN_NAT_IPV" ]] && continue
 
