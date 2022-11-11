@@ -3,8 +3,8 @@ mail_cc: ceph-devel@vger.kernel.org
 git_am_branch: for-linus
 owner:
 - Ilya Dryomov <idryomov@gmail.com>
-- Yan Zheng <zyan@redhat.com>
-- Sage Weil <sage@redhat.com>
+- Xiubo Li <xiubli@redhat.com>
+- Jeff Layton <jlayton@kernel.org>
 subsystems:
 - ceph
 - libceph
