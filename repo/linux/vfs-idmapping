@@ -1,1 +1,7 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/vfs/idmapping.git
+integration_testing_branches: for-next
+owner: Christian Brauner <brauner@kernel.org>
+branch_denylist: .*_v[0-9]*|.*wip*
+mail_to: Christian Brauner <brauner@kernel.org>
+notify_build_success_branch: .*
+mail_cc: Seth Forshee <sforshee@kernel.org>
