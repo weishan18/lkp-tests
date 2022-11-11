@@ -1,7 +1,7 @@
 pkgname=coremark
 pkgver=git
 pkgrel=1
-arch=('i386' 'x86_64' 'riscv64')
+arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 url="https://github.com/eembc/coremark.git"
 license=('GPL')
 source=("https://github.com/eembc/coremark.git")
