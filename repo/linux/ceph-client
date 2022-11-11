@@ -1,6 +1,8 @@
 url: https://github.com/ceph/ceph-client.git
 mail_cc: ceph-devel@vger.kernel.org
-git_am_branch: for-linus
+git_am_branch:
+- testing
+- for-linus
 owner:
 - Ilya Dryomov <idryomov@gmail.com>
 - Xiubo Li <xiubli@redhat.com>
