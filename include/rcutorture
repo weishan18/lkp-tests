@@ -3,6 +3,7 @@ need_kernel_version:
 - '>= v5.12, clang'
 need_kconfig:
 - RCU_TORTURE_TEST: m
+- X86_VSMP: n, <= v5.2
 - SECURITY_LOADPIN_ENABLED: n, <= v4.19
 - SECURITY_LOADPIN_ENFORCE: n, v4.20-rc1
 - MODULE_UNLOAD: y
