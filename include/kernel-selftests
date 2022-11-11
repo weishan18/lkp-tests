@@ -373,8 +373,8 @@ need_kconfig:
 - CHECKPOINT_RESTORE: y
 % elsif ___.group == "group-00"
 - ANDROID: y, <= v5.19
-- DRM: y
-- DRM_VGEM: y
+- DRM
+- DRM_VGEM
 - ION: y, <= v5.10 # Depends on: STAGING [: y]
 - ION_SYSTEM_HEAP: y, v4.12-rc1, <= v5.10 # Depends on: STAGING [: y] && ION [: y]
 - STAGING: y
