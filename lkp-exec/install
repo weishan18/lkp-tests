@@ -340,7 +340,8 @@ do
 		}
 		install_packages "$script" $distro
 		makepkg_install_packages "$script" $distro
-		if [ -n "$FORCE_MODE" ] || ! verify_install "$script"; then
+		benchmark_package=$(get_adaptation_pkg $distro "$script")
+		if [ -n "$FORCE_MODE" ] || ! verify_install "$benchmark_package"; then
 			makepkg_install_benchmark "$script"
 		fi
 		[ -n "$FORCE_MODE" ] && install_opt="-f"

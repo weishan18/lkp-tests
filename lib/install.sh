@@ -138,6 +138,32 @@ get_dependency_packages()
 	adapt_packages | sort | uniq
 }
 
+# map package name by $LKP_SRC/distro/adaptation-pkg/$distro
+# For example perf-profile is mapped to perf
+get_adaptation_pkg()
+{
+	local distro=$1
+	local generic_packages=$2
+	local distro_file="$LKP_SRC/distro/adaptation-pkg/$distro"
+	local distro_pkg=
+
+	for pkg in $generic_packages
+	do
+		local mapping="$(adapt_package $pkg $distro_file | tail -1)"
+		if [ -n "$mapping" ]; then
+			distro_pkg=$(echo $mapping | awk -F": " '{print $2}')
+			if [ -n "$distro_pkg" ]; then
+				echo $distro_pkg
+			else
+				distro_pkg=${mapping%%::*}
+				[ "$mapping" != "$distro_pkg" ] && [ -n "$distro_pkg" ] && echo $distro_pkg
+			fi
+		else
+			echo $pkg
+		fi
+	done
+}
+
 get_build_dir()
 {
 	echo "/tmp/build-$1"
