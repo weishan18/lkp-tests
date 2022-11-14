@@ -2,7 +2,7 @@ gcc
 g++
 gcc-multilib
 xz-utils
-pahole
+dwarves
 libbpf-dev
 libc6-dev
 libc-bin
