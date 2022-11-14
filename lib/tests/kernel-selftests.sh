@@ -850,8 +850,6 @@ fixup_subtest()
 		fixup_firmware || return
 	elif [[ "$subtest" = "net" ]]; then
 		fixup_net || return
-	elif [[ "$subtest" = "sysctl" ]]; then
-		lsmod | grep -q test_sysctl || modprobe test_sysctl
 	elif [[ "$subtest" = "ir" ]]; then
 		## Ignore RCMM infrared remote controls related tests.
 		sed -i 's/{ RC_PROTO_RCMM/\/\/{ RC_PROTO_RCMM/g' ir/ir_loopback.c
