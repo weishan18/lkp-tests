@@ -4,7 +4,7 @@
 . $LKP_SRC/lib/reproduce-log.sh
 
 if [[ "$group" = "group-00" ]]; then
-	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "test_kasan" "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit")
+	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "kasan_test" "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit")
 elif [[ "$group" = "group-01" ]]; then
 	# test_kstrtox: could not insert 'test_kstrtox': Invalid argument
 	# test_string_helpers: could not insert 'test_string_helpers': Invalid argument
