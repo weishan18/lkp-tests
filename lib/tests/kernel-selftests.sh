@@ -301,8 +301,8 @@ fixup_net()
 		[[ -x $subtest/fib_tests.sh ]] || chmod +x $subtest/fib_tests.sh
 	}
 	ulimit -l 10240
-	modprobe fou
-	modprobe nf_conntrack_broadcast
+	modprobe -q fou
+	modprobe -q nf_conntrack_broadcast
 
 	[ "$test" = "fcnal-test.sh" ] && [ "$atomic_test" ] && setup_fcnal_test_atomic
 
