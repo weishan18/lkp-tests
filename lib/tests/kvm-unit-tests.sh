@@ -58,8 +58,10 @@ load_kvm_param()
 		modprobe -r kvm || return
 	}
 
-	modprobe kvm force_emulation_prefix=y enable_vmware_backdoor=Y || return
-	modprobe kvm_intel nested=y allow_smaller_maxphyaddr=y || return
+	# need to run kvm_intel first
+	# otherwise it may occur 'modprobe: ERROR: could not insert 'kvm': Invalid argument' issue
+	modprobe kvm_intel nested=Y allow_smaller_maxphyaddr=Y || return
+	modprobe kvm enable_vmware_backdoor=Y force_emulation_prefix=Y || return
 
 	return 0
 }
