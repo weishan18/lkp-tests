@@ -5,3 +5,5 @@ git_am_branch: mm-everything
 patch_based_on_branch:
   '\] mm(:|\/|,)': mm-everything
   '\[.+ (-mm)( .+)?\]': mm-everything
+maintained_subsystems:
+- MEMORY HOT(UN)PLUG
