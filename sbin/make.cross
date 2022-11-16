@@ -438,7 +438,7 @@ setup_crosstool_clang()
 				cross_compile='powerpc64-linux-gnu-'
 			fi
 		}
-		opt_cross="$opt_cross CROSS_COMPILE=$cross_compile"
+		opt_cross="$opt_cross LLVM_IAS=0 CROSS_COMPILE=$cross_compile"
 	elif [[ $ARCH = "riscv" ]]; then
 		if grep -q 'CONFIG_32BIT=y' $BUILD_DIR/.config; then
 			opt_cross="$opt_cross $(COMPILER=gcc && setup_crosstool_gcc && echo $opt_cross)"
