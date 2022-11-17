@@ -21,6 +21,18 @@ fi
 run_kunit_tests()
 {
 	for i in ${test_array[@]}; do
+		# f7e01ab828fd4 kasan: move tests to mm/kasan/
+		# kasan unit test is renamed from test_kasan to kasan_test by above commit merged in v6.1-rc1
+		[[ $i = kasan_test ]] && {
+			if modprobe -q -n kasan_test; then
+				i=kasan_test
+			elif modprobe -q -n test_kasan; then
+				i=test_kasan
+			else
+				echo 'kasan unit test module is not found' >&2
+				continue
+			fi
+		}
 		log_cmd modprobe $i
 		log_cmd rmmod $i
 	done
