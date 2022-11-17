@@ -82,7 +82,7 @@ need_kconfig:
 - RC_LOOPBACK # Depends on: RC_DEVICES [: y] && RC_CORE [: m]
 - SECURITY: y
 - TEST_BPF: m
-- TLS: m, v4.13-rc1
+- TLS: v4.13-rc1
 - VXLAN: y
 - XDP_SOCKETS: y, v4.18-rc1
 - IMA_READ_POLICY: y, v5.11-rc1
@@ -109,7 +109,7 @@ need_kconfig:
 - BLK_DEV_RAM
 - BLK_DEV_RAM_SIZE: 16384
 - BLK_DEV_THROTTLING: y
-# - BONDING: y
+- BONDING
 - BOOTPARAM_HARDLOCKUP_PANIC: y
 - BOOTTIME_TRACING: y, v5.6-rc1
 - BPF_JIT_ALWAYS_ON: y, v5.13-rc4
