@@ -176,7 +176,6 @@ split_syscalls_tests()
 
 	grep -v -f syscalls-timer -f syscalls-tgkill -f syscalls-setsockopt06 -f syscalls-numa syscalls -f $standalone_file > syscalls-rest || return
 	$LKP_SRC/tools/split-tests syscalls-rest 8 syscalls-
-	$LKP_SRC/tools/split-tests cve 8 cve-
 	hide syscalls-rest
 	hide syscalls
 }
@@ -208,6 +207,9 @@ split_tests()
 
 	$LKP_SRC/tools/split-tests ltp-aiodio.part4 2 ltp-aiodio.part4-
 	hide ltp-aiodio.part4
+
+	$LKP_SRC/tools/split-tests cve 8 cve-
+	hide cve
 
 	# net_stress.appl
 	grep "ssh" net_stress.appl > net_stress.appl-ssh || return
