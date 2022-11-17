@@ -210,7 +210,8 @@ need_kconfig:
 - KSM: y
 - LOGO: y
 - MAGIC_SYSRQ: y
-# - MCORE2: y
+- GENERIC_CPU: n
+- MCORE2: y
 - MEMCG: y
 - MEMORY_FAILURE: y
 - NAMESPACES: y
