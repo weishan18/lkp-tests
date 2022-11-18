@@ -457,9 +457,6 @@ def latency_stat?(stats_field)
 end
 
 def failure_stat?(stats_field)
-  # this is used to handle stat like last_state.load_disk.pass before the logic is refined
-  return false if stats_field =~ /\.pass$/
-
   $metric_failure.each { |pattern| return true if stats_field =~ %r{^#{pattern}} }
   false
 end
