@@ -3,7 +3,7 @@ require 'fileutils'
 require 'tmpdir'
 require "#{LKP_SRC}/lib/job"
 
-describe 'filter/need_kconfig.rb' do
+describe 'filters/need_kconfig.rb' do
   before(:each) do
     @tmp_dir = Dir.mktmpdir(nil, '/tmp')
     FileUtils.chmod 'go+rwx', @tmp_dir
@@ -13,7 +13,7 @@ describe 'filter/need_kconfig.rb' do
     end
 
     File.open(File.join(@tmp_dir, '.config'), 'w') do |f|
-      f.write("CONFIG_X=y\nCONFIG_Y=200\nCONFIG_Z1=m\nCONFIG_Z2=y")
+      f.write("CONFIG_X=y\nCONFIG_Y=200\nCONFIG_Z1=m\nCONFIG_Z2=y\nCONFIG_H=0x1000000")
     end
   end
 
@@ -220,6 +220,17 @@ describe 'filter/need_kconfig.rb' do
 
         job.expand_params
       end
+    end
+  end
+
+  context 'when H is 0xXXXX in kernel' do
+    it 'does not filter the job' do
+      job = generate_job <<~EOF
+              need_kconfig:
+              - H: "0x1000000"
+      EOF
+
+      job.expand_params
     end
   end
 end

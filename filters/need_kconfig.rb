@@ -37,6 +37,11 @@ def kernel_match_kconfig?(kernel_kconfigs, expected_kernel_kconfig)
     config_name = "CONFIG_#{config_name}" unless config_name =~ /^CONFIG_/
 
     kernel_kconfigs =~ /^#{config_name}$/
+  when /^([A-Za-z0-9_]+=0[xX][A-Fa-f0-9]+)$/
+    config_name = $1
+    config_name = "CONFIG_#{config_name}" unless config_name =~ /^CONFIG_/
+
+    kernel_kconfigs =~ /^#{config_name}$/
   when /^([A-Za-z0-9_]+)$/, /^([A-Za-z0-9_]+)=$/
     # /^([A-Z0-9_]+)$/ is for "CRYPTO_HMAC"
     # /^([A-Z0-9_]+)=$/ is for "DEBUG_INFO_BTF: v5.2"
@@ -70,7 +75,7 @@ def check_all(kernel_kconfigs)
       next if expected_kernel_versions && !kernel_match_version?(kernel_version, expected_kernel_versions)
 
       # \d+ is for "CMA_SIZE_MBYTES: 200"
-      types, config_options = config_options.partition { |option| option =~ /^(y|m|n|\d+)$/ }
+      types, config_options = config_options.partition { |option| option =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }
       raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" if types.size > 1
 
       raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" unless config_options.size.zero?
