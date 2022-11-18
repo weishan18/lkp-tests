@@ -16,3 +16,17 @@ latency_min_us: 23.89
 latency_min_us_stddev: 17.48
 latency_max_us: 63263.56
 latency_max_us_stddev: 2.39
+end_latency_50%_us_max: 11536
+end_latency_50%_us_stddev: 1.74
+end_latency_75%_us_max: 26976
+end_latency_75%_us_stddev: 3.38
+end_latency_90%_us_max: 33856
+end_latency_90%_us_stddev: 1.27
+end_latency_95%_us_max: 43200
+end_latency_95%_us_stddev: 0.85
+end_latency_99%_us_max: 50496
+end_latency_99%_us_stddev: 0.32
+end_latency_99.5%_us_max: 52800
+end_latency_99.5%_us_stddev: 0.8
+end_latency_99.9%_us_max: 62784
+end_latency_99.9%_us_stddev: 3.27
