@@ -233,4 +233,26 @@ describe 'filters/need_kconfig.rb' do
       job.expand_params
     end
   end
+
+  context 'when the value of H is not the same as kconfig' do
+    it 'filters the job' do
+      job = generate_job <<~EOF
+              need_kconfig:
+              - H: "0x2000000"
+      EOF
+
+      expect { job.expand_params }.to raise_error Job::ParamError
+    end
+  end
+
+  context 'when H is not correct 0xXXXX in kernel' do
+    it 'filters the job' do
+      job = generate_job <<~EOF
+              need_kconfig:
+              - H: "0x100000g"
+      EOF
+
+      expect { job.expand_params }.to raise_error Job::SyntaxError
+    end
+  end
 end
