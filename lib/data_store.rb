@@ -335,10 +335,10 @@ module DataStore
     def grep(conditions, files)
       cond_arr = conditions.to_a
       k0, v0 = cond_arr[0]
-      grep_cmdline = "grep -F -e '#{k0}=#{v0}'"
+      grep_cmdline = "grep -E -e '#{k0}=#{v0.to_s.empty? ? v0 : "#{v0}(/|$)"}'"
       ext_grep_cmdline = ''
       cond_arr.drop(1).each do |k, v|
-        ext_grep_cmdline += " | grep -F -e '#{k}=#{v}'"
+        ext_grep_cmdline += " | grep -E -e '#{k}=#{v.to_s.empty? ? v : "#{v}(/|$)"}'"
       end
 
       files.each do |ifn|
