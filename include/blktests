@@ -17,7 +17,7 @@ need_kconfig:
 - BLK_DEV_ZONED: y, v4.10-rc1
 % end
 - BLK_DEV_NULL_BLK_FAULT_INJECTION: y
-- RDMA_RXE: m, v4.8-rc1
-- RDMA_SIW: m, v5.3-rc1
+- RDMA_RXE: m, x86_64, v4.8-rc1
+- RDMA_SIW: m, x86_64, v5.3-rc1
 - BTRFS_FS: m
 - BTRFS_FS_POSIX_ACL: y
