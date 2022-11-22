@@ -1,0 +1,5 @@
+libpython2.7: python3-libs
+python-dev: python3-devel 
+python: python3
+python-minimal: python3
+python-setuptools: python3-setuptools
