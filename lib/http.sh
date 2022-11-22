@@ -67,7 +67,11 @@ set_tbox_wtmp()
 	local tbox_state="$1"
 	[ -n "$tbox_state" ] || return
 
-	http_get_cgi "cgi-bin/lkp-wtmp?tbox_name=$HOSTNAME&tbox_state=$tbox_state"
+	local query_str="tbox_name=$HOSTNAME&tbox_state=$tbox_state"
+
+	[ -n "$job" ] && is_virt && query_str="${query_str}&job_file=$(escape_cgi_param "$job")"
+
+	http_get_cgi "cgi-bin/lkp-wtmp?$query_str"
 }
 
 ####################################################
