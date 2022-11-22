@@ -582,6 +582,8 @@ def put_dmesg_stamps(error_stamps, dmesg_file)
 end
 
 def put_early_bootstage(error_ids)
+  return if error_ids.empty?
+
   puts
   initcall_file = ENV['INITCALL_FILE']
   return if initcall_file && !File.exist?(initcall_file.to_s)
