@@ -16,6 +16,9 @@ build()
 	./configure CFLAGS=$(pkg-config --cflags smbclient) || return
 	# Fix libnfs.c:27:39: error: intptr_t undeclared (first use in this function); did you mean in_port_t?
 	sed -i '/#include "nfs.h/a #include <stdint.h>' libnfs.c
+	# Fix fatal error: rpc/rpc.h: No such file or directory
+	[[ -e '/usr/include/rpc/rpc.h' ]] || cp /usr/include/tirpc/* /usr/include/ -rf
+	sed -i '/^LIBS=/ s/$/ -ltirpc/' Makefile
 	make dbench || return
 	make tbench || return
 	make tbench_srv || return
