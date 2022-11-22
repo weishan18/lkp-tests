@@ -784,6 +784,7 @@ def find_changed_stats(matrix_path, options)
   rp.parse_result_root matrix_path
 
   rp.each_commit do |commit_project, commit_axis|
+    next if commit_project == 'qemu'
     next if options['project'] && options['project'] != commit_project
 
     options['bisect_axis'] = commit_axis
