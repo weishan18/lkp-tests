@@ -24,6 +24,18 @@ describe 'lkp-split-job' do
     FileUtils.rm_rf @tmp_dir
   end
 
+  it 'split with --compatible option' do
+    Dir.chdir(@tmp_src_dir) do
+      `LKP_SRC=#{@tmp_src_dir} #{@tmp_src_dir}/bin/lkp split-job --compatible -o #{@tmp_dir} spec/split-job/compatible.yaml`
+      new_yaml = 'compatible-test_1.yaml'
+      `sed -i '/testbox:\\\|tbox_group:/d' #{File.join(@tmp_dir, new_yaml)}`
+      actual = YAML.load_file(File.join(@tmp_dir, new_yaml))
+      expect = YAML.load_file("#{LKP_SRC}/spec/split-job/#{new_yaml}")
+
+      expect(actual).to eq expect
+    end
+  end
+
   xit "split job['split-job']['test'] only" do
     Dir.chdir(@tmp_src_dir) do
       `LKP_SRC=#{@tmp_src_dir} #{@tmp_src_dir}/bin/lkp split-job -t lkp-tbox -o #{@tmp_dir} spec/split-job/1.yaml`

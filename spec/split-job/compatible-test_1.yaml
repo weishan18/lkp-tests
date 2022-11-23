@@ -1,0 +1,16 @@
+---
+
+#! jobs/split-job.yaml
+suite: split-job
+testcase: split-job
+split-job:
+  test: test_1
+job_origin: split-job.yaml
+arch: x86_64
+
+#! include/split-job
+including:
+- CONFIG_ALWAYS
+- CONFIG_TEST_1
+- CONFIG_GROUP_ELSE
+- CONFIG_FS_ELSE

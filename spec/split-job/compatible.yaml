@@ -1,0 +1,30 @@
+---
+
+#! jobs/split-job.yaml
+suite: split-job
+testcase: split-job
+
+split-job:
+  test: test_1
+job_origin: split-job.yaml
+
+#! queue options
+queue_cmdline_keys:
+- branch
+- commit
+queue: bisect
+testbox: lkp-cml-d02
+tbox_group: lkp-cml-d02
+submit_id: 6351874cc7401f68320b06ed
+job_file: "/lkp/jobs/scheduled/lkp-cml-d02/igt-group-13-debian-11.1-x86_64-20220510.cgz-f683b9d613193362ceb954c216f663a43c027302-20221021-92210-1qyfdyo-0.yaml"
+id: 2c68b85b50bd708480756cd9d6057b0bc903e9fe
+queuer_version: "/zday/lkp"
+
+#! hosts/lkp-cml-d02
+model: Commet Lake
+nr_node: 1
+nr_cpu: 20
+memory: 16G
+ssd_partitions: "/dev/disk/by-id/ata-INTEL_SSDSC2BA800G4_BTHV61840945800OGN-part4"
+rootfs_partition: "/dev/disk/by-id/ata-INTEL_SSDSC2BA800G4_BTHV61840945800OGN-part3"
+kernel_cmdline_hw: acpi_rsdp=0x9b0fe014

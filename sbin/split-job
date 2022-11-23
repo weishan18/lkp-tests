@@ -94,6 +94,7 @@ end
 
 ARGV.each do |jobfile|
   jobs = Job.new
+  prefix = "#{opt_output_path}/#{File.basename(jobfile, '.yaml')}"
   jobfile = refine_job_file(jobfile) if @opt_compatible
   jobs.load(jobfile, expand_template: true) || next
   jobs['kconfig'] = @opt_kconfig if @opt_kconfig
@@ -104,7 +105,6 @@ ARGV.each do |jobfile|
   jobs['node_roles'] = 'server client' if jobs['cluster']
   jobs[:no_defaults] = true if @opt_no_defaults
   jobs.overrides = opt_set_key_value
-  prefix = "#{opt_output_path}/#{File.basename(jobfile, '.yaml')}"
   jobs.each_jobs do |job|
     unit_jobfile = "#{prefix}-#{job.path_params}"
     Job::EXPAND_DIMS.select { |dim| dim =~ /commit/ }
