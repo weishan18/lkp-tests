@@ -60,9 +60,7 @@ need_kconfig:
 - TEST_BPF: m
 - TEST_MIN_HEAP: m, v5.7-rc1
 - TEST_USER_COPY: m
-- TEST_STRSCPY: m, v5.2-rc1
 - TEST_STATIC_KEYS: m
-- TEST_SIPHASH: m, v5.17-rc1
 - TEST_SCANF: m, v5.14-rc1
 - TEST_PRINTF: m
 - TEST_KSTRTOX: m

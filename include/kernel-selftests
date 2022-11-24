@@ -10,7 +10,6 @@ need_kconfig:
 - TEST_BITMAP: m, v4.6-rc1
 - TEST_PRINTF: m, v4.4-rc1
 - TEST_SCANF: m, v5.14-rc1
-- TEST_STRSCPY: m, v5.2-rc1
 - TEST_BITOPS: m, v5.8-rc1
 % elsif ___.group == "cpufreq"
 - CPU_FREQ: y
@@ -429,7 +428,6 @@ need_kconfig:
 - TEST_KMOD: m, v4.13-rc1
 - TEST_LKM: m
 - TEST_PRINTF
-- TEST_STRSCPY: m, v5.2-rc1
 - TUN: m
 - WW_MUTEX_SELFTEST: m, v4.11-rc1
 - XFS_FS: m
