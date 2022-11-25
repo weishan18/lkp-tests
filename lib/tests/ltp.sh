@@ -123,8 +123,6 @@ test_setting()
 		big_dev="${partitions%% *}"
 		umount $big_dev
 		big_dev_opt="-Z $fs -z $big_dev"
-		# Add "-f" option when do mkfs.f2fs
-		sed -i '/elif \[ "\$fstype" = "btrfs" \]; then/i\\telif [ "$fstype" = "f2fs" ]; then\n\t\topts="-f"' testcases/bin/test_robind.sh
 		;;
 	fs_ext4)
 		[ -z "$partitions" ] && exit
