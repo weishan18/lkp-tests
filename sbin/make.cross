@@ -139,7 +139,7 @@ install_dependence()
 	[[ $errors ]] || return 0
 
 	echo "$errors" | grep -q "libc.so.6.*GLIBC_" && {
-		echo Please update: libc6
+		echo Please update: libc6 or glibc
 	}
 
 	echo "ldd $exec"
