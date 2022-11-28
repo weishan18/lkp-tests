@@ -206,7 +206,9 @@ test_setting()
 
 		# rebuild dummy_del_mod*.ko if exist linux header
 		check_linux_header || return 0
-		make -C /lib/modules/`uname -r`/build M=${PWD}/testcases/kernel/syscalls/delete_module
+		local module_build_dir=/lib/modules/`uname -r`/build
+		[ -f $module_build_dir/vmlinux ] || cp /sys/kernel/btf/vmlinux $module_build_dir/
+		make -C $module_build_dir M=${PWD}/testcases/kernel/syscalls/delete_module
 		cp ${PWD}/testcases/kernel/syscalls/delete_module/*.ko ${PWD}/testcases/bin/
 		;;
 	net.ipv6_lib)
