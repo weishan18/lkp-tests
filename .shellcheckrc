@@ -52,5 +52,7 @@ disable=SC3028 # In POSIX sh, HOSTNAME is undefined.
 disable=SC3028 # In POSIX sh, RANDOM is undefined.
 disable=SC3037 # In POSIX sh, echo flags are undefined.
 disable=SC3043 # In POSIX sh, local is undefined.
+disable=SC3044 # In POSIX sh, 'disown' is undefined.
 disable=SC3045 # In POSIX sh, ulimit -n is undefined.
+disable=SC3054 # In POSIX sh, array references are undefined.
 disable=SC3058 # In POSIX sh, string operations on $@/$* are undefined.
