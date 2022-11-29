@@ -78,7 +78,7 @@ def check_all(kernel_kconfigs)
       types, config_options = config_options.partition { |option| option =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }
       raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" if types.size > 1
 
-      raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" unless config_options.size.zero?
+      raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" unless config_options.empty?
 
       expected_kernel_kconfig = "#{config_name}=#{types.first}"
     else
@@ -94,10 +94,12 @@ def check_all(kernel_kconfigs)
 
   return nil if uncompiled_kconfigs.empty?
 
-  kconfigs_error_message = "#{File.basename __FILE__}: #{uncompiled_kconfigs.uniq} has not been compiled by this kernel (#{kernel_version} based)"
+  uncompiled_kconfigs = uncompiled_kconfigs.sort.uniq
+
+  kconfigs_error_message = "#{File.basename __FILE__}: #{uncompiled_kconfigs} has not been compiled by this kernel (#{kernel_version} based)"
   raise Job::ParamError, kconfigs_error_message.to_s unless __FILE__ =~ /suggest_kconfig/
 
-  puts "suggest kconfigs: #{uncompiled_kconfigs.uniq}"
+  puts "suggest kconfigs: #{uncompiled_kconfigs}"
 end
 
 def check_arch_constraints
