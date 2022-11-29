@@ -3,19 +3,19 @@ need_kconfig:
 - F2FS_FS: m
 - F2FS_FS_XATTR: y
 - F2FS_FS_SECURITY: y
-- F2FS_FS_ENCRYPTION: y, <= v5.0
+- F2FS_FS_ENCRYPTION: y
 % elsif ___.fs == "ext2"
 - EXT2_FS: m
 - EXT2_FS_XATTR: y
 - EXT2_FS_POSIX_ACL: y
 - EXT2_FS_SECURITY: y
 % elsif ___.fs == "ext4"
-- EXT4_ENCRYPTION: y, <= v5.0
+- EXT4_ENCRYPTION: y
 % elsif ___.fs == "xfs"
 - XFS_RT: y
 - XFS_DEBUG: y
-- XFS_ONLINE_SCRUB: y, v4.15-rc1
-- XFS_ONLINE_REPAIR: y, v4.18-rc1
+- XFS_ONLINE_SCRUB: y
+- XFS_ONLINE_REPAIR: y
 % elsif ___.fs == "udf"
 - UDF_FS: m
 % elsif ___.fs == "ocfs2"

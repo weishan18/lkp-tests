@@ -10,14 +10,14 @@ need_kconfig:
 - INFINIBAND_SRPT: m
 - INFINIBAND_USER_MAD: m
 - INFINIBAND_USER_ACCESS: m
-- INFINIBAND_ADDR_TRANS: v4.17-rc1
+- INFINIBAND_ADDR_TRANS
 % elsif ___.test =~ /nbd/
 - BLK_DEV_NBD: m
 % elsif ___.test =~ /zbd/
-- BLK_DEV_ZONED: y, v4.10-rc1
+- BLK_DEV_ZONED: y
 % end
 - BLK_DEV_NULL_BLK_FAULT_INJECTION: y
-- RDMA_RXE: m, x86_64, v4.8-rc1
-- RDMA_SIW: m, x86_64, v5.3-rc1
+- RDMA_RXE: m, x86_64
+- RDMA_SIW: m, x86_64
 - BTRFS_FS: m
 - BTRFS_FS_POSIX_ACL: y

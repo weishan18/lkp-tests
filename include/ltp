@@ -17,7 +17,7 @@ need_kconfig:
 % elsif ___.test == "ima"
 - IMA_WRITE_POLICY: y
 % elsif ___.test == "watchqueue"
-- WATCH_QUEUE: y, v5.8-rc1
+- WATCH_QUEUE: y
 % end
 % if ___.test != "kvm"
 - BLK_DEV_LOOP
