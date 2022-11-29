@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
+
+require "#{LKP_SRC}/lib/lkp_path"
+
+KCONFIGS_YAML = LKP::Path.src('etc', 'kconfigs.yaml').freeze
+
 class KernelTag
   include Comparable
   attr_reader :kernel_tag

@@ -61,6 +61,8 @@ def check_all(kernel_kconfigs)
   kernel_version = context['rc_tag']
   kernel_arch = context['kconfig'].split('-').first
 
+  kconfigs_kernel_versions = YAML.load_file KCONFIGS_YAML if File.exist? KCONFIGS_YAML
+
   $___.each do |e|
     if e.instance_of? Hashugar
       config_name, config_options = e.to_hash.first
@@ -70,9 +72,12 @@ def check_all(kernel_kconfigs)
       expected_archs, config_options = config_options.partition { |option| option =~ /^(i386|x86_64)$/ }
       next unless expected_archs.empty? || kernel_match_arch?(kernel_arch, expected_archs)
 
-      expected_kernel_versions, config_options = config_options.partition { |option| option =~ /v\d+\.\d+/ }
+      expected_kernel_versions = kconfigs_kernel_versions[config_name].split(',').map(&:strip) if kconfigs_kernel_versions && kconfigs_kernel_versions[config_name]
       # ignore the check of kconfig type if kernel is not within the valid range
       next if expected_kernel_versions && !kernel_match_version?(kernel_version, expected_kernel_versions)
+
+      # backward compatibility to extract expected kernel versions from existing job.yaml
+      _expected_kernel_versions, config_options = config_options.partition { |option| option =~ /v\d+\.\d+/ }
 
       # \d+ is for "CMA_SIZE_MBYTES: 200"
       types, config_options = config_options.partition { |option| option =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }

@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'fileutils'
 require 'tmpdir'
+require "#{LKP_SRC}/lib/kernel_tag"
 require "#{LKP_SRC}/lib/job"
 
 describe 'filters/need_kconfig.rb' do
@@ -15,10 +16,18 @@ describe 'filters/need_kconfig.rb' do
     File.open(File.join(@tmp_dir, '.config'), 'w') do |f|
       f.write("CONFIG_X=y\nCONFIG_Y=200\nCONFIG_Z1=m\nCONFIG_Z2=y\nCONFIG_H=0x1000000")
     end
+
+    stub_const 'KCONFIGS_YAML', File.join(@tmp_dir, 'kconfigs.yaml')
   end
 
   after(:each) do
     FileUtils.remove_entry @tmp_dir
+  end
+
+  def generate_kconfigs_yaml(kconfigs_kernel_versions)
+    File.open(KCONFIGS_YAML, 'w') do |f|
+      f.puts kconfigs_kernel_versions
+    end
   end
 
   def generate_job(contents = "\n")
@@ -77,6 +86,8 @@ describe 'filters/need_kconfig.rb' do
 
   context 'when Z does not set n/m/y' do
     it 'does not filters the job' do
+      generate_kconfigs_yaml('Z1: v4.9')
+
       job = generate_job <<~EOF
               need_kconfig:
               - Z1: v4.9 # support kernel >=v4.9
@@ -129,9 +140,11 @@ describe 'filters/need_kconfig.rb' do
   context 'when X is built-in in kernel' do
     context 'when kernel version meets the constraints' do
       it 'does not filter the job' do
+        generate_kconfigs_yaml('X: v4.9, <= v5.0')
+
         job = generate_job <<~EOF
           need_kconfig:
-            - X: y, v4.9, <= v5.0  # support kernel <=v5.0
+            - X: y
         EOF
 
         job.expand_params
@@ -140,9 +153,11 @@ describe 'filters/need_kconfig.rb' do
 
     context 'when kernel version does not meet the constraints' do
       it 'does not filter the job' do
+        generate_kconfigs_yaml('X: ">= v5.1-rc1"')
+
         job = generate_job <<~EOF
                 need_kconfig:
-                - X: y, >= v5.1-rc1 # support kernel >=v5.1-rc1
+                - X: y
         EOF
 
         job.expand_params
@@ -184,9 +199,11 @@ describe 'filters/need_kconfig.rb' do
   context 'when Y is not built in kernel' do
     context 'when kernel version is within the range' do
       it 'filters the job' do
+        generate_kconfigs_yaml('Y: <= v5.0, v4.9')
+
         job = generate_job <<~EOF
           need_kconfig:
-          - Y: m, <= v5.0, v4.9 # support kernel <=v5.0
+          - Y: m
         EOF
 
         expect { job.expand_params }.to raise_error Job::ParamError
@@ -195,9 +212,11 @@ describe 'filters/need_kconfig.rb' do
 
     context 'when kernel version is not within the range' do
       it 'does not filter the job' do
+        generate_kconfigs_yaml('Y: v5.1-rc1, <= v5.1-rc2')
+
         job = generate_job <<~EOF
           need_kconfig:
-          - Y: m, v5.1-rc1, <= v5.1-rc2 # support kernel >=v5.1-rc1 and <=v5.1-rc2
+          - Y: m
         EOF
 
         job.expand_params
