@@ -2,6 +2,7 @@
 # - group
 
 . $LKP_SRC/lib/reproduce-log.sh
+. $LKP_SRC/lib/tests/version.sh
 
 if [[ "$group" = "group-00" ]]; then
 	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "kasan_test" "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit")
@@ -15,7 +16,7 @@ elif [[ "$group" = "group-01" ]]; then
 	# test_klp_state: could not insert 'test_klp_state': Invalid argument
 	# test_meminit: could not insert 'test_meminit': Invalid argument
 	# test-drm_modeset: Kernel panic - not syncing: Fatal exception
-	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "test-drm_buddy" "test-drm_mm" "crc32test" "atomic64_test")
+	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "drm_buddy_test" "drm_format_test" "drm_framebuffer_test" "drm_mm_test" "drm_rect_test" "crc32test" "atomic64_test")
 fi
 
 run_kunit_tests()
@@ -30,6 +31,12 @@ run_kunit_tests()
 				i=test_kasan
 			else
 				echo 'kasan unit test module is not found' >&2
+				continue
+			fi
+		}
+		[[ $i =~ "drm_" ]] && {
+			if ! is_kernel_version_ge 6.0; then
+				# skip not exist module
 				continue
 			fi
 		}
