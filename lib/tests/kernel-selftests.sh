@@ -75,10 +75,7 @@ prepare_for_bpf()
 		linux_headers_mod_dirs=$(realpath $linux_headers_mod_dirs)
 		[[ "$linux_headers_mod_dirs" ]] && export KDIR=$linux_headers_mod_dirs
 
-		[[ -f $linux_selftests_dir/image/vmlinux.xz ]] && {
-			xz -dkf $linux_selftests_dir/image/vmlinux.xz &&
-			mv $linux_selftests_dir/image/vmlinux $linux_headers_mod_dirs
-		}
+		cp /sys/kernel/btf/vmlinux $linux_headers_mod_dirs
 
 		(
 			#  CLNG-BPF [test_maps] bpf_iter_task_vma.o
