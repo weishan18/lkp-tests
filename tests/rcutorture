@@ -18,6 +18,7 @@ esac
 
 [ -n "$torture_type" ] && args=${args}" torture_type=$torture_type"
 
+log_cmd depmod
 log=$(log_cmd modprobe rcutorture $args 2>&1) || {
 	echo "$log"
 	echo "$log" | grep -q "Invalid argument" ||

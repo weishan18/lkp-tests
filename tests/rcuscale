@@ -11,6 +11,7 @@
 args=""
 [ -n "$scale_type" ] && args="$args scale_type=$scale_type"
 
+log_cmd depmod
 log=$(log_cmd modprobe rcuscale $args 2>&1) || {
 	echo "$log"
 	echo "$log" | grep -q "Invalid argument" ||

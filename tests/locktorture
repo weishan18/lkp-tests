@@ -16,6 +16,7 @@ cpuhotplug)
         ;;
 esac
 
+log_cmd depmod
 log_cmd modprobe locktorture $args || {
 	errno=$?
 

@@ -38,6 +38,7 @@ wait_for_refscale_completion()
 	done
 }
 
+log_cmd depmod
 log_cmd modprobe refscale $args || die "failed to load refscale module, try to enable CONFIG_RCU_REF_SCALE_TEST and build rcurefscale.ko"
 
 wait_for_refscale_completion
