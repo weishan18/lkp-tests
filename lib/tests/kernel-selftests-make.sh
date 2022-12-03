@@ -93,6 +93,27 @@ run_tests()
 		elif [[ $test =~ ^protection_keys ]]; then
 			echo "# selftests: vm: $test"
 			log_cmd vm/$test 2>&1
+		elif [[ $subtest = bpf ]]; then
+			log_cmd make -C $subtest 2>&1
+
+			if grep -q "test_progs-no_alu32 \\\\" bpf/Makfile; then
+				sed -i 's/test_progs //' bpf/Makefile
+				sed -i 's/test_progs-no_alu32 //' bpf/Makefile
+			else
+				sed -i 's/test_lpm_map test_progs //' bpf/Makefile
+				sed -i 's/test_progs-no_alu32/test_lpm_map/' bpf/Makefile
+			fi
+
+			cd bpf
+			echo "# selftests: bpf: test_progs"
+			log_cmd ./test_progs -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
+			log_cmd ./test_progs -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
+			echo "# selftests: bpf: test_progs-no_alu32"
+			log_cmd ./test_progs-no_alu32 -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
+			log_cmd ./test_progs-no_alu32 -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
+			cd ..
+
+			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
 		elif [[ $category = "functional" ]]; then
 			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
 		else
