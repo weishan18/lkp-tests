@@ -1,15 +1,18 @@
 pkgname=netperf
 pkgver=2.7
 pkgrel=0
-arch=('i386' 'x86_64')
+arch=('i386' 'x86_64' 'riscv64')
 url="https://github.com/HewlettPackard/netperf"
 license=('GPL')
-source=("https://github.com/HewlettPackard/netperf/archive/netperf-$pkgver.$pkgrel.tar.gz")
-md5sums=('e0d45b5bca1eee2aef0155de82366202')
+source=("https://github.com/HewlettPackard/netperf/archive/netperf-$pkgver.$pkgrel.tar.gz" "http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess" "http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub")
+md5sums=('e0d45b5bca1eee2aef0155de82366202' 'SKIP' 'SKIP')
 
 build()
 {
 	cd "$srcdir/$pkgname-$pkgname-$pkgver.$pkgrel"
+        if [[ $CARCH == 'riscv64' ]]; then
+            cp ../config.guess ../config.sub .
+        fi
 
 	# sendfile_tcp_stream() misses assignment of len and it is possible
 	# for random len to trigger the following issue, so fix it.
