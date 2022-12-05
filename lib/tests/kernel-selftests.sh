@@ -458,6 +458,10 @@ fixup_bpf()
 	sed -i 's/test_lirc_mode2_user//' bpf/Makefile
 	echo "LKP SKIP bpf.test_lirc_mode2_user"
 
+	# ./test_lirc_mode2.sh: line 32: ./test_lirc_mode2_user: No such file or director
+	sed -i 's/test_lirc_mode2.sh//' bpf/Makefile
+	echo "LKP SKIP bpf.test_lirc_mode2.sh"
+
 	## this test caused soft timeout in v6.0-rc1 ~ v6.0-rc3, test ok in v6.0-rc4 v6.0-rc5.
 	sed -i 's/test_sockmap//' bpf/Makefile
 	echo "LKP SKIP bpf.test_sockmap"
