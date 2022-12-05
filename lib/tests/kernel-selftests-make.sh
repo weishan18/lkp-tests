@@ -110,7 +110,7 @@ run_tests()
 			log_cmd ./test_progs -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
 			echo "# selftests: bpf: test_progs-no_alu32"
 			log_cmd ./test_progs-no_alu32 -b sk_assign -b xdp_bonding -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
-			log_cmd ./test_progs-no_alu32 -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
+			log_cmd ./test_progs-no_alu32 -a perf_branches -a perf_event_stackmap -a snprintf_btf
 			cd ..
 
 			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
