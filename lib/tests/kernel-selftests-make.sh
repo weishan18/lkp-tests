@@ -94,8 +94,6 @@ run_tests()
 			echo "# selftests: vm: $test"
 			log_cmd vm/$test 2>&1
 		elif [[ $subtest = bpf ]]; then
-			log_cmd make -C $subtest 2>&1
-
 			if grep -q "test_progs-no_alu32 \\\\" bpf/Makfile; then
 				sed -i 's/test_progs //' bpf/Makefile
 				sed -i 's/test_progs-no_alu32 //' bpf/Makefile
