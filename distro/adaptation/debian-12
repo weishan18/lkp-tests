@@ -8,6 +8,7 @@
 winpdb:
 python3-gobject:
 xfsdump:
+python-setuptools:
 
 # reason(3)
 fsverity: fsverity
