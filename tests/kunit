@@ -35,7 +35,7 @@ run_kunit_tests()
 			fi
 		}
 		[[ $i =~ "drm_" ]] && {
-			if ! is_kernel_version_ge 6.0; then
+			if ! is_kernel_version_gt 6.0; then
 				# skip not exist module
 				continue
 			fi

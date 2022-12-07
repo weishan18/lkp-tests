@@ -23,10 +23,8 @@ libc_version_ge()
 	[[ "$greatest" = "$version" ]]
 }
 
-is_kernel_version_ge()
+get_kernel_version()
 {
-	local other=$1
-
 	# 5.14.9-200.fc34.x86_64
 	# format: X.Y.Z-...
 	local version=$(uname -r)
@@ -37,7 +35,23 @@ is_kernel_version_ge()
 	# format: X.Y
 	version=${version%.*}
 
+	echo $version
+}
+
+is_kernel_version_ge()
+{
+	local other=$1
+	local version=$(get_kernel_version)
+
 	rs_value=$(awk -v version=${version} -v other=${other} 'BEGIN { print(version >= other) ? "0" : "1" }')
 	return $rs_value
 }
 
+is_kernel_version_gt()
+{
+	local other=$1
+	local version=$(get_kernel_version)
+
+	rs_value=$(awk -v version=${version} -v other=${other} 'BEGIN { print(version > other) ? "0" : "1" }')
+	return $rs_value
+}
