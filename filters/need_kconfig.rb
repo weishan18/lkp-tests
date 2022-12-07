@@ -3,6 +3,7 @@
 LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
 
 require 'yaml'
+require 'ostruct'
 require "#{LKP_SRC}/lib/kernel_tag"
 require "#{LKP_SRC}/lib/log"
 
@@ -54,6 +55,22 @@ def kernel_match_kconfig?(kernel_kconfigs, expected_kernel_kconfig)
   end
 end
 
+def split_constraints(constraints)
+  # to_s is for "CMA_SIZE_MBYTES: 200"
+  constraints = constraints.to_s.split(',').map(&:strip)
+
+  kernel_versions, constraints = constraints.partition { |constraint| constraint =~ /v\d+\.\d+/ }
+  archs, constraints = constraints.partition { |constraint| constraint =~ /^(i386|x86_64)$/ }
+
+  # \d+ is for "CMA_SIZE_MBYTES: 200"
+  types, constraints = constraints.partition { |constraint| constraint =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }
+  raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{constraints}" if types.size > 1
+
+  raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{constraints}" unless constraints.empty?
+
+  OpenStruct.new(kernel_versions: kernel_versions, archs: archs, types: types)
+end
+
 def check_all(kernel_kconfigs)
   uncompiled_kconfigs = []
 
@@ -61,31 +78,23 @@ def check_all(kernel_kconfigs)
   kernel_version = context['rc_tag']
   kernel_arch = context['kconfig'].split('-').first
 
-  kconfigs_kernel_versions = YAML.load_file KCONFIGS_YAML if File.exist? KCONFIGS_YAML
+  if File.exist? KCONFIGS_YAML
+    kconfig_constraints = YAML.load_file KCONFIGS_YAML
+    kconfig_constraints = kconfig_constraints.transform_values { |constraints| split_constraints(constraints) }
+  end
 
   $___.each do |e|
     if e.instance_of? Hashugar
       config_name, config_options = e.to_hash.first
-      # to_s is for "CMA_SIZE_MBYTES: 200"
-      config_options = config_options.to_s.split(',').map(&:strip)
 
-      expected_archs, config_options = config_options.partition { |option| option =~ /^(i386|x86_64)$/ }
-      next unless expected_archs.empty? || kernel_match_arch?(kernel_arch, expected_archs)
+      config_options = split_constraints(config_options)
+      next unless config_options.archs.empty? || kernel_match_arch?(kernel_arch, config_options.archs)
 
-      expected_kernel_versions = kconfigs_kernel_versions[config_name].split(',').map(&:strip) if kconfigs_kernel_versions && kconfigs_kernel_versions[config_name]
+      expected_kernel_versions = kconfig_constraints[config_name].kernel_versions if kconfig_constraints && kconfig_constraints[config_name]
       # ignore the check of kconfig type if kernel is not within the valid range
       next if expected_kernel_versions && !kernel_match_version?(kernel_version, expected_kernel_versions)
 
-      # backward compatibility to extract expected kernel versions from existing job.yaml
-      _expected_kernel_versions, config_options = config_options.partition { |option| option =~ /v\d+\.\d+/ }
-
-      # \d+ is for "CMA_SIZE_MBYTES: 200"
-      types, config_options = config_options.partition { |option| option =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }
-      raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" if types.size > 1
-
-      raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{e.to_hash}" unless config_options.empty?
-
-      expected_kernel_kconfig = "#{config_name}=#{types.first}"
+      expected_kernel_kconfig = "#{config_name}=#{config_options.types.first}"
     else
       expected_kernel_kconfig = e
     end
