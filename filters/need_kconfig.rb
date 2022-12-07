@@ -86,8 +86,13 @@ def check_all(kernel_kconfigs)
   $___.each do |e|
     if e.instance_of? Hashugar
       config_name, config_options = e.to_hash.first
-
       config_options = split_constraints(config_options)
+
+      # global arch constraint that means the kconfig is only supported on the specific arch
+      expected_archs = kconfig_constraints[config_name].archs if kconfig_constraints && kconfig_constraints[config_name]
+      next unless expected_archs.nil? || expected_archs.empty? || kernel_match_arch?(kernel_arch, expected_archs)
+
+      # test arch constraint that means the kconfig is only enabled on the specific arch as required by test
       next unless config_options.archs.empty? || kernel_match_arch?(kernel_arch, config_options.archs)
 
       expected_kernel_versions = kconfig_constraints[config_name].kernel_versions if kconfig_constraints && kconfig_constraints[config_name]

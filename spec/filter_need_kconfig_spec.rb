@@ -73,6 +73,34 @@ describe 'filters/need_kconfig.rb' do
     end
   end
 
+  context 'when X is only supported on x86_64' do
+    it 'does not filter the i386 job' do
+      generate_kconfigs_yaml('X: x86_64')
+
+      job = generate_job <<~EOF
+              need_kconfig:
+              - X: n, i386
+      EOF
+
+      job.expand_params
+    end
+  end
+
+  context 'when X is only supported on i386' do
+    context 'when X is required to be n on x86_64' do
+      it 'does not filter the i386 job' do
+        generate_kconfigs_yaml('X: i386')
+
+        job = generate_job <<~EOF
+                need_kconfig:
+                - X: n, x86_64
+        EOF
+
+        job.expand_params
+      end
+    end
+  end
+
   context 'when Z does not set n/m/y or version' do
     it 'does not filters the job' do
       job = generate_job <<~EOF
