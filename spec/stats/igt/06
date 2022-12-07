@@ -1,0 +1,80 @@
+2022-11-22 02:00:10 build/tests/gem_create --run-subtest create-clear
+IGT-Version: 1.26-g5c0ec905 (x86_64) (Linux: 5.19.0-rc6-00005-g0847d167d0f9 x86_64)
+Starting subtest: create-clear
+Starting dynamic subtest: smem0
+Received signal Received signal SIGFPE.
+Stack trace:
+SIGFPE.
+Received signal SIGFPE.
+Stack trace:
+Stack trace:
+Received signal SIGFPE.
+Stack trace:
+ # #0 [igt_nsec_elaps #0 [igt_nsec_elapsed+0x315]
+ed+0x315]
+0 [igt_nsec_elapsed+0x315]
+ #0 [igt_nsec_elapsed+0x315]
+ #1 [killpg+0x40]
+ #1 [killpg+0x40]
+ #2 [thread_clear+0xf3]
+ #2 [thread_clear+0xf3]
+ #1 [killpg+0x40]
+ #2 [thread_clear+0xf3]
+ #1 [killpg+0x40]
+ #2 [thread_clear+0xf3]
+ #3 [start_thread+0xd7]
+ #3 [start_thread+0xd7]
+ #3 [start_thread+0xd7]
+ # #4 [clone+0x3f]
+ #3 [start_thread+0xd7]
+Dynamic subtest smem0: CRASH (0.013s)
+4 [clone+0x3f]
+Dynamic subtest smem0: CRASH (0.013s)
+gem_create: ../lib/igt_thread.c:51: igt_thread_assert_no_failures: Assertion `igt_thread_is_main()' failed.
+Received signal SIGSEGV.
+Stack trace:
+Received signal SIGABRT.
+Stack trace:
+ #4 [clone+0x3f]
+Subtest create-clear: CRASH (0.015s)
+double free or corruption (out)
+ #0 [igt_nsec_eReceived signal SIGABRT.
+Stack trace:
+lapsed+0x315]
+ #4 [clone+0x3f]
+Subtest create-clear: CRASH (0.016s)
+Received signal SIGSEGV.
+Stack trace:
+ #1 [killpg+0x4 0]
+#0 [igt_nsec_elapsed+0x315]
+ #0 [igt_nsec_elapsed+0x315]
+ #2 [igt_map_next_entry+ #0 [0igt_nsec_xelapsed+20x315]
+5]
+ #1 [killpg+0x40]
+ #1 [killpg+0x40]
+ #3 [igt_map_destroy+0x30]
+ #1 [killpg+0x40] #2 [gsignal+0x141]
+
+ #4 [intel_allocator_init+0x3c]
+ #2 [igt_map_next_entry+0x25]
+  ##3 [abort+0x123]
+2 [gsignal+0x141]
+ #5 [igt_nsec_elapsed+0x14a]
+ #4 [__fsetlocking+0x288]
+ #3 [abort+0x123]
+ #3 [init_instdone_definitions+0x22df]
+ #6 [igt_nsec_elapsed+0x363]
+ #5 [pthread_attr_setschedparam+0x5ca]
+ #4 [intel_allocator_init+0x20]
+ #4 [<unknown>+0x123]
+ #7 [killpg+0x40]
+ #6 [pthread_attr_setschedparam+0x1bf8]
+ #8 [thread_clear+0xf3]
+ #5 [igt_nsec_elapsed+0x14a]
+ #9 [start_thread+0xd7]
+ #7 [igt_map_destroy+0x25]
+ #6 [igt_nsec_elapsed+0x363]
+ #5 [__assert_fail+0x42]
+ #10 [clone+0x3f]
+Subtest create-clear: CRASH (0.039s)
+Segmentation fault

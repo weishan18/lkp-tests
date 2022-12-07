@@ -118,7 +118,15 @@ while (line = $stdin.gets)
 
     has_dynamic_subtest = true
 
-    stats.add "#{test_name}.#{subtest_name}.dynamic.#{$1}", $2
+    # ignore below duplication
+    # 2022-11-22 02:00:10 build/tests/gem_create --run-subtest create-clear
+    # Starting subtest: create-clear
+    # Starting dynamic subtest: smem0
+    # Dynamic subtest smem0: CRASH (0.013s)
+    # 4 [clone+0x3f]
+    # Dynamic subtest smem0: CRASH (0.013s)
+    test_case = "#{test_name}.#{subtest_name}.dynamic.#{$1}"
+    stats.add test_case, $2 unless stats.key?(test_case)
   when /^LKP SKIP igt@(.*)@(.*)$/
     # LKP SKIP igt@gem_streaming_writes@batch-cpu
     stats.add "#{$1}.#{$2}", 'skip' unless stats.key? "#{$1}.#{$2}"
