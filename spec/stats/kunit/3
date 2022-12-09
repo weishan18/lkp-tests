@@ -1,0 +1,17 @@
+[   33.254153] KTAP version 1
+[   33.257602] 1..5
+[   33.260299]     KTAP version 1
+[   33.264089]     # Subtest: hw_breakpoint
+[   33.264091]     1..9
+[   33.269128]     ok 1 test_one_cpu
+[   33.272812]     ok 2 test_many_cpus
+[   33.277175]     ok 3 test_one_task_on_all_cpus
+[   33.281757]     ok 4 test_two_tasks_on_all_cpus
+[   33.287197]     ok 5 test_one_task_on_one_cpu
+[   33.292789]     ok 6 test_one_task_mixed
+[   33.298539]     ok 7 test_two_tasks_on_one_cpu
+[   33.303787]     ok 8 test_two_tasks_on_one_all_cpus
+[   33.309320]     ok 9 test_task_on_all_and_one_cpu
+[   33.314936] # hw_breakpoint: pass:9 fail:0 skip:0 total:9
+[   33.320373] # Totals: pass:9 fail:0 skip:0 total:9
+[   33.326500] ok 1 hw_breakpoint

@@ -18,6 +18,9 @@ while (line = $stdin.gets)
     # [   41.553190]     ok 6 - kmalloc_pagealloc_invalid_free
     # there are two "ok 1 - total_mapping_size_test" in output
     stats.add $2, $1 unless stats.key? $2.to_s
+  when /\[.*\]\s(ok|not ok)\s*\d+\s(.*)/
+    # [   33.326500] ok 1 hw_breakpoint
+    stats.add $2, $1
   end
 end
 
