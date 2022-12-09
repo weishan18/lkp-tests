@@ -342,6 +342,7 @@ need_kconfig:
 - IPV6_IOAM6_LWTUNNEL: y
 % elsif ___.group == "netfilter"
 - NET_NS: y
+- NFT_OBJREF: m
 - NFT_FLOW_OFFLOAD: m
 - NFT_MASQ: m
 - NFT_NAT: m
@@ -453,7 +454,6 @@ need_kconfig:
 - NET_L3_MASTER_DEV: y
 - NET_SCH_NETEM
 - NET_VRF: y
-- NFT_OBJREF: m
 - NF_FLOW_TABLE: m
 - NF_FLOW_TABLE_INET: m
 - NF_FLOW_TABLE_IPV4: m
