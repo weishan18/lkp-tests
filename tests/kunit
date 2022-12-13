@@ -3,6 +3,9 @@
 
 . $LKP_SRC/lib/reproduce-log.sh
 . $LKP_SRC/lib/tests/version.sh
+. $LKP_SRC/lib/detect-system.sh
+
+arch=$(get_system_arch)
 
 if [[ "$group" = "group-00" ]]; then
 	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "kasan_test" "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit")
@@ -39,6 +42,11 @@ run_kunit_tests()
 				# skip not exist module
 				continue
 			fi
+		}
+		[[ $arch = "i386" ]] && {
+			# skip TEST_LIVEPATCH related modules
+			[[ $i = test_klp_livepatch ]] && continue
+			[[ $i = test_klp_shadow_vars ]] && continue
 		}
 		log_cmd modprobe $i
 		log_cmd rmmod $i
