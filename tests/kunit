@@ -47,6 +47,8 @@ run_kunit_tests()
 			# skip TEST_LIVEPATCH related modules
 			[[ $i = test_klp_livepatch ]] && continue
 			[[ $i = test_klp_shadow_vars ]] && continue
+			# skip TEST_HMM related module
+			[[ $i = test_hmm ]] && continue
 		}
 		log_cmd modprobe $i
 		log_cmd rmmod $i
