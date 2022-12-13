@@ -1,0 +1,7 @@
+suite: kunit
+testcase: kunit
+category: functional
+
+kunit:
+  group:
+    - group-03

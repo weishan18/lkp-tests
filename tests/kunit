@@ -18,8 +18,9 @@ elif [[ "$group" = "group-01" ]]; then
 	# test_vmalloc: could not insert 'test_vmalloc': Resource temporarily unavailable
 	# test_klp_state: could not insert 'test_klp_state': Invalid argument
 	# test_meminit: could not insert 'test_meminit': Invalid argument
-	# test-drm_modeset: Kernel panic - not syncing: Fatal exception
-	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "drm_buddy_test" "drm_format_test" "drm_framebuffer_test" "drm_mm_test" "drm_rect_test" "crc32test" "atomic64_test")
+	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "drm_format_test" "drm_framebuffer_test" "drm_mm_test" "drm_rect_test" "crc32test" "atomic64_test")
+elif [[ "$group" = "group-03" ]]; then
+	test_array=("drm_buddy_test")
 fi
 
 run_kunit_tests()
