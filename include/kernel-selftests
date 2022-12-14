@@ -295,11 +295,11 @@ need_kconfig:
 - NET_L3_MASTER_DEV: y
 - IPV6: y
 - IPV6_MULTIPLE_TABLES: y
-- VETH: y
+- VETH
 - NET_IPVTI: m
 - IPV6_VTI: m
-- DUMMY: y
-- BRIDGE: y
+- DUMMY
+- BRIDGE
 - VLAN_8021Q: y
 - IFB
 - NETFILTER: y
