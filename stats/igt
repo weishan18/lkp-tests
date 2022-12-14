@@ -85,30 +85,33 @@ while (line = $stdin.gets)
       exit 1
     end
 
-    if %w(gem_shrink i915_pm_rps).include? test_name
-      # some subtests of gem_shrink has duplication issue since v5.11-rc2
-      # Subtest execbuf1-oom: CRASH (0.021s)
-      #  #1 [killpg+0x40]
-      #  #2 [__real_main396+0x837]
-      #  #3 [main+0x27]
-      #  #4 [__libc_start_main+0xeb]
-      #  #5 [_start+0x2a]
-      # Subtest execbuf1-oom: CRASH (0.021s)
-      #  #4 [__libc_start_main+0xeb]
-      #  #5 [_start+0x2a]
-      # Subtest execbuf1-oom: CRASH (0.021s)
+    # avoid duplication
+    # gem_shrink has duplication issue since v5.11-rc2
+    # Subtest execbuf1-oom: CRASH (0.021s)
+    #  #1 [killpg+0x40]
+    #  #2 [__real_main396+0x837]
+    #  #3 [main+0x27]
+    #  #4 [__libc_start_main+0xeb]
+    #  #5 [_start+0x2a]
+    # Subtest execbuf1-oom: CRASH (0.021s)
+    #  #4 [__libc_start_main+0xeb]
+    #  #5 [_start+0x2a]
+    # Subtest execbuf1-oom: CRASH (0.021s)
 
-      # avoid duplication of reset and waitboost
-      # 2022-01-27 19:24:07 build/tests/i915_pm_rps --run-subtest reset
-      # Subtest reset: FAIL (2.276s)
-      # (i915_pm_rps:1591) igt_core-INFO: Subtest reset: FAIL (2.276s)
-      # 2022-01-27 19:24:10 build/tests/i915_pm_rps --run-subtest waitboost
-      # Subtest waitboost: FAIL (1.258s)
-      # (i915_pm_rps:1623) igt_core-INFO: Subtest waitboost: FAIL (1.258s)
-      stats.add "#{test_name}.#{$2}", $3 unless stats.key? "#{test_name}.#{$2}"
-    else
-      stats.add "#{test_name}.#{$2}", $3
-    end
+    # reset and waitboost also has duplication
+    # 2022-01-27 19:24:07 build/tests/i915_pm_rps --run-subtest reset
+    # Subtest reset: FAIL (2.276s)
+    # (i915_pm_rps:1591) igt_core-INFO: Subtest reset: FAIL (2.276s)
+    # 2022-01-27 19:24:10 build/tests/i915_pm_rps --run-subtest waitboost
+    # Subtest waitboost: FAIL (1.258s)
+    # (i915_pm_rps:1623) igt_core-INFO: Subtest waitboost: FAIL (1.258s)
+
+    # 2022-12-10 20:44:53 build/tests/gem_create --run-subtest create-clear
+    #  Subtest create-clear: CRASH (0.014s)
+    #  #4 [clone+0x3f]
+    #  Subtest create-clear: CRASH (0.014s)
+    #  Received signal SIGSEGV.
+    stats.add "#{test_name}.#{$2}", $3 unless stats.key? "#{test_name}.#{$2}"
   when /^Dynamic subtest (.*): (SUCCESS|FAIL|CRASH)/
     # a 'dynamic subtest' is such like a 2nd level subtest under 'subtest' as below
     # 2607 Starting subtest: exec-single-timeline

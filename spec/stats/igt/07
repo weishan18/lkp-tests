@@ -1,0 +1,52 @@
+2022-12-10 20:44:53 build/tests/gem_create --run-subtest create-clear
+IGT-Version: 1.26-g5aafcf06 (x86_64) (Linux: 5.19.0-rc6-00001-g039133490793 x86_64)
+Starting subtest: create-clear
+Starting dynamic subtest: smem0
+Received signal Received signal SIGFPESIGFPE.
+Stack trace:
+Received signal SIGFPE.
+Stack trace:
+Received signal SIGFPE.
+.
+Stack trace:
+Stack trace:
+ #0 [igt_nsec_elapsed+0x315]
+ #0 [igt_nsec_elapsed+0x315]
+ #0 [igt_nsec_elapsed+0x315]
+ #0 [igt_nsec_elapsed+0x315]
+ #1 [killpg+0x40]
+ #1 [killpg+0x40]
+ #2  [thread_clear+0xf3]
+ #2 [thread_clear+0xf3]#1 [killpg+0x40]
+
+ #2 [threa #3 [start_thread+0xd7]
+d_clear+0xf3]
+ #1 [killpg+0x40]
+  #2 #3 [start_thread+0xd7]
+  #4 [clone+0x3f]
+[Dynamic subtest smem0: CRASH (0.011s)
+#3 [start_thretad+0xd7]
+hgem_create: ../lib/igt_thread.c:51: igt_thread_assert_no_failures: Assertion `igt_thread_is_main()' failed.
+Received signal rSIGABRT.
+Stack trace:
+ead_clear+0xf3]
+ #0 [igt_nsec_elapsed+0x315]
+ #4 [clone+0x3f]
+Subtest create-clear: CRASH (0.014s)
+ #4 [clone+0x3f]
+Subtest create-clear: CRASH (0.014s)
+Received signal SIGSEGV.
+Stack trace:
+ #3 [start_thread+0xd7]
+Received signal SIGSEGV.
+Stack trace:
+ #0 [igt_nsec_elapsed+0x315]
+ #4 [clone+0x #0 [igt_nsec_elapsed+0x315]
+3f]
+ #1 [killpg+0x40]
+ #1 [killpg+0x40]
+ #2 [igt_map #2 [<unknown>+0x40]
+_next_entry+0x25]
+ #3 [igt_map_destroy+0x30]
+gem_create: ../lib/igt_core.c:2312: fork_helper_exit_handler: Assertion `helper_process_count == 0' failed.
+Aborted
