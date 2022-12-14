@@ -48,7 +48,7 @@ need_kconfig:
 - USB4_KUNIT_TEST: y
 
 - SECURITY_APPARMOR: y
-- SECURITY_APPARMOR_KUNIT_TEST: y
+- SECURITY_APPARMOR_KUNIT_TEST
 
 % elsif ___.group == "group-01"
 # below are not kunit test
