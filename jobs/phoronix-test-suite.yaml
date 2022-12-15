@@ -852,12 +852,12 @@ phoronix-test-suite:
       # - Test All Options
   - test: avifenc-1.1.1
     option_a:
-      - 0            [Slowest]
-      - 2            [Slow]
-      - 6            [Default]
-      - 6, Lossless  [Default Speed + Lossless]
-      - 10           [Fastest]
-      # - 10, Lossless [Fastest]
+      - 1 # 0            [Slowest]
+      - 2 # 2            [Slow]
+      - 3 # 6            [Default]
+      - 4 # 6, Lossless  [Default Speed + Lossless]
+      - 5 # 10           [Fastest]
+      - 6 # 10, Lossless [Fastest]
       # - Test All Options
   - test: basis-1.1.0
     option_a:
