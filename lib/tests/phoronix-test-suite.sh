@@ -317,6 +317,8 @@ fixup_java_gradle_perf()
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 	elif [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
 		export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	elif [ -d /usr/lib/jvm/java-11-openjdk-amd64 ]; then
+		export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 	else
 		echo "ERROR: NO avaliable JAVA_HOME" >&2 && return 1
 	fi
