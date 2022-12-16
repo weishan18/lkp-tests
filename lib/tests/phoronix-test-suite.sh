@@ -313,15 +313,9 @@ fixup_gluxmark()
 
 fixup_java_gradle_perf()
 {
-	if [ -d /usr/lib/jvm/java-1.8.0-openjdk ]; then
-		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
-	elif [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
-		export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-	elif [ -d /usr/lib/jvm/java-11-openjdk-amd64 ]; then
-		export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-	else
-		echo "ERROR: NO avaliable JAVA_HOME" >&2 && return 1
-	fi
+	local javapath=$(readlink -f $(which java) | awk -F/bin '{print $1}')
+	[ -z "$javapath" ] && echo "ERROR: NO avaliable JAVA_HOME" >&2 && return 1
+	export JAVA_HOME="$javapath"
 }
 
 fixup_systester()
