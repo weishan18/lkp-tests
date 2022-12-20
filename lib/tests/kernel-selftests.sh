@@ -540,17 +540,29 @@ fixup_kexec()
 
 fixup_user_events()
 {
-	# dyn_test.c:9:10: fatal error: linux/user_events.h: No such file or directory
-	# user_events do not build unless you manually install user_events.h into usr/include/linux.
-	cp ../../../include/linux/user_events.h ../../../usr/include/linux/
+	# user_events code changed a lot in below patchset
+	# https://lore.kernel.org/all/20221205210017.23440-1-beaub@linux.microsoft.com/
+	# before patch:
+	#   $ find . -name user_events.h
+	#   ./include/linux/user_events.h
+	# after patch:
+	#   $ find . -name user_events.h
+	#   ./usr/include/linux/user_events.h
+	#   ./include/uapi/linux/user_events.h
+	#   ./include/linux/user_events.h
+	[[ -f ../../../usr/include/linux/user_events.h ]] || {
+		# dyn_test.c:9:10: fatal error: linux/user_events.h: No such file or directory
+		# user_events do not build unless you manually install user_events.h into usr/include/linux.
+		cp ../../../include/linux/user_events.h ../../../usr/include/linux/
+
+		# avoid REMOVE usr/include/linux/user_events.h when make headers_install
+		sed -i 's/headers_install\: headers/headers_install\:/' ../../../Makefile
+	}
 
 	# #  RUN           user.size_types ...
 	# # dyn_test.c:91:size_types:Expected -1 (-1) != Append("u:__test_event struct custom a 20") (-1)
 	# <-- block at here and reach timeout at last
 	sed -i 's/dyn_test//' user_events/Makefile
-
-	# avoid REMOVE usr/include/linux/user_events.h when make headers_install
-	sed -i 's/headers_install\: headers/headers_install\:/' ../../../Makefile
 }
 
 fixup_kvm()
