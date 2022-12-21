@@ -7,6 +7,7 @@
 # - callgraph
 # - children
 # - inline
+# - cpu
 
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/common.sh
@@ -48,6 +49,12 @@ opt_freq="--freq=$freq"
 [ -n "$period" ] &&
 opt_period="--count=$period"
 
+if [ -n "$cpu" ]; then
+	opt_cpu="-C $cpu"
+else
+	opt_cpu="-a"
+fi
+
 opt_events="-e $(echo "$events" | sed 's/ / -e /g')"
 
 if parse_bool -q "$children"; then
@@ -77,7 +84,7 @@ $perf -v || die 'perf command failed'
 # WAIT_POST_TEST_CMD will start at the same time with perf
 # the former will wait for (delay+duration) before exit
 # the latter will wait for (delay) before collecting samples
-$perf record -q -ag --realtime=1 -m 256 $opt_freq $opt_period $opt_events \
+$perf record -q -g --realtime=1 -m 256 $opt_cpu $opt_freq $opt_period $opt_events \
 	-o $perf_data -D $((delay * 1000)) -- \
 	$WAIT_POST_TEST_CMD --timeout $((delay + duration))
 
