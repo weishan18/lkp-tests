@@ -19,6 +19,8 @@ elif [[ "$group" = "group-01" ]]; then
 	# test_klp_state: could not insert 'test_klp_state': Invalid argument
 	# test_meminit: could not insert 'test_meminit': Invalid argument
 	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "drm_format_test" "drm_framebuffer_test" "drm_mm_test" "drm_rect_test" "crc32test" "atomic64_test")
+elif [[ "$group" = "group-02" ]]; then
+	test_array=("clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" "iio-test-rescale" "overflow_kunit" "snd-soc-avs-i2s-test" "soc-utils-test" "stackinit_kunit")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi
@@ -38,7 +40,7 @@ run_kunit_tests()
 				continue
 			fi
 		}
-		[[ $i =~ "drm_" ]] && {
+		[[ $i =~ "drm_" || $i =~ "cpumask_kunit" ]] && {
 			if ! is_kernel_version_gt 6.0; then
 				# skip not exist module
 				continue
@@ -50,6 +52,30 @@ run_kunit_tests()
 			[[ $i = test_klp_shadow_vars ]] && continue
 			# skip TEST_HMM related module
 			[[ $i = test_hmm ]] && continue
+		}
+		[[ $i =~ "clk" || $i =~ "overflow_kunit" || $i =~ "stackinit_kunit" ]] && {
+			if ! is_kernel_version_ge 5.18; then
+				# skip not exist module
+				continue
+			fi
+		}
+		[[ $i =~ "soc-utils-test" ]] && {
+			if ! is_kernel_version_ge 5.19; then
+				# skip not exist module
+				continue
+			fi
+		}
+		[[ $i =~ "cros_kunit" || $i =~ "iio-test-format" || $i =~ "iio-test-rescale" || $i =~ "snd-soc-avs-i2s-test" ]] && {
+			if ! is_kernel_version_ge 6.0; then
+				# skip not exist module
+				continue
+			fi
+		}
+		[[ $i =~ "hid-uclogic-test" ]] && {
+			if ! is_kernel_version_ge 6.1; then
+				# skip not exist module
+				continue
+			fi
 		}
 		log_cmd modprobe $i
 		log_cmd rmmod $i
