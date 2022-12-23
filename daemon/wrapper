@@ -1,0 +1,28 @@
+#!/bin/sh
+# - nr_instances
+# - cpu_node_bind
+# - mem_node_bind
+
+. $LKP_SRC/lib/numactl.sh
+
+## wrapper to run other other tests
+
+program=$1
+program_dir=$(dirname $0)
+
+shift
+
+if [ -n "$nr_instances" ]; then
+	parse_numa_node_binding "$cpu_node_bind" "$mem_node_bind"
+
+	i=1
+	while [ "$i" -le "$nr_instances" ]; do
+		numa_bind=$(numa_node_binding "$i")
+		$numa_bind $program_dir/$program "$@" &
+		to_wait="$to_wait $!"
+		i=$((i+1))
+	done
+	wait $to_wait
+else
+	exec $program_dir/$program "$@"
+fi
