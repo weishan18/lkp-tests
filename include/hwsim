@@ -8,6 +8,6 @@ need_kconfig:
 - MAC80211_LEDS: y
 - MAC80211_MESH: y
 - MAC80211_DEBUGFS: y
-- VETH: m
-- BRIDGE: m
+- VETH
+- BRIDGE
 - MACSEC: m
