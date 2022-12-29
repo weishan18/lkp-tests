@@ -799,10 +799,6 @@ run_test()
 		glmark2-*|openarena-*|gputest-*|supertuxkart-*)
 			export DISPLAY=:0
 			;;
-		cairo-perf-trace-*)
-			# select Poppler
-			test_opt="\n3\nn"
-			;;
 		clpeak-*)
 			# 7: Kernel Latency
 			# 4: Integer Compute INT # this subtest was disabled on Intel platform
