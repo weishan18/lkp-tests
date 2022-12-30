@@ -23,3 +23,4 @@ subsystems:
 - bridges
 notify_build_success_branch: .*
 non_rebaseable_branch: .*
+no_merge_branch: debugfs_cleanup
