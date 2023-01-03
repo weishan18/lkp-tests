@@ -175,7 +175,7 @@ phoronix-test-suite:
     # - encode-mp3-1.7.4 # temporarily comment out the failed test
     # - encode-ogg-1.4.1 # this test profile is marked Deprecated
     # - encode-opus-1.1.1 # this test profile is marked Deprecated
-    # - encode-wavpack-1.3.0 # temporarily comment out the failed test
+    - encode-wavpack-1.3.0
     - espeak-1.6.1
     # - fahbench-1.0.1 # wait for newer version
     - ffmpeg-2.8.0
