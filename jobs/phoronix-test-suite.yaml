@@ -12,15 +12,15 @@ phoronix-test-suite:
     - aobench-1.0.1
     - aom-av1-2.4.0
     - apache-1.7.2
-  # - test: apache-siege-1.0.5 # temporarily comment out the failed test
-    # option_a: # cocurrent users
-      # - 1
-      # - 10
-      # - 50
-      # - 100
-      # - 200
-      # - 250
-      # - 500
+  - test: apache-siege-1.0.5
+    option_a: # cocurrent users
+      - 1
+      - 10
+      - 50
+      - 100
+      - 200
+      - 250
+      - 500
       # - Test All Options
   - test: appleseed-1.0.1
     option_a:
