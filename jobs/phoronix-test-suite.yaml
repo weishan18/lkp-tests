@@ -962,21 +962,21 @@ phoronix-test-suite:
       - CPU
       - Vulkan GPU
       # - Test All Options
-  # - test: pyperformance-1.0.2 # temporarily comment out the failed test
-    # option_a:
-      # - 2to3
-      # - chaos
-      # - crypto_pyaes
-      # - django_template
-      # - float
-      # - go
-      # - json_loads
-      # - nbody
-      # - pathlib
-      # - pickle_pure_python
-      # - python_startup
-      # - raytrace
-      # - regex_compile
+  - test: pyperformance-1.0.2
+    option_a:
+      - 2to3
+      - chaos
+      - crypto_pyaes
+      - django_template
+      - float
+      - go
+      - json_loads
+      - nbody
+      - pathlib
+      - pickle_pure_python
+      - python_startup
+      - raytrace
+      - regex_compile
       # - Test All Options
   - test: rav1e-1.5.0
     option_a:
