@@ -16,9 +16,11 @@ redis_server=$BENCHMARK_ROOT/redis/bin/redis-server
 
 parse_numa_node_binding "$redis_cpu_node_bind" "$redis_mem_node_bind"
 
+: "${instance_id:=1}"
+
 # start redis server
 for i in $(seq 1 "${nr_processes}"); do
-	port=$((6379+i))
+	port=$((6379+i+instance_id))
 	numa_bind=$(numa_node_binding "$i")
 	log_eval "$numa_bind $redis_server --port $port &"
 	bg_pids="$bg_pids $!"
