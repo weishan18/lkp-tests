@@ -439,6 +439,9 @@ class Job
     for_each_in(@job, programs) do |_pk, _h, k, _v|
       read_single_program(k, programs[k])
     end
+
+    read_single_program('wrapper', "#{LKP_SRC}/tests/wrapper")
+    read_single_program('dwrapper', "#{LKP_SRC}/daemon/wrapper")
   end
 
   def each_job_init
@@ -507,8 +510,6 @@ class Job
 
   def each_param
     init_program_options
-    read_single_program('wrapper', "#{LKP_SRC}/tests/wrapper")
-    read_single_program('dwrapper', "#{LKP_SRC}/daemon/wrapper")
 
     # Some programs, especially setup/*, can accept params directly
     # via command line string, ie.
