@@ -415,7 +415,7 @@ mount_rootfs()
 		# wait for the machine to load the disk
 		wait_load_disk || {
 			# skipping following test if disk can't be load
-			echo "can't load the disk $rootfs_partition, skip testing..."
+			echo "can't load the disk $rootfs_partition, skip testing..." >&2
 			set_job_state 'load_disk_fail'
 			return 1
 		}
