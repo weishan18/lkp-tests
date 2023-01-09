@@ -32,6 +32,9 @@ while (line = $stdin.gets)
   # stress-ng: fail:  [2694] metrics-check: stressor metrics corrupted, data is compromised
   next if line =~ /fail:/
 
+  # stress-ng: warn:  [5308] metrics-check: all bogo-op counters are zero, data may be incorrect
+  next if line =~ /warn:/
+
   # stress-ng: info:  [4230] miscellaneous metrics:
   next if line =~ /miscellaneous metrics:/
 
