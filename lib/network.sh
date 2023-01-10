@@ -57,9 +57,11 @@ network_up()
 	ip route | grep -q 'default via' || {
 		# recover the default route
 		[ -f /tmp/ip_route ] && ip route add $(grep 'default via' /tmp/ip_route)
-		[ $? = 0 ] || {
+
+		errno=$?
+		[ $errno = 0 ] || {
 			echo "failed to set default route"
-			return $?
+			return $errno
 		}
 	}
 
