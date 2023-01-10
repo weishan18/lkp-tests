@@ -47,10 +47,11 @@ describe 'Dmesg' do
   describe 'get_crash_calltraces' do
     files = Dir.glob "#{LKP_SRC}/spec/dmesg/calltrace/dmesg-*"
     files.each do |file|
-      it 'extracts call trace chunks from dmesg' do
-        actual_calltraces = get_crash_calltraces file
-        new_calltraces = File.read(file.sub('dmesg-', 'calltrace-')).split(/^---\n/)
-        expect(new_calltraces).to eq actual_calltraces
+      it "extracts call trace chunks from #{File.basename file}" do
+        actual = get_crash_calltraces file
+        expected = File.read(file.sub('dmesg-', 'calltrace-')).split(/^---\n/)
+
+        expect(expected).to eq actual
       end
     end
   end

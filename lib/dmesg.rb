@@ -93,8 +93,7 @@ CALLTRACE_IGNORE_PATTERN = /(
   warn_slowpath_.*
 )\+0x/x.freeze
 
-OOM1 = 'invoked oom-killer: gfp_mask='.freeze
-OOM2 = 'Out of memory and no killable processes...'.freeze
+OOM_PATTERN = /invoked oom-killer: gfp_mask=|Out of memory and no killable processes.../.freeze
 
 def grep_cmd(dmesg_file)
   if dmesg_file =~ /\.xz$/
@@ -138,16 +137,15 @@ def grep_crash_head(dmesg_file)
     oops_map["calltrace:#{$1}"] ||= line
   end
 
-  raw_oops.each_line.flat_map { |l| concat_context_from_dmesg(dmesg_file, l) }.each do |line|
-    if line =~ oops_re
+  raw_oops.each_line
+          .flat_map { |l| concat_context_from_dmesg(dmesg_file, l) }
+          .each do |line|
+    case line
+    when oops_re
       oops_map[$1] ||= line
-      has_oom = true if line.index(OOM1)
-      has_oom = true if line.index(OOM2)
-      next
-    end
 
-    # Call Trace:
-    if line.index '+0x'
+      has_oom = true if line =~ OOM_PATTERN
+    when /\+0x/
       next if line.index ' ? '
 
       if line =~ CALLTRACE_PATTERN
@@ -157,11 +155,9 @@ def grep_crash_head(dmesg_file)
       else
         prev_line = line
       end
-
-      next
+    else
+      log_warn "oops pattern mismatch: #{line}"
     end
-
-    log_warn "oops pattern mismatch: #{line}"
   end
 
   oops_map

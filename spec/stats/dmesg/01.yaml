@@ -2,14 +2,20 @@ boot_failures: 1
 
 # invoked oom-killer: gfp_mask=
 invoked_oom-killer:gfp_mask=0x: 1
-message:invoked_oom-killer:gfp_mask=0x: [   88.458154] 01-cpu-hotplug invoked oom-killer: gfp_mask=0x27080c0(GFP_KERNEL_ACCOUNT|__GFP_ZERO|__GFP_NOTRACK), order=0, oom_score_adj=0
+message:invoked_oom-killer:gfp_mask=0x: [    8.458154] 01-cpu-hotplug invoked oom-killer: gfp_mask=0x27080c0(GFP_KERNEL_ACCOUNT|__GFP_ZERO|__GFP_NOTRACK), order=0, oom_score_adj=0
 pattern:invoked_oom-killer:gfp_mask=0x: invoked oom-killer: gfp_mask=
 
 # Mem-Info:
 Mem-Info: 1
-message:Mem-Info: [   88.489561] Mem-Info:
+message:Mem-Info: [    8.489561] Mem-Info:
 pattern:Mem-Info: Mem-Info:
 
-timestamp:last: 88.550164
-timestamp:invoked_oom-killer:gfp_mask=0x: 88.458154
-timestamp:Mem-Info: 88.489561
+# WARNING:.* at .* ftrace_bug+0x
+WARNING:at_kernel/trace/ftrace.c:#ftrace_bug: 1
+message:WARNING:at_kernel/trace/ftrace.c:#ftrace_bug: [   16.238279] WARNING: CPU: 0 PID: 546 at kernel/trace/ftrace.c:2006 ftrace_bug+0x216/0x330
+pattern:WARNING:at_kernel/trace/ftrace.c:#ftrace_bug: WARNING:.* at .* ftrace_bug+0x
+
+timestamp:last: 16.259149
+timestamp:invoked_oom-killer:gfp_mask=0x: 8.458154
+timestamp:Mem-Info: 8.489561
+timestamp:WARNING:at_kernel/trace/ftrace.c:#ftrace_bug: 16.238279
