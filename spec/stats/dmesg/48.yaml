@@ -10,12 +10,6 @@ calltrace:hfi1_mod_init: 1
 message:calltrace:hfi1_mod_init: [  150.361179]  [<ffffffff8613a80f>] hfi1_mod_init+0x30/0x3e1
 pattern:calltrace:hfi1_mod_init: hfi1_mod_init+0x
 
-# general protection fault:
-general_protection_fault:#[##]: 1
-message:general_protection_fault:#[##]: [  150.375503] general protection fault: 0000 [#1] SMP KASAN
-pattern:general_protection_fault:#[##]: general protection fault:
-
 timestamp:last: 150.524788
 timestamp:BUG:KASAN:wild-memory-access_on_address: 150.330704
 timestamp:calltrace:hfi1_mod_init: 150.361179
-timestamp:general_protection_fault:#[##]: 150.375503
