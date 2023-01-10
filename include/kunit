@@ -95,7 +95,8 @@ need_kconfig:
 - CRC32: y
 - CRC32_SELFTEST: m
 - ATOMIC64_SELFTEST: m
-
+- KALLSYMS: y
+- KALLSYMS_SELFTEST: y
 % elsif ___.group == "group-02"
 - BINFMT_ELF_KUNIT_TEST: y
 - CLK_GATE_KUNIT_TEST: m
