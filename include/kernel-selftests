@@ -533,6 +533,7 @@ need_kconfig:
 - NF_CONNTRACK_ZONES: y
 - NF_NAT: m
 - SYSVIPC: y
+- TDX_GUEST_DRIVER
 - TEST_USER_COPY: m
 - TEST_VMALLOC: m
 - TIME_NS: y
