@@ -122,4 +122,7 @@ need_kconfig:
 - SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
 - SND_SOC_UTILS_KUNIT_TEST: m
 - STACKINIT_KUNIT_TEST: m
+
+% elsif ___.group == "group-03"
+- DRM_KUNIT_TEST: m
 % end
