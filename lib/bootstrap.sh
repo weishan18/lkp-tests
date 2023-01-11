@@ -618,6 +618,11 @@ add_nfs_default_options()
 	echo "  nolock=True" >>/etc/nfsmount.conf
 }
 
+show_kernel_tainted_state()
+{
+	echo "lkp: kernel tainted state: $(cat /proc/sys/kernel/tainted)"
+}
+
 # initiation at boot stage; should be invoked once for
 # each fresh boot.
 boot_init()
@@ -628,6 +633,8 @@ boot_init()
 	mount_kernel_fs
 	mount_tmpfs
 	redirect_stdout_stderr
+
+	show_kernel_tainted_state
 
 	setup_hostname
 	setup_hosts
