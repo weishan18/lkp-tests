@@ -398,6 +398,22 @@ setup_crosstool_gcc()
 	return 0
 }
 
+is_llvm_equal_one_supported()
+{
+	[[ $kernel_version_major ]] || return
+
+	[[ $kernel_version_major -lt 5 ]] && return 1
+	[[ $kernel_version_major -eq 5 && $kernel_version_minor -lt 7 ]] && return 1
+
+	grep -q -F "ifneq (\$(LLVM),)" Makefile || return
+
+	[[ $ARCH = "s390" ]] && return 1
+	[[ $ARCH =~ "powerpc" || $ARCH =~ "mips" || $ARCH =~ "riscv" ]] &&
+	[[ $kernel_version_major -eq 5 && $kernel_version_minor -lt 18 ]] && return 1
+
+	return 0
+}
+
 setup_crosstool_clang()
 {
 	local cross_clang=("$COMPILER_INSTALL_PATH"/clang/bin/clang)
@@ -419,16 +435,27 @@ setup_crosstool_clang()
 
 	export PATH="$cross_clang_path:$PATH"
 	# https://www.kernel.org/doc/html/latest/kbuild/llvm.html
-	opt_cross="HOSTCC=$cross_clang CC=$cross_clang $opt_ldd $opt_objcopy \
+	local opt_default_cross="HOSTCC=$cross_clang CC=$cross_clang $opt_ldd $opt_objcopy \
 		AR=llvm-ar NM=llvm-nm STRIP=llvm-strip OBJDUMP=llvm-objdump OBJSIZE=llvm-size READELF=llvm-readelf HOSTCXX=clang++ HOSTAR=llvm-ar"
+
+	local opt_llvm_ias=
+	if is_llvm_equal_one_supported; then
+		opt_cross="LLVM=1"
+		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && opt_llvm_ias="LLVM_IAS=1"
+	else
+		opt_cross=$opt_default_cross
+	fi
+
+	# TODO: CROSS_COMPILE is not necessary for new kernel
 	if [[ $ARCH = "arm64" ]]; then
 		opt_cross="$opt_cross CROSS_COMPILE=aarch64-linux-gnu-"
 	elif [[ $ARCH = "arm" ]]; then
 		opt_cross="$opt_cross CROSS_COMPILE=arm-linux-gnueabi-"
 	elif [[ $ARCH = "s390" ]]; then
-		opt_cross="$opt_cross CROSS_COMPILE=s390x-linux-gnu-"
+		opt_cross="$opt_default_cross CROSS_COMPILE=s390x-linux-gnu-"
 	elif [[ $ARCH = "hexagon" ]]; then
-		opt_cross="LLVM=1 LLVM_IAS=1 CROSS_COMPILE=hexagon-linux-"
+		opt_cross="$opt_cross CROSS_COMPILE=hexagon-linux-"
+		opt_llvm_ias="LLVM_IAS=1"
 	elif [[ $ARCH = "powerpc" ]]; then
 		local cross_compile='powerpc-linux-gnu-'
 		grep -q 'CONFIG_PPC64=y' $BUILD_DIR/.config && {
@@ -438,7 +465,8 @@ setup_crosstool_clang()
 				cross_compile='powerpc64-linux-gnu-'
 			fi
 		}
-		opt_cross="$opt_cross LLVM_IAS=0 CROSS_COMPILE=$cross_compile"
+		opt_cross="$opt_cross CROSS_COMPILE=$cross_compile"
+		[[ $kernel_version_major -eq 5 && $kernel_version_minor -gt 14 && $kernel_version_minor -lt 18 ]] && opt_llvm_ias="LLVM_IAS=0"
 	elif [[ $ARCH = "riscv" ]]; then
 		if grep -q 'CONFIG_32BIT=y' $BUILD_DIR/.config; then
 			opt_cross="$opt_cross $(COMPILER=gcc && setup_crosstool_gcc && echo $opt_cross)"
@@ -448,10 +476,16 @@ setup_crosstool_clang()
 	else
 		opt_cross="$opt_cross CROSS_COMPILE=$ARCH-linux-gnu-"
 	fi
+	[[ $opt_llvm_ias ]] && opt_cross="$opt_cross $opt_llvm_ias"
+	:
 }
 
 setup_crosstool()
 {
+	local kernel_version=$(make kernelversion)
+	local kernel_version_major=$(echo "$kernel_version" | cut -d. -f1)
+	local kernel_version_minor=$(echo "$kernel_version" | cut -d. -f2)
+
 	if is_clang_worker; then
 		setup_crosstool_clang
 	else
