@@ -18,3 +18,4 @@ python-setuptools
 libzstd-dev
 libcap-dev
 libbabeltrace-dev
+libtraceevent-dev
