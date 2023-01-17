@@ -5,6 +5,7 @@
 # - sleeptime_us
 # - cputime_us
 # - iterations
+# - intervaltime_s
 
 . $LKP_SRC/lib/reproduce-log.sh
 
@@ -24,9 +25,11 @@ cd $BENCHMARK_ROOT/schbench || die "no $BENCHMARK_ROOT/schbench"
 
 [ $message_threads -eq 0 ] && message_threads=2
 
+[ -n "$intervaltime_s" ] && interval_opt="-i $intervaltime_s"
+
 # the source code print the output to stderr, here redirection stderr to stdout
 for i in $(seq $iterations)
 do
 	echo Iteration : $i
-	log_cmd ./schbench -m $message_threads -t $worker_threads -r $runtime -s $sleeptime_us -c $cputime_us 2>&1 || die "Schbench run failed"
+	log_cmd ./schbench -m $message_threads -t $worker_threads -r $runtime -s $sleeptime_us -c $cputime_us $interval_opt 2>&1 || die "Schbench run failed"
 done
