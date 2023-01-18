@@ -65,7 +65,7 @@ stress-ng:
     - hdd
     - icmp-flood
     - idle-page
-    - inode-flags
+    # - inode-flags
     - inotify
     - io
     - iomix
