@@ -23,7 +23,7 @@ fio-setup-basic:
     - sync
     - libaio
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
   test_size: 256g
 
 fio:

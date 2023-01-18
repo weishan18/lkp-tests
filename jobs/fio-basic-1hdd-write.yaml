@@ -22,7 +22,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
     - splice
     - falloc
     - ftruncate
@@ -58,7 +58,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
     - splice
     - falloc
     - ftruncate
@@ -81,7 +81,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
 ---
 fs: ext4
 
@@ -91,7 +91,7 @@ fio-setup-basic:
   ioengine:
     - libaio
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
 
 ---
 fio-setup-basic:
@@ -100,7 +100,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
   direct: direct
 ---
 fs2: nfsv4
@@ -111,7 +111,7 @@ fio-setup-basic:
   ioengine:
     - sync
     - io_uring
-    - io_uring_cmd
+    # - io_uring_cmd
 
 ---
 fio-setup-basic:
