@@ -4,21 +4,21 @@ LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.realpath($PROGRAM_NAM
 
 require "#{LKP_SRC}/lib/string_ext"
 
-def largest_bandwidth
+def largest_value
   file_size = 0
-  bandwidth = 0
+  value = 0
 
   $stdin.each_line do |line|
     break if line.chomp.empty?
 
     temp_size = line.split(' ')[0].to_f
-    temp_bandwidth = line.split(' ')[1].to_f
+    temp_value = line.split(' ')[1].to_f
     if temp_size > file_size
       file_size = temp_size
-      bandwidth = temp_bandwidth
+      value = temp_value
     end
   end
-  bandwidth
+  value
 end
 
 def read_mb_sec
@@ -157,7 +157,7 @@ while (line = $stdin.gets)
   # 0.008192 52732.95
   # ...
   when /^"libc bcopy unaligned$/
-    puts "BCOPY.libc.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "BCOPY.libc.bandwidth.MB/sec: #{largest_value}"
 
   # "unrolled bcopy unaligned
   # 0.000512 13442.67
@@ -168,7 +168,7 @@ while (line = $stdin.gets)
   # 0.016384 12921.17
   # ...
   when /^"unrolled bcopy unaligned$/
-    puts "BCOPY.unrolled.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "BCOPY.unrolled.bandwidth.MB/sec: #{largest_value}"
 
   # Memory read bandwidth
   # 0.000512 16353.73
@@ -178,7 +178,7 @@ while (line = $stdin.gets)
   # 0.008192 16834.82
   # ...
   when /^Memory read bandwidth$/
-    puts "BCOPY.memory_read.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "BCOPY.memory_read.bandwidth.MB/sec: #{largest_value}"
 
   # Memory write bandwidth
   # 0.000512 13964.88
@@ -187,11 +187,19 @@ while (line = $stdin.gets)
   # 0.004096 13950.82
   # ...
   when /^Memory write bandwidth$/
-    puts "BCOPY.memory_write.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "BCOPY.memory_write.bandwidth.MB/sec: #{largest_value}"
 
   # Pagefaults on /var/tmp/XXX: 0.2653 microseconds
   when /^Pagefaults on (.*): (.*) microseconds/
     puts "Pagefaults.ms: #{$2}"
+
+  # "mappings
+  # 16.777216 111
+  # 33.554432 216
+  # 67.108864 431
+  # ...
+  when /^"mappings$/
+    puts "MMAP.read.latency.us: #{largest_value}"
 
   # "Mmap read bandwidth
   # 0.000512 275064.12
@@ -199,7 +207,7 @@ while (line = $stdin.gets)
   # 0.002048 293513.60
   # ...
   when /^"Mmap read bandwidth$/
-    puts "MMAP.read.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "MMAP.read.bandwidth.MB/sec: #{largest_value}"
 
   # "Mmap read open2close bandwidth
   # 0.000512 479.98
@@ -207,7 +215,7 @@ while (line = $stdin.gets)
   # 0.002048 1931.69
   # ...
   when /^"Mmap read open2close bandwidth$/
-    puts "MMAP.read_open2close.bandwidth.MB/sec: #{largest_bandwidth}"
+    puts "MMAP.read_open2close.bandwidth.MB/sec: #{largest_value}"
 
   when /bw_mem/
     puts "Mem.Bandwidth.MB/sec: #{read_mb_sec}"

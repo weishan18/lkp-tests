@@ -1,0 +1,3 @@
+MMAP.read.latency.us: 6613.0
+MMAP.read.bandwidth.MB/sec: 17573.23
+MMAP.read_open2close.bandwidth.MB/sec: 9062.41
