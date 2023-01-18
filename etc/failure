@@ -4,8 +4,6 @@ dmesg.*
 .+killed_by.*
 kmsg.*
 last_state.*
-leaking-addresses\.dmesg\.(?!R).*
-leaking-addresses\.proc\.(?!blacklist|netlink|vmallocinfo)(?!.*:0000000)
 lkp-bug.*
 locktoture\..+lock_hotplug
 rcutoture\..+rcu_hotplug
