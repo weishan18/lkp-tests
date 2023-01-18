@@ -42,10 +42,10 @@ end
 
 stats.each do |k, v|
   puts "#{k}: #{v.average.round(2)}"
-  puts "#{k}_stddev: #{v.relative_stddev.round(2)}"
+  puts "#{k}_stddev%: #{v.relative_stddev.round(2)}"
 end
 
 end_latency.each do |k, v|
   puts "end_#{k}_max: #{v.max}"
-  puts "end_#{k}_stddev: #{v.relative_stddev.round(2)}"
+  puts "end_#{k}_stddev%: #{v.relative_stddev.round(2)}"
 end
