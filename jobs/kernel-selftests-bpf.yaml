@@ -1,5 +1,5 @@
-suite: kernel-selftests
-testcase: kernel-selftests
+suite: kernel-selftests-bpf
+testcase: kernel-selftests-bpf
 category: functional
 
 # NOET: need_memory might be different for different rootfs
