@@ -3,6 +3,12 @@ initrds+:
 - linux_selftests
 
 need_kconfig:
+- DEBUG_LOCK_ALLOC: n
+- DEBUG_WW_MUTEX_SLOWPATH: n
+- LOCK_STAT: n
+- PROVE_LOCKING: n
+- KASAN: n
+- IRQSOFF_TRACER: n
 - BPF: y
 - BPF_EVENTS: y
 - BPF_JIT: y
