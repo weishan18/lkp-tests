@@ -582,9 +582,8 @@ class Job
       path += v.to_s[0..30]
       path += '-'
     end
-    path = path.empty? ? 'defaults' : path.chomp('-').tr('^-a-zA-Z0-9+=:.%', '_')
-    path += "-monitor=#{@job['monitor_sha']}" if @job['category'] != 'functional' && @job['monitor_sha']
-    path
+
+    path.empty? ? 'defaults' : path.chomp('-').tr('^-a-zA-Z0-9+=:.%', '_')
   end
 
   def param_files
