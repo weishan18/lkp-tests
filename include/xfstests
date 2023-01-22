@@ -13,7 +13,6 @@ need_kconfig:
 - EXT4_ENCRYPTION: y
 % elsif ___.fs == "xfs"
 - XFS_RT: y
-- XFS_DEBUG: y
 - XFS_ONLINE_SCRUB: y
 - XFS_ONLINE_REPAIR: y
 % elsif ___.fs == "udf"
