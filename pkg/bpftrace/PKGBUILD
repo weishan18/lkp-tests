@@ -13,6 +13,6 @@ package()
 {
     targetdir="${pkgdir}/lkp/benchmarks/${pkgname}"
     mkdir -p $targetdir
-    wget -O $targetdir/bpftrace https://github.com/iovisor/bpftrace/releases/download/v0.16.0/bpftrace
+    wget -O $targetdir/bpftrace https://github.com/iovisor/bpftrace/releases/download/v0.17.0/bpftrace
     chmod +x $targetdir/bpftrace
 }
