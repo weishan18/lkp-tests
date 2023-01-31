@@ -170,6 +170,7 @@ need_kconfig:
 - GPIOLIB: y
 - GPIO_MOCKUP: m
 - GPIO_SIM: m
+- IMA: y
 - IMA_APPRAISE: y
 - IMA_ARCH_POLICY: y
 - IR_IMON_DECODER: m
