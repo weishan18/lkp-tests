@@ -53,7 +53,6 @@ need_kconfig:
 
 - SECURITY_APPARMOR: y
 - SECURITY_APPARMOR_KUNIT_TEST: m
-
 % elsif ___.group == "group-01"
 # below are not kunit test
 - STRING_SELFTEST: m
@@ -107,6 +106,7 @@ need_kconfig:
 - CRC32: y
 - CRC32_SELFTEST: m
 - ATOMIC64_SELFTEST: m
+- TEST_MAPLE_TREE: m
 - KALLSYMS: y
 # do not run KALLSYMS_SELFTEST which leads to crash like
 # dmesg.BUG:sleeping_function_called_from_invalid_context_at_kernel/kallsyms.c
