@@ -48,15 +48,13 @@ while (line = $stdin.gets)
 
   res_line = line.split
 
-  if line =~ /stress-ng: info:.*\(average/ || line =~ /stress-ng: info:.*\(geometic mean\)/
+  if line =~ /stress-ng: info:.*\(average/ || line =~ /stress-ng: info:.*\(geometic mean/
     # stress-ng: info:  [5865] memrate             2190.96 write128nt MB per sec (geometic mean)
     # stress-ng: info:  [2680] memrate         1656.82 write128 MB/sec (average per stressor)
-    # stress-ng: info:  [2759] pipeherd           1.01 context switches per bogo op (average p
-    # er stressor)
-    # stress-ng: info:  [2759] stream          5372.21 memory rate (MB per sec) (average per s
-    # tressor)
-    # stress-ng: info:  [2792] stream          2111.71 memory rate (Mflop per sec) (average pe
-    # r stressor)
+    # stress-ng: info:  [2759] pipeherd           1.01 context switches per bogo op (average per stressor)
+    # stress-ng: info:  [2759] stream          5372.21 memory rate (MB per sec) (average per stressor)
+    # stress-ng: info:  [2792] stream          2111.71 memory rate (Mflop per sec) (average per stressor)
+    # stress-ng: info:  [5705] matrix-3d             60.43 add matrix-3d ops per sec (geometic mean of 128 instances)
 
     # substressor is "write128_MB/sec" and it has variable length
     substressor = line.split(/ \([ag]/)[0].split(/ \d/, 2)[1].to_s.split(/\d /, 2)[1]
