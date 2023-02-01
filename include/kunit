@@ -1,5 +1,6 @@
 need_kconfig:
 % if ___.group == "group-00"
+- RUNTIME_TESTING_MENU: y
 - KUNIT: y
 - KUNIT_DEBUGFS: y
 - KUNIT_ALL_TESTS: m
@@ -22,7 +23,7 @@ need_kconfig:
 - TEST_LIST_SORT: m
 - TEST_SORT: m
 
-- FAT_FS: m
+- FAT_FS
 - FAT_KUNIT_TEST: m
 
 - KASAN: y
@@ -38,7 +39,10 @@ need_kconfig:
 - RATIONAL: y
 - RATIONAL_KUNIT_TEST: m
 
+- SLOB_DEPRECATED: n
+- SLUB: y
 - SLUB_DEBUG: y
+- SLUB_TINY: n
 - SLUB_KUNIT_TEST: m
 
 # below are kunit test configs of bool type
@@ -48,7 +52,7 @@ need_kconfig:
 - USB4_KUNIT_TEST: y
 
 - SECURITY_APPARMOR: y
-- SECURITY_APPARMOR_KUNIT_TEST
+- SECURITY_APPARMOR_KUNIT_TEST: m
 
 % elsif ___.group == "group-01"
 # below are not kunit test
@@ -75,10 +79,14 @@ need_kconfig:
 - TEST_UDELAY: m
 - TEST_VMALLOC: m
 - DYNAMIC_DEBUG: y
+- DYNAMIC_FTRACE_WITH_REGS: y
 - LIVEPATCH: y
 - TEST_LIVEPATCH: m
 - TEST_MEMINIT: m
 - TRANSPARENT_HUGEPAGE: y
+- MEMORY_HOTPLUG: y
+- MEMORY_HOTREMOVE: y
+- ZONE_DEVICE: y
 - DEVICE_PRIVATE: y
 - TEST_HMM: m
 - TEST_FREE_PAGES: m
@@ -86,11 +94,15 @@ need_kconfig:
 - TEST_FPU: m
 - TEST_BITOPS: m
 - TEST_ASYNC_DRIVER_PROBE: m
+- SPI: y
+- SPI_MASTER: y
 - SPI_LOOPBACK_TEST: m
 - GLOB_SELFTEST: m
+- FUNCTION_TRACER: y
 - DYNAMIC_FTRACE: y
 - BUILDTIME_MCOUNT_SORT: y
 - FTRACE_SORT_STARTUP_TEST: y
+- DRM
 - DRM_KUNIT_TEST: m
 - CRC32: y
 - CRC32_SELFTEST: m
@@ -124,7 +136,7 @@ need_kconfig:
 - SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
 - SND_SOC_UTILS_KUNIT_TEST: m
 - STACKINIT_KUNIT_TEST: m
-
 % elsif ___.group == "group-03"
+- DRM
 - DRM_KUNIT_TEST: m
 % end
