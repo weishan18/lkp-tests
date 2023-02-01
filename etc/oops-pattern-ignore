@@ -4,4 +4,3 @@ Killed process [0-9]+ \(
 Out of memory: .*trinity
 trinity.*: page allocation failure
 trinity.*: page allocation stalls for
-SMP KASAN PTI
