@@ -97,6 +97,13 @@ wait_for_bg_procs
 sleep 1
 kill_bg_procs -KILL
 
+# some benchmarks may lose perf-profile due to unknown reason,
+# add a check here to see the scope of impact
+grep -q perf-profile $TMP/program_list && {
+	[ -f $TMP/perf.data ] || echo "perf.data was not generated" >&2
+	[ -f $TMP_RESULT_ROOT/post-run.perf-profile ] || echo "perf-profile recording was started but not correctly done" >&2
+}
+
 for post_run in $TMP_RESULT_ROOT/post-run.* $LKP_SRC/post-run/*; do
 	[ -f "$post_run" ] && sh "$post_run"
 done
