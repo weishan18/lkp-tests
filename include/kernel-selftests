@@ -300,6 +300,7 @@ need_kconfig:
 - USER_NS: y
 - ZRAM: m
 - ZSMALLOC: y
+- ZONE_DEVICE
 - DEVICE_PRIVATE: y
 - TEST_HMM: m
 % elsif ___.group == "resctrl"
