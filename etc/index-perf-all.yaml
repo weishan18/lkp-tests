@@ -137,6 +137,9 @@ phoronix-test-suite\..+\.gbps: 1
 phoronix-test-suite\..+\.mivoxels___sec: 1
 phoronix-test-suite\..+\.ghash_s: 1
 phoronix-test-suite\..+\.giops: 1
+phoronix-test-suite\..+\.kh_s: 1
+phoronix-test-suite\..+\.ips: 1
+phoronix-test-suite\..+\.vgr_performance_metric: 1
 pigz\.throughput: 1
 pixz\.throughput: 1
 plzip\.throughput: 1
