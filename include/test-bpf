@@ -1,4 +1,4 @@
 need_kconfig:
 - BPF: y
 - TEST_BPF: m
-- BPF_JIT
+- BPF_JIT: y

@@ -1,6 +1,6 @@
 need_kconfig:
 - LIBNVDIMM
-- BTT
+- BTT: y
 - BLK_DEV_PMEM
 - X86_PMEM_LEGACY
-- FS_DAX # to support pmem "mount_option: dax"
+- FS_DAX: y # to support pmem "mount_option: dax"

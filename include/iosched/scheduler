@@ -1,4 +1,4 @@
 need_kconfig:
 - MQ_IOSCHED_DEADLINE
 - MQ_IOSCHED_KYBER
-- BLOCK
+- BLOCK: y

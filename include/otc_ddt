@@ -1,5 +1,5 @@
 need_kconfig:
-- ACPI
+- ACPI: y
 - CRYPTO_SHA1_MB: m
 - CRYPTO_SHA1_SSSE3: m
 - CRYPTO_SHA1: y

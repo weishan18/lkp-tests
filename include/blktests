@@ -10,7 +10,7 @@ need_kconfig:
 - INFINIBAND_SRPT: m
 - INFINIBAND_USER_MAD: m
 - INFINIBAND_USER_ACCESS: m
-- INFINIBAND_ADDR_TRANS
+- INFINIBAND_ADDR_TRANS: y
 % elsif ___.test =~ /nbd/
 - BLK_DEV_NBD: m
 % elsif ___.test =~ /zbd/
