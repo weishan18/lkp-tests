@@ -23,6 +23,9 @@ need_kconfig:
 - TEST_LIST_SORT: m
 - TEST_SORT: m
 
+- FORTIFY_SOURCE: y
+- FORTIFY_KUNIT_TEST: m
+
 - FAT_FS
 - FAT_KUNIT_TEST: m
 
