@@ -220,7 +220,7 @@ make 2>&1 || die "failed to build lmbench3"
 
 if [ ${standalone} != "1" ]; then
 
-	os=$($BENCHMARK_ROOT/lmbench3/scripts/os)
+	os=$(echo -e $(/lkp/benchmarks/lmbench3/scripts/gnu-os) | sed s/unknown-//)
 	[ -n "$os" ] && rm -rf $BENCHMARK_ROOT/lmbench3/results/$os/
 
 	case "$mode" in
