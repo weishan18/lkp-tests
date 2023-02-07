@@ -10,9 +10,11 @@ arch=$(get_system_arch)
 if [[ "$group" = "group-00" ]]; then
 	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" \
 	            "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" \
-				"lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "kasan_test" \
-				"kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit" \
-				"apparmor_policy_unpack_test" "fortify_kunit")
+	            "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "fat_test" "kasan_test" \
+	            "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit" \
+	            "apparmor_policy_unpack_test" "fortify_kunit" \
+	            "drm_cmdline_parser_test" "drm_damage_helper_test" "drm_dp_mst_helper_test" "drm_mm_test" \
+	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test")
 elif [[ "$group" = "group-01" ]]; then
 	# test_kstrtox: could not insert 'test_kstrtox': Invalid argument
 	# test_string_helpers: could not insert 'test_string_helpers': Invalid argument
@@ -25,10 +27,11 @@ elif [[ "$group" = "group-01" ]]; then
 	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" \
 	            "test_scanf" "test_printf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" \
 	            "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" \
-	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "drm_format_test" \
-	            "drm_framebuffer_test" "drm_mm_test" "drm_rect_test" "crc32test" "atomic64_test" "test_maple_tree")
+	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" \
+	            "crc32test" "atomic64_test" "test_maple_tree" "snd-soc-avs-i2s-test")
 elif [[ "$group" = "group-02" ]]; then
-	test_array=("clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" "iio-test-rescale" "overflow_kunit" "snd-soc-avs-i2s-test" "soc-utils-test" "stackinit_kunit")
+	test_array=("clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
+	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi

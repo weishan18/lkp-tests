@@ -23,6 +23,9 @@ need_kconfig:
 - TEST_LIST_SORT: m
 - TEST_SORT: m
 
+- DRM
+- DRM_KUNIT_TEST: m
+
 - FORTIFY_SOURCE: y
 - FORTIFY_KUNIT_TEST: m
 
@@ -48,20 +51,20 @@ need_kconfig:
 - SLUB_TINY: n
 - SLUB_KUNIT_TEST: m
 
+- SECURITY_APPARMOR: y
+- SECURITY_APPARMOR_KUNIT_TEST: m
+
 # below are kunit test configs of bool type
 - DRIVER_PE_KUNIT_TEST: y
 - PM_QOS_KUNIT_TEST: y
 - USB4: y
 - USB4_KUNIT_TEST: y
-
-- SECURITY_APPARMOR: y
-- SECURITY_APPARMOR_KUNIT_TEST: m
+- BINFMT_ELF_KUNIT_TEST: y
+- FPROBE: y
+- FPROBE_SANITY_TEST: y
 % elsif ___.group == "group-01"
 # below are not kunit test
 - STRING_SELFTEST: m
-- PHYLIB: y
-- INET: y
-- NET_SELFTESTS: y
 - TEST_DIV64: m
 - TEST_BPF: m
 - TEST_MIN_HEAP: m
@@ -100,22 +103,36 @@ need_kconfig:
 - SPI_MASTER: y
 - SPI_LOOPBACK_TEST: m
 - GLOB_SELFTEST: m
-- FUNCTION_TRACER: y
-- DYNAMIC_FTRACE: y
-- BUILDTIME_MCOUNT_SORT: y
-- FTRACE_SORT_STARTUP_TEST: y
-- DRM
-- DRM_KUNIT_TEST: m
+
 - CRC32: y
 - CRC32_SELFTEST: m
 - ATOMIC64_SELFTEST: m
 - TEST_MAPLE_TREE: m
+
+- SND: m
+- SND_SOC: m
+- SND_SOC_INTEL_AVS: m
+- SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
+
 - KALLSYMS: y
+
+# below are kunit test configs of bool type
+- FUNCTION_TRACER: y
+- DYNAMIC_FTRACE: y
+- BUILDTIME_MCOUNT_SORT: y
+- FTRACE_SORT_STARTUP_TEST: y
+- PHYLIB: y
+- INET: y
+- NET_SELFTESTS: y
+- ASYMMETRIC_PUBLIC_KEY_SUBTYPE
+- X509_CERTIFICATE_PARSER
+- PKCS7_MESSAGE_PARSER
+- FIPS_SIGNATURE_SELFTEST: y
+
 # do not run KALLSYMS_SELFTEST which leads to crash like
 # dmesg.BUG:sleeping_function_called_from_invalid_context_at_kernel/kallsyms.c
 # - KALLSYMS_SELFTEST: y
 % elsif ___.group == "group-02"
-- BINFMT_ELF_KUNIT_TEST: y
 - COMMON_CLK: y
 - CLK_GATE_KUNIT_TEST: m
 - CLK_KUNIT_TEST: m
@@ -123,12 +140,6 @@ need_kconfig:
 - CHROME_PLATFORMS: y
 - CROS_EC: m
 - CROS_KUNIT: m
-- ASYMMETRIC_PUBLIC_KEY_SUBTYPE
-- X509_CERTIFICATE_PARSER
-- PKCS7_MESSAGE_PARSER
-- FIPS_SIGNATURE_SELFTEST: y
-- FPROBE: y
-- FPROBE_SANITY_TEST: y
 - HID_UCLOGIC: m
 - HID_KUNIT_TEST: m
 - IIO: m
@@ -137,10 +148,6 @@ need_kconfig:
 - IIO_RESCALE_KUNIT_TEST: m
 - OVERFLOW_KUNIT_TEST: m
 - SOUND: m
-- SND: m
-- SND_SOC: m
-- SND_SOC_INTEL_AVS: m
-- SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
 - SND_SOC_UTILS_KUNIT_TEST: m
 - STACKINIT_KUNIT_TEST: m
 % elsif ___.group == "group-03"
