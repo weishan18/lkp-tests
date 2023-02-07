@@ -1,0 +1,147 @@
+1..6
+# selftests: vDSO: vdso_test_gettimeofday
+# The time is 1671235612.981397
+ok 1 selftests: vDSO: vdso_test_gettimeofday
+# selftests: vDSO: vdso_test_getcpu
+# Running on CPU 1 node 0
+ok 2 selftests: vDSO: vdso_test_getcpu
+# selftests: vDSO: vdso_test_abi
+# TAP version 13
+# 1..16
+# [vDSO kselftest] VDSO_VERSION: LINUX_2.6
+# # The time is 1671235613.200660
+# ok 1 
+# vdso_test_gettimeofday(): PASS
+# # 
+# clock_id: CLOCK_REALTIME
+# # The time is 1671235613.200663675
+# ok 2 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1
+# # The syscall resolution is 0 1
+# ok 3 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_BOOTTIME
+# # The time is 648.202183820
+# ok 4 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1
+# # The syscall resolution is 0 1
+# ok 5 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_TAI
+# # The time is 1671235613.200670736
+# ok 6 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1
+# # The syscall resolution is 0 1
+# ok 7 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_REALTIME_COARSE
+# # The time is 1671235613.199991121
+# ok 8 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1000000
+# # The syscall resolution is 0 1000000
+# ok 9 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_MONOTONIC
+# # The time is 648.202192244
+# ok 10 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1
+# # The syscall resolution is 0 1
+# ok 11 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_MONOTONIC_RAW
+# # The time is 645.593335097
+# ok 12 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1
+# # The syscall resolution is 0 1
+# ok 13 
+# vdso_test_clock_getres(): PASS
+# # 
+# clock_id: CLOCK_MONOTONIC_COARSE
+# # The time is 648.201506988
+# ok 14 
+# vdso_test_clock_gettime(): PASS
+# # The vdso resolution is 0 1000000
+# # The syscall resolution is 0 1000000
+# ok 15 
+# vdso_test_clock_getres(): PASS
+# # The time in hours since January 1, 1970 is 464232
+# ok 16 
+# vdso_test_time(): PASS
+# # Totals: pass:16 fail:0 xfail:0 xpass:0 skip:0 error:0
+ok 3 selftests: vDSO: vdso_test_abi
+# selftests: vDSO: vdso_test_clock_getres
+# clock_id: CLOCK_REALTIME [PASS]
+# clock_id: CLOCK_BOOTTIME [PASS]
+# clock_id: CLOCK_TAI [PASS]
+# clock_id: CLOCK_REALTIME_COARSE [PASS]
+# clock_id: CLOCK_MONOTONIC [PASS]
+# clock_id: CLOCK_MONOTONIC_RAW [PASS]
+# clock_id: CLOCK_MONOTONIC_COARSE [PASS]
+ok 4 selftests: vDSO: vdso_test_clock_getres
+# selftests: vDSO: vdso_standalone_test_x86
+# The time is           1671235613.425725
+ok 5 selftests: vDSO: vdso_standalone_test_x86
+# selftests: vDSO: vdso_test_correctness
+# [RUN]	Testing clock_gettime for clock CLOCK_REALTIME (0)...
+# 	1671235613.541236629 1671235613.541248244 1671235613.541249117
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_MONOTONIC (1)...
+# 	648.542768767 648.542769961 648.542770784
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_PROCESS_CPUTIME_ID (2)...
+# 	0.006776410 0.006781431 0.006785297
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_THREAD_CPUTIME_ID (3)...
+# 	0.006789942 0.006792997 0.006796027
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_MONOTONIC_RAW (4)...
+# 	645.933938082 645.933939190 645.933940020
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_REALTIME_COARSE (5)...
+# 	1671235613.539991116 1671235613.539991116 1671235613.539991116
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_MONOTONIC_COARSE (6)...
+# 	648.541506983 648.541506983 648.541506983
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_BOOTTIME (7)...
+# 	648.542810802 648.542811875 648.542812683
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_REALTIME_ALARM (8)...
+# 	1671235613.541300049 1671235613.541302261 1671235613.541304459
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_BOOTTIME_ALARM (9)...
+# 	648.542823096 648.542825324 648.542827531
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock CLOCK_SGI_CYCLE (10)...
+# [OK]	No such clock.
+# [RUN]	Testing clock_gettime for clock CLOCK_TAI (11)...
+# 	1671235613.541316760 1671235613.541317813 1671235613.541318615
+# [OK]	Test Passed.
+# [RUN]	Testing clock_gettime for clock invalid (-1)...
+# [OK]	No such clock.
+# [RUN]	Testing clock_gettime for clock invalid (-2147483648)...
+# [OK]	No such clock.
+# [RUN]	Testing clock_gettime for clock invalid (2147483647)...
+# [OK]	No such clock.
+# [SKIP]	No vDSO, so skipping clock_gettime64() tests
+# [RUN]	Testing gettimeofday...
+# 	1671235613.541329 1671235613.541331 1671235613.541332
+# [OK]	timezones match: minuteswest=0, dsttime=0
+# [RUN]	Testing getcpu...
+# [OK]	CPU 0: syscall: cpu 0, node 0 vdso: cpu 0, node 0 vsyscall: cpu 0, node 0
+# [OK]	CPU 1: syscall: cpu 1, node 0 vdso: cpu 1, node 0 vsyscall: cpu 1, node 0
+# [OK]	CPU 2: syscall: cpu 2, node 0 vdso: cpu 2, node 0 vsyscall: cpu 2, node 0
+# [OK]	CPU 3: syscall: cpu 3, node 0 vdso: cpu 3, node 0 vsyscall: cpu 3, node 0
+ok 6 selftests: vDSO: vdso_test_correctness
+make: Leaving directory '/usr/src/perf_selftests-x86_64-rhel-8.3-kselftests-830b3c68c1fb1e9176028d02ef86f3cf76aa2476/tools/testing/selftests/vDSO'

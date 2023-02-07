@@ -468,6 +468,32 @@ class NetStater < Stater
   end
 end
 
+class VDSOStater < Stater
+  def stat(line, stats)
+    case line
+    when /^# clock_id: (.*)/
+      # clock_id: CLOCK_REALTIME
+      @test_subcase = $1
+    when /^# (.*): ?(PASS|OK|FAIL|SKIP|Pass|Fail|Skip)/
+      @test_case = $1
+      @result = $2
+      if @test_case =~ /vdso_test_clock_gettime/ && @test_subcase
+        # vdso_test_clock_gettime(): PASS
+        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", @result
+        @test_subcase = nil
+      elsif @test_case =~ /vdso_test_clock_getres/
+        # vdso_test_clock_getres(): PASS
+        stats.add "#{@test_prefix}.#{@test_case}", @result unless stats.key? "#{@test_prefix}.#{@test_case}"
+      else
+        # vdso_test_gettimeofday(): PASS
+        stats.add "#{@test_prefix}.#{@test_case}", @result
+      end
+    else
+      super(line, stats)
+    end
+  end
+end
+
 class VmStater < Stater
   def stat(line, stats)
     case line
@@ -1338,6 +1364,9 @@ while (line = $stdin.gets)
   when /^# selftests: (net): (.*)/
     # selftests: net: reuseport_addr_any.sh
     stater = NetStater.new($1, $2)
+  when /^# selftests: (vDSO): (.*)/
+    # selftests: vDSO: vdso_test_gettimeofday
+    stater = VDSOStater.new($1, $2)
   when /^# selftests: vm: (protection_keys.*)/
     stater = ProtectionKeysStater.new('vm', $1)
   when /^# selftests: (vm): (.+)/
