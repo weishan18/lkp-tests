@@ -132,6 +132,10 @@ need_kconfig:
 # do not run KALLSYMS_SELFTEST which leads to crash like
 # dmesg.BUG:sleeping_function_called_from_invalid_context_at_kernel/kallsyms.c
 # - KALLSYMS_SELFTEST: y
+
+- SPARSEMEM: y
+- CXL_REGION: y
+- CXL_REGION_INVALIDATION_TEST: y
 % elsif ___.group == "group-02"
 - COMMON_CLK: y
 - CLK_GATE_KUNIT_TEST: m
