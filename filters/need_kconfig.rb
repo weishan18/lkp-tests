@@ -71,7 +71,7 @@ def split_constraints(constraints)
   OpenStruct.new(kernel_versions: kernel_versions, archs: archs, types: types)
 end
 
-def check_all(kernel_kconfigs)
+def check_all(kernel_kconfigs, needed_kconfigs)
   uncompiled_kconfigs = []
 
   context = load_kernel_context
@@ -83,7 +83,7 @@ def check_all(kernel_kconfigs)
     kconfig_constraints = kconfig_constraints.transform_values { |constraints| split_constraints(constraints) }
   end
 
-  $___.each do |e|
+  needed_kconfigs.each do |e|
     if e.instance_of? Hashugar
       config_name, config_options = e.to_hash.first
       config_options = split_constraints(config_options)
@@ -121,7 +121,7 @@ def check_all(kernel_kconfigs)
   puts "suggest kconfigs: #{uncompiled_kconfigs}"
 end
 
-def check_arch_constraints
+def arch_constraints
   model = self['model']
   rootfs = self['rootfs']
   kconfig = self['kconfig']
@@ -136,9 +136,9 @@ def check_arch_constraints
       # - know exact commit, however yet to compile the kernel
       raise Job::ParamError, "32bit kernel cannot run 64bit rootfs: '#{kconfig}' '#{rootfs}'" if kconfig =~ /^i386-/
 
-      $___ << 'X86_64=y'
+      'X86_64=y'
     when /-i386/
-      $___ << 'IA32_EMULATION=y' if kconfig =~ /^x86_64-/
+      'IA32_EMULATION=y' if kconfig =~ /^x86_64-/
     end
   when /^qemu-system-i386/
     case rootfs
@@ -147,15 +147,15 @@ def check_arch_constraints
     when /-i386/
       raise Job::ParamError, "32bit QEMU cannot run 64bit kernel: '#{model}' '#{kconfig}'" if kconfig =~ /^x86_64-/
 
-      $___ << 'X86_32=y'
+      'X86_32=y'
     end
   end
 end
 
 if self['kernel']
-  $___ = Array(___)
+  needed_kconfigs = Array(___)
 
-  check_arch_constraints
+  needed_kconfigs << arch_constraints
 
-  check_all(read_kernel_kconfigs)
+  check_all(read_kernel_kconfigs, needed_kconfigs.compact)
 end
