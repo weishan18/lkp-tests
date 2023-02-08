@@ -470,6 +470,13 @@ end
 
 class VDSOStater < Stater
   def stat(line, stats)
+    if line =~ /^# \[(OK|FAIL|SKIP)\]\s+/ && @runtest_case
+      # [OK]  Test Passed.
+      stats.add "#{@test_prefix}.#{@runtest_case}", $1
+      @runtest_case = nil
+      return
+    end
+
     case line
     when /^# clock_id: (.*) \[(PASS|FAIL|SKIP)\]/
       # clock_id: CLOCK_REALTIME [PASS]
@@ -477,6 +484,9 @@ class VDSOStater < Stater
     when /^# clock_id: (.*)/
       # clock_id: CLOCK_REALTIME
       @test_subcase = $1
+    when /^# \[RUN\]\s+Testing (.*)\.\.\./
+      # [RUN] Testing clock_gettime for clock CLOCK_REALTIME (0)...
+      @runtest_case = $1
     when /^# (.*): ?(PASS|OK|FAIL|SKIP|Pass|Fail|Skip)/
       @test_case = $1
       @result = $2
