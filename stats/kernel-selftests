@@ -471,6 +471,9 @@ end
 class VDSOStater < Stater
   def stat(line, stats)
     case line
+    when /^# clock_id: (.*) \[(PASS|FAIL|SKIP)\]/
+      # clock_id: CLOCK_REALTIME [PASS]
+      stats.add "#{@test_prefix}.#{$1}", $2
     when /^# clock_id: (.*)/
       # clock_id: CLOCK_REALTIME
       @test_subcase = $1

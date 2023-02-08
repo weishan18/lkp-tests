@@ -12,6 +12,13 @@ vDSO.vdso_test_abi.vdso_test_clock_gettime_.CLOCK_MONOTONIC_RAW.pass: 1
 vDSO.vdso_test_abi.vdso_test_clock_gettime_.CLOCK_MONOTONIC_COARSE.pass: 1
 vDSO.vdso_test_abi.vdso_test_time.pass: 1
 vDSO.vdso_test_abi.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_REALTIME.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_BOOTTIME.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_TAI.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_REALTIME_COARSE.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_MONOTONIC.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_MONOTONIC_RAW.pass: 1
+vDSO.vdso_test_clock_getres.CLOCK_MONOTONIC_COARSE.pass: 1
 vDSO.vdso_test_clock_getres.pass: 1
 vDSO.vdso_standalone_test_x86.pass: 1
 vDSO.vdso_test_correctness.pass: 1
