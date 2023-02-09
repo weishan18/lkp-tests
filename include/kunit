@@ -62,6 +62,10 @@ need_kconfig:
 - BINFMT_ELF_KUNIT_TEST: y
 - FPROBE: y
 - FPROBE_SANITY_TEST: y
+
+- PROFILING: y
+- PERF_EVENTS: y
+- HW_BREAKPOINT_KUNIT_TEST: y
 % elsif ___.group == "group-01"
 # below are not kunit test
 - STRING_SELFTEST: m
