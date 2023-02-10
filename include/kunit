@@ -166,6 +166,7 @@ need_kconfig:
 - SOUND: m
 - SND_SOC_UTILS_KUNIT_TEST: m
 - STACKINIT_KUNIT_TEST: m
+- STRSCPY_KUNIT_TEST: m
 % elsif ___.group == "group-03"
 - DRM
 - DRM_KUNIT_TEST: m
