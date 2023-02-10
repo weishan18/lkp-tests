@@ -140,6 +140,11 @@ need_kconfig:
 - SPARSEMEM: y
 - CXL_REGION: y
 - CXL_REGION_INVALIDATION_TEST: y
+
+- DEBUG_KERNEL: y
+- FAULT_INJECT: y
+- IOMMUFD
+- IOMMUFD_TEST: y
 % elsif ___.group == "group-02"
 - COMMON_CLK: y
 - CLK_GATE_KUNIT_TEST: m
