@@ -32,7 +32,7 @@ elif [[ "$group" = "group-01" ]]; then
 elif [[ "$group" = "group-02" ]]; then
 	test_array=("clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
 	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
-	            "kmsan_test")
+	            "kmsan_test" "siphash_kunit")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi
