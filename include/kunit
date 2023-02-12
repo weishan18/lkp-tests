@@ -147,6 +147,15 @@ need_kconfig:
 - FAULT_INJECT: y
 - IOMMUFD
 - IOMMUFD_TEST: y
+
+- BLOCK: y
+- BLK_DEV: y
+- PHYS_ADDR_T_64BIT: y
+- LIBNVDIMM
+- KEYS: y
+- ENCRYPTED_KEYS
+- NVDIMM_KEYS: y
+- NVDIMM_SECURITY_TEST: y
 % elsif ___.group == "group-02"
 - COMMON_CLK: y
 - CLK_GATE_KUNIT_TEST: m
