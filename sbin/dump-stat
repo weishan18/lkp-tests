@@ -16,7 +16,7 @@ monitor_file = ARGV[1]
 monitor_file ||= "#{RESULT_ROOT}/#{monitor}.json"
 
 def warn_stat(msg, monitor, k, v)
-  log_warn event: msg, detail: "#{RESULT_ROOT}/#{monitor}: #{k}:#{v}"
+  log_warn "#{msg} | monitor: #{RESULT_ROOT}/#{monitor}, stat: #{k}:#{v}"
 end
 
 result = {}
