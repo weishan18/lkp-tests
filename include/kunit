@@ -156,6 +156,12 @@ need_kconfig:
 - ENCRYPTED_KEYS
 - NVDIMM_KEYS: y
 - NVDIMM_SECURITY_TEST: y
+
+- PROC_FS: y
+- DEBUG_FS: y
+- PRINTK: y
+- DYNAMIC_DEBUG: y
+- TEST_DYNAMIC_DEBUG: m
 % elsif ___.group == "group-02"
 - COMMON_CLK: y
 - CLK_GATE_KUNIT_TEST: m
