@@ -117,16 +117,8 @@ def concat_context_from_dmesg(dmesg_file, line)
   line
 end
 
-ZDAY_KERNEL_STATE_NOT_TAINTED = 1
-ZDAY_KERNEL_STATE_TAINTED = 2
-ZDAY_KERNEL_STATE_UNKNOWN = 3
-
 def grep_crash_head(dmesg_file)
-  # [  142.621156][    T0] CPU: 1 PID: 0 Comm: swapper/1 Not tainted 6.2.0-rc1-wt-ath-06577-g6c396023bf6e #1
-  # [  142.690028][    T0] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W           6.2.0-rc1-wt-ath-06577-g6c396023bf6e #1
-  # [  142.665410][    T0] WARNING: suspicious RCU usage
-  # [  142.665426][    T0] 6.2.0-rc1-wt-ath-06577-g6c396023bf6e #1 Not tainted
-  raw_oops = %x[ #{grep_cmd(dmesg_file)} -a -E -e " Not tainted" -e " Tainted:" -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} |
+  raw_oops = %x[ #{grep_cmd(dmesg_file)} -a -E -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} |
        grep -v -E -f #{LKP_SRC_ETC}/oops-pattern-ignore ]
 
   return {} if raw_oops.empty?
@@ -136,7 +128,6 @@ def grep_crash_head(dmesg_file)
   oops_re = load_regular_expressions("#{LKP_SRC_ETC}/oops-pattern")
   prev_line = nil
   has_oom = false
-  kernel_state = ZDAY_KERNEL_STATE_UNKNOWN
 
   add_one_calltrace = lambda do |line|
     break if has_oom
@@ -154,14 +145,6 @@ def grep_crash_head(dmesg_file)
       oops_map[$1] ||= line
 
       has_oom = true if line =~ OOM_PATTERN
-    when / Not tainted/
-      kernel_state = ZDAY_KERNEL_STATE_NOT_TAINTED
-    when / Tainted:/
-      log_warn "kernel becomes tainted from #{kernel_state} directly" unless kernel_state == ZDAY_KERNEL_STATE_NOT_TAINTED
-
-      kernel_state = ZDAY_KERNEL_STATE_TAINTED
-      # ignore rest oops when kernel is tainted
-      break
     when /\+0x/
       next if line.index ' ? '
 
