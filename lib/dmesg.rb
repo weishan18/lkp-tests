@@ -126,7 +126,7 @@ def grep_crash_head(dmesg_file)
   # [  142.690028][    T0] CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W           6.2.0-rc1-wt-ath-06577-g6c396023bf6e #1
   # [  142.665410][    T0] WARNING: suspicious RCU usage
   # [  142.665426][    T0] 6.2.0-rc1-wt-ath-06577-g6c396023bf6e #1 Not tainted
-  raw_oops = %x[ #{grep_cmd(dmesg_file)} -a -E -e " Not tainted" -e " Tainted:" -e "Disabling lock debugging due to kernel taint" -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} |
+  raw_oops = %x[ #{grep_cmd(dmesg_file)} -a -E -e " Not tainted" -e " Tainted:" -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} |
        grep -v -E -f #{LKP_SRC_ETC}/oops-pattern-ignore ]
 
   return {} if raw_oops.empty?
@@ -156,7 +156,7 @@ def grep_crash_head(dmesg_file)
       has_oom = true if line =~ OOM_PATTERN
     when / Not tainted/
       kernel_state = ZDAY_KERNEL_STATE_NOT_TAINTED
-    when / Tainted:|Disabling lock debugging due to kernel taint/
+    when / Tainted:/
       log_warn "kernel becomes tainted from #{kernel_state} directly" unless kernel_state == ZDAY_KERNEL_STATE_NOT_TAINTED
 
       kernel_state = ZDAY_KERNEL_STATE_TAINTED
