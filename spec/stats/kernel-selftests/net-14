@@ -1,0 +1,22 @@
+# selftests: net: udpgro_fwd.sh
+# IPv4
+# No GRO                                   ok
+# GRO frag list                            ok
+# GRO fwd                                  ok
+# UDP fwd perf                            udp rx:    471 MB/s   382269 calls/s
+# UDP GRO fwd perf                        udp rx:    521 MB/s   420864 calls/s
+# GRO frag list over UDP tunnel            ok
+# GRO fwd over UDP tunnel                  ok
+# UDP tunnel fwd perf                     udp rx:    203 MB/s   165464 calls/s
+# UDP tunnel GRO fwd perf                 udp rx:    211 MB/s   170893 calls/s
+# IPv6
+# No GRO                                   ok
+# GRO frag list                            ok
+# GRO fwd                                  ok
+# UDP fwd perf                            udp rx:    486 MB/s   394352 calls/s
+# UDP GRO fwd perf                        udp rx:    541 MB/s   436646 calls/s
+# GRO frag list over UDP tunnel            ok
+# GRO fwd over UDP tunnel                  ok
+# UDP tunnel fwd perf                     udp rx:    266 MB/s   215668 calls/s
+# UDP tunnel GRO fwd perf                 udp rx:    324 MB/s   261888 calls/s
+ok 2 selftests: net: udpgro_fwd.sh
