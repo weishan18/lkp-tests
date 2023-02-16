@@ -26,3 +26,4 @@ xfstests:
     - xfs-group-53
     - xfs-group-54
     - xfs-group-55
+    - xfs-group-56
