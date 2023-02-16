@@ -12,6 +12,11 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 build_install_xfstests()
 {
 	cd ${srcdir}/xfstests-dev || return
+
+	# new tests will be added continuously and lead to new groups to split them.
+	# print current head commit so we can check whether a specific test was introduced at the moment.
+	git log --oneline -n1
+
 	## Currently, ./configure file can't work with "--prefix" option correctly,
 	## so we just use the "make" command to generate the execuable file.
 	make
