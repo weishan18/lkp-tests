@@ -876,7 +876,7 @@ class PidfdStater < Stater
         result = 'skip'
       end
 
-      if @test_script == 'pidfd_test'
+      if @test_script =~ /^(pidfd_test|pidfd_fdinfo_test)$/
         # pidfd_test will run twice subtest and output the result twice,
         # ignore the duplication of line 30, line 32771 and line 32776.
         # selftests: pidfd: pidfd_test

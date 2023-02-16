@@ -1,3 +1,16 @@
+# selftests: pidfd: pidfd_fdinfo_test
+# TAP version 13
+# 1..2
+# # New child: 2633, fd: 5
+# # New child: 2634, fd: 6
+# # waitpid WEXITSTATUS=0
+# # waitpid WEXITSTATUS=0
+# ok 1  test: Passed
+# # New child: 2635, fd: 5
+# # waitpid WEXITSTATUS=0
+# ok 2  test: Passed
+# # Totals: pass:2 fail:0 xfail:0 xpass:0 skip:0 error:0
+ok 2 selftests: pidfd: pidfd_fdinfo_test
 # selftests: pidfd: pidfd_wait
 # TAP version 13
 # 1..3
