@@ -7,4 +7,6 @@ need_kconfig:
 - IP_DCCP: y
 % elsif job['stress-ng']['test'] == "tun"
 - TUN: m
+% elsif job['stress-ng']['test'] == "userfaultfd"
+- USERFAULTFD: y
 % end
