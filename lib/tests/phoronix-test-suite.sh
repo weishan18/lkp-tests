@@ -835,12 +835,15 @@ run_test()
 
 	phoronix-test-suite list-installed-tests | grep -q $test || die "$test is not installed"
 
+	run_option="run"
+	[ -n "$debug" ] && run_option="debug-run"
+
 	if echo "$test" | grep idle-power-usage; then
 		# Choose
 		# sleep 1 min
 		# Enter Value: 1
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Enter Value:" { send "1\\r"; exp_continue }
 				"Would you like to save these test results" { send "n\\r"; exp_continue }
@@ -856,7 +859,7 @@ run_test()
 		# 1: Bandwidth
 		# 1: 1
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Enter Value:" { send "localhost\\r"; exp_continue }
 				"Protocol:" { send "3\r"; exp_continue }
@@ -873,7 +876,7 @@ run_test()
 		# 5: UDP Request Response
 		# 1: 10 Seconds
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Enter Value:" { send "localhost\r"; exp_continue }
 				"Test:" { send "5\r"; exp_continue }
@@ -891,7 +894,7 @@ run_test()
 		# 2: UDP
 		# 1: 1
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Enter Value:" { send "localhost\r12345\r"; exp_continue }
 				"Duration:" { send "1\r"; exp_continue }
@@ -907,7 +910,7 @@ run_test()
 		# 4: Test All Options
 		# Enter Value: 127.0.0.1
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Test:" { send "4\r"; exp_continue }
 				"Enter Value:" { send "127.0.0.1\r"; exp_continue }
@@ -917,10 +920,12 @@ run_test()
 			}
 		EOF
 	elif [ "$test_opt" ]; then
-		echo -e "$test_opt" | log_cmd phoronix-test-suite run $test
+		echo -e "$test_opt" | log_cmd phoronix-test-suite $run_option $test
 	else
+		[ -n "$debug" ] || run_option="default-run"
+
 		/usr/bin/expect <<-EOF
-			spawn phoronix-test-suite default-run $test
+			spawn phoronix-test-suite $run_option $test
 			expect {
 				"Would you like to save these test results" { send "n\r"; exp_continue }
 				eof { }

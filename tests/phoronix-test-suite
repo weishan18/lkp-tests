@@ -1,4 +1,5 @@
 #!/bin/sh
+# - debug
 # - test
 # - need_x
 # - option_a
