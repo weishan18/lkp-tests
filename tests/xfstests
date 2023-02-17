@@ -146,7 +146,11 @@ setup_fs_config()
 		# log size 67108864 blocks too large, maximum size is 1048576 blocks
 		# if had partition already, create a virtual disk for log
 		if is_disc_partitioned; then
-			create_virtual_disk 100 || die "fail to create a virtual disk for log"
+			create_virtual_disk 100 || {
+				echo "fail to create a virtual disk for log" 1>&2
+				return 1
+			}
+
 			log_eval export SCRATCH_LOGDEV="/dev/loop0"
 		else
 			printf "n\np\n1\n\n+100M\nw\n" | fdisk $SCRATCH_LOGDEV
@@ -188,9 +192,13 @@ setup_fs_config()
 			log_eval unset SCRATCH_DEV_POOL
 		}
 		if is_disc_partitioned; then
-			create_virtual_disk 1k || die "fail to create a virtual disk for log"
+			create_virtual_disk 1k || {
+				echo "fail to create a virtual disk for log" 1>&2
+				return 1
+			}
+
 			log_eval export SCRATCH_DEV="/dev/loop0"
-                else
+		else
 			printf "n\np\n1\n\n+1G\nw\n" | fdisk $SCRATCH_DEV
 			log_eval export SCRATCH_DEV="$SCRATCH_DEV"1
 		fi
@@ -221,7 +229,11 @@ setup_fs_config()
 		# create a 100M partition for log, avoid test cost too much time
 		# if had partition already, create a virtual disk for log
 		if is_disc_partitioned; then
-			create_virtual_disk 100 || die "fail to create a virtual disk for log"
+			create_virtual_disk 100 || {
+				echo "fail to create a virtual disk for log" 1>&2
+				return 1
+			}
+
 			log_eval export SCRATCH_LOGDEV="/dev/loop0"
 		else
 			SCRATCH_LOGDEV=${partitions#* }
@@ -333,7 +345,7 @@ export LANG=C
 # whether has created the virtual disk
 has_virtual_disk=false
 read_env_vars
-set_env
+set_env || exit
 run_test
 
 # umonut the virtual disk
