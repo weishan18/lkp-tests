@@ -7,7 +7,7 @@ category: functional
 # on debian rootfs
 need_memory: 12G
 need_cpu: 2
-kernel-selftests:
+kernel-selftests-bpf:
   group:
     - bpf
 # never register ERST as pstore backend
