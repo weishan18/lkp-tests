@@ -13,7 +13,6 @@ kernel-selftests:
     - group-03
     - livepatch
     - rseq
-    - tc-testing
     - user_events
 # never register ERST as pstore backend
 kernel_cmdline: erst_disable
