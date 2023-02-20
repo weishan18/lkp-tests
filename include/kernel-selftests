@@ -177,8 +177,8 @@ need_kconfig:
 - IMA_APPRAISE: y
 - IMA_ARCH_POLICY: y
 - IR_IMON_DECODER: m
-- IR_SHARP_DECODER: m # Depends on: RC_DECODERS [: y] && RC_CORE [: m]
-- LIRC: y # Depends on: RC_CORE [: m]
+- IR_SHARP_DECODER: m # Depends on: RC_DECODERS && RC_CORE
+- LIRC: y # Depends on: RC_CORE
 - LKDTM: y
 - SECURITYFS: y
 - TEST_BITMAP
@@ -329,9 +329,9 @@ need_kconfig:
 - FTRACE: y
 - IP_ADVANCED_ROUTER: y
 - IP_MULTIPLE_TABLES: y # Depends on: IP_ADVANCED_ROUTER [: y]
-- RC_CORE: y
-- RC_DECODERS: y # Depends on: RC_CORE [: m]
-- RC_DEVICES: y # Depends on: RC_CORE [: m]
+- RC_CORE
+- RC_DECODERS: y # Depends on: RC_CORE
+- RC_DEVICES: y # Depends on: RC_CORE
 - RC_LOOPBACK: m # Depends on: RC_CORE && RC_DEVICES
 - RUNTIME_TESTING_MENU: y
 - STAGING: y
