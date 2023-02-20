@@ -332,6 +332,7 @@ need_kconfig:
 - RC_CORE: y
 - RC_DECODERS: y # Depends on: RC_CORE [: m]
 - RC_DEVICES: y # Depends on: RC_CORE [: m]
+- RC_LOOPBACK: m # Depends on: RC_CORE && RC_DEVICES
 - RUNTIME_TESTING_MENU: y
 - STAGING: y
 - SYNC_FILE: y
