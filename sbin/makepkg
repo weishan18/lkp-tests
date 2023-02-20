@@ -274,7 +274,7 @@ get_url() {
 
 # extract the protocol from a source entry - return "local" for local sources
 get_protocol() {
-	if [[ $1 = *.git ]]; then
+	if [[ $1 =~ \.git ]]; then
 		printf "%s\n" "git"
 	elif [[ $1 = *://* ]]; then
 		# strip leading filename
@@ -641,6 +641,8 @@ extract_git() {
 	fi
 
 	if [[ $ref != "origin/HEAD" ]] || (( updating )) ; then
+		msg2 "$(gettext "git checkout --force --no-track -B makepkg %s")" "${ref}"
+
 		if ! git checkout --force --no-track -B makepkg $ref; then
 			error "$(gettext "Failure while creating working copy of %s %s repo")" "${repo}" "git"
 			plain "$(gettext "Aborting...")"
@@ -843,6 +845,8 @@ download_sources() {
 
 	"$get_source_fn" 'all_sources'
 	for netfile in "${all_sources[@]}"; do
+		msg2 "$(gettext "Source is %s")" "${netfile}"
+
 		pushd "$SRCDEST" &>/dev/null
 
 		local proto=$(get_protocol "$netfile")
@@ -1562,6 +1566,8 @@ extract_sources() {
 
 	get_all_sources_for_arch 'all_sources'
 	for netfile in "${all_sources[@]}"; do
+		msg2 "$(gettext "Source is %s")" "${netfile}"
+
 		local file=$(get_filename "$netfile")
 		local proto=$(get_protocol "$netfile")
 		case "$proto" in
