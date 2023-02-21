@@ -1,5 +1,5 @@
 pkgname=vm-scalability
-pkgver=1.0
+pkgver=git
 pkgrel=0
 arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 url=""

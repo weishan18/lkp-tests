@@ -1,6 +1,6 @@
 pkgname=lmbench
-pkgver=3.0
-pkgrel=0
+pkgver=git
+pkgrel=1
 pkgdesc="A suite of simple, portable, ANSI/C microbenchmarks for UNIX/POSIX, measures latency and bandwidth."
 arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 url="http://www.bitmover.com/lmbench/"

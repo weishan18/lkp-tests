@@ -1,6 +1,6 @@
 pkgname=adrestia
-pkgver=1.0
-pkgrel=0
+pkgver=git
+pkgrel=1
 pkgdesc="A benchmark to test scheduler load balancer."
 arch=('i386' 'x86_64' 'aarch64')
 license=('GPL')

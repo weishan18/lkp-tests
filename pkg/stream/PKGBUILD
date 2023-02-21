@@ -1,5 +1,5 @@
 pkgname=stream
-pkgver=1
+pkgver=git
 pkgrel=1
 arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 url="http://www.cs.virginia.edu/stream"

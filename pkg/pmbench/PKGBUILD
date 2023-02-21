@@ -1,5 +1,5 @@
 pkgname=pmbench
-pkgver=0.7
+pkgver=git
 pkgrel=1
 pkgdesc="Micro benchmark for system pager performance "
 arch=('i386' 'x86_64' 'aarch64')

@@ -1,5 +1,5 @@
 pkgname=mutilate
-pkgver=0.1
+pkgver=git
 pkgrel=1
 pkgdesc="a memcached load generator designed for high request rates, good tail-latency measurements, and realistic request stream generation."
 arch=('i386' 'x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgname=schbench
-pkgver=1.0
-pkgrel=0
+pkgver=git
+pkgrel=1
 pkgdesc="A benchmark to measure schedule latency."
 arch=('i386' 'x86_64' 'aarch64')
 license=('GPL')
