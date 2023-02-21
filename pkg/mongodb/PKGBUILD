@@ -1,12 +1,12 @@
 pkgname=mongodb
-pkgver=r4.1.6
-pkgrel=0
+pkgver=6.2.0
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://www.mongodb.com/"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 license=('AGPL3')
 depends=()
-source=("https://github.com/mongodb/mongo.git")
+source=("https://github.com/mongodb/mongo.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
@@ -15,7 +15,6 @@ build() {
 	which pip2 >/dev/null && PIP=$(which pip2)
 
 	cd "${srcdir}/mongo"
-	git checkout -f r4.1.6
 
 	# ImportError: 'module' object has no attribute 'check_specifier' on aliyun OS
 	$PIP install setuptools --upgrade
