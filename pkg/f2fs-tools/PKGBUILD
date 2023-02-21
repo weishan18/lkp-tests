@@ -5,7 +5,7 @@
 
 pkgname=f2fs-tools-git
 _gitname=f2fs-tools
-pkgver=1.7.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Tools for Flash-Friendly File System (F2FS) (git version)"
 arch=('i386' 'x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('')
 provides=('f2fs-tools')
 conflicts=('f2fs-tools')
-source=("https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git")
+source=("https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
