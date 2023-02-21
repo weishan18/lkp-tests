@@ -634,6 +634,12 @@ boot_init()
 	mount_tmpfs
 	redirect_stdout_stderr
 
+	if is_virt; then
+		echo "is_virt=true"
+	else
+		echo "is_virt=false"
+	fi
+
 	show_kernel_tainted_state
 
 	setup_hostname
@@ -646,6 +652,8 @@ boot_init()
 	fixup_packages
 
 	setup_network
+	echo "NO_NETWORK=$NO_NETWORK"
+
 	run_ntpdate
 
 	mount_debugfs
