@@ -1,11 +1,11 @@
 pkgname=cyclictest
-pkgver=2.1
+pkgver=2.5
 pkgrel=1
 pkgdesc="Cyclictest is a high resolution test program"
 arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 url="https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests"
 license=('GPL')
-source=("https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git")
+source=("https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {
