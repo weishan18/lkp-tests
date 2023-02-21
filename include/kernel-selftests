@@ -316,6 +316,7 @@ need_kconfig:
 - NET_ACT_GATE
 - PACKET
 - NET_SCH_RED
+- NETDEVSIM: m
 % elsif ___.group == "memory-hotplug"
 - MEMORY_HOTREMOVE: y
 - MEMORY_HOTPLUG: y
