@@ -1,10 +1,10 @@
 pkgname=openssl-speed
-pkgver=3.0.1
+pkgver=3.0.8
 pkgrel=1
 url='http://www.openssl.org/'
 arch=('i386' 'x86_64' 'riscv64' 'aarch64')
 license=('Apache License 2.0')
-source=('https://github.com/openssl/openssl.git')
+source=("https://github.com/openssl/openssl.git#tag=openssl-$pkgver")
 md5sums=('SKIP')
 
 build()
