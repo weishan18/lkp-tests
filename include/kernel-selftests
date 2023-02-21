@@ -196,6 +196,9 @@ need_kconfig:
 - XFS_FS: m
 - DMA_MAP_BENCHMARK: y
 - TEST_FPU: m
+- IOMMUFD
+- IOMMUFD_TEST: y
+- FAULT_INJECTION: y
 % elsif ___.group == "group-02"
 - FUSE_FS: m
 - IPV6_MULTIPLE_TABLES: y
