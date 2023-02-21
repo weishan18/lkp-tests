@@ -1,11 +1,12 @@
 pkgname=ycsb
-pkgver=0.15.0
-pkgrel=0
+pkgver=0.17.0
+pkgrel=1
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/brianfrankcooper/YCSB"
 pkgdesc="Yahoo! Cloud Serving Benchmark"
 license=('Apache License 2.0')
 depends=()
+# https://github.com/brianfrankcooper/YCSB/releases/download/0.17.0/ycsb-0.17.0.tar.gz
 source=("https://github.com/brianfrankcooper/YCSB/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
