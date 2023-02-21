@@ -11,6 +11,7 @@ need_kconfig:
 - TEST_PRINTF: m
 - TEST_SCANF: m
 - TEST_BITOPS: m
+- TEST_STRSCPY: m
 % elsif ___.group == "cpufreq"
 - CPU_FREQ: y
 - CPU_FREQ_GOV_CONSERVATIVE: y
