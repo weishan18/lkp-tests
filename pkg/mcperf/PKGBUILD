@@ -5,7 +5,7 @@ pkgdesc="A tool for measuring memcached server performance"
 arch=('i386' 'x86_64' 'aarch64')
 url="https://github.com/twitter-archive/twemperf/"
 license=('GPL')
-source=("https://github.com/twitter-archive/twemperf.git")
+source=("https://github.com/twitter-archive/twemperf.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
