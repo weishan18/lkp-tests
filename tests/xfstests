@@ -86,7 +86,9 @@ setup_cifs_config()
 
 setup_fs2_config()
 {
-	fs2_is_cifs && setup_cifs_config
+	fs2_is_cifs || return 0
+
+	setup_cifs_config
 }
 
 setup_fs_config()
@@ -242,6 +244,8 @@ setup_fs_config()
 			log_eval export SCRATCH_LOGDEV="$SCRATCH_LOGDEV"1
 		fi
 	}
+
+	return 0
 }
 
 set_env()
