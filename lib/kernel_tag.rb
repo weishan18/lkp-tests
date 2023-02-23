@@ -4,8 +4,6 @@ LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
 
 require "#{LKP_SRC}/lib/lkp_path"
 
-KCONFIGS_YAML = LKP::Path.src('etc', 'kconfigs.yaml').freeze
-
 class KernelTag
   include Comparable
   attr_reader :kernel_tag
@@ -34,6 +32,12 @@ class KernelTag
     numerized_kernel_version2 = numerize_kernel_tag(other.kernel_tag)
 
     numerized_kernel_version1 <=> numerized_kernel_version2
+  end
+
+  class << self
+    def kconfigs_yaml
+      LKP::Path.src('etc', 'kconfigs.yaml')
+    end
   end
 end
 

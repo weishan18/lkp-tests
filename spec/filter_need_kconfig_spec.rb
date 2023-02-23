@@ -17,7 +17,7 @@ describe 'filters/need_kconfig.rb' do
       f.write("CONFIG_X=y\nCONFIG_Y=200\nCONFIG_Z1=m\nCONFIG_Z2=y\nCONFIG_H=0x1000000")
     end
 
-    stub_const 'KCONFIGS_YAML', File.join(@tmp_dir, 'kconfigs.yaml')
+    allow(KernelTag).to receive(:kconfigs_yaml).and_return(File.join(@tmp_dir, 'kconfigs.yaml'))
   end
 
   after(:each) do
@@ -25,7 +25,7 @@ describe 'filters/need_kconfig.rb' do
   end
 
   def generate_kconfigs_yaml(kconfigs_kernel_versions)
-    File.open(KCONFIGS_YAML, 'w') do |f|
+    File.open(KernelTag.kconfigs_yaml, 'w') do |f|
       f.puts kconfigs_kernel_versions
     end
   end

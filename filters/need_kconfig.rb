@@ -78,8 +78,9 @@ def check_all(kernel_kconfigs, needed_kconfigs)
   kernel_version = context['rc_tag']
   kernel_arch = context['kconfig'].split('-').first
 
-  if File.exist? KCONFIGS_YAML
-    kconfig_constraints = YAML.load_file KCONFIGS_YAML
+  kconfigs_yaml = KernelTag.kconfigs_yaml
+  if File.exist? kconfigs_yaml
+    kconfig_constraints = YAML.load_file kconfigs_yaml
     kconfig_constraints = kconfig_constraints.transform_values { |constraints| split_constraints(constraints) }
   end
 
