@@ -7,6 +7,8 @@ need_kconfig:
 - INPUT_UINPUT: y
 - INPUT_MISC: y
 % elsif ___.test == "kernel_misc"
+- LOCK_TORTURE_TEST: m
+- RCU_TORTURE_TEST: m
 - ZRAM: m
 % elsif ___.test == "net.tcp_cmds"
 - DUMMY: m
