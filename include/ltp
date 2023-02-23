@@ -17,12 +17,14 @@ need_kconfig:
 % elsif ___.test == "ima"
 - IMA: y
 - IMA_WRITE_POLICY: y
+- IMA_READ_POLICY: y
 % elsif ___.test == "watchqueue"
 - WATCH_QUEUE: y
 % elsif ___.test == "cve-07"
 - CRYPTO_SM3
 - CRYPTO_SM3_GENERIC
 % end
+
 % if ___.test != "kvm"
 - BLK_DEV_LOOP
 - CAN: m
