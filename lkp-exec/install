@@ -313,12 +313,15 @@ install_base_support()
 	fi
 
 	if [ -n "$CHINA" ]; then
-		gem install bundler --clear-sources -s https://gems.ruby-china.com/
+		gem install bundler -v 2.3.26 --clear-sources -s https://gems.ruby-china.com/
 		bundle_install_china
 	else
 		(
 			cd $LKP_SRC || exit
-			gem install bundler
+			# install 2.3.26 to avoid below error when ruby is < 2.6.0
+			# 	ERROR:  Error installing bundler:
+			# 	bundler requires Ruby version >= 2.6.0.
+			gem install bundler -v 2.3.26
 			bundle install
 		)
 	fi
