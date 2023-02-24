@@ -251,16 +251,16 @@ def copy_and_decompress(src_fullpath, dst)
   end
 
   if File.exist?(src_fullpath)
-    %x(cp #{src_file} #{dst})
+    `cp #{src_file} #{dst}`
   elsif File.exist?("#{src_fullpath}.gz")
     src_fullpath += '.gz'
-    %x(gzip -cd #{src_fullpath} > #{dst})
+    `gzip -cd #{src_fullpath} > #{dst}`
   elsif File.exist?("#{src_fullpath}.bz2")
     src_fullpath += '.bz2'
-    %x(bzip2 -cd #{src_fullpath} > #{dst})
+    `bzip2 -cd #{src_fullpath} > #{dst}`
   elsif File.exist?("#{src_fullpath}.xz")
     src_fullpath += '.xz'
-    %x(xz -cd #{src_fullpath} > #{dst})
+    `xz -cd #{src_fullpath} > #{dst}`
   else
     log_warn "File doesn't exist: #{src_fullpath}"
     return false

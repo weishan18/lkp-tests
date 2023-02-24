@@ -23,14 +23,14 @@ module LKP
     def initialize(rootfs = '/')
       path_to_script = "#{LKP_SRC}/lib/detect-system.sh"
 
-      @systemname, @systemnamel, @systemversion, @systemarch = %x[
+      @systemname, @systemnamel, @systemversion, @systemarch = `
         . #{path_to_script}
         detect_system #{rootfs}
         echo $_system_name
         echo $_system_name_lowercase
         echo $_system_version
         echo $_system_arch
-      ].split
+      `.split
     end
   end
 end

@@ -69,7 +69,7 @@ end
 
 def load_yaml_tail(file)
   begin
-    return YAML.load %x[tail -n 100 #{file}]
+    return YAML.load `tail -n 100 #{file}`
   rescue Psych::SyntaxError => e
     log_warn "#{file}: " + e.message
   end
@@ -144,7 +144,7 @@ class WTMP
     def load_tail(file, lines = 100)
       return nil unless File.exist? file
 
-      tail = %x[tail -n #{lines} #{file}]
+      tail = `tail -n #{lines} #{file}`
       load(tail)
     rescue StandardError => e
       log_warn "#{file}: " + e.message

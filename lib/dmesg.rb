@@ -118,8 +118,7 @@ def concat_context_from_dmesg(dmesg_file, line)
 end
 
 def grep_crash_head(dmesg_file)
-  raw_oops = %x[ #{grep_cmd(dmesg_file)} -a -E -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} |
-       grep -v -E -f #{LKP_SRC_ETC}/oops-pattern-ignore ]
+  raw_oops = `#{grep_cmd(dmesg_file)} -a -E -e \\\\+0x -f #{LKP_SRC_ETC}/oops-pattern #{dmesg_file} | grep -v -E -f #{LKP_SRC_ETC}/oops-pattern-ignore`
 
   return {} if raw_oops.empty?
 
@@ -522,11 +521,11 @@ def timestamp_levels(error_stamps, dmesg_file)
   initcall_file = ENV['INITCALL_FILE']
   return map if initcall_file && !File.exist?(initcall_file.to_s)
 
-  first_line = %x[#{grep_cmd(dmesg_file)} -m1 -P '\\[ *0.000000\\]' #{dmesg_file}]
+  first_line = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *0.000000\\]' #{dmesg_file}`
   # dmesg file is broken
   return map if first_line.empty?
 
-  initcall_lines = %x[#{grep_cmd(dmesg_file)} -E " initcall (__initstub__.+|)[0-9a-zA-Z_]+\\\\+0x.* returned" #{dmesg_file}]
+  initcall_lines = `#{grep_cmd(dmesg_file)} -E " initcall (__initstub__.+|)[0-9a-zA-Z_]+\\\\+0x.* returned" #{dmesg_file}`
   unless initcall_lines.empty?
     initcall_level = initcall_levels(dmesg_file)
     if initcall_level
@@ -546,12 +545,12 @@ def timestamp_levels(error_stamps, dmesg_file)
 
   last = error_stamps['last']
   if map.empty? && last
-    kernel_cmdline = %x[#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel command line:' #{dmesg_file}]
+    kernel_cmdline = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel command line:' #{dmesg_file}`
     m = kernel_cmdline.resolve_invalid_bytes.match(/\[ *(\d{1,6}\.\d{6})\]/)
     # cmdline not exist or boot last time - cmdline time < 5s
     map[last] = BOOT_LEVELS['cmdline'] if kernel_cmdline.empty? || (m && (Float(last) - Float(m[1])) < 5)
   else
-    boot_ok = %x[#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel tests: Boot OK' #{dmesg_file}]
+    boot_ok = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel tests: Boot OK' #{dmesg_file}`
     m = boot_ok.resolve_invalid_bytes.match(/\[ *(\d{1,6}\.\d{6})\]/)
     map[m[1]] = BOOT_LEVELS['boot-ok'] if m
   end
