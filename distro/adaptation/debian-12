@@ -1,16 +1,12 @@
-# this version specific adaptation contains adaptations for debian 12 only. The common adaptations are still put in debian
-# 1. not exist/valid packages, mark it empty to avoid installing error.
-# 2. exist/valid packages, mark it empty if you don't want to install later.
-# 3. exist/valid packages, but its name needs to be adapted for other distro,
-#    mapping to a new package name, then the new package will be install later.
+# bookworm
 
-# reason(1)
+# reason (1)
 winpdb:
 python3-gobject:
 xfsdump:
 python-setuptools:
 
-# reason(3)
+# reason (3)
 fsverity: fsverity
 libgcrypt-dev: libgcrypt20-dev
 libgcc-dev: libgcc-11-dev

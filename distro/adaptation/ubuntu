@@ -1,9 +1,3 @@
-# this adaptation is used for
-# 1. not exist/valid packages, mark it empty to avoid installing error.
-# 2. exist/valid packages, mark it empty if you don't want to install later.
-# 3. exist/valid packages, but its name needs to be adapted for other distro,
-#    mapping to a new package name, then the new package will be install later.
-
 which: debianutils
 bsdtar: libarchive-tools
 iblz4-1:liblz4-dev
