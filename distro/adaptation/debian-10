@@ -1,5 +1,10 @@
 # buster
 
+# reason (1)
+libpython3.9:
+libtraceevent1:
+libtraceevent-dev:
+
 # reason (3)
 bsdtar: libarchive-tools
 btrfs-tools: btrfs-progs
