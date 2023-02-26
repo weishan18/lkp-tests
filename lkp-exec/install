@@ -169,11 +169,28 @@ makepkg_install() {
 
 verify_install() {
 	local pkg=$1
+	local pkg_lkp=$pkg-lkp
+
+	# FIXME consider to put below mapping to adaptation
+	#
+	# These are not real packages in debian but are required commands, which are
+	# installed by the corresponding os packages. Need use the name of the os
+	# packages so that dpkg -V can do the right check. The other way is to use
+	# has_cmd to check installed or not, but "which perf" returns /usr/bin/perf that
+	# is a wrapper instead of actual perf.
+	#
+	# Here also use -f /.dockerenv as a hack to only do this inside docker to reduce
+	# unnecessary re-installation that requires clone the linux repo.
+	[ -f /.dockerenv -a $DISTRO = debian ] && {
+		[ "$pkg" = perf ] && pkg=linux-perf
+		[ "$pkg" = turbostat ] && pkg=linux-cpupower
+	}
+
 	case $DISTRO in
 		debian|ubuntu)
-			[[ ! $(dpkg -V "$pkg" 2>&1) ]] || [[ ! $(dpkg -V "$pkg-lkp" 2>&1) ]];;
+			[[ ! $(dpkg -V "$pkg" 2>&1) ]] || [[ ! $(dpkg -V "${pkg_lkp}" 2>&1) ]];;
 		centos|fedora|amazon_linux)
-			[[ ! $(rpm -V "$pkg" 2>&1) ]] || [[ ! $(rpm -V "$pkg-lkp" 2>&1) ]];;
+			[[ ! $(rpm -V "$pkg" 2>&1) ]] || [[ ! $(rpm -V "${pkg_lkp}" 2>&1) ]];;
 		*)
 			return 1;;
 	esac
@@ -371,12 +388,15 @@ do
 			install_packages "makepkg" $distro
 			makepkg_once=1
 		}
+
 		install_packages "$script" $distro
 		makepkg_install_packages "$script" $distro
+
 		benchmark_package=$(get_adaptation_pkg $distro "$script")
 		if [ -n "$FORCE_MODE" ] || ! verify_install "$benchmark_package"; then
 			makepkg_install_benchmark "$script"
 		fi
+
 		[ -n "$FORCE_MODE" ] && install_opt="-f"
 		build_install_benchmarks "$script" $distro $install_opt || exit 1
 	done
