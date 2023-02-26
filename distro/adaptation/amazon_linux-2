@@ -70,7 +70,7 @@ libfabric-dev: libfabric-devel
 libfdt-dev:
 libffi-dev: libffi-devel
 libfuse-dev: fuse-devel
-libgcc-7-dev:libgcc
+libgcc-7-dev: libgcc
 libgbm-dev: mesa-libgbm-devel
 libgl1-mesa-dev: mesa-libGL-devel
 libgles2-mesa: mesa-libGLES
@@ -182,7 +182,6 @@ python3-mako: python-mako
 python3-numpy:
 python-dev: python-devel
 python-minimal: python2
-python-numpy: numpy
 python-numpy: numpy
 python-openssl: pyOpenSSL
 python-pkg-resources: python-setuptools

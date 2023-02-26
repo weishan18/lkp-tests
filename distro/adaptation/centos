@@ -65,7 +65,7 @@ libfabric-dev: libfabric-devel
 libfdt-dev:
 libffi-dev: libffi-devel
 libfuse-dev: fuse-devel
-libgcc-7-dev:libgcc.x86_64
+libgcc-7-dev: libgcc.x86_64
 libgbm-dev: mesa-libgbm-devel
 libgl1-mesa-dev: mesa-libGL-devel
 libgles2-mesa: mesa-libGLES
@@ -179,7 +179,6 @@ python3: python34
 python3-six: python36-six
 python-dev: platform-python-devel.x86_64
 python-minimal: python2
-python-numpy: numpy
 python-numpy: numpy
 python-openssl: pyOpenSSL
 python-pkg-resources: python-setuptools
