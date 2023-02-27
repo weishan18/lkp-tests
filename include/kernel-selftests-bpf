@@ -14,7 +14,7 @@ need_kconfig:
 - BPF_JIT: y
 - BPF_STREAM_PARSER: y
 - BPF_SYSCALL: y
-- BPF_LIRC_MODE2: y
+- BPF_LIRC_MODE2: y # depends on: ( CONFIG_BPF_SYSCALL ) && ( CONFIG_RC_CORE = CONFIG_y ) && ( CONFIG_LIRC )
 - BPF_LSM: y
 - CGROUP_BPF: y
 - CRYPTO_HMAC
@@ -50,6 +50,7 @@ need_kconfig:
 - NET_MPLS_GSO: m
 - NET_SCHED: y
 - NET_SCH_INGRESS: y
+- RC_CORE: y
 - RC_LOOPBACK # Depends on: RC_DEVICES [: y] && RC_CORE [: m]
 - SECURITY: y
 - TEST_BPF: m
