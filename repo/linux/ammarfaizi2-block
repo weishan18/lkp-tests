@@ -9,3 +9,4 @@ mail_to:
 - GNU/Weeb Mailing List <gwml@vger.gnuweeb.org>
 private_report_branch: google/android/.*
 branch_denylist: axboe/linux-block/sock-nolock.2
+no_merge_branch: testing/af/dev.btrfs.kthread_cpu_set
