@@ -96,11 +96,6 @@ fi
 
 shopt -s nullglob
 
-is_clang_worker()
-{
-	[[ "$COMPILER" =~ "clang" ]]
-}
-
 check_install_path()
 {
 	if [[ $COMPILER_INSTALL_PATH ]]; then
@@ -220,7 +215,7 @@ install_crosstool_gcc()
 
 install_crosstool()
 {
-	if is_clang_worker; then
+	if [[ "$COMPILER" =~ "clang" ]]; then
 		install_crosstool_clang || {
 			echo "clang crosstool install failed"
 			return 1
@@ -486,7 +481,7 @@ setup_crosstool()
 	local kernel_version_major=$(echo "$kernel_version" | cut -d. -f1)
 	local kernel_version_minor=$(echo "$kernel_version" | cut -d. -f2)
 
-	if is_clang_worker; then
+	if [[ "$COMPILER" =~ "clang" ]]; then
 		setup_crosstool_clang
 	else
 		setup_crosstool_gcc
