@@ -248,7 +248,7 @@ setup_gcc_exec()
 	}
 
 	# use highest available version
-	gcc_evec=$(tr ' ' '\n' <<< ${gcc_exec[@]} | sort -V | tail -n1)
+	gcc_exec=$(tr ' ' '\n' <<< ${gcc_exec[@]} | sort -V | tail -n1)
 }
 
 update_path_env_for_parisc()
