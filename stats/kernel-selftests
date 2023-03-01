@@ -680,10 +680,11 @@ class X86Stater < Stater
     when /^# \[RUN\]\s+(.*)/
       # [RUN] SYSENTER with invalid state
       @runtest_case = $1
-    when /^# \[(OK|FAIL|SKIP)\]/
+    when /^# \[(OK|FAIL|SKIP)\]\s+(.*)/
       # [OK]  Seems okay
       # [SKIP]        Illegal instruction
       @result = $1
+      @subtest_case = $2
       if @runtest_case
         # [RUN] Fast syscall with TF cleared
         # [OK]  Nothing unexpected happened
@@ -693,6 +694,10 @@ class X86Stater < Stater
         # [OK]  Nothing unexpected happened
         stats.add "#{@test_prefix}.#{@runtest_case}", @result unless stats.key? "#{@test_prefix}.#{@runtest_case}"
         @runtest_case = nil
+      elsif @result =~ /SKIP/ && @subtest_case
+        # [SKIP]        Code segment unavailable for 64-bit CS, 32-bit SS
+        stats.add "#{@test_prefix}.#{@subtest_case}", @result unless stats.key? "#{@test_prefix}.#{@subtest_case}"
+        @subtest_case = nil
       end
     else
       super(line, stats)

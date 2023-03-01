@@ -1,0 +1,30 @@
+# selftests: x86: sigreturn_32
+# [OK]	set_thread_area refused 16-bit data
+# [OK]	set_thread_area refused 16-bit data
+# [WARN]	Could not find 64-bit CS
+# [SKIP]	Code segment unavailable for 64-bit CS, 32-bit SS
+# [RUN]	Valid sigreturn: 32-bit CS (73), 32-bit SS (7b, GDT)
+# [OK]	all registers okay
+# [RUN]	Valid sigreturn: 16-bit CS (37), 32-bit SS (7b, GDT)
+# [OK]	all registers okay
+# [WARN]	Could not find 64-bit CS
+# [SKIP]	Code segment unavailable for 64-bit CS, 16-bit SS
+# [RUN]	Valid sigreturn: 32-bit CS (73), 16-bit SS (3f)
+# [OK]	all registers okay
+# [RUN]	Valid sigreturn: 16-bit CS (37), 16-bit SS (3f)
+# [OK]	all registers okay
+# [WARN]	Could not find 64-bit CS
+# [RUN]	32-bit CS (73), bogus SS (47)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+# [RUN]	16-bit CS (37), bogus SS (47)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+# [WARN]	Could not find 64-bit CS
+# [RUN]	32-bit CS (73), bogus SS (73)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+# [RUN]	16-bit CS (37), bogus SS (73)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+# [RUN]	32-bit CS (4f), bogus SS (7b)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+# [RUN]	32-bit CS (73), bogus SS (57)
+# [OK]	Got #IRET(0x0) (i.e. Illegal instruction)
+ok 6 selftests: x86: sigreturn_32
