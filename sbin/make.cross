@@ -20,82 +20,6 @@
 # Author: Fengguang Wu <fengguang.wu@intel.com>
 # Credit: Tony Breeds <tony@bakeyournoodle.com> for crosstool
 
-COMPILER=${COMPILER:-"gcc"}
-
-arch_list=(
-	alpha
-	arc
-	arm
-	arm64
-	avr32
-	blackfin
-	c6x
-	cris
-	csky
-	frv
-	h8300
-	hexagon
-	i386
-	ia64
-	loongarch
-	m32r
-	m68k
-	microblaze
-	mips
-	mn10300
-	nios2
-	openrisc
-	parisc
-	parisc64
-	powerpc
-	riscv
-	s390
-	score
-	sh
-	sh32
-	sh64
-	sparc
-	sparc32
-	sparc64
-	tile
-	tilegx
-	tilepro
-	um
-	unicore32
-	x86
-	x86_64
-	xtensa
-)
-
-if [[ ! "$0" =~ 'make.cross' && "$0" =~ make\.([a-z0-9_]+) ]]; then
-	export ARCH="${BASH_REMATCH[1]}"
-elif [[ "$*" =~ ARCH=([a-z0-9_]+) ]]; then
-	export ARCH="${BASH_REMATCH[1]}"
-elif [[ ${PWD##*-} =~ ^($(IFS=\| && echo "${arch_list[*]}"))$ ]]; then
-	echo "ARCH set to ${PWD##*-}"
-	export ARCH=${PWD##*-}
-elif [[ ! $ARCH ]]; then
-	export ARCH=x86_64
-fi
-
-[[ "$*" =~ ARCH=([a-z0-9_]+) ]] && [[ $ARCH != ${BASH_REMATCH[1]} ]] && {
-	echo "Conflicting ARCH specified! $ARCH ${BASH_REMATCH[1]}"
-	exit 1
-}
-
-if [[ "$*" =~ O=([^ ]+) ]]; then
-	BUILD_DIR="${BASH_REMATCH[1]}"
-elif [[ -n "$KBUILD_OUTPUT" ]]; then
-	BUILD_DIR="$KBUILD_OUTOUT"
-elif [[ -d obj-$ARCH ]]; then
-	BUILD_DIR=obj-$ARCH
-	O=O=obj-$ARCH
-else
-	BUILD_DIR="."
-fi
-
-shopt -s nullglob
-
 check_install_path()
 {
 	if [[ $COMPILER_INSTALL_PATH ]]; then
@@ -488,35 +412,116 @@ setup_crosstool()
 	fi
 }
 
-check_install_path || {
-	echo "Please set COMPILER_INSTALL_PATH to specify compiler install path"
-	echo "E.g. COMPILER_INSTALL_PATH=\$HOME/0day COMPILER=clang make.cross ARCH=x86_64"
-	echo
-	exit 1
+make_cross_main()
+{
+	shopt -s nullglob
+
+	COMPILER=${COMPILER:-"gcc"}
+
+	arch_list=(
+		alpha
+		arc
+		arm
+		arm64
+		avr32
+		blackfin
+		c6x
+		cris
+		csky
+		frv
+		h8300
+		hexagon
+		i386
+		ia64
+		loongarch
+		m32r
+		m68k
+		microblaze
+		mips
+		mn10300
+		nios2
+		openrisc
+		parisc
+		parisc64
+		powerpc
+		riscv
+		s390
+		score
+		sh
+		sh32
+		sh64
+		sparc
+		sparc32
+		sparc64
+		tile
+		tilegx
+		tilepro
+		um
+		unicore32
+		x86
+		x86_64
+		xtensa
+	)
+
+	if [[ ! "$0" =~ 'make.cross' && "$0" =~ make\.([a-z0-9_]+) ]]; then
+		export ARCH="${BASH_REMATCH[1]}"
+	elif [[ "$*" =~ ARCH=([a-z0-9_]+) ]]; then
+		export ARCH="${BASH_REMATCH[1]}"
+	elif [[ ${PWD##*-} =~ ^($(IFS=\| && echo "${arch_list[*]}"))$ ]]; then
+		echo "ARCH set to ${PWD##*-}"
+		export ARCH=${PWD##*-}
+	elif [[ ! $ARCH ]]; then
+		export ARCH=x86_64
+	fi
+
+	[[ "$*" =~ ARCH=([a-z0-9_]+) ]] && [[ $ARCH != ${BASH_REMATCH[1]} ]] && {
+		echo "Conflicting ARCH specified! $ARCH ${BASH_REMATCH[1]}"
+		exit 1
+	}
+
+	if [[ "$*" =~ O=([^ ]+) ]]; then
+		BUILD_DIR="${BASH_REMATCH[1]}"
+	elif [[ -n "$KBUILD_OUTPUT" ]]; then
+		BUILD_DIR="$KBUILD_OUTOUT"
+	elif [[ -d obj-$ARCH ]]; then
+		BUILD_DIR=obj-$ARCH
+		O=O=obj-$ARCH
+	else
+		BUILD_DIR="."
+	fi
+
+	check_install_path || {
+		echo "Please set COMPILER_INSTALL_PATH to specify compiler install path"
+		echo "E.g. COMPILER_INSTALL_PATH=\$HOME/0day COMPILER=clang make.cross ARCH=x86_64"
+		echo
+		exit 1
+	}
+
+	setup_crosstool || {
+		echo "setup_crosstool failed"
+		exit 1
+	}
+
+	[[ "$*" =~ (-j|--jobs) ]] || {
+		nr_cpu=$(getconf _NPROCESSORS_CONF)
+		opt_jobs="--jobs=$((nr_cpu * 2))"
+	}
+
+	[[ "$*" =~ "ARCH=$ARCH" ]] || {
+		opt_arch="ARCH=$ARCH"
+	}
+
+	[[ -f arch/$ARCH/boot/dts/Makefile ]] && make_dts="CONFIG_OF_ALL_DTBS=y CONFIG_DTC=y"
+
+	[[ -f .make-env ]] && source ./.make-env
+
+	if [[ -d source && -L source ]]; then
+		echo make --keep-going -C source O=$PWD $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
+		exec make --keep-going -C source O=$PWD $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
+	else
+		echo make --keep-going $O $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
+		exec make --keep-going $O $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
+	fi
 }
 
-setup_crosstool || {
-	echo "setup_crosstool failed"
-	exit 1
-}
-
-[[ "$*" =~ (-j|--jobs) ]] || {
-	nr_cpu=$(getconf _NPROCESSORS_CONF)
-	opt_jobs="--jobs=$((nr_cpu * 2))"
-}
-
-[[ "$*" =~ "ARCH=$ARCH" ]] || {
-	opt_arch="ARCH=$ARCH"
-}
-
-[[ -f arch/$ARCH/boot/dts/Makefile ]] && make_dts="CONFIG_OF_ALL_DTBS=y CONFIG_DTC=y"
-
-[[ -f .make-env ]] && source ./.make-env
-
-if [[ -d source && -L source ]]; then
-	echo make --keep-going -C source O=$PWD $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
-	exec make --keep-going -C source O=$PWD $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
-else
-	echo make --keep-going $O $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
-	exec make --keep-going $O $make_dts $opt_arch $opt_cross $subarch $opt_jobs "$@"
-fi
+[[ "${#BASH_SOURCE[@]}" -eq 1 ]] && make_cross_main "$@"
