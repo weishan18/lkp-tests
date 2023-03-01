@@ -3,9 +3,11 @@
 # This is a simplified version of extract-stats + stats/wrapper.
 # It could potentially be expanded to replace extract-stats.
 
-require 'tempfile'
-
 LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.realpath($PROGRAM_NAME)))
+
+require 'tempfile'
+require "#{LKP_SRC}/lib/programs"
+
 if ARGV[0]
   RESULT_ROOT = File.realpath ARGV[0]
   ENV['RESULT_ROOT'] = RESULT_ROOT
@@ -17,7 +19,7 @@ exit unless Dir.chdir(RESULT_ROOT)
 
 def extract_one(program, result_file)
   tmp_yaml = Tempfile.new("lkp-stats.#{program}.")
-  system "#{LKP_SRC}/stats/#{program}", result_file, in: result_file, out: tmp_yaml.path
+  system LKP::Programs.find_parser(program), result_file, in: result_file, out: tmp_yaml.path
   system "#{LKP_SRC}/sbin/dump-stat", result_file, in: tmp_yaml.path
   tmp_yaml.close
 end

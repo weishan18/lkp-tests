@@ -12,6 +12,7 @@ require "#{LKP_SRC}/lib/plot"
 require "#{LKP_SRC}/lib/stats"
 require "#{LKP_SRC}/lib/result"
 require "#{LKP_SRC}/lib/constant"
+require "#{LKP_SRC}/lib/programs"
 require 'optparse'
 require 'ostruct'
 require 'yaml'
@@ -772,11 +773,9 @@ def show_one_index(type)
 end
 
 def setup_stats_priority(stats)
-  all_stats = Dir["#{LKP_SRC}/stats/**/*"].map { |d| File.basename(d) }
-  all_stats.sort!
+  all_stats = LKP::Programs.all_stats.sort
 
-  tests = Dir["#{LKP_SRC}/tests/**/*"].map { |d| File.basename(d) }
-  tests.sort!
+  tests = LKP::Programs.all_tests.sort
 
   tests.reverse_each do |x|
     all_stats.unshift x if all_stats.delete x

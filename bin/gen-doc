@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
+LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.realpath($PROGRAM_NAME)))
+
 require 'yaml'
 require 'erb'
+require "#{LKP_SRC}/lib/programs"
 
 # class used to store parameter
 class ItemDesc
@@ -65,5 +68,5 @@ end
 if ARGV.length == 1
   puts yaml2md(ARGV[0])
 else
-  puts Dir['tests/*.yaml'].reduce('') { |s, x| s << yaml2md(x) }
+  puts LKP::Programs.all_metas.reduce('') { |s, x| s << yaml2md(x) }
 end

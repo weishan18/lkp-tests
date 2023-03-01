@@ -15,6 +15,7 @@ require "#{LKP_SRC}/lib/log"
 require "#{LKP_SRC}/lib/tests"
 require "#{LKP_SRC}/lib/changed_stat"
 require "#{LKP_SRC}/lib/lkp_path"
+require "#{LKP_SRC}/lib/programs"
 
 MARGIN_SHIFT = 5
 MAX_RATIO = 5
@@ -74,8 +75,8 @@ end
 
 # => ["tcrypt.", "hackbench.", "dd.", "xfstests.", "aim7.", ..., "oltp.", "fileio.", "dmesg."]
 def test_prefixes
-  stats = Dir["#{LKP_SRC}/stats/**/*"].map { |path| File.basename path }
-  tests = Dir["#{LKP_SRC}/{tests,daemon}/**/*"].map { |path| File.basename path }
+  stats = LKP::Programs.all_stats
+  tests = LKP::Programs.all_tests_and_daemons
   tests = stats & tests
   tests.delete 'wrapper'
   tests.push 'kmsg'

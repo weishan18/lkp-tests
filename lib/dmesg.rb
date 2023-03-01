@@ -8,6 +8,7 @@ require "#{LKP_SRC}/lib/string_ext"
 require "#{LKP_SRC}/lib/lkp_path"
 require "#{LKP_SRC}/lib/job"
 require "#{LKP_SRC}/lib/log"
+require "#{LKP_SRC}/lib/programs"
 
 LKP_SRC_ETC ||= LKP::Path.src('etc')
 
@@ -401,7 +402,7 @@ def get_crash_stats(dmesg_file)
     dmesg_file = uncompressed_dmesg
   end
 
-  boot_error_ids = `#{LKP_SRC}/stats/dmesg #{dmesg_file}`
+  boot_error_ids = `#{LKP::Programs.find_parser('dmesg')} #{dmesg_file}`
 
   oops_map = {}
   id = ''

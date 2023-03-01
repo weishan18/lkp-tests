@@ -3,6 +3,7 @@
 LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
 
 require 'yaml'
+require "#{LKP_SRC}/lib/programs"
 
 def adapt_packages(distro, generic_packages)
   distro_file = "#{LKP_SRC}/distro/adaptation/#{distro}"
@@ -20,7 +21,7 @@ def adapt_packages(distro, generic_packages)
 end
 
 def dependency_packages(distro, script)
-  base_file = dependency_file(script)
+  base_file = LKP::Programs.depends_file(script)
   return [] unless base_file
 
   generic_packages = []
@@ -32,18 +33,4 @@ def dependency_packages(distro, script)
   packages = adapt_packages(distro, generic_packages)
 
   packages.flatten.compact.uniq
-end
-
-# pkg: turbostat, turbostat-dev
-def dependency_file(pkg)
-  file = "#{LKP_SRC}/distro/depends/#{pkg}"
-  return file if File.exist? file
-
-  file = if pkg =~ /-dev$/
-           "#{LKP_SRC}/programs/#{pkg.sub(/-dev$/, '')}/pkg/depends-dev"
-         else
-           "#{LKP_SRC}/programs/#{pkg}/pkg/depends"
-         end
-
-  file if File.exist? file
 end
