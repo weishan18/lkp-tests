@@ -102,7 +102,9 @@ def create_stats_matrix(result_root)
   stats = {}
   matrix = {}
 
-  create_programs_hash 'stats/**/*'
+  programs = create_programs_hash('stats/**/*')
+  programs = programs.merge create_programs_hash('programs/*/parse')
+
   monitor_files = Dir["#{result_root}/*.{json,json.gz}"]
   job = Job.open("#{result_root}/job.yaml")
   stats_part_begin = job['stats_part_begin'].to_f
@@ -121,8 +123,8 @@ def create_stats_matrix(result_root)
     next if monitor == 'stats' # stats.json already created?
     next if monitor == 'matrix'
 
-    unless $programs[monitor] || monitor =~ /^ftrace\.|.+\.time$/
-      log_warn "skip unite #{file}: #{monitor} not in #{$programs.keys}"
+    unless programs[monitor] || monitor =~ /^ftrace\.|.+\.time$/
+      log_warn "skip unite #{file}: #{monitor} not in #{programs.keys}"
       next
     end
 

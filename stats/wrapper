@@ -7,6 +7,10 @@ set -o pipefail
 
 program_dir=$(dirname $0)
 program=$1
+
+parser_path=$program_dir/$program
+[ -x $parser_path ] || parser_path=$LKP_SRC/programs/$program/parse
+
 stats_group=${2:-$1}
 log=$RESULT_ROOT/$stats_group
 
@@ -228,9 +232,9 @@ is_bad_rt_candidate()
 
 tmpfile=$(mktemp --tmpdir=/tmp lkp-stats.XXXXXXXX)
 if [[ -f $log ]]; then
-	$program_dir/$program $log < $log > $tmpfile || { log_error "failed to stat $program" "$program_dir/$program $log < $log\nerrno: $?\ntmpfile: $tmpfile"; is_bad_rt_candidate && exit 1; }
+	$parser_path $log < $log > $tmpfile || { log_error "failed to stat $program" "$parser_path $log < $log\nerrno: $?\ntmpfile: $tmpfile"; is_bad_rt_candidate && exit 1; }
 else
-	$program_dir/$program < /dev/null > $tmpfile || { log_error "failed to stat $program" "$program_dir/$program < /dev/null\nerrno: $?\ntmpfile: $tmpfile"; is_bad_rt_candidate && exit 1; }
+	$parser_path < /dev/null > $tmpfile || { log_error "failed to stat $program" "$parser_path < /dev/null\nerrno: $?\ntmpfile: $tmpfile"; is_bad_rt_candidate && exit 1; }
 fi
 
 grep -q "^$program\." <(cat $LKP_SRC_ETC/failure $LKP_SRC_ETC/pass) ||

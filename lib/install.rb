@@ -19,9 +19,9 @@ def adapt_packages(distro, generic_packages)
   end
 end
 
-def get_dependency_packages(distro, script)
-  base_file = "#{LKP_SRC}/distro/depends/#{script}"
-  return [] unless File.exist? base_file
+def dependency_packages(distro, script)
+  base_file = dependency_file(script)
+  return [] unless base_file
 
   generic_packages = []
   File.read(base_file).each_line do |line|
@@ -32,4 +32,18 @@ def get_dependency_packages(distro, script)
   packages = adapt_packages(distro, generic_packages)
 
   packages.flatten.compact.uniq
+end
+
+# pkg: turbostat, turbostat-dev
+def dependency_file(pkg)
+  file = "#{LKP_SRC}/distro/depends/#{pkg}"
+  return file if File.exist? file
+
+  file = if pkg =~ /-dev$/
+           "#{LKP_SRC}/programs/#{pkg.sub(/-dev$/, '')}/pkg/depends-dev"
+         else
+           "#{LKP_SRC}/programs/#{pkg}/pkg/depends"
+         end
+
+  file if File.exist? file
 end

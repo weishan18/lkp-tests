@@ -2,7 +2,7 @@
 
 [ -n "$LKP_SRC" ] ||
 	export LKP_SRC=$(dirname $(dirname $(readlink -e -v $0)))
-PKG_DIR="$LKP_SRC/pkg"
+
 DEPTEST=0
 UPGRADE=0
 SYNC=0
@@ -154,9 +154,13 @@ deptest() {
 
 sync() {
 	local pkg=$1
-	if [ -d "$PKG_DIR/$pkg" ]; then
+
+	local pkg_dir="$LKP_SRC/pkg/$pkg"
+	[ -d "$pkg_dir" ] || pkg_dir="$LKP_SRC/programs/$pkg/pkg"
+
+	if [ -d "$pkg_dir" ]; then
 		(
-			cd "${PKG_DIR}/$pkg" && \
+			cd "$pkg_dir" && \
 			"$LKP_SRC/sbin/makepkg" --config "$(lkp_src)/etc/makepkg.conf" -s -i --skippgpcheck
 		)
 	fi

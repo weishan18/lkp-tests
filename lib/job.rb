@@ -96,7 +96,8 @@ def __create_programs_hash(glob, lkp_src)
       log_warn "skip non-executable #{path}"
       next
     end
-    file = File.basename(path)
+
+    file = glob =~ /^programs\// ? path.split('/')[-2] : File.basename(path)
     next if file == 'wrapper'
 
     if programs.include? file
@@ -415,7 +416,12 @@ class Job
         # the options of these programs could impact test result
         available_programs %i(setup tests daemon)
       else
-        create_programs_hash "#{type}/**/*", lkp_src
+        programs = create_programs_hash("#{type}/**/*", lkp_src)
+
+        programs = programs.merge create_programs_hash('programs/*/run', lkp_src) if type == :tests
+        programs = programs.merge create_programs_hash('programs/*/parse', lkp_src) if type == :stats
+
+        programs
       end
   end
 

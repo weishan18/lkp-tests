@@ -104,8 +104,8 @@ def create_host_config
 end
 
 def install_packages(script, distro)
-  packages = get_dependency_packages(distro, script)
-  dev_packages = get_dependency_packages(distro, "#{script}-dev")
+  packages = dependency_packages(distro, script)
+  dev_packages = dependency_packages(distro, "#{script}-dev")
   packages |= dev_packages
   return if packages.empty?
 

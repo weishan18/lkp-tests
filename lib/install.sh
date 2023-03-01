@@ -113,14 +113,31 @@ map_python2_to_python3()
 	generic_packages=$(echo "$generic_packages" | sed -e 's/python-/python3-/g' -e 's/python2-/python3-/g')
 }
 
+# pkg: turbostat, turbostat-dev
+get_dependency_file()
+{
+	local pkg=$1
+
+	local file="$LKP_SRC/distro/depends/${pkg}"
+	[ -f "$file" ] || {
+		if [ "${pkg%-dev}" = $pkg ]; then
+			file="$LKP_SRC/programs/${pkg}/pkg/depends"
+		else
+			file="$LKP_SRC/programs/${pkg%-dev}/pkg/depends-dev"
+		fi
+	}
+
+	[ -f "$file" ] && echo $file
+}
+
 get_dependency_packages()
 {
 	local distro=$1
 	local script=$2
 	local PKG_TYPE=$3
-	local base_file="$LKP_SRC/distro/depends/${script}"
 
-	[ -f "$base_file" ] || return
+	local base_file=$(get_dependency_file ${script})
+	[ -n "$base_file" ] || return
 
 	local generic_packages="$(sed 's/#.*//' "$base_file")"
 	detect_system
@@ -169,6 +186,15 @@ get_build_dir()
 	echo "/tmp/build-$1"
 }
 
+get_pkg_dir()
+{
+	local pkg=$1
+
+	local pkg_dir="$LKP_SRC/pkg/$pkg"
+	[ -d "$pkg_dir" ] || pkg_dir="$LKP_SRC/programs/$pkg/pkg"
+	[ -d "$pkg_dir" ] && echo $pkg_dir
+}
+
 build_depends_pkg()
 {
 	if [ "$1" = '-i' ]; then
@@ -212,8 +238,9 @@ build_depends_pkg()
 	for pkg in $packages; do
 		# pack and install dependencies of pkg
 		build_depends_pkg -i $pkg "$dest"
-		pkg_dir="$LKP_SRC/pkg/$pkg"
-		if [ -d "$pkg_dir" ]; then
+
+		local pkg_dir=$(get_pkg_dir $pkg)
+		if [ -n "$pkg_dir" ]; then
 			(
 				cd "$pkg_dir" && \
 				PACMAN="$LKP_SRC/sbin/pacman-LKP" "$LKP_SRC/sbin/makepkg" $INSTALL --config "$LKP_SRC/etc/makepkg.conf" --skippgpcheck
@@ -236,6 +263,8 @@ parse_yaml()
 	local tmp_filter="$(mktemp /tmp/lkp-install-XXXXXXXXX)"
 
 	ls -LR $LKP_SRC/setup $LKP_SRC/monitors $LKP_SRC/tests $LKP_SRC/daemon > $tmp_filter
+	ls $LKP_SRC/programs >> $tmp_filter
+
 	scripts=$(cat $1 | sed -ne "s|^\($s\):|\1|" \
 	         -e "s|^\($s\)\($w\)$s:${s}[\"']\(.*\)[\"']$s\$|\2|p" \
 	         -e "s|^\($s\)\($w\)$s:$s\(.*\)$s\$|\2|p" | grep -x -F -f \

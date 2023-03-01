@@ -12,11 +12,13 @@ describe 'stats' do
       it "invariance: #{file}" do
         script = File.basename(File.dirname(file))
         old_stat = File.read yaml_file
-        initcall_file = file =~ /spec\/stats\/(dmesg|kmsg)\/boot-stage/ ? "#{file}-initcalls_yaml" : ''
+
+        stat_script = File.exist?("#{LKP_SRC}/programs/#{script}/stat") ? "#{LKP_SRC}/programs/#{script}/stat" : "#{LKP_SRC}/stats/#{script}"
         new_stat = if script =~ /^(kmsg|dmesg|mpstat|fio|perf-stat-tests)$/
-                     `INITCALL_FILE=#{initcall_file} #{LKP_SRC}/stats/#{script} #{file}`
+                     initcall_file = file =~ /spec\/stats\/(dmesg|kmsg)\/boot-stage/ ? "#{file}-initcalls_yaml" : ''
+                     `INITCALL_FILE=#{initcall_file} #{stat_script} #{file}`
                    else
-                     `#{LKP_SRC}/stats/#{script} < #{file}`
+                     `#{stat_script} < #{file}`
                    end
         raise "stats script exitstatus #{$CHILD_STATUS.exitstatus}" unless $CHILD_STATUS.success?
 

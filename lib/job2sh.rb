@@ -99,9 +99,21 @@ class Job2sh < Job
     program_env, args = get_program_env(program, env)
     program_path = @programs[program] || @monitors[program] || program
 
-    args = [] if program_path.index('/stats/')
-    program_dir = File.dirname(program_path)
-    wrapper = "#{program_dir}/wrapper"
+    args = [] if program_path.index('/stats/') || program_path =~ /programs\/.+\/parse$/
+
+    case program_path
+    when /programs\/.+\/run$/
+      # fake the program_dir to be used by later program_dir comparison
+      program_dir = File.join(File.dirname(program_path), 'tests')
+      wrapper = File.join(lkp_src, 'tests', 'wrapper')
+    when /programs\/.+\/parse$/
+      program_dir = File.join(File.dirname(program_path), 'stats')
+      wrapper = File.join(lkp_src, 'stats', 'wrapper')
+    else
+      program_dir = File.dirname(program_path)
+      wrapper = "#{program_dir}/wrapper"
+    end
+
     cmd = if File.executable?(wrapper)
             [wrapper, program, *args]
           else
