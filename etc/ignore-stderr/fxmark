@@ -2,3 +2,5 @@
 .*: SyntaxWarning: .* with a literal. Did you mean .*?
   if .* is .*
   .* if .* is .* else .*
+.*pmeter:yokogawa-wt310.*
+pmeter server does not start correctly
