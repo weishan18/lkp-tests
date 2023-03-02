@@ -387,7 +387,7 @@ do
 		}
 
 		pkg_dir=$(get_pkg_dir $script)
-		[ -z "$makepkg_once" ] && [ -n $pkg_dir ] && ! [ -x "$LKP_SRC/pack/$script" ] && {
+		[ -z "$makepkg_once" ] && [ -n "$pkg_dir" ] && ! [ -x "$LKP_SRC/pack/$script" ] && {
 			install_packages "makepkg" $distro
 			makepkg_once=1
 		}
