@@ -27,3 +27,10 @@ xfstests:
     - xfs-group-54
     - xfs-group-55
     - xfs-group-56
+    - xfs-group-57
+    - xfs-group-58
+    - xfs-group-59
+    - xfs-group-70
+    - xfs-group-71
+    - xfs-group-72
+    - xfs-group-73
