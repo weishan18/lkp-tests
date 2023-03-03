@@ -685,7 +685,13 @@ class X86Stater < Stater
       # [SKIP]        Illegal instruction
       @result = $1
       @subtest_case = $2
-      if @runtest_case
+      if @test_script == 'unwind_vdso_32' && @result == 'OK' && @runtest_case
+        # [OK]  All is well
+        if @subtest_case =~ /All is well/
+          stats.add "#{@test_prefix}.#{@runtest_case}", @result
+          @runtest_case = nil
+        end
+      elsif @runtest_case
         # [RUN] Fast syscall with TF cleared
         # [OK]  Nothing unexpected happened
         # [RUN] Set TF and check SYSENTER
