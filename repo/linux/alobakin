@@ -1,1 +1,3 @@
 url: https://github.com/alobakin/linux
+owner: Aleksander Lobakin <aleksander.lobakin@intel.com>
+notify_build_success_branch: .*
