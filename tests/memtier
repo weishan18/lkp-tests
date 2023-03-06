@@ -14,6 +14,7 @@
 # - nr_threads
 # - n_client
 # - n_pipeline
+# - n_protocol
 # - cpu_node_bind
 # - mem_node_bind
 
@@ -49,6 +50,7 @@ opt1="--key-minimum=$key_min --threads=$nr_threads"
 [ -n "$data_size" ] && opt1="$opt1 -d $data_size"
 [ -n "$n_client" ] && opt1="$opt1 -c $n_client"
 [ -n "$n_pipeline" ] && opt1="$opt1 --pipeline=$n_pipeline"
+[ -n "$n_protocol" ] && opt1="$opt1 --protocol=$n_protocol"
 
 opt="$opt1 --key-maximum=$proc_key_max"
 
