@@ -19,6 +19,7 @@ while (line = $stdin.gets)
        /^#{TEST_PATTERN}\s+- output mismatch/, # btrfs/158 - output mismatch (see /lkp/benchmarks/xfstests/results//btrfs/158.out.bad)
        /^#{TEST_PATTERN}\s+_check_dmesg: something found in dmesg/, # xfs/385 _check_dmesg: something found in dmesg (see /lkp/benchmarks/xfstests/results//xfs/385.dmesg)
        /^_check_generic_filesystem: filesystem on .+ is inconsistent \(see .+\/([a-z]+)\/([0-9]+)\.full\)/,
+       /^#{TEST_PATTERN}\s+_check.+: filesystem on .+ has dirty log/, # xfs/027 _check_xfs_filesystem: filesystem on /dev/sda5 has dirty log
        /^#{TEST_PATTERN}\s+_check.+: filesystem on .+ is inconsistent/ # btrfs/002 _check_btrfs_filesystem: filesystem on /dev/sda2 is inconsistent
     stats.add "#{$1}.#{$2}", 'fail'
   when /^#{TEST_PATTERN}\s+\[not run\]/
