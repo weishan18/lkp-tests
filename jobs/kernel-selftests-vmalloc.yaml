@@ -4,7 +4,7 @@ category: benchmark
 
 kernel-selftests:
   group:
-    - vm
+    - mm
   test:
     - vmalloc-performance
 
@@ -20,6 +20,6 @@ iterations:
 
 kernel-selftests:
   group:
-    - vm
+    - mm
   test:
     - vmalloc-stress
