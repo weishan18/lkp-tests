@@ -584,7 +584,7 @@ prepare_for_selftest()
 	elif [ "$group" = "group-02" ]; then
 		# m* is slow
 		# pidfd caused soft_timeout in kernel-selftests.splice.short_splice_read.sh.fail.v5.9-v5.10-rc1.2020-11-06.132952
-		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^rseq -e ^resctrl -e ^net -e ^netfilter -e ^rcutorture -e ^pidfd -e ^memory-hotplug)
+		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^rseq -e ^resctrl -e ^mm -e ^net -e ^netfilter -e ^rcutorture -e ^pidfd -e ^memory-hotplug)
 	elif [ "$group" = "group-03" ]; then
 		selftest_mfs=$(ls -d [t-z]*/Makefile | grep -v -e ^x86 -e ^tc-testing -e ^vm -e ^user_events)
 	elif [ "$group" = "mptcp" ]; then
@@ -594,18 +594,23 @@ prepare_for_selftest()
 	elif [ "$group" = "memory-hotplug" ]; then
 		selftest_mfs=$(ls -d memory-hotplug/Makefile)
 	else
-		# bpf cpufreq cgroup firmware kvm lib livepatch lkdtm net netfilter pidfd rcutorture resctrl rseq tc-testing user_events vm x86
+		# bpf cpufreq cgroup firmware kvm lib livepatch lkdtm net netfilter pidfd rcutorture resctrl rseq tc-testing user_events mm(vm) x86
 		selftest_mfs=$(ls -d $group/Makefile)
 	fi
 }
 
-fixup_vm()
+fixup_mm()
 {
+	# memory management selftests used to be named as vm selftests
+	# and renamed to mm selftests in v6.3-rc1 by below commit:
+	#   baa489fabd01 selftests/vm: rename selftests/vm to selftests/mm
+	# the test script is still "run_vmtests.sh" after rename to mm selftests.
+
 	# has too many errors now
-	sed -i 's/hugetlbfstest//' vm/Makefile
+	sed -i 's/hugetlbfstest//' mm/Makefile
 
 	local run_vmtests="run_vmtests.sh"
-	[[ -f vm/run_vmtests ]] && run_vmtests="run_vmtests"
+	[[ -f mm/run_vmtests ]] && run_vmtests="run_vmtests"
 	# we need to adjust two value in vm/run_vmtests accroding to the nr_cpu
 	# 1) needmem=262144, in Byte
 	# 2) ./userfaultfd hugetlb *128* 32, we call it memory here, in MB
@@ -620,9 +625,9 @@ fixup_vm()
 	[ $nr_cpu -gt 64 ] && {
 		local memory=$((nr_cpu/64+1))
 		memory=$((memory*128))
-		sed -i "s#./userfaultfd hugetlb 128 32#./userfaultfd hugetlb $memory 32#" vm/$run_vmtests
+		sed -i "s#./userfaultfd hugetlb 128 32#./userfaultfd hugetlb $memory 32#" mm/$run_vmtests
 		memory=$((memory*1024*2))
-		sed -i "s#needmem=262144#needmem=$memory#" vm/$run_vmtests
+		sed -i "s#needmem=262144#needmem=$memory#" mm/$run_vmtests
 	}
 
 	# /usr/include/bits/mman-linux.h:# define MADV_PAGEOUT     21/* Reclaim these pages.  */
@@ -637,11 +642,11 @@ fixup_vm()
 		[[ -z $iterations ]] && iterations=20
 		[[ -z $nr_threads ]] && nr_threads="\$NUM_CPUS"
 		[[ $iterations -le 0 || ($nr_threads != "\$NUM_CPUS" && $nr_threads -le 0) ]] && die "Paramters: iterations or nr_threads must > 0"
-		sed -i 's/^STRESS_PARAM="nr_threads=$NUM_CPUS test_repeat_count=20"/STRESS_PARAM="nr_threads='$nr_threads' test_repeat_count='$iterations'"/' vm/test_vmalloc.sh
+		sed -i 's/^STRESS_PARAM="nr_threads=$NUM_CPUS test_repeat_count=20"/STRESS_PARAM="nr_threads='$nr_threads' test_repeat_count='$iterations'"/' mm/test_vmalloc.sh
 	fi
 
 	# vm selftests may needs to run for more than 150s on some specific platforms and exceeds the default timeout 45s
-	echo 'timeout=600' > vm/settings
+	echo 'timeout=600' > mm/settings
 }
 
 platform_is_skylake_or_snb()
@@ -828,8 +833,8 @@ fixup_subtest()
 		echo "LKP SKIP ir.ir_loopback_rcmm"
 	elif [[ "$subtest" = "memfd" ]]; then
 		fixup_memfd
-	elif [[ "$subtest" = "vm" ]]; then
-		fixup_vm
+	elif [[ "$subtest" = "mm" ]]; then
+		fixup_mm
 	elif [[ "$subtest" = "x86" ]]; then
 		fixup_x86
 	elif [[ "$subtest" = "resctrl" ]]; then
