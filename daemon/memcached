@@ -22,7 +22,7 @@ run_memcached()
 	preload=
 	parse_bool -q "$use_hugetlbfs" && preload="LD_PRELOAD=libhugetlbfs.so HUGETLB_MORECORE=yes"
 	port=$((6380+instance_id))
-	log_eval "$preload" memcached -d -P /tmp/memcached.pid -m "$(to_mb "$memcached_memsize")" -u root -p $port
+	log_eval "$preload" memcached -d -P /tmp/memcached-$instance_id.pid -m "$(to_mb "$memcached_memsize")" -u root -p $port
 }
 
 config_hugepage
