@@ -691,6 +691,8 @@ class X86Stater < Stater
           stats.add "#{@test_prefix}.#{@runtest_case}", @result
           @runtest_case = nil
         end
+      elsif @test_script =~ /check_initial_reg_state/
+        stats.add "#{@test_prefix}.#{@subtest_case}", @result
       elsif @runtest_case
         # [RUN] Fast syscall with TF cleared
         # [OK]  Nothing unexpected happened
