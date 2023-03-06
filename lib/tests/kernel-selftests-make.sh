@@ -82,7 +82,7 @@ run_tests()
 
 		check_makefile $subtest || log_cmd make TARGETS=$subtest 2>&1
 
-		make_group_tests
+		make_group_tests || exit
 
 		keep_only_specific_test
 
