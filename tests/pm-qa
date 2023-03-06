@@ -1,6 +1,10 @@
 #!/bin/sh
 # - test
 
+. $LKP_SRC/lib/debug.sh
+
+[ -d $BENCHMARK_ROOT/pm-qa ] || die "no $BENCHMARK_ROOT/pm-qa"
+
 if [ "$test" = "all" ] || [ "$test" = "thermal" ]; then
 	mkdir -p		/tmp/.X11-unix
 	chmod 1777		/tmp/.X11-unix
