@@ -5,3 +5,4 @@ mail_to:
 - Yi Liu <yi.l.liu@intel.com>
 - Kevin Tian <kevin.tian@intel.com>
 private_report_branch: .*
+branch_denylist: tmp/.*
