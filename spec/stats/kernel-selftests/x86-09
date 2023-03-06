@@ -1,0 +1,8 @@
+# selftests: x86: check_initial_reg_state_32
+# [OK]	All GPRs except SP are 0
+# [OK]	FLAGS is 0x202
+ok 5 selftests: x86: check_initial_reg_state_32
+# selftests: x86: check_initial_reg_state_64
+# [OK]	All GPRs except SP are 0
+# [OK]	FLAGS is 0x202
+ok 27 selftests: x86: check_initial_reg_state_64
