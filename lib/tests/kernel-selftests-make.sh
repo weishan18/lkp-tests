@@ -94,6 +94,15 @@ run_tests()
 			echo "# selftests: vm: $test"
 			log_cmd vm/$test 2>&1
 		elif [[ $subtest = bpf ]]; then
+			# Order correspond to 'make run_tests' order
+			# TEST_GEN_PROGS = test_verifier test_tag test_maps test_lru_map test_lpm_map test_progs \
+			# 		test_verifier_log test_dev_cgroup \
+			# 		test_sock test_sockmap get_cgroup_id_user \
+			# 		test_cgroup_storage \
+			# 		test_tcpnotify_user test_sysctl \
+			# 		test_progs-no_alu32
+
+			# remove test_progs and test_progs-no_alu32 from Makefile and run them separately
 			if grep -q "test_progs-no_alu32 \\\\" bpf/Makefile; then
 				sed -i 's/test_progs //' bpf/Makefile
 				sed -i 's/test_progs-no_alu32 //' bpf/Makefile
@@ -102,14 +111,18 @@ run_tests()
 				sed -i 's/test_progs-no_alu32/test_lpm_map/' bpf/Makefile
 			fi
 
-			cd bpf
-			echo "# selftests: bpf: test_progs"
-			log_cmd ./test_progs -b sk_assign -b xdp_bonding -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
-			log_cmd ./test_progs -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
-			echo "# selftests: bpf: test_progs-no_alu32"
-			log_cmd ./test_progs-no_alu32 -b sk_assign -b xdp_bonding -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
-			log_cmd ./test_progs-no_alu32 -a perf_branches -a perf_event_stackmap -a snprintf_btf
-			cd ..
+			if [[ -f bpf/test_progs && -f bpf/test_progs-no_alu32 ]]; then
+				cd bpf
+				echo "# selftests: bpf: test_progs"
+				log_cmd ./test_progs -b sk_assign -b xdp_bonding -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
+				log_cmd ./test_progs -a get_branch_snapshot -a perf_branches -a perf_event_stackmap -a snprintf_btf
+				echo "# selftests: bpf: test_progs-no_alu32"
+				log_cmd ./test_progs-no_alu32 -b sk_assign -b xdp_bonding -b get_branch_snapshot -b perf_branches -b perf_event_stackmap -b snprintf_btf
+				log_cmd ./test_progs-no_alu32 -a perf_branches -a perf_event_stackmap -a snprintf_btf
+				cd ..
+			else
+				echo "build bpf/test_progs or bpf/test_progs-no_alu32 failed" >&2
+			fi
 
 			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
 		elif [[ $category = "functional" ]]; then
