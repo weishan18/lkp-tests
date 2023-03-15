@@ -278,7 +278,6 @@ need_kconfig:
 - NET_EMATCH: y
 - NET_EMATCH_CANID: m
 - NET_EMATCH_CMP: m
-- NET_EMATCH_IPSET: m
 - NET_EMATCH_IPT: m
 - NET_EMATCH_META: m
 - NET_EMATCH_NBYTE: m
@@ -316,6 +315,8 @@ need_kconfig:
 - X86_CPU_RESCTRL: y
 - PROC_CPU_RESCTRL: y
 % elsif ___.group == "tc-testing"
+- IP_SET
+- NET_EMATCH_IPSET: m
 - NET_SCH_FQ_PIE
 - NET_SCH_CAKE
 - NET_SCH_CBS
