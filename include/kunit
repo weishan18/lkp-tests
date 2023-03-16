@@ -171,6 +171,11 @@ need_kconfig:
 - CHROME_PLATFORMS: y
 - CROS_EC: m
 - CROS_KUNIT: m
+- HID_SUPPORT: y
+- HID
+- HID_BATTERY_STRENGTH: y
+- USB
+- USB_HID
 - HID_UCLOGIC: m
 - HID_KUNIT_TEST: m
 - IIO: m
