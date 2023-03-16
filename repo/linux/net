@@ -1,6 +1,7 @@
 ---
 url: https://git.kernel.org/pub/scm/linux/kernel/git/davem/net.git
-integration_testing_branches: master
+integration_testing_branches: main
+branch_denylist: master
 non_rebaseable_branch: .*
 mail_cc: netdev@vger.kernel.org
 owner: David S. Miller <davem@davemloft.net>
@@ -265,4 +266,4 @@ subsystems:
 - bnep
 - auth_gss
 patch_based_on_branch:
-  '\[(.+ )?net( .+)?\]': master
+  '\[(.+ )?net( .+)?\]': main
