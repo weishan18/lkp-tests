@@ -140,6 +140,8 @@ need_kconfig:
 # dmesg.BUG:sleeping_function_called_from_invalid_context_at_kernel/kallsyms.c
 # - KALLSYMS_SELFTEST: y
 
+- PCI: y
+- CXL_BUS
 - SPARSEMEM: y
 - CXL_REGION: y
 - CXL_REGION_INVALIDATION_TEST: y
