@@ -2,6 +2,9 @@ suite: schbench
 testcase: schbench
 category: benchmark
 
+iterations:
+  - 3x
+
 schbench:
   message_threads:
     - 1
@@ -15,5 +18,3 @@ schbench:
   runtime:
     - 30s
     - 300s
-  iterations:
-    - 3x
