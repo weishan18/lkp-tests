@@ -561,19 +561,31 @@ end
 
 def put_dmesg_stamps(error_stamps, dmesg_file)
   timestamp_level = timestamp_levels(error_stamps, dmesg_file)
-  puts
-  error_stamps.each do |error_id, timestamp|
-    puts "timestamp:#{error_id}: #{timestamp}"
-    next if timestamp_level.empty?
+
+  dmesgs = error_stamps.map do |error_id, timestamp|
+    next [error_id, { timestamp: timestamp }] if timestamp_level.empty?
 
     at = timestamp_level.keys.bsearch_index { |t| t.to_f > timestamp.to_f } || timestamp_level.size
     if at.positive?
       last_timestamp = timestamp_level.keys[at - 1]
     else
       last_timestamp = timestamp_level.keys[at]
-      next if timestamp_level[last_timestamp] > 1
+      next [error_id, { timestamp: timestamp }] if timestamp_level[last_timestamp] > 1
     end
-    puts "bootstage:#{error_id}: #{timestamp_level[last_timestamp]}"
+
+    [error_id, { timestamp: timestamp, bootstage: timestamp_level[last_timestamp] }]
+  end
+
+  dmesgs = dmesgs.to_h
+
+  # sometimes the last line of dmesg is wrong like "[    0.000000][    T0] Linux version 6.2.0-02390-g88af9b164c7a (kbuild@b76c4d10fbf3)"
+  # to reduce the impact of this, reset last bootstage to be the max of all others
+  dmesgs['last'][:bootstage] &&= dmesgs.values.map { |v| v[:bootstage].to_i }.max
+
+  puts
+  dmesgs.each do |error_id, detail|
+    puts "timestamp:#{error_id}: #{detail[:timestamp]}"
+    puts "bootstage:#{error_id}: #{detail[:bootstage]}" if detail[:bootstage]
   end
 end
 
