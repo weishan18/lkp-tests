@@ -1,7 +1,7 @@
 suite: makepkg
 testcase: makepkg
 
-testbox: lkp-hsw-4ex1
+testbox: lkp-skl-fpga01
 branch: linus/master
 commit: RELEASE
 
