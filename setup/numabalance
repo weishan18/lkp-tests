@@ -1,0 +1,13 @@
+#!/bin/sh -e
+# - enable
+
+. $LKP_SRC/lib/reproduce-log.sh
+
+[ -n "$enable" ] || exit 0
+
+file="/proc/sys/kernel/numa_balancing"
+[ -f $file ] || exit 0
+
+log_eval "echo $enable > $file"
+
+exit 0
