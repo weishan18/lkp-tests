@@ -23,6 +23,7 @@ libpython3.9
 libslang2-dev
 libssl-dev
 libtraceevent1
+libtraceevent-dev
 libunwind8
 libunwind-dev
 libzstd-dev
