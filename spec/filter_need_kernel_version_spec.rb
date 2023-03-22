@@ -64,7 +64,7 @@ describe 'filter/need_kernel_version.rb' do
 
   context 'vm selftest renamed to mm selftest in v6.3-rc1' do
     { 'gcc' => 'v6.2', 'clang' => 'v6.2' }.each do |compiler, version|
-      it "filter out the job" do
+      it 'filter out the job' do
         generate_context(compiler, version)
         job = generate_job compiler, <<~EOF
               need_kernel_version:
@@ -76,7 +76,7 @@ describe 'filter/need_kernel_version.rb' do
     end
 
     { 'gcc' => 'v6.3-rc1', 'clang' => 'v6.3-rc1' }.each do |compiler, version|
-      it "does not filter out the job" do
+      it 'does not filter out the job' do
         generate_context(compiler, version)
         job = generate_job compiler, <<~EOF
               need_kernel_version:
