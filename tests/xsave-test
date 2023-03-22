@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $BENCHMARK_ROOT/xsave-test/test-xsave || exit
+cd $BENCHMARK_ROOT/xsave-test/test-xsave || die "fail to cd $BENCHMARK_ROOT/xsave-test/test-xsave"
 
 platform_is_ivb_or_snr()
 {
