@@ -1,0 +1,38 @@
+2023-03-22 17:09:35 build/tests/gem_ctx_bad_destroy --run-subtest invalid-pad
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Starting subtest: invalid-pad
+Subtest invalid-pad: SUCCESS (0.000s)
+2023-03-22 17:09:35 build/tests/gem_exec_async --run-subtest concurrent-writes
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Starting subtest: concurrent-writes
+Starting dynamic subtest: rcs0
+Dynamic subtest rcs0: SUCCESS (0.001s)
+Starting dynamic subtest: bcs0
+Dynamic subtest bcs0: SUCCESS (0.001s)
+Subtest concurrent-writes: SUCCESS (0.032s)
+2023-03-22 17:09:36 build/tests/gem_exec_async --run-subtest forked-writes
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Starting subtest: forked-writes
+Starting dynamic subtest: bcs0
+Dynamic subtest bcs0: SUCCESS (0.010s)
+Subtest forked-writes: SUCCESS (0.080s)
+LKP SKIP igt@gem_streaming_writes@batch-cpu
+LKP SKIP igt@gem_streaming_writes@batch-gtt
+LKP SKIP igt@gem_streaming_writes@batch-reverse-cpu
+2023-03-22 17:09:36 build/tests/i915_pm_backlight --run-subtest bad-brightness
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Test requirement not met in function __igt_unique____real_main228, file ../tests/i915/i915_pm_backlight.c:305:
+Test requirement: found
+No valid output found.
+Subtest bad-brightness: SKIP (0.000s)
+2023-03-22 17:09:36 build/tests/i915_pm_backlight --run-subtest basic-brightness
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Test requirement not met in function __igt_unique____real_main228, file ../tests/i915/i915_pm_backlight.c:305:
+Test requirement: found
+No valid output found.
+Subtest basic-brightness: SKIP (0.000s)
+LKP SKIP igt@i915_pm_backlight@fade-with-suspend
+2023-03-22 17:09:37 build/tests/i915_pm_rps --run-subtest basic-api
+IGT-Version: 1.27.1-g0d4bf61a (x86_64) (Linux: 6.3.0-rc3 x86_64)
+Starting subtest: basic-api
+Subtest basic-api: SUCCESS (0.001s)

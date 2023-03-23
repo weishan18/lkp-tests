@@ -1,0 +1,11 @@
+gem_ctx_bad_destroy.invalid-pad.pass: 1
+gem_exec_async.concurrent-writes.dynamic.rcs0.pass: 1
+gem_exec_async.concurrent-writes.dynamic.bcs0.pass: 1
+gem_exec_async.forked-writes.dynamic.bcs0.pass: 1
+gem_streaming_writes.batch-cpu.skip: 1
+gem_streaming_writes.batch-gtt.skip: 1
+gem_streaming_writes.batch-reverse-cpu.skip: 1
+i915_pm_backlight.bad-brightness.skip: 1
+i915_pm_backlight.basic-brightness.skip: 1
+i915_pm_backlight.fade-with-suspend.skip: 1
+i915_pm_rps.basic-api.pass: 1

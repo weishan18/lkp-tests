@@ -35,6 +35,8 @@ while (line = $stdin.gets)
 
     test_name = $2
     subtest_name = $3
+
+    has_dynamic_subtest = false
   when /^(SUCCESS|FAIL|CRASH)/
     # 1 2020-10-27 01:29:45 build/tests/core_getstats
     # 2 IGT-Version: 1.25-ga15f8da1 (x86_64) (Linux: 5.9.0-wt-17357-g18b04b6d608b x86_64)
