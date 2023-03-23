@@ -9,3 +9,4 @@ igt:
     - group-22
     - group-23
     - group-24
+    - gem_exec_reloc
