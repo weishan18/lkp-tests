@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.realpath($PROGRAM_NAME)))
+
+while (line = $stdin.gets)
+  case line
+  when /Netstat statistics for this run/
+    @runtest = 'Netstat'
+  when /Run Statistics/
+    @runtest = 'Runstat'
+  when /(\S+)\s+\d+\s+\d+\s+(.+)([KM][Bb]\/s)\s+(.+)([KM][Bb]\/s)/
+    # ens1 2 2 4.65Kb/s 1.21Kb/s
+    netcard = $1
+    outstat = $2
+    outunit = $3.to_s.strip.tr('/', 'p')
+    instat = $4
+    inunit = $5.to_s.strip.tr('/', 'p')
+    if @runtest =~ /Netstat/
+      puts "Netstat_#{netcard}_out_#{outunit}: #{outstat}"
+      puts "Netstat_#{netcard}_in_#{inunit}: #{instat}"
+    end
+  when /(\S+)\s+\S+\s+\S+\s+(.+)([KM][Bb]\/s)\s+\d+\s+\d+/
+    # master 32.34s 259.89MB 67.42Mb/s 3027910 0.00
+    hostname = $1
+    outstat = $2
+    outunit = $3.to_s.strip.tr('/', 'p')
+    puts "Runstat_#{hostname}_#{outunit}: #{outstat}" unless @runtest !~ /Runstat/
+  end
+end

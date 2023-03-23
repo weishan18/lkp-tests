@@ -1,0 +1,16 @@
+#!/bin/sh
+# - nr_threads
+# - protocol
+# - winsize
+# - runtime
+# - datasize
+
+run_uperf()
+{
+	local uperf_path
+	uperf_path=/lkp/benchmarks/uperf/usr/local/bin/uperf
+	[ -f "$uperf_path" ] || die "can not find $uperf_path"
+	log_cmd $uperf_path -m $LKP_SRC/programs/uperf/uperf_web.xml
+}
+
+run_uperf

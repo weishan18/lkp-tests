@@ -1,0 +1,31 @@
+suite: uperf
+testcase: uperf
+category: benchmark
+
+# upto 90% CPU cycles may be used by latency stats
+disable_latency_stats: 1
+
+set_nic_irq_affinity: 1
+
+runtime: 30s
+nr_threads:
+  - 1
+
+cluster: cs-localhost
+
+if role server:
+  uperf-server:
+
+if role client:
+  uperf:
+    test:
+      - uperf
+
+protocol:
+  - TCP
+  - UDP
+  - SCTP
+winsize:
+  - 32k
+datasize:
+  - 64
