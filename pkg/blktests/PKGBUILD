@@ -83,7 +83,7 @@ split_tests()
 	find -mindepth 1 -maxdepth 1 -type d | while read type;
 	do
 		type=$(basename $type)
-		$LKP_SRC/tools/split-tests $type-all 2 $type-group-
+		$LKP_SRC/tools/split-tests $type-all 20 $type-group-
 	done
 }
 
