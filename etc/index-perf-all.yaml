@@ -156,7 +156,6 @@ specjbb2015\.max-jOPS: 1
 specjbb2015\.median: 1
 stream\..+_bandwidth_MBps: 1
 stress-ng\..+_per_sec: 1
-stress-ng\..+_per_clone: 1
 stress-ng\..+_per_seek: 1
 stress-ng\..+_per_item: 1
 tbench\.throughput-MB\/sec: 1
