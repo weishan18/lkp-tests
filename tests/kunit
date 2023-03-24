@@ -14,7 +14,10 @@ if [[ "$group" = "group-00" ]]; then
 	            "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit" \
 	            "apparmor_policy_unpack_test" "fortify_kunit" \
 	            "drm_cmdline_parser_test" "drm_damage_helper_test" "drm_dp_mst_helper_test" "drm_mm_test" \
-	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test")
+	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test"\
+	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
+	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
+	            "siphash_kunit" "strscpy_kunit")
 elif [[ "$group" = "group-01" ]]; then
 	# test_kstrtox: could not insert 'test_kstrtox': Invalid argument
 	# test_string_helpers: could not insert 'test_string_helpers': Invalid argument
@@ -31,10 +34,6 @@ elif [[ "$group" = "group-01" ]]; then
 	            "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" \
 	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" \
 	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug")
-elif [[ "$group" = "group-02" ]]; then
-	test_array=("clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
-	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
-	            "siphash_kunit" "strscpy_kunit")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi
