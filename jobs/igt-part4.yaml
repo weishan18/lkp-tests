@@ -1,0 +1,12 @@
+suite: igt
+testcase: igt
+category: functional
+
+igt:
+  - group: gem_shrink
+
+---
+need_memory: 15G
+
+igt:
+  - group: gem_ctx_exec
