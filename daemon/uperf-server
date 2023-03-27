@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. $LKP_SRC/lib/reproduce-log.sh
+
+uperf_path=$BENCHMARK_ROOT/uperf/usr/local/bin/uperf
+[ -f "$uperf_path" ] || die "can not find $uperf_path"
+
+export PATH=$BENCHMARK_ROOT/uperf/usr/local/bin:$PATH
+
+# start uperf server
+log_eval "uperf -s &"

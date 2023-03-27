@@ -16,6 +16,7 @@ ftrace-onoff\.ops: 1
 fwq\.counts: 1
 glbenchmark\.fps: 1
 hackbench\.throughput: 1
+uperf\..+bps: 1
 iostat\..+\.wkB\/s: 1
 iozone\.average_KBps: 1
 iperf\..+\.bps: 1

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<profile name="netperf">
+  <group nthreads="$nr_threads">
+        <transaction iterations="1">
+            <flowop type="accept" options="remotehost=127.0.0.1 protocol=$protocol
+	    wndsz=$winsize tcp_nodelay"/>
+        </transaction>
+        <transaction duration="$runtime">
+            <flowop type="write" options="size=$datasize"/>
+            <flowop type="read" options="size=$datasize"/>
+        </transaction>
+        <transaction iterations="1">
+            <flowop type="disconnect" />
+        </transaction>
+  </group>
+</profile>

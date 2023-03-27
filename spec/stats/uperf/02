@@ -1,0 +1,28 @@
+Starting 1 threads running profile:netperf ...   0.00 seconds
+Txn1            0 /   1.00(s) =            0           1op/s
+Txn2      197.80M /  30.23(s) =    54.89Mb/s      107204op/s
+Txn3            0 /   0.00(s) =            0           0op/s
+---------------------------------------------------------------------------------------------------------------------
+Total     197.80M /  32.33(s) =    51.32Mb/s      100228op/s
+** Warning: Send buffer: 64.00KB (Requested:32.00KB)
+** Warning: Recv buffer: 64.00KB (Requested:32.00KB)
+
+Netstat statistics for this run
+---------------------------------------------------------------------------------------------------------------------
+Nic       opkts/s     ipkts/s      obits/s      ibits/s
+lo         100228      100228    93.01Mb/s    93.01Mb/s
+ens1            2           3     8.10Kb/s     1.60Kb/s
+---------------------------------------------------------------------------------------------------------------------
+
+Run Statistics
+Hostname            Time       Data   Throughput   Operations      Errors
+---------------------------------------------------------------------------------------------------------------------
+127.0.0.1         32.33s   197.80MB    51.32Mb/s      3240816        0.00
+master            32.33s   197.80MB    51.32Mb/s      3240816        0.00
+---------------------------------------------------------------------------------------------------------------------
+Difference(%)     -0.00%      0.00%        0.00%        0.00%       0.00%
+
+** Warning: Send buffer: 64.00KB (Requested:32.00KB)
+** Warning: Recv buffer: 64.00KB (Requested:32.00KB)
+** [127.0.0.1] Warning: Send buffer: 64.00KB (Requested:32.00KB)
+Warning: Recv buffer: 64.00KB (Requested:32.00KB)

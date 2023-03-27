@@ -1,0 +1,24 @@
+short_description: >
+ uperf is a network performance tool that supports modelling and replay of various networking patterns.
+
+description: |
+ uperf represents a new kind of benchmarking tool (like filebench) where instead of
+ running a fixed benchmark or workload, a description (or model) of the workload is
+ provided and the tool generates the load according to the model. By distilling the
+ benchmark or workload into a model, you can now do various things like change the
+ scale of the workload, change different parameters, change protocols, etc and
+ analyse the effect of these changes on your model. You can also study the effect
+ of interleaving CPU activity, or think times or the use of SSL instead of TCP
+ among many other things. 
+
+homepage: https://github.com/uperf/uperf
+
+parameters:
+ nr_threads:    number of threads
+ protocol:      transport protocol and can be "tcp", "udp" or "sctp"
+ winsize:       window size
+ runtime:       duration of the run
+ datasize:      read/write message size
+
+results:
+ uperf.throughput: unit-Mb/s
