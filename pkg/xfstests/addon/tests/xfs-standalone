@@ -20,3 +20,5 @@
 136
 # execution time > 40mins
 140
+# execution time > 15m on xfs
+580
