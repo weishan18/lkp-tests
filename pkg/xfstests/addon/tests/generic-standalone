@@ -43,3 +43,5 @@
 464
 # execution time > 12h
 650
+# execution time > 20m on "fs: ext4; fs2: smbv2"
+676
