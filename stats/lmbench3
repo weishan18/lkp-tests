@@ -217,7 +217,15 @@ while (line = $stdin.gets)
   when /^"Mmap read open2close bandwidth$/
     puts "MMAP.read_open2close.bandwidth.MB/sec: #{largest_value}"
 
-  when /bw_mem/
+  # skip build log and only stat runtime log
+  # gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_mem bw_mem.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+  # bw_mem.c: In function 'main':
+  # bw_mem.c:76:23: warning: implicit declaration of function 'lmbench_usage' [-Wimplicit-function-declaration]
+  #   76 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+  #       |                       ^~~~~~~~~~~~~
+  # 2022-08-31 10:28:22 ./bin/x86_64-linux-gnu/bw_mem -P 1 268435456 rd
+  # 268.44 13805.57
+  when /bw_mem -P/
     puts "Mem.Bandwidth.MB/sec: #{read_mb_sec}"
   end
 end
