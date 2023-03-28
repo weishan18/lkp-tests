@@ -1,2 +1,35 @@
+cd src && make
+make[1]: Entering directory '/lkp/benchmarks/lmbench3/src'
+gmake[2]: Entering directory '/lkp/benchmarks/lmbench3/src'
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_file_rd bw_file_rd.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_file_rd.c: In function ‘main’:
+bw_file_rd.c:149:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+  149 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+      |                       ^~~~~~~~~~~~~
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_mem bw_mem.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_mem.c: In function ‘main’:
+bw_mem.c:76:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+   76 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+      |                       ^~~~~~~~~~~~~
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_mmap_rd bw_mmap_rd.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_mmap_rd.c: In function ‘main’:
+bw_mmap_rd.c:64:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+   64 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+      |                       ^~~~~~~~~~~~~
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_pipe bw_pipe.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_pipe.c: In function ‘main’:
+bw_pipe.c:157:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+  157 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+      |                       ^~~~~~~~~~~~~
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_tcp bw_tcp.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_tcp.c: In function ‘main’:
+bw_tcp.c:74:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+   74 |    if (parallel <= 0) lmbench_usage(ac, av, usage);
+      |                       ^~~~~~~~~~~~~
+gcc -O -DRUSAGE -DHAVE_uint=1 -DHAVE_int64_t=1 -DHAVE_DRAND48 -DHAVE_SCHED_SETAFFINITY=1   -I/usr/include/tirpc -o ../bin/x86_64-linux-gnu/bw_unix bw_unix.c ../bin/x86_64-linux-gnu/lmbench.a -lm -ltirpc
+bw_unix.c: In function ‘main’:
+bw_unix.c:153:23: warning: implicit declaration of function ‘lmbench_usage’ [-Wimplicit-function-declaration]
+  153 |    if (parallel <= 0) lmbench_usage(argc, argv, usage);
+      |                       ^~~~~~~~~~~~~
 2022-08-31 10:28:22 ./bin/x86_64-linux-gnu/bw_mem -P 1 268435456 rd
 268.44 13805.57
