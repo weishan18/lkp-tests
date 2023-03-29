@@ -22,8 +22,6 @@ group:
   - pmemspoil
   - pmreorder
   - remote
-  - rpmem
-  - rpmemd
   - set
   - unicode
 
@@ -38,8 +36,6 @@ group:
   - obj
   - out
   - pmem
-  - rpmem
-  - rpmemd
   - traces
   - util
 
