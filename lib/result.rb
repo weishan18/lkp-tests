@@ -65,13 +65,6 @@ class ResultPath < Hash
       self[key] = dirs.shift
     end
 
-    if self['path_params']
-      ucode = self['path_params'][/ucode=0x[0-9a-z]*/]
-      self['ucode'] = ucode.split('=').last if ucode
-
-      self['unified_path_params'] = self.class.unified_path_params self['path_params']
-    end
-
     if ps.include?('commit')
       each_commit do |_type, commit|
         return false unless self[commit]
@@ -169,10 +162,6 @@ class ResultPath < Hash
 
       cmdline = "grep -he '#{pattern}' #{KTEST_PATHS_DIR}/*/????-??-??-* | sed -e 's#[0-9]\\+/$##' | sort | uniq"
       `#{cmdline}`
-    end
-
-    def unified_path_params(path)
-      path.sub(/-?ucode=[a-zA-Z0-9]{0,10}/, '')
     end
   end
 end

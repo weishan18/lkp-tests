@@ -13,17 +13,11 @@ describe ResultPath do
           expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/aim7/performance-2000-fork_test/brickland3/debian-x86_64-2015-02-07.cgz/x86_64-rhel/gcc-4.9/0f57d86787d8b1076ea8f9cbdddda2a46d534a27")).to be true
           expect(result_path['testcase']).to eq 'aim7'
           expect(result_path['path_params']).to eq 'performance-2000-fork_test'
-          expect(result_path['ucode']).to eq nil
           expect(result_path['tbox_group']).to eq 'brickland3'
           expect(result_path['rootfs']).to eq 'debian-x86_64-2015-02-07.cgz'
           expect(result_path['kconfig']).to eq 'x86_64-rhel'
           expect(result_path['compiler']).to eq 'gcc-4.9'
           expect(result_path['commit']).to eq '0f57d86787d8b1076ea8f9cbdddda2a46d534a27'
-
-          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/will-it-scale/performance-thread-100%-brk1-ucode=0x20/lkp-ivb-d01/debian-x86_64-20180403.cgz/x86_64-rhel-7.2/gcc-7/8fe28cb58bcb235034b64cbbb7550a8a43fd88be/0")).to be true
-          expect(result_path['ucode']).to eq '0x20'
-          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/hackbench/1600%-process-pipe-ucode=0x20-performance/lkp-ivb-d01/debian-x86_64-20180403.cgz/x86_64-rhel-7.2/gcc-7/017c4be4feb493ba63d51bed02225c136820bdf7")).to be true
-          expect(result_path['ucode']).to eq '0x20'
         end
       end
       context 'when invalid result root' do
@@ -91,9 +85,9 @@ describe ResultPath do
         it 'succesds' do
           result_path = described_class.new
 
-          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/kvm:vm-scalability/performance-300s-lru-file-mmap-read-rand-ucode=0x2000065/lkp-skl-2sp7/debian-x86_64-20191114.cgz/x86_64-rhel-7.6/gcc-7/7472c4028e2357202949f99ad94c5a5a34f95666/0")).to be true
+          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/kvm:vm-scalability/performance-300s-lru-file-mmap-read-rand/lkp-skl-2sp7/debian-x86_64-20191114.cgz/x86_64-rhel-7.6/gcc-7/7472c4028e2357202949f99ad94c5a5a34f95666/0")).to be true
           expect(result_path['testcase']).to eq 'kvm:vm-scalability'
-          expect(result_path['path_params']).to eq 'performance-300s-lru-file-mmap-read-rand-ucode=0x2000065'
+          expect(result_path['path_params']).to eq 'performance-300s-lru-file-mmap-read-rand'
           expect(result_path['tbox_group']).to eq 'lkp-skl-2sp7'
           expect(result_path['rootfs']).to eq 'debian-x86_64-20191114.cgz'
           expect(result_path['kconfig']).to eq 'x86_64-rhel-7.6'
@@ -106,7 +100,7 @@ describe ResultPath do
           result_path = described_class.new
 
           expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/kvm:vm-scalability/lkp-skl-2sp7/debian-x86_64-20191114.cgz/x86_64-rhel-7.6/gcc-7/7472c4028e2357202949f99ad94c5a5a34f95666/")).to be false
-          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/kvm:vm-scalability/performance-300s-lru-file-mmap-read-rand-ucode=0x2000065/lkp-skl-2sp7/debian-x86_64-20191114.cgz/x86_64-rhel-7.6/gcc-7/747")).to be false
+          expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/kvm:vm-scalability/performance-300s-lru-file-mmap-read-rand/lkp-skl-2sp7/debian-x86_64-20191114.cgz/x86_64-rhel-7.6/gcc-7/747")).to be false
         end
       end
     end
@@ -345,7 +339,6 @@ describe ResultPath do
         expect(result_path.parse_result_root("#{RESULT_ROOT_DIR}/will-it-scale/process-100%-brk1/shao2-debian/debian/x86_64-rhel-7.6/gcc-7/4.19.0-4-amd64/0", is_local_run: true)).to be true
         expect(result_path['testcase']).to eq 'will-it-scale'
         expect(result_path['path_params']).to eq 'process-100%-brk1'
-        expect(result_path['ucode']).to eq nil
         expect(result_path['tbox_group']).to eq 'shao2-debian'
         expect(result_path['rootfs']).to eq 'debian'
         expect(result_path['kconfig']).to eq 'x86_64-rhel-7.6'

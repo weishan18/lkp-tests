@@ -365,11 +365,11 @@
                28	6.546
                29	3.284
                30	6.335
-[   21.937492] RESULT_ROOT=/result/rcurefscale/10000-50%-30-0-rcu-ucode=0x5003006/lkp-csl-2sp9/debian-10.4-x86_64-20200603.cgz/x86_64-rhel-8.3-customedconfig-rcurefscale/gcc-9/64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc/0
+[   21.937492] RESULT_ROOT=/result/rcurefscale/10000-50%-30-0-rcu/lkp-csl-2sp9/debian-10.4-x86_64-20200603.cgz/x86_64-rhel-8.3-customedconfig-rcurefscale/gcc-9/64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc/0
 
 [   21.963151] job=/lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml
 
-[   24.841447] result_service: raw_upload, RESULT_MNT: /internal-lkp-server/result, RESULT_ROOT: /internal-lkp-server/result/rcurefscale/10000-50%-30-0-rcu-ucode=0x5003006/lkp-csl-2sp9/debian-10.4-x86_64-20200603.cgz/x86_64-rhel-8.3-customedconfig-rcurefscale/gcc-9/64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc/0, TMP_RESULT_ROOT: /tmp/lkp/result
+[   24.841447] result_service: raw_upload, RESULT_MNT: /internal-lkp-server/result, RESULT_ROOT: /internal-lkp-server/result/rcurefscale/10000-50%-30-0-rcu/lkp-csl-2sp9/debian-10.4-x86_64-20200603.cgz/x86_64-rhel-8.3-customedconfig-rcurefscale/gcc-9/64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc/0, TMP_RESULT_ROOT: /tmp/lkp/result
 
 [   24.877944] run-job /lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml
 
