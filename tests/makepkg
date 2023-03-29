@@ -22,7 +22,7 @@ export GIT_SSL_NO_VERIFY=true
 . $LKP_SRC/distro/${DISTRO}
 . $LKP_SRC/lib/install.sh
 
-cd $LKP_SRC/pkg/$benchmark || die "pkg is empty"
+cd $(get_pkg_dir $benchmark) || die "pkg is empty"
 
 pack_to=$(basename $rootfs)
 PKG_MNT=/osimage/pkg
