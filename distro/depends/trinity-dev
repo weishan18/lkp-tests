@@ -7,7 +7,6 @@ gettext-base
 groff-base
 intltool-debian
 libarchive-zip-perl
-libcroco3
 libfile-stripnondeterminism-perl
 libicu
 libpipeline1
