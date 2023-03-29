@@ -8,6 +8,7 @@ source=('https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git'
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 . $LKP_SRC/lib/tests/common.sh
+. $LKP_SRC/lib/install.sh
 
 build_install_xfstests()
 {
@@ -140,7 +141,7 @@ generate_tests()
 {
 	benchmark_path="${pkgdir}/lkp/benchmarks/${pkgname}"
 
-	for tests in $LKP_SRC/pkg/${pkgname}/addon/tests/*
+	for tests in $(get_pkg_dir $pkgname)/addon/tests/*
 	do
 		cat $tests | grep -v '^#' > $benchmark_path/tests/$(basename $tests)
 	done
