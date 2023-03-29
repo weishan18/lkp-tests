@@ -11,5 +11,5 @@ notify_build_success_branch: .*
 clone_from_upsteam_repos:
 - tip
 belongs_to: general scheduler
-branch_denylist: x86/mm
+branch_denylist: x86/mm|sched/eevdf|sched/eevdf2
 no_merge_branch: sched/wip
