@@ -10,6 +10,10 @@ nr_task:
 
 target: autoksyms_recursive
 
+build_kconfig:
+  - allyesconfig
+  - defconfig
+
 kbuild:
 
 ---
