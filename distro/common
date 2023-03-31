@@ -26,6 +26,7 @@ show_deps_list()
 -allowlist$"
 
 	find $LKP_SRC/distro/depends/ -type f | sed 's:.*/::' | grep -v "$denylist"
+	find $LKP_SRC/programs/ -mindepth 1 -maxdepth 1 -type d -printf "%f\n"
 }
 
 show_pack_list()
