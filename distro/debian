@@ -205,7 +205,7 @@ distro_install_depends()
 	apt-get install -yf
 	packages=$(get_dependency_packages $DISTRO $bm)
 
-	[ -z "$packages" ] && continue
+	[ -z "$packages" ] && return
 
 	echo install packages for $bm: $packages
 
