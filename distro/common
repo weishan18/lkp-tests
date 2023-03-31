@@ -6,10 +6,14 @@ check_shared_package()
 {
 	local bm_name="$1"
 
-	[[ -L "$LKP_SRC/distro/depends/$bm_name" ]] || return
+	depends_link=$(get_dependency_file "$bm_name")
+	[[ -L "$depends_link" ]] || return
 
 	local target
-	target=$(readlink $LKP_SRC/distro/depends/$bm_name)
+	target=$(readlink $depends_link)
+	# $LKP_SRC/distro/depends/${pkg}
+	# $LKP_SRC/programs/${pkg}/pkg/{depends|depends-dev}
+	target=${target%/pkg/depends*}
 	target=$(basename $target)
 
 	BM_NAME="$target"
