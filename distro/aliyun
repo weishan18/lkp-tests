@@ -18,26 +18,26 @@ distro_install_depends()
 {
 	local script
 	local bm="$1"
-	local scripts=$(find $LKP_SRC/distro/depends/ -name "$bm" -o -name "${bm}.[0-9]")
+	local script=$LKP_SRC/distro/depends/$bm
+	[[ -f $script ]] || {
+		echo "no depends file found for $bm"
+		return 0
+	}
 
 	support_repo_epel
 
-	for script in $scripts
+	packages=$(get_dependency_packages $DISTRO $bm)
+
+	[ -z "$packages" ] && continue
+
+	echo install packages for $bm: $packages
+
+	local ocfs2_tools_name=$(echo "$packages" | grep 'ocfs2-tools')
+	[ -n "$ocfs2_tools_name" ] && install_ocfs2_tools "$ocfs2_tools_name"
+
+	for pkg in $packages
 	do
-		script=$(basename $script)
-		packages=$(get_dependency_packages $DISTRO $script)
-
-		[ -z "$packages" ] && continue
-
-		echo install packages for $script: $packages
-
-		local ocfs2_tools_name=$(echo "$packages" | grep 'ocfs2-tools')
-		[ -n "$ocfs2_tools_name" ] && install_ocfs2_tools "$ocfs2_tools_name"
-
-		for pkg in $packages
-		do
-			rpm --quiet --query $pkg || yum install -y $pkg
-		done
+		rpm --quiet --query $pkg || yum install -y $pkg
 	done
 }
 

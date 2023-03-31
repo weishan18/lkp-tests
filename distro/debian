@@ -191,7 +191,11 @@ distro_install_depends()
 {
 	local script
 	local bm="$1"
-	local scripts=$(find $LKP_SRC/distro/depends/ -name "$bm" -o -name "${bm}.[0-9]")
+	local script=$LKP_SRC/distro/depends/$bm
+	[[ -f $script ]] || {
+		echo "no depends file found for $bm"
+		return 0
+	}
 	local arch=$(get_system_arch)
 
 	export DEBIAN_FRONTEND=noninteractive
@@ -199,21 +203,15 @@ distro_install_depends()
 	update
 
 	apt-get install -yf
-	for script in $scripts
-	do
-		script=$(basename $script)
-		packages=$(get_dependency_packages $DISTRO $script)
+	packages=$(get_dependency_packages $DISTRO $bm)
 
-		[ -z "$packages" ] && continue
+	[ -z "$packages" ] && continue
 
-		echo install packages for $script: $packages
+	echo install packages for $bm: $packages
 
-		do_apt_install
-
-		# some apt mirrors may have issue and fail in the first time of apt install
-		# so try for a second time if the first time fails
-		[[ $? -eq 0 ]] || do_apt_install || return
-	done
+	# some apt mirrors may have issue and fail in the first time of apt install
+	# so try for a second time if the first time fails
+	do_apt_install || do_apt_install
 }
 
 pack_benchmark()
