@@ -191,7 +191,7 @@ distro_install_depends()
 {
 	local script
 	local bm="$1"
-	local script=$LKP_SRC/distro/depends/$bm
+	local script=$(get_dependency_file $bm)
 	[[ -f $script ]] || {
 		echo "no depends file found for $bm"
 		return 0
