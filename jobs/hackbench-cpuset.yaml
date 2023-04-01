@@ -1,6 +1,4 @@
-suite: hackbench
-testcase: hackbench
-category: benchmark
+<< : jobs/hackbench.yaml
 
 nr_node: $(echo /sys/devices/system/node/node* | wc -w)
 cgroup:
@@ -8,12 +6,3 @@ cgroup:
   cpuset.cpus: 0-$((nr_cpu-1))
 
 nr_threads: 1600%
-iterations: 10
-
-hackbench:
-  mode:
-    - process
-    - threads
-  ipc:
-    - pipe
-    - socket
