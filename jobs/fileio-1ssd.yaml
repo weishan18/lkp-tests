@@ -1,26 +1,3 @@
-suite: fileio
-testcase: fileio
-category: benchmark
-
-period: 600s
-nr_threads: 100%
+<< : jobs/fileio.yaml
 
 disk: 1SSD
-fs:
-  - xfs
-  - ext4
-  - btrfs
-
-size: 64G
-
-fileio:
-  filenum: 1024f
-  rwmode:
-    - seqwr
-    - seqrewr
-    - seqrd
-    - rndrd
-    - rndrw
-    - rndwr
-  iomode:
-    - sync
