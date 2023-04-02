@@ -3,14 +3,7 @@ testcase: ltp
 category: functional
 
 need_memory: 4G
-need_physical_tbox: true
 
-ltp:
-  test:
-    - syscalls-tgkill
-    - syscalls-timer
-
----
 oom-killer:
   ignored: 1
 

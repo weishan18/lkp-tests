@@ -1,15 +1,4 @@
-suite: ltp
-testcase: ltp
-category: functional
-
-need_memory: 4G
-
-disk: 1HDD
-fs:
-  - ext4
-  - xfs
-  - btrfs
-  - f2fs
+<< : jobs/ltp-syscalls.yaml
 
 need_node: 2
 

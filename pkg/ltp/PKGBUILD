@@ -149,20 +149,8 @@ split_syscalls_tests()
 {
 	echo split_syscalls_tests
 
-	cd $srcdir/$pkgname || return
-
-	local timer_tests
-	timer_tests=$(grep -lr "sample = sample_fn" ./) || return
-
 	cd $srcdir/$pkgname/runtest || return
 
-	for timer_test in $timer_tests; do
-		timer_test=${timer_test##*/}
-		timer_test=${timer_test%%.*}
-		grep "^$timer_test" syscalls >> syscalls-timer
-	done
-
-	grep "^tgkill" syscalls >> syscalls-tgkill || return
 	grep "^setsockopt06" syscalls >> syscalls-setsockopt06 || return
 	# need 2 numa node
 	grep -Ee "^(mbind|move_pages|migrate_pages|set_mempolicy)" syscalls >> syscalls-numa || return
@@ -174,7 +162,7 @@ split_syscalls_tests()
 		echo $line > ./"${line//[[:blank:]]/.}"
 	done < <(cat $standalone_file | grep -v '^#')
 
-	grep -v -f syscalls-timer -f syscalls-tgkill -f syscalls-setsockopt06 -f syscalls-numa syscalls -f $standalone_file > syscalls-rest || return
+	grep -v -f syscalls-setsockopt06 -f syscalls-numa syscalls -f $standalone_file > syscalls-rest || return
 	$LKP_SRC/tools/split-tests syscalls-rest 8 syscalls-
 	hide syscalls-rest
 	hide syscalls

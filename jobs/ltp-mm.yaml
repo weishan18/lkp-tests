@@ -6,6 +6,7 @@ need_memory: 4G
 
 disk: 1HDD
 fs:
+
 ltp:
   test:
     - mm-00
