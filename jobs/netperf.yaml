@@ -9,13 +9,13 @@ set_nic_irq_affinity: 1
 
 ip:
   - ipv4
-# - ipv6
+  # - ipv6
 
 runtime: 300s
 nr_threads:
-  - 50%
-  - 25%
   - 1
+  - 50%
+  - 200%
 
 cluster: cs-localhost
 
@@ -32,49 +32,15 @@ if role client:
       # send_sctp_rr_1toMany: data send error: Invalid argument
       #  - SCTP_RR_MANY
       - SCTP_STREAM
-
----
-runtime: 900s
-
-if role client:
-  netperf:
-    test:
+      - UDP_STREAM
+      - TCP_CRR # needs tuning, tests more kernel than driver
       - TCP_STREAM
       - TCP_MAERTS
 
 ---
-runtime: 300s
-need_memory: 2G
-
 if role client:
   netperf:
     send_size: 10K
     test:
       - SCTP_STREAM_MANY
-
----
-nr_threads:
-  - 1
-
-if role client:
-  netperf:
-    test:
-      - UDP_STREAM
-
----
-# TCP_SENDFILE: set send_size: 5K to avoid sendfile: No space left on device
-if role client:
-  netperf:
-    send_size: 5K
-    test:
-      - TCP_SENDFILE
-
----
-nr_threads:
-  - 1
-  - 16
-
-if role client:
-  netperf:
-    test:
-      - TCP_CRR # needs tuning, tests more kernel than driver
+      - TCP_SENDFILE # set send_size: 10K to avoid sendfile: No space left on device
