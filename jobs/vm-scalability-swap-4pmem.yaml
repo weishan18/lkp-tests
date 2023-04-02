@@ -1,4 +1,4 @@
-<<: jobs/vm-scalability-swap.yaml
+<< : jobs/vm-scalability-swap.yaml
 
 disk:
   nr_pmem: 4
@@ -8,8 +8,3 @@ boot_params:
   bp2_memmap: 24G!28G
   bp3_memmap: 24G!66G
   bp4_memmap: 24G!90G
-
-swap:
-  priority: 1
-
-perf-node:

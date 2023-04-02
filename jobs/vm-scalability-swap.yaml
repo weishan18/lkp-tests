@@ -12,7 +12,11 @@ transparent_hugepage:
   thp_enabled:
     - never
     - always
-  thp_defrag: always
+  thp_defrag:
+    - never
+    - always
+
+size:
 
 nr_task:
   - 8
@@ -20,7 +24,9 @@ nr_task:
 
 disk: # place holder because setup/swap has to run after setup/disk
 swap:
+  priority: 1
 
+perf-node:
 perf-profile:
   delay: 20
 
