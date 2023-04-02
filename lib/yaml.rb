@@ -107,7 +107,7 @@ def yaml_merge_included_files(yaml, relative_to, search_paths = nil)
     prefix = $1
     file = $2.chomp
     path = search_file_in_paths file, relative_to, search_paths
-    raise "Included yaml file not found: '#{file}'" unless path
+    raise "included yaml file not found | file: #{file}, relative_to: #{relative_to}, search_paths: #{search_paths}" unless path
 
     to_merge = File.read path
     indent = prefix.tr '^ ', ' '
