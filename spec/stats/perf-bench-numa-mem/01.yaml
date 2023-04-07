@@ -1,0 +1,10 @@
+secs_latency: 6.801
+secs_slowest: 6.801
+secs_fastest: 4.000
+secs_avg: 5.650
+max_avg_diff: 20.594
+GB_per_thread: 0.836
+GB_total: 213.991
+nsecs_byte_thread: 8.136
+GB_sec_thread: 0.123
+GB_sec_total: 31.463

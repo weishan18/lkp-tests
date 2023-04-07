@@ -1,0 +1,31 @@
+2023-04-10 10:53:01 perf bench numa mem -p 128 -t 2 -m -0 -P 300
+# Running 'numa/mem' benchmark:
+
+ # Running main, "perf bench numa numa-mem -p 128 -t 2 -m -0 -P 300"
+#
+#
+
+ ###
+ # 256 tasks will execute (on 2 nodes, 128 CPUs):
+ #         -1x     1MB global  shared mem operations
+ #         -1x   300MB process shared mem operations
+ #         -1x     0MB thread  local  mem operations
+ ###
+
+ ###
+ #
+ # Startup synchronization: ... threads initialized in 1.086025 seconds.
+ #
+
+ ###
+
+ main,                                    6.801, secs,           NUMA-convergence-latency
+ main,                                    6.801, secs,           runtime-max/thread
+ main,                                    4.000, secs,           runtime-min/thread
+ main,                                    5.650, secs,           runtime-avg/thread
+ main,                                   20.594, %,              spread-runtime/thread
+ main,                                    0.836, GB,             data/thread
+ main,                                  213.991, GB,             data-total
+ main,                                    8.136, nsecs,          runtime/byte/thread
+ main,                                    0.123, GB/sec,         thread-speed
+ main,                                   31.463, GB/sec,         total-speed

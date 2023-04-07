@@ -2,7 +2,9 @@ suite: perf-bench-numa-mem
 testcase: perf-bench-numa-mem
 category: benchmark
 
+nr_processes: 100%
 nr_threads: 2t
 
 perf-bench-numa-mem:
   mem_proc: 300M
+  extra_params:
