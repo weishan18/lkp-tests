@@ -113,7 +113,12 @@ distro_pkg_format() {
 upgrade() {
 	local SRC_DIR
 	SRC_DIR=$(pwd)
+
+	# lkp-tests/pkg/testcase
 	local pkg_name=${SRC_DIR##*/}
+	# lkp-tests/programs/testcase/pkg
+	[ "$pkg_name" = "pkg" ] && pkg_name=$(basename $(dirname "$SRC_DIR"))
+
 	local INSTALL_DIR="$SRC_DIR/$pkg_name-lkp"
 	[ -d "$INSTALL_DIR" ] || mkdir "$INSTALL_DIR"
 	[ -d "$SRC_DIR/.install" ] || mkdir "$SRC_DIR/.install"
