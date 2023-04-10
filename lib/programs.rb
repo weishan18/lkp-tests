@@ -50,6 +50,13 @@ module LKP
 
         candidates.find { |file| File.exist? file }
       end
+
+      def find_pkg_dir(program)
+        [
+          "#{PROGRAMS_ROOT}/#{program}/pkg",
+          "#{LKP_SRC}/pkg/#{program}"
+        ].find { |path| Dir.exist? path }
+      end
     end
   end
 end
