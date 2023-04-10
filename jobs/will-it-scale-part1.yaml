@@ -12,6 +12,11 @@ will-it-scale:
     - thread
     - process
   test:
+    - atomic_exchange1
+    - atomic_exchange2
+    - atomic_exchange3
+    - atomic_exchange4
+    - atomic_exchange5
     - brk1
     - brk2
     - dup1
