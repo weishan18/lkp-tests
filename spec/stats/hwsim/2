@@ -1,0 +1,24 @@
+2023-04-07 09:36:42 export USER=root
+2023-04-07 09:36:42 ./build.sh
+Building TNC testing tools
+hostap_imc.c:9:10: fatal error: includes.h: No such file or directory
+    9 | #include "includes.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:19: libhostap_imc.so] Error 1
+make: *** Waiting for unfinished jobs....
+hostap_imv.c:9:10: fatal error: includes.h: No such file or directory
+    9 | #include "includes.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:19: libhostap_imv.so] Error 1
+hostap2_imc.c:9:10: fatal error: includes.h: No such file or directory
+    9 | #include "includes.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:19: libhostap2_imc.so] Error 1
+hostap2_imv.c:9:10: fatal error: includes.h: No such file or directory
+    9 | #include "includes.h"
+      |          ^~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:19: libhostap2_imv.so] Error 1
