@@ -29,6 +29,7 @@ xfstests:
     - generic-group-33
     - generic-group-34
     - generic-group-35
+    - generic-group-36
 
 ---
 fs:
