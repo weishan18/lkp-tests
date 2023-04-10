@@ -23,7 +23,6 @@ group:
   - pmempool
   - pmemspoil
   - pmreorder
-  - remote
   - set
   - unicode
   - util
