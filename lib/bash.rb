@@ -15,7 +15,7 @@ module Bash
       options[:exitstatus] ||= [0]
 
       output = `bash -c #{Shellwords.escape(command)}`.chomp
-      raise Bash::BashCallError, command unless options[:exitstatus].include?($CHILD_STATUS.exitstatus)
+      raise Bash::BashCallError, options[:show_output] ? "#{command}\n#{output}" : command unless options[:exitstatus].include?($CHILD_STATUS.exitstatus)
 
       output
     end
