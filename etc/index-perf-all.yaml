@@ -12,7 +12,6 @@ dd\..+_time_ms: -1
 ebizzy\.throughput: 1
 exit-free\.duration: -1
 filebench\.sum_operations\/s: 1
-filebench\.sum_bytes_mb\/s: 1
 fileio\..+_operations\/s: 1
 fio\..+_bw_MBps: 1
 fio\..+_iops: 1
