@@ -51,7 +51,7 @@ module Bashable
       end
 
       unless $CHILD_STATUS.success?
-        puts lines.join unless lines.empty?
+        puts lines.join unless pipe || lines.empty?
         raise "cmd: #{cmd.inspect}, exitstatus: #{$CHILD_STATUS.exitstatus}"
       end
 
