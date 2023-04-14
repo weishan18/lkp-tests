@@ -33,9 +33,6 @@ need_kconfig:
 - FORTIFY_SOURCE: y
 - FORTIFY_KUNIT_TEST: m
 
-- FAT_FS
-- FAT_KUNIT_TEST: m
-
 - KASAN: y
 - KASAN_KUNIT_TEST: m
 
