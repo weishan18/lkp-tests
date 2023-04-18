@@ -16,7 +16,7 @@ consider to create image for interested test for easy reuse.
 	image=debian/buster
 	docker build -f docker/${image}/Dockerfile -t lkp-tests/${image}:latest -t lkp-tests/${image}:$(git log -1 --pretty=%h) --build-arg hostname=lkp-docker .
 
-	docker run --rm lkp-tests/${image} lkp help
+	docker run --rm --entrypoint '' lkp-tests/${image} lkp help
 ```
 
 ## Run one atomic job
