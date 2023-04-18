@@ -26,11 +26,10 @@ def puts_one_task(task, run, period, slack, wu_lat)
     puts "#{task}.slack.stddev: #{slack.standard_deviation}"
     puts "#{task}.wu_lat.average: #{wu_lat.average}"
     puts "#{task}.wu_lat.stddev: #{wu_lat.standard_deviation}"
+    puts "#{task}.pass: 1"
   else
     # sometimes empty data for some tasks which is expected
-    # just warning here
-    log_error 'stats/rt-app: invalid data'
-    exit 1
+    puts "#{task}.fail: 1"
   end
 end
 

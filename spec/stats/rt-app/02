@@ -1,0 +1,17 @@
+./web-Display-8.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+   8      666    26414    64055        50708451        50772506           24147          0      16000          0          0
+./web-Event-Display-7.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+   7        2       83    37155        50708828        50745983           24523          0         50          0          0
+./web-Event-Browser-6.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+./web-Binder-display-5.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+   5       12      542    21084        50708707        50729791           24402          0        300          0          0
+./web-Binder-dummy-4.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+   4        4      179    20862        50708572        50729434           24267          0        100          0          0
+./web-BrowserDisplay-3.log
+#idx     perf      run   period           start             end          rel_st      slack c_duration   c_period     wu_lat
+   3       16      755    20554        50708885        50729439           24580          0        400          0          0
