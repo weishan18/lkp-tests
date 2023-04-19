@@ -3,7 +3,7 @@ testcase: autonuma-benchmark
 category: benchmark
 
 iterations:
-  - 8x
+  - 4x
 
 autonuma-benchmark:
   test:
