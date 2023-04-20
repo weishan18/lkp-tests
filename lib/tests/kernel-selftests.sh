@@ -81,7 +81,7 @@ prepare_for_bpf()
 			#  CLNG-BPF [test_maps] bpf_iter_task_vma.o
 			# /bin/sh: 1: ./tools/bpf/resolve_btfids/resolve_btfids: not found
 			cd $linux_selftests_dir &&
-			make -C tools/bpf/resolve_btfids &&
+			make -j${nr_cpu} -C tools/bpf/resolve_btfids &&
 			mkdir -p $linux_headers_mod_dirs/tools/bpf/resolve_btfids &&
 			cp tools/bpf/resolve_btfids/resolve_btfids $linux_headers_mod_dirs/tools/bpf/resolve_btfids/
 		)
@@ -247,7 +247,7 @@ fixup_net()
 {
 	# udpgro tests need enable bpf firstly
 	# Missing xdp_dummy helper. Build bpf selftest first
-	log_cmd make -C bpf 2>&1
+	log_cmd make -j${nr_cpu} -C bpf 2>&1
 
 	skip_specific_net_cases
 
@@ -263,7 +263,7 @@ fixup_net()
 	[ "$test" = "fcnal-test.sh" ] && [ "$atomic_test" ] && setup_fcnal_test_atomic
 
 	export CCINCLUDE="-I../bpf/tools/include"
-	log_cmd make -C ../../../tools/testing/selftests/net 2>&1 || return
+	log_cmd make -j${nr_cpu} -C ../../../tools/testing/selftests/net 2>&1 || return
 	log_cmd make install INSTALL_PATH=/usr/bin/ -C ../../../tools/testing/selftests/net 2>&1 || return
 }
 
@@ -335,7 +335,7 @@ fixup_gpio()
 {
 	# gcc -O2 -g -std=gnu99 -Wall -I../../../../usr/include/    gpio-mockup-chardev.c ../../../gpio/gpio-utils.o ../../../../usr/include/linux/gpio.h  -lmount -I/usr/include/libmount -o gpio-mockup-chardev
 	# gcc: error: ../../../gpio/gpio-utils.o: No such file or directory
-	log_cmd make -C ../../../tools/gpio 2>&1 || return
+	log_cmd make -j${nr_cpu} -C ../../../tools/gpio 2>&1 || return
 	export CFLAGS="-I../../../../usr/include"
 }
 
@@ -448,7 +448,7 @@ fixup_bpf()
 	[[ "$LKP_LOCAL_RUN" = "1" ]] || [[ -f ../../../tools/include/tools/dis-asm-compat.h ]] ||
 	log_cmd sed -i -z "s/extern void init_disassemble_info (struct disassemble_info \*dinfo, void \*stream,\n.*fprintf_ftype fprintf_func,\n.*fprintf_styled_ftype fprintf_styled_func);/extern void init_disassemble_info (struct disassemble_info \*dinfo, void \*stream, fprintf_ftype fprintf_func);/" /usr/include/dis-asm.h
 
-	log_cmd make -C ../../../tools/bpf/bpftool 2>&1 || return
+	log_cmd make -j${nr_cpu} -C ../../../tools/bpf/bpftool 2>&1 || return
 	log_cmd make install -C ../../../tools/bpf/bpftool 2>&1 || return
 	type ping6 && {
 		sed -i 's/if ping -6/if ping6/g' bpf/test_skb_cgroup_id.sh 2>/dev/null
@@ -838,7 +838,7 @@ fixup_subtest()
 	elif [[ "$subtest" = "x86" ]]; then
 		fixup_x86
 	elif [[ "$subtest" = "resctrl" ]]; then
-		log_cmd make -C resctrl >/dev/null || return
+		log_cmd make -j${nr_cpu} -C resctrl >/dev/null || return
 		log_cmd resctrl/resctrl_tests 2>&1
 		return 1
 	elif [[ "$subtest" = "livepatch" ]]; then

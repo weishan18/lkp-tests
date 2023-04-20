@@ -27,9 +27,7 @@ prepare_tests()
 
 make_group_tests()
 {
-	nr_procs=$(nproc)
-	nr_procs=${nr_procs:-2}
-	log_cmd make -j$nr_procs -C $subtest 2>&1
+	log_cmd make -j${nr_cpu} -C $subtest 2>&1
 }
 
 # it will touch the Makefile, overwrite target
@@ -77,7 +75,7 @@ run_tests()
 		(
 		fixup_subtest $subtest || exit
 
-		check_makefile $subtest || log_cmd make TARGETS=$subtest 2>&1
+		check_makefile $subtest || log_cmd make -j${nr_cpu} TARGETS=$subtest 2>&1
 
 		make_group_tests
 
