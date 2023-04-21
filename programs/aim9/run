@@ -2,6 +2,8 @@
 # - testtime
 # - test
 
+. $LKP_SRC/lib/debug.sh
+
 ## Suite IX is the "AIM Independent Resource Benchmark:"
 ## the famous synthetic benchmark.
 
