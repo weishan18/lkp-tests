@@ -45,7 +45,7 @@ run_for_iterations()
 	run_reaim $iterations
 }
 
-cd $BENCHMARK_ROOT/reaim || exit
+cd $BENCHMARK_ROOT/reaim || die "fail to cd $BENCHMARK_ROOT/reaim"
 
 if [ -z "$nr_task" ]; then
 	REAIM_STARTUSERS=1
