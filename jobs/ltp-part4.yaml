@@ -20,10 +20,11 @@ ltp:
     - fs_bind
     - fs_perms_simple
     - fsx
-    - ltp-aiodio.part4-00
-    - ltp-aiodio.part4-01
-    - ltp-aiodio.part4-02
-    - ltp-aiodio.part4-03
+    - ltp-aiodio.part4
+    - ltp-aiodio.part4-DOR000
+    - ltp-aiodio.part4-DOR001
+    - ltp-aiodio.part4-DOR002
+    - ltp-aiodio.part4-DOR003
     - fs-00
     - fs-01
     - fs-02
