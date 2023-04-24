@@ -193,7 +193,7 @@ split_tests()
 	$LKP_SRC/tools/split-tests ltp-aiodio.part2 2 ltp-aiodio.part2-
 	hide ltp-aiodio.part2
 
-	$LKP_SRC/tools/split-tests ltp-aiodio.part4 2 ltp-aiodio.part4-
+	$LKP_SRC/tools/split-tests ltp-aiodio.part4 4 ltp-aiodio.part4-
 	hide ltp-aiodio.part4
 
 	$LKP_SRC/tools/split-tests cve 8 cve-
