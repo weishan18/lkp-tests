@@ -5,7 +5,7 @@ category: benchmark
 nr_threads: 100%
 
 testtime:
-  - 30s
+  - 60s
 
 stress-ng:
   class:
