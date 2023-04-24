@@ -22,6 +22,8 @@ ltp:
     - fsx
     - ltp-aiodio.part4-00
     - ltp-aiodio.part4-01
+    - ltp-aiodio.part4-02
+    - ltp-aiodio.part4-03
     - fs-00
     - fs-01
     - fs-02
