@@ -2,3 +2,5 @@
 writev03 writev03
 # loop too many, can't allot on lkp-knl-f1
 fork13 fork13 -i 2
+# costs more than 28min
+zram01 zram01.sh
