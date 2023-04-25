@@ -34,3 +34,10 @@ kernel-selftests:
     - ipv6_runtime
     - ipv6_netfilter
     - use_cases
+---
+kernel-selftests:
+  group:
+    - net
+  test:
+    - xfrm_policy.sh
+    - pmtu.sh
