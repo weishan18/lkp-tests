@@ -1078,17 +1078,8 @@ class KmodStater < Stater
       # Running test: kmod_test_0005 - run #2
       # kmod_test_0005: OK! - loading kmod test
       # kmod_test_0005: OK! - Return value: 0 (SUCCESS), expected SUCCESS
-      @last_test_case = @test_case
-      @test_case = $1 unless $1.nil?
+      running_multiple_test($1, stats)
 
-      if @test_case != @last_test_case && !@last_test_case.nil?
-        # regard whole subtest as 'pass' if @test_case is 'OK' or 'SKIP'
-        @test_case_result = 'pass' if @test_case_result != 'FAIL' && !@all_test_case_skip
-        stats.add "#{@test_prefix}.#{@last_test_case}", @test_case_result
-        # reset @test_case_result and all_subtest_case_skip for new test_case
-        @test_case_result = nil
-        @all_test_case_skip = true
-      end
     when /^# (kmod_test.*|kmod_check_visibility): (OK|FAIL|SKIP)/
       # if any single test fails, regard the whole subtest fail
       @test_case_result = $2 if @test_case_result != 'FAIL'
@@ -1100,6 +1091,20 @@ class KmodStater < Stater
     else
       super(line, stats)
     end
+  end
+
+  def running_multiple_test(test_case, stats)
+    last_test_case = @test_case
+    @test_case = test_case if test_case
+
+    return unless @test_case != last_test_case && !last_test_case.nil?
+
+    # regard whole subtest as 'pass' if @test_case is 'OK' or 'SKIP'
+    @test_case_result = 'pass' if @test_case_result != 'FAIL' && !@all_test_case_skip
+    stats.add "#{@test_prefix}.#{last_test_case}", @test_case_result
+    # reset @test_case_result and all_subtest_case_skip for new test_case
+    @test_case_result = nil
+    @all_test_case_skip = true
   end
 end
 
