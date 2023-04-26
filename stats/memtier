@@ -45,6 +45,7 @@ proc_set_latencies = []
 proc_get_latencies = []
 PERCENTILE_STRS = ['90', '95', '99', '99.9'].freeze
 PERCENTILES = PERCENTILE_STRS.map(&:to_f)
+UNITS = ['', 'ops/s', 'hits/s', 'misses/s', 'avg_latency_ms', 'p50_latency_ms', 'p99_latency_ms', 'p99.9_latency_ms', 'kb/s'].freeze
 
 def extract_memtier(line, histo_sum, histo_num)
   data = line.split
@@ -98,33 +99,16 @@ while (line = $stdin.gets)
 end
 
 def gen_output_sum(type, histo_sum)
-  puts "total_#{type}_ops/s: #{histo_sum[1]}"
-  puts "total_#{type}_hits/s: #{histo_sum[2]}"
-  puts "total_#{type}_misses/s: #{histo_sum[3]}"
-  puts "total_#{type}_avg_latency_ms: #{histo_sum[4]}"
-  puts "total_#{type}_p50_latency_ms: #{histo_sum[5]}"
-  puts "total_#{type}_p99_latency_ms: #{histo_sum[6]}"
-  puts "total_#{type}_p99.9_latency_ms: #{histo_sum[7]}"
-  puts "total_#{type}_kb/s: #{histo_sum[8]}"
+  (1...UNITS.size).each do |i|
+    puts "total_#{type}_#{UNITS[i]}: #{histo_sum[i]}"
+  end
 end
 
 def gen_output_avg(type, histo_sum, histo_num)
-  avg_tmp = histo_sum[1] / histo_num[1]
-  puts "avg_#{type}_ops/s: #{avg_tmp}"
-  avg_tmp = histo_sum[2] / histo_num[2]
-  puts "avg_#{type}_hits/s: #{avg_tmp}"
-  avg_tmp = histo_sum[3] / histo_num[3]
-  puts "avg_#{type}_misses/s: #{avg_tmp}"
-  avg_tmp = histo_sum[4] / histo_num[4]
-  puts "avg_#{type}_avg_latency_ms: #{avg_tmp}"
-  avg_tmp = histo_sum[5] / histo_num[5]
-  puts "avg_#{type}_p50_latency_ms: #{avg_tmp}"
-  avg_tmp = histo_sum[6] / histo_num[6]
-  puts "avg_#{type}_p99_latency_ms: #{avg_tmp}"
-  avg_tmp = histo_sum[7] / histo_num[7]
-  puts "avg_#{type}_p99.9_latency_ms: #{avg_tmp}"
-  avg_tmp = histo_sum[8] / histo_num[8]
-  puts "avg_#{type}_kb/s: #{avg_tmp}"
+  (1...UNITS.size).each do |i|
+    avg = histo_sum[i] / histo_num[i]
+    puts "avg_#{type}_#{UNITS[i]}: #{avg}"
+  end
 end
 
 def gen_output_miss_rate(type, histo_sum, histo_num)
