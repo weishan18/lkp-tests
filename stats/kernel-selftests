@@ -668,14 +668,7 @@ class X86Stater < Stater
     when /^selftests.*: (.*) \[(PASS|FAIL|SKIP)\]/
       # selftests: mpx-mini-test_64 [PASS]
       @test_script = $1
-      @result = $2
-      if @test_script =~ /mpx-mini-test/ && @mpx_result
-        # processor lacks MPX XSTATE(s), can not run MPX tests
-        stats.add "#{@test}.#{@test_script}", @mpx_result
-      else
-        # selftests: mpx-mini-test_64 [PASS]
-        stats.add "#{@test}.#{@test_script}", @result
-      end
+      parse_selftests_result($2, stats)
     when %r{: recipe for target.+failed}
       # Makefile:47: recipe for target 'sysret_ss_attrs_64' failed
       stats.add "#{@test}.make", 'fail' unless stats.key? "#{@test}.make"
@@ -685,32 +678,43 @@ class X86Stater < Stater
     when /^# \[(OK|FAIL|SKIP)\]\s+(.*)/
       # [OK]  Seems okay
       # [SKIP]        Illegal instruction
-      @result = $1
-      @subtest_case = $2
-      if @test_script == 'unwind_vdso_32' && @result == 'OK' && @runtest_case
-        # [OK]  All is well
-        if @subtest_case =~ /All is well/
-          stats.add "#{@test_prefix}.#{@runtest_case}", @result
-          @runtest_case = nil
-        end
-      elsif @test_script =~ /check_initial_reg_state/
-        stats.add "#{@test_prefix}.#{@subtest_case}", @result
-      elsif @runtest_case
-        # [RUN] Fast syscall with TF cleared
-        # [OK]  Nothing unexpected happened
-        # [RUN] Set TF and check SYSENTER
-        #       Got SIGSEGV with RIP=b7f6f559, TF=256
-        # [RUN] Fast syscall with TF cleared
-        # [OK]  Nothing unexpected happened
-        stats.add "#{@test_prefix}.#{@runtest_case}", @result unless stats.key? "#{@test_prefix}.#{@runtest_case}"
-        @runtest_case = nil
-      elsif @result =~ /SKIP/ && @subtest_case
-        # [SKIP]        Code segment unavailable for 64-bit CS, 32-bit SS
-        stats.add "#{@test_prefix}.#{@subtest_case}", @result unless stats.key? "#{@test_prefix}.#{@subtest_case}"
-        @subtest_case = nil
-      end
+      parse_general_result($2, $1, stats)
     else
       super(line, stats)
+    end
+  end
+
+  def parse_selftests_result(result, stats)
+    if @test_script =~ /mpx-mini-test/ && @mpx_result
+      # processor lacks MPX XSTATE(s), can not run MPX tests
+      stats.add "#{@test}.#{@test_script}", @mpx_result
+    else
+      # selftests: mpx-mini-test_64 [PASS]
+      stats.add "#{@test}.#{@test_script}", result
+    end
+  end
+
+  def parse_general_result(subtest_case, result, stats)
+    if @test_script == 'unwind_vdso_32' && result == 'OK' && @runtest_case
+      # [OK]  All is well
+      if subtest_case =~ /All is well/
+        stats.add "#{@test_prefix}.#{@runtest_case}", result
+        @runtest_case = nil
+      end
+    elsif @test_script =~ /check_initial_reg_state/
+      stats.add "#{@test_prefix}.#{subtest_case}", result
+    elsif @runtest_case
+      # [RUN] Fast syscall with TF cleared
+      # [OK]  Nothing unexpected happened
+      # [RUN] Set TF and check SYSENTER
+      #       Got SIGSEGV with RIP=b7f6f559, TF=256
+      # [RUN] Fast syscall with TF cleared
+      # [OK]  Nothing unexpected happened
+      stats.add "#{@test_prefix}.#{@runtest_case}", result unless stats.key? "#{@test_prefix}.#{@runtest_case}"
+      @runtest_case = nil
+    elsif result =~ /SKIP/ && subtest_case
+      # [SKIP]        Code segment unavailable for 64-bit CS, 32-bit SS
+      stats.add "#{@test_prefix}.#{subtest_case}", result unless stats.key? "#{@test_prefix}.#{subtest_case}"
     end
   end
 end
