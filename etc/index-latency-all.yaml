@@ -16,6 +16,7 @@ oltp\.latency_min_ms: -0.1
 phoronix-test-suite\..+\.9th_latency_percentile: -0.1
 phoronix-test-suite\..+\.max_latency_ms: -0.1
 pmbench\.latency\.ns\.average: -0.1
-schbench\.latency_max_us: -0.1
+schbench\.wakeup_latency_max_us: -0.1
+schbench\.request_latency_max_us: -0.1
 tbench\.max_latency: -0.1
 vm-scalability\.stddev: -0.1
