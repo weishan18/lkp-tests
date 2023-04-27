@@ -1114,41 +1114,65 @@ class NetfilterStater < Stater
     when /^# TEST: (.*)/
       # selftests: netfilter: nft_concat_range.sh
       # TEST: reported issues
-      @test_case = $1 if @test_script == 'nft_concat_range.sh'
+      parse_test_message($1)
     when /^#   (.+)\[( OK|FAIL|SKIP)/
       #   Add two elements, flush, re-add                               [ OK ]
-      @subtest_case = $1.strip if @test_script == 'nft_concat_range.sh'
-      stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2 if @test_script == 'nft_concat_range.sh'
+      parse_subtest_result($1, $2, stats)
     when /^#     (baseline .+|set with .+):\s*(\S*)pps/
       #     baseline (drop from netdev hook):               1612678pps
-      stats.add "#{@test_prefix}.#{@test_case}.#{@subtest_case}.#{$1}.packets_per_sec", $2.to_i if @test_script == 'nft_concat_range.sh'
+      parse_pps_result($1, $2, stats)
     when /^# (PASS|FAIL|SKIP): (ns\d)-\S+ (connection on port.*)/
       # selftests: netfilter: nft_conntrack_helper.sh
       # PASS: ns1-Ip028vuy connection on port 2121 has ftp helper attached
       # PASS: ns2-Ip028vuy connection on port 2121 has ftp helper attached
       # PASS: ns1-Ip028vuy connection on port 2121 has ftp helper attached
       # PASS: ns2-Ip028vuy connection on port 2121 has ftp helper attached
-      stats.add "#{@test_prefix}.#{$2}_#{$3}", $1 unless stats.key? "#{@test_prefix}.#{$2}_#{$3}"
+      parse_connection_result($2, $3, $1, stats)
     when /^# (PASS|FAIL|SKIP|OK): (.*)/
       # PASS: ipsec tunnel mode for ns1/ns2
 
       # 46 # selftests: netfilter: nft_flowtable.sh
       # 52 # FAIL: file mismatch for ns1 -> ns2
       # 78 # FAIL: file mismatch for ns1 -> ns2
-
-      result = $1
-      test_case = $2
-
-      # selftests: netfilter: nft_queue.sh
-      # PASS: ns1-IpVmXxqi can reach ns2-IpVmXxqi
-      # rm -IpVmXxqi
-      test_case = test_case.gsub($1, '') if test_case =~ /ns\d+(-\w+)/
-
-      test_name = "#{@test_prefix}.#{test_case}"
-      stats.add test_name, result unless stats.key?(test_name)
+      parse_general_test_result($2, $1, stats)
     else
       super(line, stats)
     end
+  end
+
+  def parse_test_message(test_case)
+    return unless @test_script == 'nft_concat_range.sh'
+
+    @test_case = test_case
+  end
+
+  def parse_subtest_result(test_case, result, stats)
+    return unless @test_script == 'nft_concat_range.sh'
+
+    @subtest_case = test_case.strip
+    stats.add "#{@test_prefix}.#{@test_case}.#{test_case}", result
+  end
+
+  def parse_pps_result(test_case, result, stats)
+    return unless @test_script == 'nft_concat_range.sh'
+
+    stats.add "#{@test_prefix}.#{@test_case}.#{@subtest_case}.#{test_case}.packets_per_sec", result.to_i
+  end
+
+  def parse_connection_result(ns, status, result, stats)
+    return if stats.key? "#{@test_prefix}.#{ns}_#{status}"
+
+    stats.add "#{@test_prefix}.#{ns}_#{status}", result
+  end
+
+  def parse_general_test_result(test_case, result, stats)
+    # selftests: netfilter: nft_queue.sh
+    # PASS: ns1-IpVmXxqi can reach ns2-IpVmXxqi
+    # rm -IpVmXxqi
+    test_case = test_case.gsub($1, '') if test_case =~ /ns\d+(-\w+)/
+
+    test_name = "#{@test_prefix}.#{test_case}"
+    stats.add test_name, result unless stats.key?(test_name)
   end
 end
 
