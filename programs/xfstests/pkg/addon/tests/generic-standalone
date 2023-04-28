@@ -45,3 +45,73 @@
 650
 # execution time > 20m on "fs: ext4; fs2: smbv2"
 676
+# execution time 992s on btrfs
+224
+# execution time 311s on ext2
+472
+# execution time 1768s on ext4-smbv3, 358s on f2fs, 446s on xfs
+072
+# execution time 2100s on btrfs, 2057s on udf, 354s on ext2
+027
+# execution time 362s on ext2
+636
+# execution time 310s on ext2
+495
+# execution time 536s on xfs, 343s on btrfs
+333
+# execution time 534s on xfs, 850s on btrfs
+334
+# execution time 1112s on ext2
+707
+# execution time 548s on ext4
+054
+# execution time 377s on ext2
+566
+# execution time 309s on ext2
+075
+# execution time 547s on ext2
+551
+# execution time 364s on ext2
+554
+# execution time 326s on ext2
+441
+# execution time 302s on btrfs
+170
+# execution time 356s on btrfs, 763s on xfs
+176
+# execution time 898s on ext2
+642
+# execution time 342s on ext2
+643
+# execution time 373s on ext2
+400
+# execution time 303s on ext2
+411
+# execution time 443s on ext2
+416
+# execution time 365s on ext2
+600
+# execution time 372s on ext2
+601
+# execution time 340s on ext2
+615
+# execution time 310s on ext2
+082
+# execution time 1415s on ext2
+589
+# execution time 387s on ext2
+596
+# execution time 2491s on btrfs
+449
+# execution time 310s on ext2
+112
+# execution time 651s on ext2
+113
+# execution time 455s on ext2
+013
+# execution time 384s on ext2
+696
+# execution time 929s on ext2
+379
+# execution time > 2h on udf
+564
