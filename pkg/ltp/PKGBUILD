@@ -208,6 +208,11 @@ split_tests()
 	# delete DOR tests from part4
 	sed -i "/DOR/d" ltp-aiodio.part4
 
+	# remaining tests of ltp-aiodio.part4 may costs up to 1500s
+	# split to two groups
+	$LKP_SRC/tools/split-tests ltp-aiodio.part4 2 ltp-aiodio.part4-
+	hide ltp-aiodio.part4
+
 	$LKP_SRC/tools/split-tests cve 8 cve-
 	hide cve
 
