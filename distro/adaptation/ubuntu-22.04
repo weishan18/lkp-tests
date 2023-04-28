@@ -7,3 +7,4 @@ libx32gcc1: libx32gcc-s1
 lib32gcc-dev: lib32gcc-12-dev
 libx32gcc-dev: libx32gcc-12-dev
 libipsec-mb0: libipsec-mb1
+libpython3.9: libpython3.10
