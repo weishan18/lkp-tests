@@ -1,46 +1,46 @@
 # the filesystem has valuable metadata changes in a log which needs to 11 be replayed
 083
-# it requires special configurations, which will break some other xfs tests
-275
-# can't run find-api-violations.sh without WORKAREA set
-437
 # reflink not supported by test filesystem type: xfs
 132
-# 16 bit project IDs not supported on /dev/vdd
-244
-# Reflink not supported by scratch filesystem type: xfs
-211
-# It run cmd ./ltp/fsstress -w -d /fs/scratch -n 100000 -p 4, execution time > 30m
-442
-# execution time > 30m
-233
-# execution time about 500s
-234
 # execution time ~ 80m
 136
 # execution time > 40mins
 140
-# execution time > 15m on xfs
-580
+# Reflink not supported by scratch filesystem type: xfs
+211
 # execution time > 20m
 227
+# execution time > 30m
+233
+# execution time about 500s
+234
+# 16 bit project IDs not supported on /dev/vdd
+244
+# it requires special configurations, which will break some other xfs tests
+275
 # execution time > 20m
 285
 # execution time > 20m
 286
+# can't run find-api-violations.sh without WORKAREA set
+437
+# It run cmd ./ltp/fsstress -w -d /fs/scratch -n 100000 -p 4, execution time > 30m
+442
 # execution time > 20m
 517
-# execution time > 15m
-581
-# execution time > 2h
-722
 # execution time > 2h
 562
 # execution time > 20m
 570
+# execution time > 15m on xfs
+580
+# execution time > 15m
+581
 # execution time > 2h
-711
+586
 # execution time > 2h
 590
 # execution time > 2h
-586
+711
+# execution time > 2h
+722
