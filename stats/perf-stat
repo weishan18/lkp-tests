@@ -17,65 +17,86 @@ def calc_addon_keys(results_sum, results_nr, interval, interval_nr, prefix)
   results_sum.each do |key, value|
     case key
     when /(.*)-misses/
-      stem = $1
-      ['s', '-references', '-instructions'].each do |pfx|
-        avalue = results_sum[stem + pfx]
-        next if avalue.zero?
-
-        total = if pfx == 's'
-                  avalue + value
-                else
-                  avalue
-                end
-        puts "#{prefix}#{stem}-miss-rate%: #{value * 100.0 / total}"
-        break
-      end
+      calc_miss_rate($1, results_sum, value, prefix)
       next if value.zero?
 
-      case key
-      when /(.*)iTLB-load-misses/
-        stem = $1
-        instructions = results_sum["#{stem}instructions"]
-        puts "#{prefix}#{stem}instructions-per-iTLB-miss: #{instructions / value}" unless instructions.zero?
-      when /(.*)cache-misses/
-        stem = $1
-        cycles = results_sum["#{stem}cpu-cycles"]
-        puts "#{prefix}#{stem}cycles-between-cache-misses: #{cycles / value}" unless cycles.zero?
-      end
+      calc_misses(results_sum, key, value, prefix)
     when /(.*)cache-references/
-      stem = $1
-      instructions = results_sum["#{stem}instructions"]
-      puts "#{prefix}#{stem}MPKI: #{value / instructions * 1000}" unless instructions.zero?
+      calc_cache_references($1, results_sum, value, prefix)
     when /(.*)UNC_M_(.*)_INSERTS/
-      stem1 = $1
-      stem2 = $2
-      stem = "#{stem1}UNC_M_#{stem2}"
-      occupancy_key = "#{stem1}UNC_M_#{stem2}_OCCUPANCY"
-      occupancy = results_sum[occupancy_key]
-      ticks_key = "#{stem1}UNC_M_CLOCKTICKS"
-      ticks_sum = results_sum[ticks_key]
-      ticks_nr = results_nr[ticks_key].to_f
-      if results_sum.key?(occupancy_key) && ticks_sum != 0
-        # Need to deal with _INSERTSS == 0
-        latency_key = "#{prefix}#{stem}_latency_ns"
-        latency = if value != 0
-                    occupancy / value / (ticks_sum / (ticks_nr / interval_nr)) * 1e+9 * interval
-                  else
-                    $latency_prev[latency_key]
-                  end
-        $latency_prev[latency_key] = latency
-        puts "#{latency_key}: #{latency}"
-      end
-      puts "#{prefix}#{stem}_throughput_MBps: #{value.to_f * 64 / 1024 / 1024 / interval}"
+      stem = "#{$1}UNC_M_#{$2}"
+      calc_latency(stem, $1, results_sum, value, results_nr, interval, interval_nr, prefix)
+      calc_throughput(stem, value, interval, prefix)
     when /(.*)cpu-cycles/
-      stem = $1
-      instructions = results_sum["#{stem}instructions"]
-      unless instructions.zero?
-        puts "#{prefix}#{stem}ipc: #{instructions / value}"
-        puts "#{prefix}#{stem}cpi: #{value / instructions}"
-      end
+      calc_cpu_cycles($1, results_sum, value, prefix)
     end
   end
+end
+
+def calc_miss_rate(stem, results_sum, value, prefix)
+  ['s', '-references', '-instructions'].each do |pfx|
+    avalue = results_sum[stem + pfx]
+    next if avalue.zero?
+
+    total = if pfx == 's'
+              avalue + value
+            else
+              avalue
+            end
+    puts "#{prefix}#{stem}-miss-rate%: #{value * 100.0 / total}"
+    break
+  end
+end
+
+def calc_misses(results_sum, key, value, prefix)
+  case key
+  when /(.*)iTLB-load-misses/
+    stem = $1
+    instructions = results_sum["#{stem}instructions"]
+    puts "#{prefix}#{stem}instructions-per-iTLB-miss: #{instructions / value}" unless instructions.zero?
+  when /(.*)cache-misses/
+    stem = $1
+    cycles = results_sum["#{stem}cpu-cycles"]
+    puts "#{prefix}#{stem}cycles-between-cache-misses: #{cycles / value}" unless cycles.zero?
+  end
+end
+
+def calc_cache_references(stem, results_sum, value, prefix)
+  instructions = results_sum["#{stem}instructions"]
+  puts "#{prefix}#{stem}MPKI: #{value / instructions * 1000}" unless instructions.zero?
+end
+
+def calc_latency(stem, stem1, results_sum, value, results_nr, interval, interval_nr, prefix)
+  occupancy_key = "#{stem}_OCCUPANCY"
+  occupancy = results_sum[occupancy_key]
+  ticks_key = "#{stem1}UNC_M_CLOCKTICKS"
+  ticks_sum = results_sum[ticks_key]
+  ticks_nr = results_nr[ticks_key].to_f
+
+  return unless results_sum.key?(occupancy_key) && ticks_sum != 0
+
+  # Need to deal with _INSERTSS == 0
+  latency_key = "#{prefix}#{stem}_latency_ns"
+  latency = if value != 0
+              occupancy / value / (ticks_sum / (ticks_nr / interval_nr)) * 1e+9 * interval
+            else
+              $latency_prev[latency_key]
+            end
+  $latency_prev[latency_key] = latency
+  puts "#{latency_key}: #{latency}"
+end
+
+def calc_throughput(stem, value, interval, prefix)
+  puts "#{prefix}#{stem}_throughput_MBps: #{value.to_f * 64 / 1024 / 1024 / interval}"
+end
+
+def calc_cpu_cycles(stem, results_sum, value, prefix)
+  instructions = results_sum["#{stem}instructions"]
+
+  return if instructions.zero?
+
+  puts "#{prefix}#{stem}ipc: #{instructions / value}"
+  puts "#{prefix}#{stem}cpi: #{value / instructions}"
 end
 
 def output_interval(prev_time, time)
