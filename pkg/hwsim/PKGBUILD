@@ -4,7 +4,7 @@ pkgrel=1
 url='https://github.com/bcopeland/wmediumd.git'
 arch=('i386' 'x86_64' 'aarch64')
 license=('GPL')
-source=('https://github.com/bcopeland/wmediumd.git' 'git://w1.fi/srv/git/hostap.git')
+source=('https://github.com/bcopeland/wmediumd.git' 'http://w1.fi/hostap.git')
 md5sums=('SKIP' 'SKIP')
 
 build()
@@ -20,7 +20,7 @@ build()
 	# hostapd_config_parse_key_mgmt() in hostapd/config_file.c will check "CONFIG_SUITEB192".
 	# if not set "CONFIG_SUITEB192=y", suite_b_192 can not be added into key_mnt.
 
-	# if example-wpa_supplicant.config and example-hostapd.config not exist, it means hostap (git://w1.fi/srv/git/hostap.git)
+	# if example-wpa_supplicant.config and example-hostapd.config not exist, it means hostap (http://w1.fi/hostap.git)
 	# remove the files, we need to check the option in the new configuration files
 	local wpa_supplicant_config="./tests/hwsim/example-wpa_supplicant.config"
 	if [[ -f $wpa_supplicant_config ]]; then
