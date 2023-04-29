@@ -1,0 +1,9 @@
+short_description: >
+ The kvm-unit-tests are a set of tests which can be used to verify virtualized CPUs
+ (like KVM and others), emulated CPUs (like TCG from QEMU) or even real CPU behavior.
+
+homepage: https://gitlab.com/kvm-unit-tests/kvm-unit-tests
+
+parameters:
+
+results:
