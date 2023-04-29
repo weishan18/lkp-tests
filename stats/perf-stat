@@ -163,53 +163,26 @@ def parse
       output_interval(prev_prev_time, prev_time)
       prev_prev_time = prev_time
     end
-    socket = nil
-    unit = nil
-    socket_key = nil
-    metric_key = nil
 
     # per-socket mode
-    # S0,12,1202404,,mem_load_retired.l1_miss,8004582139,66.65,,
-    if fields[0][0] == 'S'
-      socket = fields[0]
-      fields.delete_at 1
-      fields.delete_at 0
-    end
+    socket = parse_per_socket_mode(fields)
 
     # for unit
-    # 7928832,Bytes,llc_misses.mem_read,8005538025,100.00,,
-    unit = fields[1] if fields[1] == 'Bytes'
+    unit = parse_unit(fields)
 
-    # 10.072447351 43181  context-switches 16105112423 100.00 0.003 M/sec
-    # 1.017184940,8778,,context-switches,16689586072,100.00,0.526,K/sec
-    fields.delete_at 1 if line.include? ','
+    remove_extra_comma(fields, line)
 
     # for metrics
-    # 1.000679357,S0,12,170516599,,l1d_pend_miss.pending,8004582139,66.65,80.5,Load_Miss_Real_Latency
-    if !fields[5].nil? && (fields[5] =~ /^[A-Z][^ ]+$/)
-      metric_key = "metric.#{fields[5].chomp}"
-      metric_key = "#{socket}.#{metric_key}" if socket
-      metric_val = fields[4]
-      metric_val = metric_val.to_f
-    end
+    metric_key = parse_metric_key(fields, socket)
+    metric_val = update_metric_val(fields, metric_key, metric_val)
 
     # 777209 mem_load_uops_l3_miss_retired_remote_dram 89128748143 100.00
     value, key = fields
     value = value.to_f
 
-    i_imc = key.index '_IMC'
-    key = key[0, i_imc] if i_imc
+    key, socket_key = update_keys(unit, key, socket)
 
-    key = "#{key}_#{unit}" if unit
-    socket_key = "#{socket}.#{key}" if socket
-
-    $interval_results_sum[key] += value
-    $interval_results_nr[key] += 1
-    if socket_key
-      $interval_results_sum[socket_key] += value
-      $interval_results_nr[socket_key] += 1
-    end
-    $interval_metrics_val[metric_key] += metric_val if metric_key
+    update_interval_results(key, value, socket_key, metric_key, metric_val)
   end
 
   # total time
@@ -217,6 +190,63 @@ def parse
   $run_time = end_time - $stats_begin_time
 
   # skip the last record, because the interval hasn't run out
+end
+
+def parse_per_socket_mode(fields)
+  # S0,12,1202404,,mem_load_retired.l1_miss,8004582139,66.65,,
+  return unless fields[0][0] == 'S'
+
+  socket = fields[0]
+  fields.delete_at 1
+  fields.delete_at 0
+
+  socket
+end
+
+def parse_unit(fields)
+  # 7928832,Bytes,llc_misses.mem_read,8005538025,100.00,,
+  fields[1] if fields[1] == 'Bytes'
+end
+
+def remove_extra_comma(fields, line)
+  # 10.072447351 43181  context-switches 16105112423 100.00 0.003 M/sec
+  # 1.017184940,8778,,context-switches,16689586072,100.00,0.526,K/sec
+  fields.delete_at 1 if line.include? ','
+end
+
+def parse_metric_key(fields, socket)
+  return unless !fields[5].nil? && (fields[5] =~ /^[A-Z][^ ]+$/)
+
+  metric_key = "metric.#{fields[5].chomp}"
+  metric_key = "#{socket}.#{metric_key}" if socket
+
+  metric_key
+end
+
+def update_metric_val(fields, metric_key, metric_val)
+  return metric_val unless metric_key
+
+  fields[4].to_f
+end
+
+def update_keys(unit, key, socket)
+  i_imc = key.index '_IMC'
+  key = key[0, i_imc] if i_imc
+
+  key = "#{key}_#{unit}" if unit
+  socket_key = "#{socket}.#{key}" if socket
+
+  [key, socket_key]
+end
+
+def update_interval_results(key, value, socket_key, metric_key, metric_val)
+  $interval_results_sum[key] += value
+  $interval_results_nr[key] += 1
+  if socket_key
+    $interval_results_sum[socket_key] += value
+    $interval_results_nr[socket_key] += 1
+  end
+  $interval_metrics_val[metric_key] += metric_val if metric_key
 end
 
 parse
