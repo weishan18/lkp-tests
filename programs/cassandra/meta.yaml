@@ -1,0 +1,13 @@
+short_description: >
+ Open source NoSQL distributed database for scalability and high availability without compromising performance
+
+homepage: http://cassandra.apache.org/
+
+parameters:
+ nr_threads: Thread count
+ duration: Duration of test
+ insert:
+ simple1:
+
+results:
+ 
