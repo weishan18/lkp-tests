@@ -1,0 +1,20 @@
+short_description: > 
+ Measure hardware and software interference or 'noise' on a node from the applications perspective.
+
+homepage: https://github.com/hying-caritas/fwq
+
+parameters:
+ nr_task: threads
+ samples: 
+ iterations: work bits
+
+results:
+ fwq.fwq.max:
+ fwq.fwq.min:
+ fwq.fwq.med:
+ fwq.fwq.noise.100%:
+ fwq.fwq.noise.75%:
+ fwq.fwq.noise.50%:
+ fwq.fwq.noise.25%:
+ fwq.fwq.noise.5%:
+ fwq.fwq.noise.2%:
