@@ -212,6 +212,15 @@ libmount-dev: libmount-devel
 python-dev: python3-devel
 python3-dev: python3-devel
 systemtap-sdt-dev: systemtap-sdt-devel
-libpython2.7: python2-libs
+libpython2.7:
 python-gi:
 python-gi-cairo:
+default-jdk: java-1.8.0-openjdk-devel
+libclang-dev: clang-devel
+libmpfr6: mpfr
+libpython3.9: python3-libs
+libtraceevent-dev: libtraceevent-devel
+libtraceevent1: libtraceevent
+libc-dev: glibc-devel
+python2-libs:
+rng-tools5: rng-tools
