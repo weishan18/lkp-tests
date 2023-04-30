@@ -6,7 +6,8 @@ FROM archlinux:base
 ARG hostname=lkp-docker
 ENV HOSTNAME=${hostname}
 
-ARG user=arch
+# use lkp user for yay installation
+ARG user=lkp
 
 RUN pacman -Syu --noconfirm && \
     pacman -Sy --noconfirm \
@@ -50,6 +51,7 @@ RUN make install && \
 
 # add gem/bin into PATH and update, needed to install gem executables
 RUN echo "PATH=\$PATH:$(ruby -e 'puts Gem.user_dir')/bin" >> /etc/profile.d/rubygempath.sh && \
+    source /etc/profile.d/rubygempath.sh && \
     gem list && \
     gem update
 
