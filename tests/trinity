@@ -37,7 +37,7 @@ if [ -n "$group" ]; then
 		# stress test for single syscall
 		cmd="trinity -q -q -l off -s $seed -N $number -c ${group#*sys_}"
 	else
-		max_group_nr=5
+		max_group_nr=8
 		targets=
 		# trinity -L
 		# entrypoint 433 fspick : [64-bit] Enabled
