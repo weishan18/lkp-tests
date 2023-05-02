@@ -102,13 +102,7 @@ end
 def output_interval(prev_time, time)
   return if $interval_results_sum.empty?
 
-  interval = time - prev_time
-  puts "time: #{time}"
-  $interval_results_sum.each do |key, value|
-    puts "i.#{key}: #{value / interval}"
-  end
-  calc_addon_keys($interval_results_sum, $interval_results_nr,
-                  interval, 1, 'i.')
+  update_interval(prev_time, time)
 
   unless $interval_metrics_val.empty?
     $interval_metrics_val.each do |key, value|
@@ -116,20 +110,7 @@ def output_interval(prev_time, time)
     end
   end
 
-  ignore = false
-  if time <= $stats_begin_time
-    ignore = true
-  elsif prev_time <= $stats_begin_time
-    # update $stats_begin_time to real start time
-    $stats_begin_time = prev_time
-  end
-
-  if !ignore && $stats_end_time != 0 && time > $stats_end_time
-    $stats_end_time = prev_time if prev_time <= $stats_end_time
-    ignore = true
-  end
-
-  unless ignore
+  unless ignore_result?(prev_time, time)
     $interval_results_sum.each do |key, value|
       $results_sum[key] += value
       $results_nr[key] += $interval_results_nr[key]
@@ -140,6 +121,29 @@ def output_interval(prev_time, time)
   $interval_results_sum.clear
   $interval_results_nr.clear
   $interval_metrics_val.clear unless $interval_metrics_val.empty?
+end
+
+def update_interval(prev_time, time)
+  interval = time - prev_time
+  puts "time: #{time}"
+  $interval_results_sum.each do |key, value|
+    puts "i.#{key}: #{value / interval}"
+  end
+  calc_addon_keys($interval_results_sum, $interval_results_nr,
+                  interval, 1, 'i.')
+end
+
+def ignore_result?(prev_time, time)
+  return true if time <= $stats_begin_time
+
+  $stats_begin_time = prev_time if prev_time <= $stats_begin_time
+
+  if $stats_end_time != 0 && time > $stats_end_time
+    $stats_end_time = prev_time if prev_time <= $stats_end_time
+    true
+  else
+    false
+  end
 end
 
 # Example output
