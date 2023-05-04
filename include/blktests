@@ -16,6 +16,9 @@ need_kconfig:
 % elsif ___.test =~ /zbd/
 - BLK_DEV_ZONED: y
 % end
+- BLK_DEV_NULL_BLK
+- FAULT_INJECTION: y
+- FAULT_INJECTION_CONFIGFS: y
 - BLK_DEV_NULL_BLK_FAULT_INJECTION: y
 - RDMA_RXE: m, x86_64
 - RDMA_SIW: m, x86_64
