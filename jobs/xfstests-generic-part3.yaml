@@ -21,11 +21,21 @@ xfstests:
     - generic-410
     - generic-464
     - generic-logwrites
-    - generic-group-17
-    - generic-group-18
-    - generic-group-19
-    - generic-group-20
-    - generic-group-21
-    - generic-group-22
-    - generic-group-23
-    - generic-group-24
+    - generic-group-37
+    - generic-group-38
+    - generic-group-39
+    - generic-group-40
+    - generic-group-41
+    - generic-group-42
+    - generic-group-43
+    - generic-group-44
+    - generic-group-45
+    - generic-group-46
+    - generic-group-47
+    - generic-group-48
+    - generic-group-49
+    - generic-group-50
+    - generic-group-51
+    - generic-group-52
+    - generic-group-53
+    - generic-group-54

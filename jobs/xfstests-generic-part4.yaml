@@ -18,18 +18,24 @@ fs:
 xfstests:
   test:
     - generic-231
-    - generic-group-25
-    - generic-group-26
-    - generic-group-27
-    - generic-group-28
-    - generic-group-29
-    - generic-group-30
-    - generic-group-31
-    - generic-group-32
-    - generic-group-33
-    - generic-group-34
-    - generic-group-35
-    - generic-group-36
+    - generic-group-55
+    - generic-group-56
+    - generic-group-57
+    - generic-group-58
+    - generic-group-59
+    - generic-group-60
+    - generic-group-61
+    - generic-group-62
+    - generic-group-63
+    - generic-group-64
+    - generic-group-65
+    - generic-group-66
+    - generic-group-67
+    - generic-group-68
+    - generic-group-69
+    - generic-group-70
+    - generic-group-71
+    - generic-group-72
 
 ---
 fs:

@@ -26,6 +26,16 @@ xfstests:
     - generic-group-06
     - generic-group-07
     - generic-group-08
+    - generic-group-09
+    - generic-group-10
+    - generic-group-11
+    - generic-group-12
+    - generic-group-13
+    - generic-group-14
+    - generic-group-15
+    - generic-group-16
+    - generic-group-17
+    - generic-group-18
 
 ---
 fs:
