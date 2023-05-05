@@ -141,6 +141,10 @@ phoronix-test-suite\..+\.giops: 1
 phoronix-test-suite\..+\.kh_s: 1
 phoronix-test-suite\..+\.ips: 1
 phoronix-test-suite\..+\.vgr_performance_metric: 1
+phoronix-test-suite\..+\.average_mbytes_sec: 1
+phoronix-test-suite\..+\.average_msg_sec: 1
+phoronix-test-suite\..+\.figure_of_merit: 1
+phoronix-test-suite\..+\.throughput_fom: 1
 pigz\.throughput: 1
 pixz\.throughput: 1
 plzip\.throughput: 1
