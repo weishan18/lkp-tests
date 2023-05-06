@@ -115,6 +115,8 @@ module Git
     end
 
     def release_tag_pattern
+      log_warn "project_spec is nil, remote: #{@remote}, project: #{@project}" unless project_spec
+
       @release_tag_pattern ||= Regexp.new "^#{Array(project_spec['release_tag_pattern']).join('$|^')}$"
     end
 
