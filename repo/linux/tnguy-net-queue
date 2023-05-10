@@ -13,3 +13,5 @@ notify_build_success_branch: .*
 mail_cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 mail_to: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 belongs_to: NIC
+patch_based_on_branch:
+  '\[(.+ )?iwl-net( .+)?\]': dev-queue
