@@ -2,13 +2,17 @@ url: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git
 owner: Anthony L Nguyen <anthony.l.nguyen@intel.com>
 git_am_branch: dev-queue
 subsystems:
-- net
-- tcp
-- cxgb4
-- maintainers
-- fec
-- ibmveth
-- net_sched
+- e1000
+- e1000e
+- fm10k
+- i40e
+- iavf
+- ice
+- igb
+- igbvf
+- igc
+- ixgbe
+- ixgbevf
 notify_build_success_branch: .*
 mail_cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 mail_to: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
