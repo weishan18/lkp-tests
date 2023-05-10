@@ -1,5 +1,6 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git
 owner: Anthony L Nguyen <anthony.l.nguyen@intel.com>
+git_am_branch: dev-queue
 subsystems:
 - net
 - tcp
