@@ -4,7 +4,9 @@ category: functional
 
 need_memory: 4G
 
-disk: 1HDD
+disk:
+  # - 1HDD
+  - 1SSD
 fs:
   - ext4
   - xfs
