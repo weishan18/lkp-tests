@@ -169,10 +169,15 @@ module Git
       end
 
       def merged_by
-        base = base_rc_tag
-        tags = @base.ordered_release_tags.reverse
-        tags = tags.drop_while { |tag| tag != base }.drop(1)
-        tags.find { |tag| reachable_from?(tag) }
+        return @merged_by if @merged_by
+
+        base_rc_tag = self.base_rc_tag
+
+        @merged_by = @base.ordered_release_tags
+                          .reverse
+                          .drop_while { |tag| tag != base_rc_tag }
+                          .drop(1)
+                          .find { |tag| reachable_from?(tag) }
       end
 
       def relative_commit_date
