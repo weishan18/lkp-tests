@@ -1,3 +1,7 @@
+need_kconfig:
+  - XFS_DEBUG: n
+  - XFS_WARN: y
+
 # default monitors
 kmsg:
 boot-time:
