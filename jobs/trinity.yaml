@@ -18,6 +18,10 @@ trinity:
     - group-05
     - group-06
     - group-07
+    - group-08
+    - group-09
 
 ---
+runtime: 600s
+
 trinity:
