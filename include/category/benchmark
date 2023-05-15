@@ -1,6 +1,20 @@
 need_kconfig:
   - XFS_DEBUG: n
   - XFS_WARN: y
+  - PM_DEBUG: n
+  - PM_SLEEP_DEBUG: n
+  - DEBUG_ATOMIC_SLEEP: n
+  - DEBUG_SPINLOCK_SLEEP: n
+  - CIFS_DEBUG: n
+  - SCSI_DEBUG: n
+  - NFS_DEBUG: n
+  - SUNRPC_DEBUG: n
+  - DM_DEBUG: n
+  - DEBUG_SHIRQ: n
+  - OCFS2_DEBUG_MASKLOG: n
+  - DEBUG_MEMORY_INIT: n
+  - SLUB_DEBUG: n
+  - EXPERT: y
 
 # default monitors
 kmsg:
