@@ -571,6 +571,22 @@ fixup_kvm()
 	lsmod | grep -q 'kvm_intel' || modprobe kvm_intel
 }
 
+fixup_damon()
+{
+	# Warning: file debugfs_attrs.sh is not executable
+	# Warning: file debugfs_schemes.sh is not executable
+	# Warning: file debugfs_target_ids.sh is not executable
+	# Warning: file debugfs_empty_targets.sh is not executable
+	# Warning: file debugfs_huge_count_read_write.sh is not executable
+	# Warning: file debugfs_duplicate_context_creation.sh is not executable
+	# Warning: file debugfs_rm_non_contexts.sh is not executable
+	# Warning: file sysfs.sh is not executable
+	# Warning: file sysfs_update_removed_scheme_dir.sh is not executable
+	# Warning: file reclaim.sh is not executable
+	# Warning: file lru_sort.sh is not executable
+	chmod +x damon/*.sh
+}
+
 prepare_for_selftest()
 {
 	if [ "$group" = "group-00" ]; then
@@ -861,6 +877,8 @@ fixup_subtest()
 		fixup_user_events
 	elif [[ "$subtest" = "kvm" ]]; then
 		fixup_kvm
+	elif [[ "$subtest" = "damon" ]]; then
+		fixup_damon
 	fi
 	return 0
 }
