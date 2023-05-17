@@ -38,6 +38,7 @@ need_kconfig:
 % elsif ___.group == "kvm"
 - KVM
 - KVM_INTEL
+- USERFAULTFD: y
 % elsif ___.group == "mm"
 - MEM_SOFT_DIRTY: y, x86_64
 - GUP_BENCHMARK: y
