@@ -62,6 +62,7 @@ need_kconfig:
 - DUMMY
 - BRIDGE
 - VLAN_8021Q: y
+- VXLAN
 - IFB
 - NETFILTER: y
 - NETFILTER_ADVANCED: y
