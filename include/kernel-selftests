@@ -236,6 +236,7 @@ need_kconfig:
 - NFC: m
 - NFC_NCI: m
 - NFC_VIRTUAL_NCI: m
+- ANON_VMA_NAME: y # Depends on: PROC_FS && ADVISE_SYSCALLS && MMU
 % elsif ___.group == "group-s"
 - SECURITY: y
 - SECURITYFS: y
