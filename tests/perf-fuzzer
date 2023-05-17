@@ -16,14 +16,17 @@ cd $BENCHMARK_ROOT/perf_event_tests/fuzzer || die "can not find fuzzer dir"
 
 # Generate seed
 [ -z "$seed" ] && {
-	echo "Seeding perf-fuzzer based on $rootfs/$kconfig"
+	seed_source="$tbox_group/$rootfs/$kconfig"
+
 	if has_cmd cksum; then
-		seed=$(echo "$rootfs/$kconfig" | cksum)
+		seed=$(echo "$seed_source" | cksum)
 		seed=${seed%% *}
 	else
-		seed=$(echo "$rootfs/$kconfig" | md5sum | cut -c1-5)
+		seed=$(echo "$seed_source" | md5sum | cut -c1-5)
 		seed=$(( 0x$seed ))
 	fi
+
+	echo "Seeding perf-fuzzer by $seed based on $seed_source"
 }
 
 # Run test
