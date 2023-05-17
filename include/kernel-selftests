@@ -205,6 +205,7 @@ need_kconfig:
 - IOMMUFD
 - IOMMUFD_TEST: y
 - FAULT_INJECTION: y
+- FPROBE: y # Depends on: FTRACE && FUNCTION_TRACER && DYNAMIC_FTRACE_WITH_REGS && HAVE_RETHOOK
 % elsif ___.group == "group-02"
 - FUSE_FS: m
 - IPV6_MULTIPLE_TABLES: y
