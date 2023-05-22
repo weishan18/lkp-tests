@@ -7,6 +7,7 @@
 ## to find flaws in the complex Linux perf_event system call interface.
 ## See: https://github.com/deater/perf_event_tests/tree/master/fuzzer
 
+. $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/reproduce-log.sh
 
 cd $BENCHMARK_ROOT/perf_event_tests/fuzzer || die "can not find fuzzer dir"
