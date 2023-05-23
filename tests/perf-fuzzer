@@ -30,6 +30,8 @@ cd $BENCHMARK_ROOT/perf_event_tests/fuzzer || die "can not find fuzzer dir"
 	echo "Seeding perf-fuzzer by $seed based on $seed_source"
 }
 
+echo "glibc version $(ldd --version | head -1)"
+
 # Run test
 opt="-r $seed"
 [ -n "$number" ] && opt="$opt -s $number"
