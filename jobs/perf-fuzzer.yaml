@@ -2,5 +2,6 @@ suite: perf-fuzzer
 testcase: perf-fuzzer
 category: functional
 
+runtime: 1h
+
 perf-fuzzer:
-  runtime: 300
