@@ -1,0 +1,76 @@
+From d5a34eb8e6f91c9298348e60a868f0b097086305 Mon Sep 17 00:00:00 2001
+From: James Clark <james.clark@arm.com>
+Date: Thu, 17 Mar 2022 13:27:44 +0000
+Subject: [PATCH] fuzzer: Supply mode argument to open() when required to
+
+When FORTIFY_SOURCE is enabled, libc will terminate the process on
+a call to open() with flags that require a mode argument but it's
+not provided. Here is the relevant part of the glibc docs:
+
+  The mode argument must be supplied if O_CREAT or O_TMPFILE is
+  specified in flags; if it is not supplied, some arbitrary
+  bytes from the stack will be applied as the file mode.
+
+And this is what it looks like when running the fuzzer:
+
+  ==================================================
+  Starting fuzzing at 2022-03-17 13:15:53
+  ==================================================
+  *** invalid open call: O_CREAT or O_TMPFILE without mode ***: ./perf_fuzzer terminated
+  Aborted
+
+Fix this by supplying a mode argument when the random flags indicate
+it's required. The actual mode is not important because files can't
+be created in sysfs.
+
+Signed-off-by: James Clark <james.clark@arm.com>
+---
+ fuzzer/fuzz_access.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/fuzzer/fuzz_access.c b/fuzzer/fuzz_access.c
+index 46ecc5c..1bf1797 100644
+--- a/fuzzer/fuzz_access.c
++++ b/fuzzer/fuzz_access.c
+@@ -72,6 +72,14 @@ static int setup_random_write_value(void) {
+ 	return size;
+ }
+ 
++static int open_with_mode(const char* file, uint64_t flags)
++{
++	if (__OPEN_NEEDS_MODE(flags))
++		return open(file, flags, S_IRWXU);
++	else
++		return open(file, flags);
++}
++
+ void access_random_file(void) {
+ 
+ 	int which_file;
+@@ -99,7 +107,7 @@ void access_random_file(void) {
+ 		if (ignore_but_dont_skip.access) return;
+ 
+ 		/* read.  Make flags random too? */
+-		fd=open(filenames[which_file],rand_open_flags());
++		fd=open_with_mode(filenames[which_file],rand_open_flags());
+ 		if (fd>0) {
+ 			result=read(fd,buffer,read_size);
+ 
+@@ -116,7 +124,7 @@ void access_random_file(void) {
+ 	}
+ 	else if (which==1) {
+ 		/* write */
+-		fd=open(filenames[which_file],rand_open_flags());
++		fd=open_with_mode(filenames[which_file],rand_open_flags());
+ 		if (fd>0) {
+ 			if (!ignore_but_dont_skip.access) {
+ 
+@@ -138,7 +146,7 @@ void access_random_file(void) {
+ 	} else if (which==2) {
+ 		/* Leave open a certain number */
+ 		if (open_files<MAX_FILES) {
+-			new_fd=open(filenames[which_file],rand_open_flags());
++			new_fd=open_with_mode(filenames[which_file],rand_open_flags());
+ 			if (new_fd>=0) {
+ 				for(which_file=0;which_file<TYPE_ACCESS;
+ 					which_file++) {
