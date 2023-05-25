@@ -109,6 +109,8 @@ libpcap0.8: libpcap
 libpcap-dev: libpcap-devel
 libpciaccess-dev: libpciaccess-devel
 libperl5: perl-libs
+libpfm4: libpfm
+libpfm4-dev: libpfm-devel
 libpixman-1-dev: pixman-devel
 libpng12-dev: libpng12-devel
 libpopt0: popt
