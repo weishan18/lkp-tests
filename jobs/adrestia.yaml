@@ -3,6 +3,6 @@ testcase: adrestia
 category: benchmark
 
 adrestia:
-  num_threads:
+  nr_threads:
     - 1
     - 100

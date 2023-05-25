@@ -7,7 +7,7 @@ parameters:
   arrival_rate:     arrival time (microseconds)
   num_loop:         number of loopsworkers per message thread
   service_time:     service time (microseconds)
-  num_threads:      thread count
+  nr_threads:      thread count
 
 results:
   adrestia.wakeup_cost_single_us:
