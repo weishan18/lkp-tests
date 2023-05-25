@@ -3,5 +3,6 @@ testcase: perf-fuzzer
 category: functional
 
 runtime: 1h
+timeout: 1h
 
 perf-fuzzer:
