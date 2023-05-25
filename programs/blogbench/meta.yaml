@@ -39,7 +39,7 @@ description: |
  directory (an example is UFS), you should not force the test to run a silly
  amount of time on these filesystems.
 
-homepage: https://www.pureftpd.org/project/blogbench
+homepage: https://github.com/jedisct1/Blogbench
 
 parameters:
 
