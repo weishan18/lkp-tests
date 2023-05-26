@@ -9,3 +9,4 @@ locktoture\..+lock_hotplug
 rcutoture\..+rcu_hotplug
 stderr.*
 xfstests\..+fail$
+kmemleak\..+unreferenced_object\..+
