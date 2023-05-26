@@ -102,7 +102,7 @@ Style/FormatStringToken:
 
 Style/FloatDivision:
   Exclude:
-    - 'stats/pmbench'
+    - 'programs/pmbench/parse'
 
 Naming/AccessorMethodName:
   Exclude:
