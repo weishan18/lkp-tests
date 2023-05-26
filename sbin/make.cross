@@ -432,7 +432,6 @@ make_cross_main()
 		h8300
 		hexagon
 		i386
-		ia64
 		loongarch
 		m32r
 		m68k
