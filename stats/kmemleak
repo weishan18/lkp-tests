@@ -8,32 +8,29 @@ require "#{LKP_SRC}/lib/tests/stats"
 stats = LKP::Stats.new
 
 memleaks = []
-memleak = {}
-bts = []
+memleak = nil
 
 while (line = $stdin.gets)
   case line.chomp!
   when /^unreferenced object/ # unreferenced object 0xffff9375a9b84e00 (size 128):
-    if !bts.empty? && memleak['type']
-      memleak['bt'] = bts
-      memleaks << memleak
-    end
-    bts = ''
-    memleak['type'] = 'unreferenced_object'
+    # store previous leak
+    memleaks << memleak if memleak
+
+    memleak = { type: 'unreferenced_object', backtraces: [] }
   when /comm "(.*)"/ # comm "swapper/0", pid 1, jiffies 4294667990 (age 37.508s)
-    memleak['comm'] = $1
+    memleak[:comm] = $1
 #    [<(____ptrval____)>] unpack_to_rootfs+0x3d/0x304
 #    [<(____ptrval____)>] populate_rootfs+0x19/0x106
   when /\[.*\] (.*)\+/
-    bts = ".#{$1}#{bts}"
+    memleak[:backtraces] << $1
   end
 end
 
-if !bts.empty? && memleak['type']
-  memleak['bt'] = bts
-  memleaks << memleak
-end
+memleaks << memleak if memleak
 
-memleaks.uniq.each { |m| stats.add "#{m['comm']}.#{m['type']}#{m['bt']}", 1 }
+memleaks.uniq
+        .each do |m|
+  stats.add "#{m[:comm]}.#{m[:type]}.#{m[:backtraces].reverse.join('.')}", 1
+end
 
 stats.dump
