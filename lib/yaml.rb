@@ -123,35 +123,6 @@ def yaml_merge_included_files(yaml, relative_to, search_paths = nil)
   end
 end
 
-#
-# this is specifically used for wtmp file load to handle error caused by machine crash
-# though it also be extended to handle wtmp file concept
-#
-class WTMP
-  class << self
-    def load(content)
-      # FIXME: rli9 YAML.load returns false under certain error like empty content
-      YAML.load content
-    rescue Psych::SyntaxError
-      # FIXME: rli9 only do below gsub when error is control characters error
-      # error can be below which is caused by server crash, and try to remove non-printable characters to resolve
-      #   Psych::SyntaxError: (<unknown>): control characters are not allowed at line 1 column 1
-
-      # remvoe all cntrl but keep \n
-      YAML.load(content.gsub(/[[[:cntrl:]]&&[^\n]]/, ''))
-    end
-
-    def load_tail(file, lines = 100)
-      return nil unless File.exist? file
-
-      tail = `tail -n #{lines} #{file}`
-      load(tail)
-    rescue StandardError => e
-      log_warn "#{file}: " + e.message
-    end
-  end
-end
-
 def dot_file(path)
   "#{File.dirname(path)}/.#{File.basename(path)}"
 end
