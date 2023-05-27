@@ -93,7 +93,7 @@ EOF
 
   yaml = yaml_merge_included_files(yaml_merge_spec, File.dirname(__FILE__))
   expects = if Psych::VERSION > '4.0'
-              YAML.safe_load(yaml, aliases: true)
+              YAML.safe_load(yaml, aliases: true, permitted_classes: [Symbol])
             else
               YAML.load(yaml)
             end
