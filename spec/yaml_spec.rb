@@ -92,7 +92,12 @@ contents: &borrow-1d
 EOF
 
   yaml = yaml_merge_included_files(yaml_merge_spec, File.dirname(__FILE__))
-  expects = YAML.load(yaml)
+  expects = if Psych::VERSION > '4.0'
+              YAML.safe_load(yaml, aliases: true)
+            else
+              YAML.load(yaml)
+            end
+
   expects.each do |k, v|
     next unless k.instance_of?(Symbol)
     next unless v.instance_of?(Array) && v.size >= 2
