@@ -27,7 +27,11 @@ def load_yaml(file, template_context = nil)
   yaml = expand_yaml_template(yaml, file, template_context) if template_context
 
   begin
-    result = YAML.load yaml
+    result = if Psych::VERSION > '4.0'
+               YAML.unsafe_load(yaml)
+             else
+               YAML.load(yaml)
+             end
   rescue Psych::SyntaxError => e
     log_debug "failed to parse file #{file} | #{e}"
     raise
