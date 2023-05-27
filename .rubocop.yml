@@ -88,6 +88,10 @@ Security/JSONLoad:
 Layout/HeredocIndentation:
   Enabled: false
 
+# Disable this temporarily to let rubocop 1.12.1 work with ruby3.2
+Layout/BlockAlignment:
+  Enabled: false
+
 Lint/ShadowingOuterLocalVariable:
   Enabled: false
 
