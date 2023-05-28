@@ -1,8 +1,13 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
-integration_testing_branches: for-next
+integration_testing_branches
+- for-next
+- for-linus
 mail_cc: linux1394-devel@lists.sourceforge.net
-owner: Stefan Richter <stefanr@s5r6.in-berlin.de>
+owner:
+- Takashi Sakamoto <o-takashi@sakamocchi.jp>
+- Takashi Sakamoto <takaswie@kernel.org>
 subsystems:
 - firewire
 - sbp2
 - ohci
+branch_denylist: master
