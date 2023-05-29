@@ -180,6 +180,7 @@
 # - sc_page_cluster
 # - sc_panic_on_oom
 # - sc_percpu_pagelist_fraction
+# - sc_percpu_pagelist_high_fraction
 # - sc_stat_interval
 # - sc_stat_refresh
 # - sc_swappiness
@@ -377,6 +378,7 @@
 [ -n "$sc_page_cluster" ] && log_eval "echo '$sc_page_cluster' > '/proc/sys/vm/page-cluster'"
 [ -n "$sc_panic_on_oom" ] && log_eval "echo '$sc_panic_on_oom' > '/proc/sys/vm/panic_on_oom'"
 [ -n "$sc_percpu_pagelist_fraction" ] && log_eval "echo '$sc_percpu_pagelist_fraction' > '/proc/sys/vm/percpu_pagelist_fraction'"
+[ -n "$sc_percpu_pagelist_high_fraction" ] && log_eval "echo '$sc_percpu_pagelist_high_fraction' > '/proc/sys/vm/percpu_pagelist_high_fraction'"
 [ -n "$sc_stat_interval" ] && log_eval "echo '$sc_stat_interval' > '/proc/sys/vm/stat_interval'"
 [ -n "$sc_stat_refresh" ] && log_eval "echo '$sc_stat_refresh' > '/proc/sys/vm/stat_refresh'"
 [ -n "$sc_swappiness" ] && log_eval "echo '$sc_swappiness' > '/proc/sys/vm/swappiness'"
