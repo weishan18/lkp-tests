@@ -43,12 +43,12 @@ boot_init || {
 # FIXME: need to consider more factors, such as cmdline, boot_parameter
 job_does_not_need_reboot()
 {
-	grep -q "^do_not_reboot: 1$" $job && {
+	grep -q '^do_not_reboot: 1$' $job && {
 		echo "LKP: [do_not_reboot] start a new job without rebooting"
 		return 0
 	}
 
-	grep -q "^do_not_reboot_for_same_kernel: 1$" $job &&
+	grep -q '^do_not_reboot_for_same_kernel: 1$' $job &&
 	is_same_kernel_and_rootfs && is_same_testcase && is_same_bp_memmap && {
 		echo "LKP: [do_not_reboot_for_same_kernel] start a new job without rebooting"
 		return 0
@@ -59,12 +59,12 @@ job_does_not_need_reboot()
 
 job_force_reboot()
 {
-	grep -q "^force_reboot: \+1$" $job
+	grep -q '^force_reboot: \+1$' $job
 }
 
 reboot_for_next_job()
 {
-	grep -q "^reboot_for_next_job: \+1$" $job
+	grep -q '^reboot_for_next_job: \+1$' $job
 }
 
 start_reboot_watchdog()
