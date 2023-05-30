@@ -72,6 +72,7 @@ perf-stat:
 mpstat:
 
 % unless job['nr_vm'] and job['nr_vm'] > 1
+perf-c2c:
 perf-profile:
   debug_mode: 0 # debug_mode handles intermediate data and save data if set to 1
 % end
