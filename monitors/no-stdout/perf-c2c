@@ -14,13 +14,15 @@ set_perf_path "/lkp/benchmarks/perf/perf"
 
 is_virt && exit 0
 
-: "${duration:=10}"
+: "${duration:=3}"
 
 if [ -z "$delay" ]; then
 	if [ -n "$runtime" ]; then
-		delay=$((runtime / 2))
+		delay=$((runtime * 3 / 4))
+	elif [ -n "$testtime" ]; then
+		delay=$((testtime * 3 / 4))
 	else
-		delay=100
+		delay=60
 	fi
 fi
 

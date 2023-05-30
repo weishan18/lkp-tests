@@ -14,13 +14,15 @@ export perf
 
 is_virt && exit 0
 
-: "${duration:=10}"
+: "${duration:=5}"
 
 if [ -z "$delay" ]; then
 	if [ -n "$runtime" ]; then
-		delay=$((runtime * 3 / 5))
+		delay=$((runtime / 4))
+	elif [ -n "$testtime" ]; then
+		delay=$((testtime / 4))
 	else
-		delay=100
+		delay=30
 	fi
 fi
 
