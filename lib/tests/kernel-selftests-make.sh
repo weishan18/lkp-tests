@@ -106,6 +106,8 @@ run_tests()
 				sed -i 's/test_progs-no_alu32/test_lpm_map/' bpf/Makefile
 			fi
 
+			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
+
 			if [[ -f bpf/test_progs && -f bpf/test_progs-no_alu32 ]]; then
 				cd bpf
 				echo "# selftests: bpf: test_progs"
@@ -118,8 +120,6 @@ run_tests()
 			else
 				echo "build bpf/test_progs or bpf/test_progs-no_alu32 failed" >&2
 			fi
-
-			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
 		elif [[ $category = "functional" ]]; then
 			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
 		else
