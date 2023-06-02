@@ -167,7 +167,6 @@
 ^slabinfo.
 ^softirqs.
 ^softirqs.CPU
-^syzkaller.*
 ^tcrypt.*
 ^time.
 ^turbostat.

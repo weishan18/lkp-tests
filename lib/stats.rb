@@ -62,7 +62,7 @@ class LinuxTestcasesTableSet
        leaking-addresses locktorture ltp mce-test otc_ddt piglit pm-qa nvml
        qemu rcuscale rcutorture suspend suspend-stress trinity ndctl nfs-test hwsim
        idle-inject mdadm-selftests xsave-test nvml test-bpf mce-log perf-sanity-tests
-       build-perf_test update-ucode reboot cat libhugetlbfs-test ocfs2test syzkaller
+       build-perf_test update-ucode reboot cat libhugetlbfs-test ocfs2test
        perf-test fxmark kvm-kernel-boot-test bkc_ddt rdma-pyverbs
        xfstests packetdrill avocado v4l2 vmem perf-stat-tests cgroup2-test].freeze
   OTHER_TESTCASES =
