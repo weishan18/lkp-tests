@@ -1,1 +1,2 @@
 url: https://gitlab.freedesktop.org/skeggsb/nouveau
+branch_denylist: linux-rolling-stable|linux-rolling-lts
