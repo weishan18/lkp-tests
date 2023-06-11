@@ -85,6 +85,9 @@ need_kconfig:
 - STACKINIT_KUNIT_TEST: m
 - STRSCPY_KUNIT_TEST: m
 
+- FAT_FS: m
+- FAT_KUNIT_TEST: m
+
 # below are kunit test configs of bool type
 - DRIVER_PE_KUNIT_TEST: y
 - PM_QOS_KUNIT_TEST: y
@@ -97,6 +100,14 @@ need_kconfig:
 - PROFILING: y
 - PERF_EVENTS: y
 - HW_BREAKPOINT_KUNIT_TEST: y
+
+- DAMON: y
+- DAMON_DBGFS: y
+- DAMON_VADDR: y
+- DAMON_VADDR_KUNIT_TEST: y
+- DAMON_PADDR: y
+- DAMON_SYSFS: y
+- DAMON_DBGFS_KUNIT_TEST: y
 % elsif ___.group == "group-01"
 # below are not kunit test
 - STRING_SELFTEST: m

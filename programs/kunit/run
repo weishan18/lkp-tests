@@ -17,7 +17,7 @@ if [[ "$group" = "group-00" ]]; then
 	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test"\
 	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
 	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
-	            "siphash_kunit" "strscpy_kunit")
+	            "siphash_kunit" "strscpy_kunit" "fat_test")
 elif [[ "$group" = "group-01" ]]; then
 	# test_kstrtox: could not insert 'test_kstrtox': Invalid argument
 	# test_string_helpers: could not insert 'test_string_helpers': Invalid argument
