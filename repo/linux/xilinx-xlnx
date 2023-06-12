@@ -1,7 +1,9 @@
 url: https://github.com/Xilinx/linux-xlnx
 mail_cc:
-- linux-arm-kernel@lists.infradead.org
-owner: Michal Simek <michal.simek@xilinx.com>
+- git@amd.com
+owner:
+- Michal Simek <michal.simek@xilinx.com>
+- Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>
 git_am_branch: master
 subsystems:
 - arm
