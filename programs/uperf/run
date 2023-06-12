@@ -5,6 +5,8 @@
 # - runtime
 # - datasize
 
+. $LKP_SRC/lib/debug.sh
+
 run_uperf()
 {
 	local uperf_path
