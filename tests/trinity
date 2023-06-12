@@ -3,6 +3,7 @@
 # - seed
 # - group
 # - number
+# - nr_groups
 
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/reproduce-log.sh
@@ -37,7 +38,8 @@ if [ -n "$group" ]; then
 		# stress test for single syscall
 		cmd="trinity -q -q -l off -s $seed -N $number -c ${group#*sys_}"
 	else
-		max_group_nr=10
+		[ -n "$nr_groups" ] || die "miss nr_groups when group is $group"
+
 		targets=
 		# trinity -L
 		# entrypoint 433 fspick : [64-bit] Enabled
@@ -49,7 +51,7 @@ if [ -n "$group" ]; then
 			echo "$syscall" | grep -qE "^[a-z0-9_]*$" || continue
 			num=$(echo "$syscall" | md5sum | cut -c1-2)
 			num=$(( 0x$num ))
-			[ group-0$(( seed % num % max_group_nr )) = "$group" ] && targets="$targets -c $syscall"
+			[ group-0$(( seed % num % nr_groups )) = "$group" ] && targets="$targets -c $syscall"
 		done
 
 		cmd="trinity -q -q -l off -s $seed -N $number $targets"
