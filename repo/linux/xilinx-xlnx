@@ -2,7 +2,7 @@ url: https://github.com/Xilinx/linux-xlnx
 mail_cc:
 - git@amd.com
 owner:
-- Michal Simek <michal.simek@xilinx.com>
+- Michal Simek <michal.simek@amd.com>
 - Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>
 git_am_branch: master
 subsystems:
