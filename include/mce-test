@@ -18,7 +18,7 @@ need_kconfig:
 - MEMCG_SWAP: y
 - MEMCG: y
 - SWAP: y
-- DEBUG_KERNEL
+- DEBUG_KERNEL: y
 - PROC_FS: y
 - HOTPLUG_CPU: y
 - BOOTPARAM_HOTPLUG_CPU0: y
