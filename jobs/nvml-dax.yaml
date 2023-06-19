@@ -15,7 +15,6 @@ group:
   - libpmempool
   - log
   - magic
-  - mmap
   - obj
   - out
   - pmem
