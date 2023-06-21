@@ -96,6 +96,7 @@ run_test()
 set_for_universal
 set_for_class
 sleep 2
+has_cmd stress-ng || die "stress-ng is not installed"
 run_test
 exit_value=$?
 
