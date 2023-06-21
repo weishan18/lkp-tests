@@ -42,3 +42,4 @@ vmstat.io.bo: 100
 vmstat.system.cs: 100
 vmstat.system.in: 100
 xfstests.*.seconds: 10
+perf-c2c.HITM.total: 3000
