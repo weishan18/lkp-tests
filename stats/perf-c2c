@@ -18,9 +18,11 @@ while (line = $stdin.gets)
   # DRAM.local: 15
   # DRAM.remote: 11
   when / Load Local HITM/
-    puts "HITM.local: #{line.split[-1]}"
+    hitm_local = line.split[-1]
+    puts "HITM.local: #{hitm_local}"
   when / Load Remote HITM/
-    puts "HITM.remote: #{line.split[-1]}"
+    hitm_remote = line.split[-1]
+    puts "HITM.remote: #{hitm_remote}"
   when / Load Remote HIT/
     puts "HIT.remote: #{line.split[-1]}"
   when / Load Local DRAM/
@@ -29,3 +31,5 @@ while (line = $stdin.gets)
     puts "DRAM.remote: #{line.split[-1]}"
   end
 end
+
+puts "HITM.total: #{hitm_local.to_i + hitm_remote.to_i}"
