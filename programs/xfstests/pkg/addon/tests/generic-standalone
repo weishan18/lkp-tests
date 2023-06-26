@@ -32,6 +32,8 @@
 231
 # execution time > 15m
 240
+# execution time > 10m
+256
 # execution time > 30m on ocfs2
 281
 # execution time > 1h
