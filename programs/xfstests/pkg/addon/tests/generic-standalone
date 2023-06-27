@@ -1,3 +1,5 @@
+# execution time 646s on ext4-smbv2
+006
 # execution time 455s on ext2
 013
 # execution time > 30m
@@ -32,6 +34,8 @@
 231
 # execution time > 15m
 240
+# execution time 492s on ext2
+244
 # execution time > 10m
 256
 # execution time > 30m on ocfs2
@@ -40,12 +44,24 @@
 297
 # execution time > 30m on udf & ocfs2
 299
+# execution time 370s on ext2
+306
+# execution time 297s on ext2
+307
 # execution time > 30m
 311
+# execution time > 5m
+320
+# execution time > 3m
+323
+# execution time > 5m
+324
 # execution time 536s on xfs, 343s on btrfs
 333
 # execution time 534s on xfs, 850s on btrfs
 334
+# execution time > 1000s on udf
+344
 # execution time 929s on ext2
 379
 # the test will clear date on partition using dd command, it will takes a long time
@@ -117,5 +133,7 @@
 676
 # execution time 384s on ext2
 696
+# execution time > 1000s on xfs
+705
 # execution time 1112s on ext2
 707
