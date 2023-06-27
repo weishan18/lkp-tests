@@ -4,3 +4,5 @@ writev03 writev03
 fork13 fork13
 # costs more than 28min
 zram01 zram01.sh
+# execution time > 1000s
+msgstress04 msgstress04
