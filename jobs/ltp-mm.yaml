@@ -10,3 +10,4 @@ fs:
 ltp:
   test:
     - mm-00
+    - mm-mtest06_3

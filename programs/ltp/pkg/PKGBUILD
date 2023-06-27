@@ -232,7 +232,8 @@ split_tests()
 	# mm
 	grep -e oom mm > mm-oom || return
 	grep -e min_free_kbytes mm > mm-min_free_kbytes || return
-	grep -v -e oom -e min_free_kbytes mm > mm-00 || return
+	grep -e mtest06_3 mm > mm-mtest06_3 || return
+	grep -v -e oom -e min_free_kbytes -e mtest06_3 mm > mm-00 || return
 	hide mm
 }
 
