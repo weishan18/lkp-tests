@@ -29,6 +29,6 @@ ltp:
 ---
 ltp:
   test:
-    - fork13.fork13.-i.2
+    - fork13.fork13
 
 timeout: 30m
