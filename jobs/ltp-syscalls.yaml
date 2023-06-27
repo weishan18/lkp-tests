@@ -24,11 +24,7 @@ ltp:
     - syscalls-06
     - syscalls-07
     - writev03.writev03 # run standalone
-    # - syscalls-setsockopt06 # need about 25mins
-
----
-ltp:
-  test:
     - fork13.fork13
+    - syscalls-setsockopt06 # need about 25mins
 
 timeout: 30m
