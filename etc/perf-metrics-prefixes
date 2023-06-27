@@ -42,3 +42,4 @@ vmstat.cpu.
 vmstat.io.
 vmstat.swap.
 vmstat.system.
+perf-c2c.HITM.total
