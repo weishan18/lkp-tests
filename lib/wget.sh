@@ -9,7 +9,7 @@ setup_wget()
 	# etc. options
 	[ -L "$wget" ] && return 1
 
-	http_client_cmd="$wget -q --timeout=1800 --tries=1"
+	http_client_cmd="$wget -q --timeout=3600 --tries=1"
 
 	local wget_help="$($http_client_cmd --help 2>&1)"
 
