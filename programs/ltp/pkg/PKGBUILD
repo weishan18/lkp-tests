@@ -123,7 +123,7 @@ install_numactl()
 
 build()
 {
-	split_syscalls_tests
+	split_syscalls_tests || return
 
 	cd $srcdir/$pkgname || return
 
@@ -159,6 +159,10 @@ split_syscalls_tests()
 	standalone_file=$LKP_SRC/pkg/${pkgname}/addon/tests/standalone
 	while read line
 	do
+		grep -q "^$line$" syscalls || {
+			echo "standalone test \"$line\" is not found in syscalls"
+			return 1
+		}
 		echo $line > ./"${line//[[:blank:]]/.}"
 	done < <(cat $standalone_file | grep -v '^#')
 
