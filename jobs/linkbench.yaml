@@ -2,6 +2,8 @@ suite: linkbench
 testcase: linkbench
 category: benchmark
 
+need_memory: 24G
+
 nr_task: 100%
 setup-linkbench:
 linkbench:
