@@ -120,7 +120,6 @@ ok 3 selftests: lkdtm: WARNING.sh
 # [  115.201624] Warning message trigger count: 2
 # [  115.201657] WARNING: CPU: 2 PID: 1439 at drivers/misc/lkdtm/bugs.c:88 lkdtm_WARNING_MESSAGE+0x20/0x40
 # 
-# [  115.225039] /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-skl-nuc2/kernel-selftests-lkdtm-ucode=0xe2-CYCLIC_BASE-20211113-508515-1au7kiz-0.yaml&job_state=running -O /dev/null
 # [  115.235286] Modules linked in: netconsole
 # 
 # [  115.264925]  btrfs

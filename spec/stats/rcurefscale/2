@@ -2203,17 +2203,3 @@
                198	6.438
                199	6.298
                200	6.448
-[ 1235.688736] /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lizhijian/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%25-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml&job_state=post_run -O /dev/null
-
-[ 1238.027446] kill 1500 vmstat --timestamp -n 10 
-
-[ 1238.035543] kill 1498 dmesg --follow --decode 
-
-[ 1238.044052] wait for background processes: 1507 1503 oom-killer meminfo
-
-[ 1243.966657] /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lizhijian/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%25-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml&loadavg=15.35%203.64%201.37%202/770%205807&start_time=1635126716&end_time=1635127929&version=/lkp/lizhijian/.src-20211025-094420:1b43fb02f-dirty:194c9bd15813& -O /dev/null
-
-[ 1244.022888] /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lizhijian/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%25-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml&job_state=disturbed -O /dev/null
-
-[ 1244.067001] /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lizhijian/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-csl-2sp9/rcurefscale-10000-50%25-30-0-rcu-ucode=0x5003006-debian-10.4-x86_64-20200603.cgz-64570fbc14f8d7cb3fe3995f20e26bc25ce4b2cc-20211025-55505-1n8aqrl-0.yaml&job_state=manual_check -O /dev/null
-
