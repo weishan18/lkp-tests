@@ -129,6 +129,7 @@ build()
 	cd $srcdir/$pkgname || return
 
 	echo build_ltp
+	git log -1
 	build_ltp "${pkgdir}/lkp/benchmarks/${pkgname}" || return
 
 	# build_tpm_emulator || return
