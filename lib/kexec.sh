@@ -187,16 +187,38 @@ kexec_to_next_job()
 	# SMBIOS3=0x384cf000
 	# SMBIOS=0x384d0000
 	acpi_rsdp=$(grep -m1 ^ACPI /sys/firmware/efi/systab 2>/dev/null | cut -f2- -d=)
-	[ -n "$acpi_rsdp" ] && append="$append acpi_rsdp=$acpi_rsdp"
+
+	# if efi is disabled, read acpi_rsdp from dmesg log
+	# if dmesg has "ACPI: RSDP 0x0000...", it must be a correct value of a successful boot
+	# if dmesg has "ACPI:      0x0000..." (missing RSDP keyword), it means the value is a wrong one
+	# [    0.008415] ACPI: RSDP 0x0000000036937000 000024 (v02 ALASKA)
+	[ -n "$acpi_rsdp" ] || {
+		local dmesg_acpi_rsdp=$(dmesg | grep -m1 "ACPI: RSDP" | grep -o -E "0x[0-9]+")
+		# get the last 8 digits
+		if [ -n "$dmesg_acpi_rsdp" ]; then
+			acpi_rsdp="0x${dmesg_acpi_rsdp: -8}"
+		else
+			echo "no acpi_rsdp from dmesg"
+		fi
+	}
+
+	if [ -n "$acpi_rsdp" ]; then
+		# append correct acpi_rsdp value as the last param, so it can overwrite previous one if job yaml provides a wrong value
+		append="$append acpi_rsdp=$acpi_rsdp"
+	else
+		# acpi_rsdp is not found in either efi systab or dmesg
+		# this should be an abnormal case
+		echo "cannot get acpi_rsdp from efi systab or dmesg" 1>&2
+	fi
 
 	download_kernel
 	download_initrd
 	download_initrd_ret=$?
 
 	jobfile_append_var "last_kernel=$(uname -r)"
-	set_job_state "booting"
+	set_job_state "booting acpi_rsdp_$acpi_rsdp"
 
-	echo "LKP: kexec loading..."
+	echo "LKP: kexec loading... acpi_rsdp: $acpi_rsdp"
 	echo kexec --noefi -l $kernel_file $initrd_option
 	sleep 1 # kern  :warn  : [  +0.000073] sed: 34 output lines suppressed due to ratelimiting
 	echo --append="${append}"
