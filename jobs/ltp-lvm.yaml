@@ -9,3 +9,5 @@ ltp:
     # Cause OOM, require at least 32GB memory
     - lvm.local-00
     - lvm.local-01
+
+timeout: 35m
