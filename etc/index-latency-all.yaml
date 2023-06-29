@@ -19,7 +19,6 @@ phoronix-test-suite\..+\.9th_latency_percentile: -0.1
 phoronix-test-suite\..+\.max_latency_ms: -0.1
 pmbench\.latency\.ns\.average: -0.1
 pmbench\..+\.ns: -0.1
-pmbench\..+\%: -0.1
 qperf\..+\.latency: -0.3
 schbench\.wakeup_latency_max_us: -0.1
 schbench\.request_latency_max_us: -0.1
