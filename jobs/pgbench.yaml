@@ -2,6 +2,8 @@ suite: pgbench
 testcase: pgbench
 category: benchmark
 
+need_memory: 24G
+
 runtime: 300s
 
 nr_task: 50%
