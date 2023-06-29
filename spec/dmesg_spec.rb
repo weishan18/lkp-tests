@@ -42,6 +42,15 @@ describe 'Dmesg' do
       line, _bug_to_bisect = analyze_error_id '[    7.895752] parport0: cannot grant exclusive access for device spi-lm70llp'
       expect(line).to eq 'parport#:cannot_grant_exclusive_access_for_device_spi-lm#llp'
     end
+
+    it 'segfault at ip sp error' do
+      ['[   32.298491][  T896] kexec[896]: segfault at 0 ip 0000000000000000 sp 00007ffeaf0ff420 error 14 in dash[561ac3c57000+4000] likely on CPU 38 (core 6, socket 0)',
+       '[   32.329378][  T898] lkp-bootstrap[898]: segfault at 0 ip 0000000000000000 sp 00007ffc93657520 error 14 in dash[562112780000+4000] likely on CPU 7 (core 7, socket 0)',
+       '[  247.692415][  T962] rsyslogd[962]: segfault at 0 ip 0000000000000000 sp 00007ffec6772100 error 14 likely on CPU 3 (core 3, socket 0)'].each do |line|
+        line, _bug_to_bisect = analyze_error_id line
+        expect(line).to eq 'segfault_at_ip_sp_error'
+      end
+    end
   end
 
   describe 'get_crash_calltraces' do

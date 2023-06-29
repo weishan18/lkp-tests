@@ -63,6 +63,7 @@ PANIC: early exception
 RIP: [0-9a-f]{4}:[a-zA-Z0-9._]+\+0x.*/0x.*
 RIP: [0-9a-f]{4}:\[.*\] [a-zA-Z0-9._]+\+0x.*/0x.*
 S0Box: more than 5 loops in s0box_interrupt
+segfault at .* ip .* sp .* error .* likely on CPU .*
 sysctl could not get directory: 
 sysctl duplicate entry: 
 sysctl link missing during unregister: 

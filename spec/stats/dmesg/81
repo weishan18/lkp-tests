@@ -1,0 +1,1 @@
+[   24.907365][  T897] kexec[897]: segfault at 0 ip 0000000000000000 sp 00007ffc23d73900 error 14 in dash[558683f44000+4000] likely on CPU 4 (core 4, socket 0)
