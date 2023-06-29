@@ -241,6 +241,11 @@ split_tests()
 	grep -e mtest06_3 mm > mm-mtest06_3 || return
 	grep -v -e oom -e min_free_kbytes -e mtest06_3 mm > mm-00 || return
 	hide mm
+
+	# kernel_misc
+	# zram01 costs more than 28min
+	grep -e zram01 kernel_misc > kernel_misc-zram01 || return
+	sed -i "/zram01/d" kernel_misc
 }
 
 package()
