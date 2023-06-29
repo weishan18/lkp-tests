@@ -9,6 +9,7 @@ source=('https://git.centos.org/r/rpms/rusers.git' 'https://github.com/PeterHuew
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 . $LKP_SRC/lib/tests/ltp.sh
+. $LKP_SRC/lib/install.sh
 
 build_rusers()
 {
@@ -156,7 +157,7 @@ split_syscalls_tests()
 	grep -Ee "^(mbind|move_pages|migrate_pages|set_mempolicy)" syscalls >> syscalls-numa || return
 
 	# standalone
-	standalone_file=$LKP_SRC/pkg/${pkgname}/addon/tests/standalone
+	standalone_file=$(get_pkg_dir $pkgname)/addon/tests/standalone
 	while read line
 	do
 		grep -q "^$line$" syscalls || {
