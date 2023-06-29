@@ -167,6 +167,25 @@ kexec_to_next_job()
 	# Interface (EFI), attempting to boot a second kernel using kexec, an ACPI
 	# BIOS Error (bug): A valid RSDP was not found (20160422/tbxfroot-243) was
 	# logged.
+
+	# if efi is enabled, read ACPI from efi systab
+	# it may have multiple versions such as ACPI, ACPI 2.0, and maybe ACPI 3.0 coming in the future
+	# the newest version will be put on top, so we always read the first line
+	# $ cat Documentation/ABI/testing/sysfs-firmware-efi
+	# What:           /sys/firmware/efi/systab
+	# Date:           April 2005
+	# Contact:        linux-efi@vger.kernel.org
+	# Description:    Displays the physical addresses of all EFI Configuration
+	#                 Tables found via the EFI System Table. The order in
+	#                 which the tables are printed forms an ABI and newer
+	#                 versions are always printed first, i.e. ACPI20 comes
+	#                 before ACPI.
+	# Users:          dmidecode
+	# $ cat /sys/firmware/efi/systab
+	# ACPI20=0x36937000
+	# ACPI=0x36937000
+	# SMBIOS3=0x384cf000
+	# SMBIOS=0x384d0000
 	acpi_rsdp=$(grep -m1 ^ACPI /sys/firmware/efi/systab 2>/dev/null | cut -f2- -d=)
 	[ -n "$acpi_rsdp" ] && append="$append acpi_rsdp=$acpi_rsdp"
 
