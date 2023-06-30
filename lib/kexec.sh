@@ -216,7 +216,9 @@ kexec_to_next_job()
 	download_initrd_ret=$?
 
 	jobfile_append_var "last_kernel=$(uname -r)"
-	set_job_state "booting acpi_rsdp_$acpi_rsdp"
+	jobfile_append_var "acpi_rsdp=$acpi_rsdp"
+
+	set_job_state "booting"
 
 	echo "LKP: kexec loading... acpi_rsdp: $acpi_rsdp"
 	echo kexec --noefi -l $kernel_file $initrd_option
