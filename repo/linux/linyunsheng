@@ -1,1 +1,3 @@
 url: https://github.com/gestionlin/linux.git
+owner: Yunsheng Lin <linyunsheng@huawei.com>
+notify_build_success_branch: .*
