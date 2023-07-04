@@ -10,7 +10,7 @@ ltp:
     - crypto
     - fs_bind
     - kernel_misc
-    - kernel_misc-zram01
+    # - kernel_misc-zram01 # run for more than 28m
     - net.ipv6
     - net.multicast
     - net.tcp_cmds
