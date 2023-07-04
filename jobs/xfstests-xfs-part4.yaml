@@ -16,7 +16,6 @@ xfstests:
     - xfs-group-29
     - xfs-group-30
     - xfs-group-31
-    - xfs-group-34
     - xfs-group-42
     - xfs-group-43
     - xfs-group-44
