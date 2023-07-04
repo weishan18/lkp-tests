@@ -10,6 +10,7 @@ ltp:
     - crypto
     - fs_bind
     - kernel_misc
+    - kernel_misc-zram01
     - net.ipv6
     - net.multicast
     - net.tcp_cmds
