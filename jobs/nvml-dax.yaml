@@ -6,14 +6,11 @@ nvml:
 test: pmem
 
 group:
-  - blk
-  - bttdevice
   - compat
   - ctl
   #  - daxio # donot have /dev/dax* device
   - ex
   - libpmempool
-  - log
   - magic
   - obj
   - out

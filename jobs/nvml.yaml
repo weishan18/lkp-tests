@@ -6,13 +6,11 @@ need_memory: 3G
 
 nvml:
 group:
-  - bttdevice
   - compat
   - ctl
   #  - daxio # donot have /dev/dax* device
   - ex
   - libpmempool
-  - log
   - magic
   - obj
   - out
@@ -41,6 +39,5 @@ need_memory: 4G
 
 test: non-pmem
 group:
-  - blk
   - pmempool
   - util
