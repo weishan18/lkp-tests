@@ -194,7 +194,7 @@ kexec_to_next_job()
 	# [    0.008415] ACPI: RSDP 0x0000000036937000 000024 (v02 ALASKA)
 	# [    1.212964] ACPI: RSDP 0x00000000699FD014 000024 (v02 INTEL )
 	[ -n "$acpi_rsdp" ] || {
-		local dmesg_acpi_rsdp=$(dmesg | grep -m1 "ACPI: RSDP" | grep -o -E "0x[0-9a-zA-Z]+")
+		local dmesg_acpi_rsdp=$(dmesg | grep -m1 "ACPI: RSDP" | grep -o -E "0x[0-9a-fA-F]+")
 		if [ -n "$dmesg_acpi_rsdp" ]; then
 			# get the last 8 digits
 			acpi_rsdp="0x$(echo $dmesg_acpi_rsdp | cut -c 11-)"
