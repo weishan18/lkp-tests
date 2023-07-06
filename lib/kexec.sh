@@ -161,6 +161,9 @@ kexec_to_next_job()
 	read_kernel_cmdline_vars_from_append "$append"
 	append=$(echo "$append" | sed -r 's/ [a-z_]*initrd=[^ ]+//g')
 
+	local job_acpi_rsdp=$(echo "$append" | grep -o -E "acpi_rsdp=0x[0-9a-fA-F]+" | cut -d= -f2)
+	[ -n "$job_acpi_rsdp" ] || echo "acpi_rsdp is not set in bootloader_append param of the next job"
+
 	# Pass the RSDP address to the kernel for EFI system
 	# Root System Description Pointer (RSDP) is a data structure used in the
 	# ACPI programming interface. On systems using Extensible Firmware
@@ -201,6 +204,11 @@ kexec_to_next_job()
 		else
 			echo "no acpi_rsdp from dmesg"
 		fi
+	}
+
+	[ -n "$job_acpi_rsdp" ] && [ -n "$acpi_rsdp" ] && [ "$job_acpi_rsdp" != "$acpi_rsdp" ] && {
+		set_job_state "acpi_rsdp_mismatch_deteced"
+		echo "acpi_rsdp_mismatch_deteced, $job_acpi_rsdp != $acpi_rsdp" 1>&2
 	}
 
 	if [ -n "$acpi_rsdp" ]; then
