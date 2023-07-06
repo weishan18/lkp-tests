@@ -197,7 +197,7 @@ kexec_to_next_job()
 		local dmesg_acpi_rsdp=$(dmesg | grep -m1 "ACPI: RSDP" | grep -o -E "0x[0-9a-fA-F]+")
 		if [ -n "$dmesg_acpi_rsdp" ]; then
 			# get the last 8 digits
-			acpi_rsdp="0x$(echo $dmesg_acpi_rsdp | cut -c 11-)"
+			acpi_rsdp="0x$(echo $dmesg_acpi_rsdp | cut -c 11- | tr '[:upper:]' '[:lower:]')"
 		else
 			echo "no acpi_rsdp from dmesg"
 		fi
