@@ -357,7 +357,7 @@ phoronix-test-suite:
       # - Test All Options
   - test:
       # - iperf-1.1.1 # temporarily comment out the failed test
-    - java-gradle-perf-1.1.0
+      # - java-gradle-perf-1.1.0 # temporarily comment out the failed test
     - java-jmh-1.0.0
   - test: java-scimark2-1.1.2
     option_a:
