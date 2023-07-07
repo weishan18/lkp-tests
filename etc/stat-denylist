@@ -44,6 +44,7 @@
 ^dmesg.kobject\(.+#\):tried_to_init_an_initialized_object
 ^dmesg..*/lkp/
 ^dmesg.Mem-Info
+^dmesg.sysctl_could_not_get_directory
 ^dmesg.timestamp:.*
 ^dmesg.bootstage:.*
 ^dmesg.WARNING:at_kernel/kcsan/kcsan_test.c:#test_init
