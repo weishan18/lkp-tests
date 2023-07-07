@@ -151,6 +151,20 @@ download_initrd()
 	return 0
 }
 
+detect_acpi_rsdp_mismatch()
+{
+	local append="$1"
+	local acpi_rsdp="$2"
+
+	local job_acpi_rsdp=$(echo "$append" | grep -o -E "acpi_rsdp=0x[0-9a-fA-F]+" | cut -d= -f2)
+	[ -n "$job_acpi_rsdp" ] || echo "acpi_rsdp is not set in bootloader_append param of the next job"
+
+	[ -n "$job_acpi_rsdp" ] && [ -n "$acpi_rsdp" ] && [ "$job_acpi_rsdp" != "$acpi_rsdp" ] && {
+		set_job_state "acpi_rsdp_mismatch_deteced"
+		echo "acpi_rsdp_mismatch_deteced, $job_acpi_rsdp != $acpi_rsdp" 1>&2
+	}
+}
+
 kexec_to_next_job()
 {
 	local kernel append acpi_rsdp download_initrd_ret
@@ -160,9 +174,6 @@ kexec_to_next_job()
 
 	read_kernel_cmdline_vars_from_append "$append"
 	append=$(echo "$append" | sed -r 's/ [a-z_]*initrd=[^ ]+//g')
-
-	local job_acpi_rsdp=$(echo "$append" | grep -o -E "acpi_rsdp=0x[0-9a-fA-F]+" | cut -d= -f2)
-	[ -n "$job_acpi_rsdp" ] || echo "acpi_rsdp is not set in bootloader_append param of the next job"
 
 	# Pass the RSDP address to the kernel for EFI system
 	# Root System Description Pointer (RSDP) is a data structure used in the
@@ -206,10 +217,7 @@ kexec_to_next_job()
 		fi
 	}
 
-	[ -n "$job_acpi_rsdp" ] && [ -n "$acpi_rsdp" ] && [ "$job_acpi_rsdp" != "$acpi_rsdp" ] && {
-		set_job_state "acpi_rsdp_mismatch_deteced"
-		echo "acpi_rsdp_mismatch_deteced, $job_acpi_rsdp != $acpi_rsdp" 1>&2
-	}
+	detect_acpi_rsdp_mismatch "$append" "$acpi_rsdp"
 
 	if [ -n "$acpi_rsdp" ]; then
 		# append correct acpi_rsdp value as the last param, so it can overwrite previous one if job yaml provides a wrong value
