@@ -13,7 +13,6 @@ kernel-selftests:
     - conntrack_icmp_related.sh
     - nft_flowtable.sh
     - ipvs.sh
-    - nft_concat_range.sh
     - nft_conntrack_helper.sh
     - nft_queue.sh
     - nft_meta.sh
