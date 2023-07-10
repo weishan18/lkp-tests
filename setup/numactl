@@ -14,7 +14,7 @@ opts=
 [ -n "$membind"		] && opts="${opts} --membind=$membind"
 [ -n "$cpunodebind"	] && opts="${opts} --cpunodebind=$cpunodebind"
 [ -n "$preferred"	] && opts="${opts} --preferred=$preferred"
-[ -n "physcpubind"	] && opts="${opts} --physcpubind=$physcpubind"
+[ -n "$physcpubind"	] && opts="${opts} --physcpubind=$physcpubind"
 
 cat >> $TMP/env.yaml <<EOF
 
