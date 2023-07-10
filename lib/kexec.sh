@@ -167,13 +167,20 @@ detect_acpi_rsdp_mismatch()
 
 get_acpi_rsdp_from_dmesg()
 {
+	local dmesg_source="$1"
 	local dmesg_acpi_rsdp
-	local dmesg_file=$1
-	if [ -n "$dmesg_file" ] && [ -f "$dmesg_file" ]; then
-		dmesg_acpi_rsdp=$(grep -m1 "ACPI: RSDP" $dmesg_file)
-	else
+
+	[ -n "$dmesg_source" ] || return
+
+	if [ "$dmesg_source" = "dmesg" ]; then
 		dmesg_acpi_rsdp=$(dmesg | grep -m1 "ACPI: RSDP")
+	elif [ -f "$dmesg_source" ]; then
+		dmesg_acpi_rsdp=$(grep -m1 "ACPI: RSDP" "$dmesg_source")
+	else
+		echo "invalid dmesg source"
+		return 1
 	fi
+
 	if [ -n "$dmesg_acpi_rsdp" ]; then
 		# get the last 8 digits, convert to lowercase
 		acpi_rsdp="0x$(echo "$dmesg_acpi_rsdp" | grep -o -E "0x[0-9a-fA-F]+" | cut -c 11- | tr '[:upper:]' '[:lower:]')"
@@ -224,7 +231,7 @@ kexec_to_next_job()
 	# if dmesg has "ACPI:      0x0000..." (missing RSDP keyword), it means the value is a wrong one
 	# [    0.008415] ACPI: RSDP 0x0000000036937000 000024 (v02 ALASKA)
 	# [    1.212964] ACPI: RSDP 0x00000000699FD014 000024 (v02 INTEL )
-	[ -n "$acpi_rsdp" ] || get_acpi_rsdp_from_dmesg
+	[ -n "$acpi_rsdp" ] || get_acpi_rsdp_from_dmesg "dmesg"
 
 	detect_acpi_rsdp_mismatch "$append" "$acpi_rsdp"
 
