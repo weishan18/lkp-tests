@@ -16,8 +16,7 @@ describe 'stats' do
 
         stat_script = LKP::Programs.find_parser(script)
         new_stat = if script =~ /^(kmsg|dmesg|mpstat|fio|perf-stat-tests)$/
-                     initcall_file = file =~ /spec\/stats\/(dmesg|kmsg)\/boot-stage/ ? "#{file}-initcalls_yaml" : ''
-                     `INITCALL_FILE=#{initcall_file} #{stat_script} #{file}`
+                     `#{stat_script} #{file}`
                    else
                      `#{stat_script} < #{file}`
                    end
@@ -38,18 +37,6 @@ describe 'stats' do
       expect(kpi_stat_direction(a, change_percentage)).to eq 'improvement'
       expect(kpi_stat_direction(b, change_percentage)).to eq 'regression'
       expect(kpi_stat_direction(c, change_percentage)).to eq 'undefined'
-    end
-  end
-
-  describe 'stats_field_crashed_bootstage' do
-    it 'boot failed due to stat' do
-      expect(stats_field_crashed_bootstage({}, 'dmesg.x')).to be nil
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [2] }, 'dmesg.x')).to be nil
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [0], 'dmesg.bootstage:last' => [0] }, 'dmesg.x')).to be nil
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [9], 'dmesg.bootstage:last' => [9] }, 'dmesg.x')).to be nil
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [2], 'dmesg.bootstage:last' => [3] }, 'dmesg.x')).to be nil
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [2], 'dmesg.bootstage:last' => [2] }, 'dmesg.x')).to eq 2
-      expect(stats_field_crashed_bootstage({ 'dmesg.bootstage:x' => [2, 3], 'dmesg.bootstage:last' => [2, 4] }, 'dmesg.x')).to eq 2
     end
   end
 end

@@ -46,7 +46,6 @@
 ^dmesg.Mem-Info
 ^dmesg.sysctl_could_not_get_directory
 ^dmesg.timestamp:.*
-^dmesg.bootstage:.*
 ^dmesg.WARNING:at_kernel/kcsan/kcsan_test.c:#test_init
 ^dmesg\.WARNING:Unprivileged_eBPF_is_enabled_with_eIBRS_on,data_leaks_possible_via_Spectre_v2_BHB_attacks
 ^dmesg\.WARNING:Spectre_v2_mitigation_leaves_CPU_vulnerable_to_RETBleed_attacks,data_leaks_possible

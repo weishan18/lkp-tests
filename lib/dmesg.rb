@@ -6,7 +6,6 @@ require "#{LKP_SRC}/lib/yaml"
 require "#{LKP_SRC}/lib/constant"
 require "#{LKP_SRC}/lib/string_ext"
 require "#{LKP_SRC}/lib/lkp_path"
-require "#{LKP_SRC}/lib/job"
 require "#{LKP_SRC}/lib/log"
 require "#{LKP_SRC}/lib/programs"
 
@@ -15,21 +14,6 @@ LKP_SRC_ETC ||= LKP::Path.src('etc')
 # /c/linux% git grep '"[a-z][a-z_]\+%d"'|grep -o '"[a-z_]\+'|cut -c2-|sort -u
 LINUX_DEVICE_NAMES = IO.read("#{LKP_SRC_ETC}/linux-device-names").split("\n")
 LINUX_DEVICE_NAMES_RE = /\b(#{LINUX_DEVICE_NAMES.join('|')})\d+/.freeze
-
-BOOT_LEVELS = {
-  'cmdline' => 1,
-  'early' => 1,
-  'pure' => 2,
-  'core' => 3,
-  'postcore' => 4,
-  'arch' => 5,
-  'subsys' => 6,
-  'fs' => 7,
-  'device' => 8,
-  'module' => 8,
-  'late' => 9,
-  'boot-ok' => 10
-}.freeze
 
 require 'fileutils'
 require 'tempfile'
@@ -499,105 +483,11 @@ def get_crash_calltraces(dmesg_file)
   calltraces
 end
 
-def initcall_levels(dmesg_file = '')
-  initcall_file = ENV['INITCALL_FILE']
-  unless File.exist?(initcall_file.to_s)
-    return nil if dmesg_file.empty?
-
-    job_file = File.join(File.dirname(dmesg_file), 'job.yaml')
-    return nil unless File.exist?(job_file)
-
-    job = Job.open(job_file)
-    initcall_file = File.join(File.dirname(job['kernel']), 'initcalls.yaml')
-  end
-
-  YAML.load_file(initcall_file)
-rescue StandardError
-  nil
-end
-
-def timestamp_levels(error_stamps, dmesg_file)
-  map = {}
-
-  initcall_file = ENV['INITCALL_FILE']
-  return map if initcall_file && !File.exist?(initcall_file.to_s)
-
-  first_line = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *0.000000\\]' #{dmesg_file}`
-  # dmesg file is broken
-  return map if first_line.empty?
-
-  initcall_lines = `#{grep_cmd(dmesg_file)} -E " initcall (__initstub__.+|)[0-9a-zA-Z_]+\\\\+0x.* returned" #{dmesg_file}`
-  unless initcall_lines.empty?
-    initcall_level = initcall_levels(dmesg_file)
-    if initcall_level
-      initcall_lines.each_line do |line|
-        next unless line.resolve_invalid_bytes =~ /\[ *(\d{1,6}\.\d{6})\].* __initstub__.*__[0-9]+_[0-9]+_([0-9a-zA-Z_]+)([0-7]|early)(|s)\+0x/ ||
-                    line.resolve_invalid_bytes =~ /\[ *(\d{1,6}\.\d{6})\].* ([0-9a-zA-Z_]+)\+0x/
-
-        timestamp = $1
-        initcall = $2
-        level = initcall_level[initcall].to_s.split('_').first
-        map[timestamp] = BOOT_LEVELS[level] if level
-        # when late_initcall called, other level initcall may be still running
-        break if level == 'late'
-      end
-    end
-  end
-
-  last = error_stamps['last']
-  if map.empty? && last
-    kernel_cmdline = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel command line:' #{dmesg_file}`
-    m = kernel_cmdline.resolve_invalid_bytes.match(/\[ *(\d{1,6}\.\d{6})\]/)
-    # cmdline not exist or boot last time - cmdline time < 5s
-    map[last] = BOOT_LEVELS['cmdline'] if kernel_cmdline.empty? || (m && (Float(last) - Float(m[1])) < 5)
-  else
-    boot_ok = `#{grep_cmd(dmesg_file)} -m1 -P '\\[ *[0-9]{1,6}.[0-9]{6}\\].* Kernel tests: Boot OK' #{dmesg_file}`
-    m = boot_ok.resolve_invalid_bytes.match(/\[ *(\d{1,6}\.\d{6})\]/)
-    map[m[1]] = BOOT_LEVELS['boot-ok'] if m
-  end
-
-  map
-end
-
-def put_dmesg_stamps(error_stamps, dmesg_file)
-  timestamp_level = timestamp_levels(error_stamps, dmesg_file)
-
-  dmesgs = error_stamps.map do |error_id, timestamp|
-    next [error_id, { timestamp: timestamp }] if timestamp_level.empty?
-
-    at = timestamp_level.keys.bsearch_index { |t| t.to_f > timestamp.to_f } || timestamp_level.size
-    if at.positive?
-      last_timestamp = timestamp_level.keys[at - 1]
-    else
-      last_timestamp = timestamp_level.keys[at]
-      next [error_id, { timestamp: timestamp }] if timestamp_level[last_timestamp] > 1
-    end
-
-    [error_id, { timestamp: timestamp, bootstage: timestamp_level[last_timestamp] }]
-  end
-
-  dmesgs = dmesgs.to_h
-
-  # sometimes the last line of dmesg is wrong like "[    0.000000][    T0] Linux version 6.2.0-02390-g88af9b164c7a (kbuild@b76c4d10fbf3)"
-  # to reduce the impact of this, reset last bootstage to be the max of all others
-  dmesgs['last'][:bootstage] &&= dmesgs.values.map { |v| v[:bootstage].to_i }.max
-
+def put_dmesg_stamps(error_stamps)
   puts
-  dmesgs.each do |error_id, detail|
-    puts "timestamp:#{error_id}: #{detail[:timestamp]}"
-    puts "bootstage:#{error_id}: #{detail[:bootstage]}" if detail[:bootstage]
+  error_stamps.each do |error_id, timestamp|
+    puts "timestamp:#{error_id}: #{timestamp}"
   end
-end
-
-def put_early_bootstage(error_ids)
-  return if error_ids.empty?
-
-  puts
-  initcall_file = ENV['INITCALL_FILE']
-  return if initcall_file && !File.exist?(initcall_file.to_s)
-
-  puts 'bootstage:last: 1'
-  error_ids.each_key { |error_id| puts "bootstage:#{error_id}: 1" }
 end
 
 # when lkdtm is complete run, ignore dmesg
