@@ -157,6 +157,9 @@ split_syscalls_tests()
 	# need 2 numa node
 	grep -Ee "^(mbind|move_pages|migrate_pages|set_mempolicy)" syscalls >> syscalls-numa || return
 
+	# delete ioprio_set03 test temporarily since new header files from linux-next are required to compile it.
+	sed -i "/ioprio_set03/d" syscalls || return
+
 	# standalone
 	standalone_file=$(get_pkg_dir $pkgname)/addon/tests/syscalls-standalone
 	while read line
