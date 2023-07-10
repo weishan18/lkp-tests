@@ -162,12 +162,27 @@ class MMatrixPlotter < MatrixPlotterBase
         p.title @title if @title
         p.ytics 'nomirror'
 
-        x_start = @x_range[0] || 0
-        x_len = @x_range[1] ? @x_range[1] - x_start : nil
         y_min, y_max = nil
         @lines.each do |matrix, y_stat_key, line_title|
           values_all = matrix[y_stat_key]
-          values = values_all && values_all[x_start, x_len || values_all.length]
+          next unless values_all
+
+          if @x_stat_key
+            xs_all = matrix[@x_stat_key]
+            # search the range start and end by value of the x_stat_key
+            x_start = @x_range[0] && xs_all.find_index { |x| x >= @x_range[0] }
+            x_end = @x_range[1] && xs_all.find_index { |x| x >= @x_range[1] }
+            x_start ||= 0
+            x_end ||= xs_all.length
+            x_len = x_end - x_start
+          else
+            x_start = @x_range[0] || 0
+            x_start = x_start.to_i
+            x_len = (@x_range[1] || values_all.length) - x_start
+            x_len = x_len.to_i
+          end
+
+          values = values_all[x_start, x_len]
           next unless check_line(values)
 
           max = values.max
@@ -176,8 +191,7 @@ class MMatrixPlotter < MatrixPlotterBase
           y_max = y_max ? [max, y_max].max : max
 
           if @x_stat_key
-            xs_all = matrix[@x_stat_key]
-            xs = xs_all[x_start, x_len || xs_all.length]
+            xs = xs_all[x_start, x_len]
             data = [xs, values]
           else
             data = [values]

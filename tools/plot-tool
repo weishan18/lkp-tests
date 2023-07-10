@@ -56,7 +56,7 @@ opt_parser = OptionParser.new do |opts|
   end
 
   opts.on('--x-range RANGE', 'The x range') do |range|
-    $x_range = range.split(',').map(&:to_i)
+    $x_range = range.split(',').map(&:to_f)
   end
 
   opts.on('-d', '--diff', 'draw diff figure') do
