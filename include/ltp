@@ -1,5 +1,6 @@
 initrds+:
 - linux_headers
+
 need_kconfig:
 % if ___.test == "net_stress.ipsec_dccp"
 - IPV6_VTI: m
@@ -29,6 +30,9 @@ need_kconfig:
 % elsif ___.test == "cve-07"
 - CRYPTO_SM3
 - CRYPTO_SM3_GENERIC
+% elsif ___.test == "kvm"
+- KVM
+- KVM_INTEL
 % end
 
 % if ___.test != "kvm"
