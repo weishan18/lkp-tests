@@ -6,8 +6,6 @@ need_memory: 3G
 
 disk: 6HDD
 
-timeout: 30m
-
 fs:
   - btrfs
 

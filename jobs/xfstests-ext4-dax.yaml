@@ -8,8 +8,6 @@ boot_params:
 
 disk: 2pmem
 
-timeout: 30m
-
 need_memory: 20G
 
 fs:
