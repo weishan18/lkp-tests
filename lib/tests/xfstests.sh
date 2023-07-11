@@ -78,6 +78,27 @@ setup_fs2_config()
 	setup_cifs_config
 }
 
+is_test_belongs_to_group()
+{
+	# test: xfs-115
+	# group: xfs-no-bug-assert
+	local test=$1
+	local group=$2
+
+	# if it is running a group but not a single test, directly return true if the name matches
+	[ "$test" = "$group" ] && return
+
+	# test_prefix: xfs
+	# test_number: 115
+	local test_prefix=${test%%-*}
+	local test_number=${test##*-}
+
+	# group_prefix: xfs
+	local group_prefix=${group%%-*}
+
+	[ "$test_prefix" = "$group_prefix" ] && grep -q "$test_number" $BENCHMARK_ROOT/xfstests/tests/$group
+}
+
 setup_fs_config()
 {
 	log_eval export TEST_DIR=${mount_points%% *}
@@ -125,7 +146,7 @@ setup_fs_config()
 		log_eval export SCRATCH_XFS_LIST_FUZZ_VERBS=random
 	}
 
-	[ "$test" = "xfs-no-bug-assert" ] && {
+	is_test_belongs_to_group "$test" "xfs-no-bug-assert" && {
 		[ -f /sys/fs/xfs/debug/bug_on_assert ] && echo 0 > /sys/fs/xfs/debug/bug_on_assert
 	}
 
@@ -155,25 +176,25 @@ setup_fs_config()
 		log_eval export WORKAREA="$BENCHMARK_ROOT/xfstests"
 	}
 
-	[ "$test" = "xfs-external" ] && {
+	is_test_belongs_to_group "$test" "xfs-external" && {
 		log_eval export USE_EXTERNAL="yes"
 		log_eval export SCRATCH_RTDEV="$SCRATCH_LOGDEV"
 		log_eval unset SCRATCH_LOGDEV
 	}
-	[ "$test" = "xfs-reflink-rmapbt" ] && log_eval export MKFS_OPTIONS="\"-mreflink=1 -mrmapbt=1\""
-	[ "${test%%[0-9]*}" = "xfs-reflink-" ] && log_eval export MKFS_OPTIONS="-mreflink=1"
-	[ "$test" = "xfs-rmapbt" ] && log_eval export MKFS_OPTIONS="-mrmapbt=1"
+	is_test_belongs_to_group "$test" "xfs-reflink-rmapbt" && log_eval export MKFS_OPTIONS="\"-mreflink=1 -mrmapbt=1\""
+	is_test_belongs_to_group "$test" "xfs-reflink-[0-9]*" && log_eval export MKFS_OPTIONS="-mreflink=1"
+	is_test_belongs_to_group "$test" "xfs-rmapbt" && log_eval export MKFS_OPTIONS="-mrmapbt=1"
 	[ "$test" = "xfs-244" ] && log_eval export MKFS_OPTIONS="-mcrc=0"
 	[ "$test" = "xfs-132" ] && (mkfs.xfs -f -mreflink=1 $TEST_DEV || die "mkfs.xfs test_dev failed")
 
-	if [ "$fs" = xfs ] && [ "${test%%[0-9]*}" = "generic-group-" ]; then
+	if [ "$fs" = xfs ] && is_test_belongs_to_group "$test" "generic-group-[0-9]*"; then
 		mkfs.xfs -f -mreflink=1 $TEST_DEV || die "mkfs.xfs test_dev failed"
 		log_eval export MKFS_OPTIONS="-mreflink=1"
 	fi
 
 	# new version of mkfs.xfs set reflink=1 as default and conflict with DAX mount
 	# need to set reflink=0 manually
-	[ "$fs" = "xfs" ] && [ "$test" = "generic-dax" ] && log_eval export MKFS_OPTIONS="-mreflink=0"
+	[ "$fs" = "xfs" ] && is_test_belongs_to_group "$test" "generic-dax" && log_eval export MKFS_OPTIONS="-mreflink=0"
 
 	[ "$test" = "generic-387" ] && {
 		[ -n "$SCRATCH_DEV_POOL" ] && {
@@ -194,7 +215,7 @@ setup_fs_config()
 	}
 
 	# need at least 3 partitions for TEST_DEV, SCRATCH_DEV and LOGWRITES_DEV
-	if [ "$test" = "generic-logwrites" -o "$test" = "btrfs-logwrites" ] && [ "$nr_partitions" -ge 3 ]; then
+	if (is_test_belongs_to_group "$test" "generic-logwrites" || is_test_belongs_to_group "$test" "btrfs-logwrites") && [ "$nr_partitions" -ge 3 ]; then
 		LOGWRITES_DEV=${partitions#* }
 		LOGWRITES_DEV=${LOGWRITES_DEV%% *}
 		log_eval export LOGWRITES_DEV="$LOGWRITES_DEV"
@@ -212,7 +233,7 @@ setup_fs_config()
 		[ "$fs" = "xfs" ] && unset MKFS_OPTIONS
 	fi
 
-	[ "$test" = "generic-logdev" -o "$test" = "ext4-logdev" -o "$test" = "xfs-logdev" ] && {
+	is_test_belongs_to_group "$test" "generic-logdev" || is_test_belongs_to_group "$test" "ext4-logdev" || is_test_belongs_to_group "$test" "xfs-logdev" && {
 		log_eval export USE_EXTERNAL=yes
 
 		# create a 100M partition for log, avoid test cost too much time
