@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. $LKP_SRC/lib/install.sh
+
 rebuild()
 {
 	[ -d "$1" ] || return
@@ -52,7 +54,7 @@ install_ltp()
 is_excluded()
 {
 	test=$1
-	local exclude_file=$LKP_SRC/pkg/ltp/addon/exclude
+	local exclude_file=$(get_pkg_dir ltp)/addon/exclude
 	cp $exclude_file ./exclude
 
 	# regex match
