@@ -111,8 +111,24 @@ specify_tmpdir()
 	return 0
 }
 
+create_single_test_file()
+{
+	local test=$1
+
+	# hugetlb/hugeshmget02
+	echo "$test" | grep -qE ".+/.+" && {
+		local group=${test%%/*} # hugetlb
+		local sub_test=${test##*/} # hugeshmget02
+		grep -E "^$sub_test " "$BENCHMARK_ROOT/ltp/runtest/$group" > $BENCHMARK_ROOT/ltp/runtest/temp_single_test # hugeshmget02 hugeshmget02 -i 10
+	}
+}
+
 test_setting()
 {
+	# group test: syscalls-05
+	# single test of a group: syscalls-05/ioprio_set03
+	local test=${1%%/*}
+
 	case "$test" in
 	cpuhotplug)
 		mkdir -p /usr/src/linux/
@@ -239,6 +255,10 @@ test_setting()
 
 cleanup_ltp()
 {
+	# group test: syscalls-05
+	# single test of a group: syscalls-05/ioprio_set03
+	local test=${1%%/*}
+
 	case "$test" in
 	lvm.local-*)
 		export LTPROOT=${PWD}

@@ -15,11 +15,19 @@ export PATH=/lkp/benchmarks/ltp/bin:$PATH
 
 workaround_env
 
-test_setting
+test_setting $test
+create_single_test_file $test
 is_excluded $test
 log_cmd export LTP_RUNTIME_MUL=2
-log_cmd ./runltp -f $test $big_dev_opt $tmpdir_opt
 
-cleanup_ltp
+if [ -f "$BENCHMARK_ROOT/ltp/runtest/$test" ]; then
+    log_cmd ./runltp -f $test $big_dev_opt $tmpdir_opt
+elif [ -f "$BENCHMARK_ROOT/ltp/runtest/temp_single_test" ]; then
+    log_cmd ./runltp -f temp_single_test $big_dev_opt $tmpdir_opt
+else
+    die "ltp test cmdfile is not found"
+fi
+
+cleanup_ltp $test
 
 upload_files -t results $BENCHMARK_ROOT/ltp/results/* $BENCHMARK_ROOT/ltp/output
