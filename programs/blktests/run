@@ -21,14 +21,14 @@ set_env()
 {
 	local partition
 	case "$test" in
-	nbd-group-*|loop-group-*)
+	nbd-*|loop-*)
 		partition=""
 		;;
-	scsi-group-*)
+	scsi-*)
 		partition=${partitions%% *}
 		is_virt && partition=$(echo "$partition" | sed 's/[0-9]*$//g')
 		;;
-	srp-group-*)
+	srp-*)
 		log_cmd systemctl stop multipathd
 		;;
 	block-004)
