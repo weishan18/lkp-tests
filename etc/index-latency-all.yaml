@@ -12,6 +12,9 @@ iostat\..*\.(await|r_await|w_await|svctm|avgqu-sz)\.max: -0.1
 kernel-selftests\.dma\.dma_map_benchmark\.average_(map|unmap)_latency: -0.1
 ku-latency\.total_average_us: -0.1
 latency_stats\..*: -0.1
+lmbench3\..+\.latency: -0.1
+lmbench3\..+\.latency.ns: -0.1
+lmbench3\..+\.latency.us: -0.1
 oltp\.latency_95th_ms: -0.1
 oltp\.latency_max_ms: -0.1
 oltp\.latency_min_ms: -0.1
