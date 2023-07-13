@@ -7,6 +7,8 @@ license=('GPL')
 source=("https://github.com/osandov/blktests.git" "https://github.com/karelzak/util-linux.git" "https://github.com/linux-nvme/nvme-cli.git")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
+. $LKP_SRC/lib/install.sh
+
 build_util_linux()
 {
 	cd "${srcdir}/util-linux"
@@ -90,10 +92,9 @@ split_tests()
 # Some special tests need to be separated and tested separately
 split_standalone_tests()
 {
-	# These special tests are written in the relevant files under LKP-SRC/pack/xfstests-addon/tests
-	for file in *-standalone
+	for file in $(get_pkg_dir blktests)/addon/tests/*-standalone
 	do
-		fields=(`echo $file | tr '-' ' '`)
+		fields=(`basename $file | tr '-' ' '`)
 		fs=${fields[0]}
 
 		tests=$(cat $file)
