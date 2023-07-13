@@ -48,7 +48,10 @@ netperf\.Throughput_tps: 1
 netpipe\..+\.avg: 1
 nuttcp\.throughput_Mbps: 1
 oltp\..+\/s: 1
+openssl-speed\..+_per_sec: 1
+openssl-speed\..+_size_block_Kbps: 1
 pbzip2\.throughput: 1
+perf-bench-futex\.ops\/s: 1
 perf-bench-numa-mem\.GB_sec_thread: 1
 perf-bench-numa-mem\.GB_sec_total: 1
 perf-bench-sched-pipe\.ops_per_sec: 1
@@ -145,6 +148,7 @@ phoronix-test-suite\..+\.average_mbytes_sec: 1
 phoronix-test-suite\..+\.average_msg_sec: 1
 phoronix-test-suite\..+\.figure_of_merit: 1
 phoronix-test-suite\..+\.throughput_fom: 1
+phoronix-test-suite\..+\.average_usec: 1
 pigz\.throughput: 1
 pixz\.throughput: 1
 plzip\.throughput: 1
@@ -156,6 +160,7 @@ qperf\..+_bw: 1
 reaim\.jobs_per_min: 1
 redis\..+_throughput_rps: 1
 sockperf\.throughput\..+\.BandWidth_MBps: 1
+sockperf\.throughput\..+\.msg_per_sec: 1
 specjbb2015\.critical-jOPS: 1
 specjbb2015\.max-jOPS: 1
 specjbb2015\.median: 1
