@@ -41,7 +41,7 @@ set_env()
 
 	if [ -n "$partition" ]; then
 		echo "TEST_DEVS=$partition" > config
-		[ "$test" = "nvme-group1" ] && log_cmd mkdir -p /mnt/$test && log_cmd mount $partition /mnt/$test
+		[ "${test%%-*}" = "nvme" ] && log_cmd mkdir -p /mnt/$test && log_cmd mount $partition /mnt/$test
 	fi
 
 	[ "$nvme_trtype" ] && echo "nvme_trtype=$nvme_trtype" >> config
@@ -78,7 +78,7 @@ run_test()
 	}
 
 	case "$test" in
-	nvme-group-*)
+	nvme-*)
 		log_cmd ./check -o /mnt/$test $all_tests
 		;;
 	*)
