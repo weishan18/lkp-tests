@@ -127,6 +127,7 @@ download_initrd()
 				exit 1
 			}
 		fi
+
 		initrd_is_correct $file || {
 			rm -f $file && echo "remove the the broken initrd: $file"
 			set_job_state "initrd_broken"
@@ -148,6 +149,7 @@ download_initrd()
 
 		cat $initrds > $concatenate_initrd
 	}
+
 	return 0
 }
 
@@ -244,12 +246,12 @@ kexec_to_next_job()
 		echo "cannot get acpi_rsdp from efi systab or dmesg" 1>&2
 	fi
 
+	jobfile_append_var "last_kernel=$(uname -r)"
+	jobfile_append_var "acpi_rsdp=$acpi_rsdp"
+
 	download_kernel
 	download_initrd
 	download_initrd_ret=$?
-
-	jobfile_append_var "last_kernel=$(uname -r)"
-	jobfile_append_var "acpi_rsdp=$acpi_rsdp"
 
 	set_job_state "booting"
 
