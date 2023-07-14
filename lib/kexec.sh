@@ -42,7 +42,7 @@ download_kernel()
 	http_get_newer "$kernel" $kernel_file || {
 		set_job_state "wget_kernel_fail"
 		echo "failed to download kernel: $kernel" 1>&2
-		exit 1
+		return 1
 	}
 }
 
@@ -193,7 +193,7 @@ get_acpi_rsdp_from_dmesg()
 
 kexec_to_next_job()
 {
-	local kernel append acpi_rsdp download_initrd_errno
+	local kernel append acpi_rsdp download_errno
 	kernel=$(awk  '/^KERNEL / { print $2; exit }' $NEXT_JOB)
 	append=$(grep -m1 '^APPEND ' $NEXT_JOB | sed 's/^APPEND //')
 	rm -f /tmp/initrd-* /tmp/modules.cgz
@@ -250,8 +250,12 @@ kexec_to_next_job()
 	jobfile_append_var "acpi_rsdp=$acpi_rsdp"
 
 	download_kernel
-	download_initrd
-	download_initrd_errno=$?
+	download_errno=$?
+
+	[ $download_errno -eq 0 ] && {
+		download_initrd
+		download_errno=$?
+	}
 
 	echo "LKP: kexec loading... acpi_rsdp: $acpi_rsdp"
 	echo kexec --noefi -l $kernel_file $initrd_option
@@ -269,7 +273,7 @@ kexec_to_next_job()
 	fi
 
 	# store dmesg to disk and reboot
-	[ $download_initrd_errno -ne 0 ] && sleep 119 && reboot
+	[ $download_errno -ne 0 ] && sleep 119 && reboot
 
 	set_job_state "booting"
 
