@@ -124,7 +124,7 @@ download_initrd()
 				rm -f $file
 				set_job_state "wget_initrd_fail"
 				echo Failed to download $_initrd
-				exit 1
+				return 1
 			}
 		fi
 
