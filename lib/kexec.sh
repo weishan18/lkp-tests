@@ -191,6 +191,12 @@ get_acpi_rsdp_from_dmesg()
 	fi
 }
 
+echo_info()
+{
+	echo "$@"
+	echo "$@" > /dev/ttyS0 &
+}
+
 kexec_to_next_job()
 {
 	local kernel append acpi_rsdp download_errno
@@ -257,7 +263,7 @@ kexec_to_next_job()
 		download_errno=$?
 	}
 
-	echo "LKP: kexec loading... acpi_rsdp: $acpi_rsdp"
+	echo_info "LKP: kexec loading ... acpi_rsdp: $acpi_rsdp"
 	echo kexec --noefi -l $kernel_file $initrd_option
 	sleep 1 # kern  :warn  : [  +0.000073] sed: 34 output lines suppressed due to ratelimiting
 	echo --append="${append}"
@@ -274,8 +280,7 @@ kexec_to_next_job()
 
 	# store dmesg to disk and reboot
 	[ $download_errno -ne 0 ] && {
-		echo "LKP: rebooting ... $download_errno"
-		echo "LKP: rebooting ... $download_errno" > /dev/ttyS0 &
+		echo_info "LKP: rebooting ... $download_errno"
 		sleep 119 && reboot
 		exit
 	}
@@ -286,8 +291,7 @@ kexec_to_next_job()
 
 	if [ -n "$(find /etc/rc6.d -name '[SK][0-9][0-9]kexec' 2>/dev/null)" ]; then
 		# expecting the system to run "kexec -e" in some rc6.d/* script
-		echo "LKP: rebooting by exec"
-		echo "LKP: rebooting by exec" > /dev/ttyS0 &
+		echo_info "LKP: rebooting by exec"
 		kexec -e 2>/dev/null
 		sleep 100 || exit	# exit if reboot kills sleep as expected
 	fi
@@ -296,15 +300,13 @@ kexec_to_next_job()
 	# so run umount and sync first to reduce the risks.
 	umount -a
 	sync
-	echo "LKP: kexecing"
-	echo "LKP: kexecing" > /dev/ttyS0 &
+	echo_info "LKP: kexecing"
 	kexec -e 2>/dev/null
 
 	set_job_state "kexec_fail_from_job"
 
 	# in case kexec failed
-	echo "LKP: rebooting after kexec"
-	echo "LKP: rebooting after kexec" > /dev/ttyS0 &
+	echo_info "LKP: rebooting after kexec"
 	reboot 2>/dev/null
 	sleep 244 || exit
 	echo s > /proc/sysrq-trigger
