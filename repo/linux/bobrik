@@ -1,1 +1,3 @@
 url: https://github.com/bobrik/linux
+owner: Ivan Babrou <ivan@cloudflare.com>
+branch_denylist: .*
