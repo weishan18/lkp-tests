@@ -253,8 +253,6 @@ kexec_to_next_job()
 	download_initrd
 	download_initrd_ret=$?
 
-	set_job_state "booting"
-
 	echo "LKP: kexec loading... acpi_rsdp: $acpi_rsdp"
 	echo kexec --noefi -l $kernel_file $initrd_option
 	sleep 1 # kern  :warn  : [  +0.000073] sed: 34 output lines suppressed due to ratelimiting
@@ -272,6 +270,8 @@ kexec_to_next_job()
 
 	# store dmesg to disk and reboot
 	[ $download_initrd_ret -ne 0 ] && sleep 119 && reboot
+
+	set_job_state "booting"
 
 	kexec --noefi -l $kernel_file $initrd_option --append="$append"
 
