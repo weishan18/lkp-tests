@@ -273,7 +273,12 @@ kexec_to_next_job()
 	fi
 
 	# store dmesg to disk and reboot
-	[ $download_errno -ne 0 ] && sleep 119 && reboot
+	[ $download_errno -ne 0 ] && {
+		echo "LKP: rebooting ... $download_errno"
+		echo "LKP: rebooting ... $download_errno" > /dev/ttyS0 &
+		sleep 119 && reboot
+		exit
+	}
 
 	set_job_state "booting"
 
