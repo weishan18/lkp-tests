@@ -72,6 +72,8 @@
 556
 # execution time > 2h
 562
+# execution time > 1600s
+563
 # execution time > 20m
 570
 # execution time > 15m on xfs
