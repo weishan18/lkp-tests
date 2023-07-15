@@ -221,6 +221,43 @@ module Git
         # fatal: Not a valid commit name 071e7d275bd4abeb7d75844020b05bd77032ac62
         @base.command("merge-base --is-ancestor #{sha} #{branch} 2>/dev/null; echo $?").to_i.zero?
       end
+
+      def mainline?
+        return @mainline unless @mainline.nil?
+
+        @mainline = exist_in? 'linus/master'
+      end
+
+      def merge?
+        parents.size > 1
+      end
+
+      def patch_id
+        return @patch_id if @patch_id
+
+        @patch_id = @base.command("show #{sha} 2>/dev/null | git patch-id --stable").split.first
+      end
+
+      def changes(base_commit = nil)
+        # $ diff --name-only c15cc235b744~ c15cc235b744
+        # drivers/block/sunvdc.c
+        base_commit ||= "#{sha}~"
+
+        cmd = "diff --name-status #{base_commit} #{sha}"
+        @base.command_lines(cmd)
+      end
+
+      def ancestor?(commit)
+        # $ git merge-base --is-ancestor 3e38e0aaca9eafb12b1c4b731d1c10975cbe7974 5f0b06da5cde3f0a613308b89f0afea678559fdf
+        # $ echo $?
+        # 0
+        # $ git rev-list v5.8..5f0b06da5cde3f0a613308b89f0afea678559fdf | grep 3e38e0aaca9eafb12b1c4b731d1c10975cbe7974
+        # 3e38e0aaca9eafb12b1c4b731d1ic10975cbe7974
+        @ancestors ||= {}
+        @ancestors[commit] if @ancestors.key? commit
+
+        @ancestors[commit] = @base.command("merge-base --is-ancestor #{sha} #{commit} 2>/dev/null; echo $?").to_i.zero?
+      end
     end
 
     class Tag
