@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-require 'pp'
 
 obj = YAML.load_file(ARGV[0])
 

@@ -14,7 +14,6 @@ require 'fileutils'
 require 'yaml'
 require 'json'
 require 'set'
-require 'pp'
 require 'English'
 
 def restore(ah, copy)

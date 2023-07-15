@@ -50,7 +50,7 @@ begin
     puts "rubocop.options = #{t.options}"
   end
 rescue StandardError => e
-  puts e.to_s
+  puts e
 end
 
 def bash(cmd)

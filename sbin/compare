@@ -16,7 +16,6 @@ require "#{LKP_SRC}/lib/programs"
 require 'optparse'
 require 'ostruct'
 require 'yaml'
-require 'pp'
 require 'gnuplot'
 require 'set'
 require 'term/ansicolor'
@@ -195,11 +194,7 @@ def plot_bar(dims, cases)
       dims.each do |dim, name|
         y = []
         cases.each do |_key, value|
-          if value[dim]
-            y.push value[dim]
-          else
-            y.push 0
-          end
+          y.push value[dim] || 0
         end
         plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
           ds.using = '2:xtic(1)'
@@ -720,7 +715,7 @@ def show_delta(stat, key_g)
       end
     end
     if $group_by_test
-      puts $opt_field.to_s
+      puts $opt_field
     else
       if Dir.exist?(GIT_WORK_TREE)
         git = Git.open(project: $project, working_dir: GIT_WORK_TREE)
