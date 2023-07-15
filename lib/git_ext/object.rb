@@ -199,7 +199,7 @@ module Git
       end
 
       def abbr
-        tag || sha[0..9]
+        tag || sha[0..11]
       end
 
       def files
