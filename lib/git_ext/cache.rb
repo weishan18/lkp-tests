@@ -17,6 +17,7 @@ module Git
     class Commit
       include Cacheable
 
+      cache_method :release_tag, cache_key_prefix_generator: ->(obj) { obj.to_s }
       cache_method :last_release_tag, cache_key_prefix_generator: ->(obj) { obj.to_s }
     end
   end
