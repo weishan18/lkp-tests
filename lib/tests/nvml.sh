@@ -175,7 +175,7 @@ run()
 	[ "$test" = "pmem" ] && echo "PMEM_FS_DIR_FORCE_PMEM=2" >> testconfig.sh
 	for testcase in $testcases
 	do
-		test_cmd="./RUNTESTS -f $test"
+		test_cmd="./RUNTESTS.sh -f $test"
 		# If exist TESTS.py, call RUNTESTS.py to run tests
 		[[ -x "$testcase/TESTS.py" ]] && test_cmd="./RUNTESTS.py"
 
