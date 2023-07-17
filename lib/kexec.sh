@@ -130,8 +130,10 @@ download_initrd()
 
 		initrd_is_correct $file || {
 			rm -f $file && echo "remove the the broken initrd: $file"
+
 			set_job_state "initrd_broken"
-			echo $_initrd is broken
+			echo_info "WARNING: lkp next initrd broken!"
+
 			return 1
 		}
 
