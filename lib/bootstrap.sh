@@ -483,9 +483,16 @@ netconsole_init()
 
 download_job()
 {
+	last_job=$job
+	# the downloaded $NEXT_JOB could be wrong to be binary file, which leads to below error
+	# grep: /tmp/next-job-lkp: binary file matches
 	job="$(grep -o 'job=[^ ]*.yaml' $NEXT_JOB | awk -F 'job=' '{print $2}')"
-	local job_cgz=${job%.yaml}.cgz
+	[ -n "$job" ] || {
+		echo "WARNING: lkp next job broken!"
+		return 1
+	}
 
+	local job_cgz=${job%.yaml}.cgz
 	# TODO: escape is necessary. We might also need download some extra cgz
 	http_get_file "$job_cgz" /tmp/next-job.cgz
 	(cd /; gzip -dc /tmp/next-job.cgz | cpio -id)

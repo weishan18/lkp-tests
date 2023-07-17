@@ -115,7 +115,11 @@ while true; do
 	reboot_for_next_job
 	need_reboot=$?
 
-	next_job
+	next_job || {
+		echo "reboot tbox due to next job download failure"
+		reboot_tbox 2>/dev/null && exit
+	}
+
 	rsync_rootfs
 	[ "$need_reboot" -eq 0 ] && break
 	job_does_not_need_reboot || break
