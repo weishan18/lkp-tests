@@ -66,31 +66,6 @@ build_env()
 	log_cmd make -j${nr_cpu} EXTRA_CFLAGS="-DPAGE_SIZE=4096 -DUSE_VALGRIND -Wno-error" USE_LLVM_LIBCPP=1 LIBCPP_INCDIR=/usr/local/libcxx/include/c++/v1/ LIBCPP_LIBDIR=/usr/local/libcxx/lib test || return
 }
 
-can_skip_copy_source()
-{
-	[ "$LKP_LOCAL_RUN" != "1" ] &&
-	[ "$do_not_reboot_for_same_kernel" = "1" ] &&
-	[ "$testcase" = "nvml" ] &&
-	[ -f $BENCHMARK_ROOT/$testcase/lkp_skip_copy.$nvml_commit ]
-}
-
-can_skip_sync_remote()
-{
-	can_skip_copy_source &&
-	[ -f $BENCHMARK_ROOT/$testcase/skip_sync_remote.$nvml_commit ]
-}
-
-# make[1]: *** No rule to make target '../../../src/../src/debug/libpmem/memcpy_nt_avx512f_clflush.o', needed by 'pmem_has_auto_flush'. Stop.
-fixup_sync_remote()
-{
-	local casename=$1
-	log_cmd cd $BENCHMARK_ROOT/$casename/src || return
-	log_cmd make -j${nr_cpu} EXTRA_CFLAGS="-DUSE_VALGRIND -Wno-error" USE_LLVM_LIBCPP=1 LIBCPP_INCDIR=/usr/local/libcxx/include/c++/v1/ LIBCPP_LIBDIR=/usr/local/libcxx/lib -C libpmem DEBUG=0 || return
-	log_cmd make -j${nr_cpu} EXTRA_CFLAGS="-DUSE_VALGRIND -Wno-error" USE_LLVM_LIBCPP=1 LIBCPP_INCDIR=/usr/local/libcxx/include/c++/v1/ LIBCPP_LIBDIR=/usr/local/libcxx/lib -C libpmem2 DEBUG=0 || return
-	log_cmd make -j${nr_cpu} EXTRA_CFLAGS="-DUSE_VALGRIND -Wno-error" USE_LLVM_LIBCPP=1 LIBCPP_INCDIR=/usr/local/libcxx/include/c++/v1/ LIBCPP_LIBDIR=/usr/local/libcxx/lib -C common DEBUG=0 || return
-	log_cmd cd -
-}
-
 enable_remote_node()
 {
 	local casename=$1
@@ -122,17 +97,6 @@ enable_remote_node()
         expect {
             *(yes/no)* {send -- yes\r;exp_continue;}
         }";
-
-	if can_skip_sync_remote; then
-		echo "skip make sync_remotes"
-	else
-		fixup_sync_remote $casename || return
-		log_cmd make sync-remotes FORCE_SYNC_REMOTE=y USE_LLVM_LIBCPP=1 LIBCPP_INCDIR=/usr/local/libcxx/include/c++/v1 LIBCPP_LIBDIR=/usr/local/libcxx/lib || return
-		can_skip_copy_source && {
-			log_cmd rm $BENCHMARK_ROOT/$testcase/skip_sync_remote.* 2>/dev/null
-			log_cmd touch $BENCHMARK_ROOT/$testcase/skip_sync_remote.$nvml_commit
-		}
-	fi
 
 	return 0
 }
