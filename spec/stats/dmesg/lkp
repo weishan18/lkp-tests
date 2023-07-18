@@ -1,0 +1,8 @@
+[  451.910309][  T447] remove the the broken initrd: /opt/rootfs/tmp/lkp/jobs/scheduled/lkp-bdw-de1/xfstests-2pmem-ext2-ext4-dax-CYCLIC_HEAD-20230718-10815-epdpfd-0.cgz
+[  451.910330][  T447]
+[  451.961460][  T447] /usr/bin/wget -q --timeout=3600 --tries=1 --local-encoding=UTF-8 http://internal-lkp-server:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-de1/xfstests-2pmem-ext2-ext4-dax-CYCLIC_HEAD-20230718-10815-epdpfd-0.yaml&job_state=initrd_broken -O /dev/null
+[  451.961497][  T447]
+[  452.733269][  T447] WARNING: lkp next initrd broken!
+WARNING: lkp next initrd broken!
+[  452.733289][  T447]
+LKP: kexec loading
