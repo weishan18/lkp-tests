@@ -4,5 +4,8 @@ $stdin.each_line do |line|
   if line =~ /Averaged ([\d.]+) operations\/sec \(\+- ([\d.]+)%\)/
     puts "ops/s: #{$1}"
     puts "stddev%: #{$2}"
+  elsif line =~ /Wokeup \d+ of \d+ threads in ([\d.]+) ms \(\+-([\d.]+)%\)/
+    puts "wokeup_time_ms: #{$1}"
+    puts "stddev%: #{$2}"
   end
 end

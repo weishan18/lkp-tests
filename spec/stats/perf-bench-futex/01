@@ -1,0 +1,14 @@
+2023-07-09 10:22:46 /lkp/benchmarks/perf/perf bench futex hash --runtime 300 --threads 8 --shared
+# Running 'futex/hash' benchmark:
+Run summary [PID 3042]: 8 threads, each operating on 1024 [shared] futexes for 300 secs.
+
+[thread  0] futexes: 0x5629bb07a650 ... 0x5629bb07b64c [ 490919 ops/sec ]
+[thread  1] futexes: 0x5629bb07b810 ... 0x5629bb07c80c [ 489168 ops/sec ]
+[thread  2] futexes: 0x5629bb07c9d0 ... 0x5629bb07d9cc [ 489362 ops/sec ]
+[thread  3] futexes: 0x5629bb07db90 ... 0x5629bb07eb8c [ 490400 ops/sec ]
+[thread  4] futexes: 0x5629bb07ed50 ... 0x5629bb07fd4c [ 493230 ops/sec ]
+[thread  5] futexes: 0x5629bb07ff10 ... 0x5629bb080f0c [ 495619 ops/sec ]
+[thread  6] futexes: 0x5629bb0810d0 ... 0x5629bb0820cc [ 495783 ops/sec ]
+[thread  7] futexes: 0x5629bb082290 ... 0x5629bb08328c [ 490929 ops/sec ]
+
+Averaged 491926 operations/sec (+- 0.19%), total secs = 300

@@ -1,0 +1,15 @@
+2023-07-08 14:04:29 /lkp/benchmarks/perf/perf bench futex wake --threads 8 --shared
+# Running 'futex/wake' benchmark:
+Run summary [PID 3043]: blocking on 8 threads (at [shared] futex 0x5629850876d8), waking up 1 at a time.
+
+[Run 1]: Wokeup 8 of 8 threads in 0.0170 ms
+[Run 2]: Wokeup 8 of 8 threads in 0.0160 ms
+[Run 3]: Wokeup 8 of 8 threads in 0.0190 ms
+[Run 4]: Wokeup 8 of 8 threads in 0.0220 ms
+[Run 5]: Wokeup 8 of 8 threads in 0.0200 ms
+[Run 6]: Wokeup 8 of 8 threads in 0.0190 ms
+[Run 7]: Wokeup 8 of 8 threads in 0.0200 ms
+[Run 8]: Wokeup 8 of 8 threads in 0.0170 ms
+[Run 9]: Wokeup 8 of 8 threads in 0.0170 ms
+[Run 10]: Wokeup 8 of 8 threads in 0.0190 ms
+Wokeup 8 of 8 threads in 0.0186 ms (+-3.12%)
