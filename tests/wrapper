@@ -23,9 +23,11 @@ echo $$ >> $TMP/pid-tests
 shift
 
 fifo=$TMP/fifo-$program
-[ -p "$fifo" ] || mkfifo $fifo
-tee -a $TMP_RESULT_ROOT/$program < $fifo &
-echo $! >> $TMP/.pid-pipes
+(
+	[ -p "$fifo" ] || mkfifo $fifo
+	tee -a $TMP_RESULT_ROOT/$program < $fifo &
+	echo $! >> $TMP/.pid-pipes
+)
 
 # in particular, avoid time in trinity
 [ -n "$category" ] && {
