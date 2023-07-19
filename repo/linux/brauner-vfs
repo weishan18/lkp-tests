@@ -1,0 +1,7 @@
+url: https://git.kernel.org/pub/scm/linux/kernel/git/vfs/vfs.git
+integration_testing_branches: vfs.all
+owner: Christian Brauner <brauner@kernel.org>
+branch_denylist: .*_v[0-9]*|.*wip*
+mail_to: Christian Brauner <brauner@kernel.org>
+mail_cc: Christian Brauner <christianvanbrauner@gmail.com>
+notify_build_success_branch: .*
