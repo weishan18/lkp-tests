@@ -101,6 +101,8 @@ class MatrixPlotterBase
         file_name += '.eps' unless file_name.end_with? '.eps'
       when /\.plt$/
         plot.terminal 'qt noenhanced persist'
+      when /\.txt$/
+        plot.terminal format('dumb nofeed size %d,%d', @char_size[0], @char_size[1])
       else
         plot.terminal format('png noenhanced size %d,%d', @pixel_size[0], @pixel_size[1])
         file_name += '.png' unless file_name.end_with? '.png'
