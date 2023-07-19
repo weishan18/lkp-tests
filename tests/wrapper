@@ -54,8 +54,8 @@ setup_cgroup()
 	fi
 }
 
-export testcase=${testcase#kvm:}
-if [ -n "$nr_instances" ]; then
+run_multi_instances()
+{
 	: "${cgroups:=nocg}"
 	parse_numa_node_binding "$cpu_node_bind" "$mem_node_bind"
 
@@ -71,14 +71,21 @@ if [ -n "$nr_instances" ]; then
 			numa_bind=$(numa_node_binding "$i")
 			[ -n "$numa_bind" ] && exec_prefix="$oexec_prefix $numa_bind"
 			$time_prefix $exec_prefix $runner_path "$@" > "$TMP_RESULT_ROOT/log-$program/$i" &
-			to_wait="$to_wait $!"
 			i=$((i+1))
 			[ "$i" -gt "$nr_instances" ] && break
 		done
 	done
-	wait $to_wait
+	wait
 	(cd $TMP_RESULT_ROOT/log-$program && ls | sort -h | xargs cat > $fifo)
 	rm -rf $TMP_RESULT_ROOT/log-$program
+}
+
+export testcase=${testcase#kvm:}
+if [ -n "$nr_instances" ]; then
+	# Use subshell to avoid to wait for processes other than $program
+	(
+		run_multi_instances
+	)
 else
 	exec $time_prefix $exec_prefix $runner_path "$@" > $fifo
 fi
