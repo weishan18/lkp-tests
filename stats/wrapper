@@ -36,7 +36,7 @@ check_incomplete_run()
 	local file=$1
 
 	[[ -s $file ]] && return
-	[[ -f $LKP_SRC/tests/$program ]] || return
+	[[ -f $LKP_SRC/tests/$program ]] || [[ -f $LKP_SRC/programs/$program/run ]] || return
 
 	echo -e "# missing $program $file\nis_incomplete_run: 1" >> $RESULT_ROOT/last_state
 }
