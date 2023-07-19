@@ -4,6 +4,9 @@
 # - nr_threads
 # - test
 
+. $LKP_SRC/lib/env.sh
+. $LKP_SRC/lib/debug.sh
+
 mount_dev()
 {
 	local mnt=/mnt/stress-ng
