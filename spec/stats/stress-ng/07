@@ -1,0 +1,21 @@
+2023-07-17 12:54:28 stress-ng --timeout 70 --times --verify --metrics-brief --udp-flood 128
+stress-ng: info:  [5237] setting to a 1 min, 10 secs run per stressor
+stress-ng: info:  [5237] dispatching hogs: 128 udp-flood
+stress-ng: metrc: [5237] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+stress-ng: metrc: [5237]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+stress-ng: metrc: [5237] udp-flood       9904436     70.10   8559.15    188.07    141291.91        1132.29
+stress-ng: metrc: [5237] miscellaneous metrics:
+stress-ng: metrc: [5237] udp-flood              0.04 MB per sec sendto rate (geometric mean of 128 instances)
+stress-ng: metrc: [5237] udp-flood           1097.62 sendto calls per sec (geometric mean of 128 instances)
+stress-ng: metrc: [5237] udp-flood            100.00 % sendto calls succeeded (geometric mean of 128 instances)
+stress-ng: info:  [5237] for a 70.23s run time:
+stress-ng: info:  [5237]    8989.12s available CPU time
+stress-ng: info:  [5237]    8559.16s user time   ( 95.22%)
+stress-ng: info:  [5237]     188.07s system time (  2.09%)
+stress-ng: info:  [5237]    8747.23s total time  ( 97.31%)
+stress-ng: info:  [5237] load average: 89.30 27.22 9.48
+stress-ng: info:  [5237] passed: 128: udp-flood (128)
+stress-ng: info:  [5237] failed: 0
+stress-ng: info:  [5237] skipped: 0
+stress-ng: info:  [5237] metrics untrustworthy: 0
+stress-ng: info:  [5237] successful run completed in 1 min, 10.23 secs

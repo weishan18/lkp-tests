@@ -1,0 +1,9 @@
+udp-flood.pass: 1
+udp-flood.ops: 9904436
+udp-flood.ops_per_sec: 141291.91
+udp-flood.MB_per_sec_sendto_rate.pass: 1
+udp-flood.MB_per_sec_sendto_rate: 0.04
+udp-flood.sendto_calls_per_sec.pass: 1
+udp-flood.sendto_calls_per_sec: 1097.62
+udp-flood.%_sendto_calls_succeeded.pass: 1
+udp-flood.%_sendto_calls_succeeded: 100.00
