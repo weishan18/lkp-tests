@@ -1,3 +1,4 @@
+/lkp/benchmarks/perf/perf stat -a --scale -I 1000 -x , -e {cpu-cycles,instructions,cache-references,cache-misses,branch-instructions,branch-misses},{dTLB-loads,dTLB-load-misses},{dTLB-stores,dTLB-store-misses},{iTLB-loads,iTLB-load-misses},{node-loads,node-load-misses},{node-stores,node-store-misses},cpu-clock,task-clock,page-faults,context-switches,cpu-migrations,minor-faults,major-faults --log-fd 1 -D 0 -- /lkp/lkp/src/bin/event/wait post-test
 1.012763890 3969592418  cpu-cycles 2683629138 16.60 0.246 GHz
 1.012763890 4961431499  instructions 2683629138 16.60 1.25 insn per cycle
 1.012763890 21264127  cache-references 2683629138 16.60 1.315 M/sec
