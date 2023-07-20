@@ -1,0 +1,15 @@
+2023-07-11 22:40:24 /lkp/benchmarks/perf/perf bench futex wake-parallel --threads 8 --shared
+# Running 'futex/wake-parallel' benchmark:
+Run summary [PID 3042]: blocking on 8 threads (at [shared] futex 0x56100c564878), 8 threads waking up 1 at a time.
+
+[Run 1]: Avg per-thread latency (waking 1/8 threads) in 0.0054 ms (+-16.84%)
+[Run 2]: Avg per-thread latency (waking 1/8 threads) in 0.0168 ms (+-58.64%)
+[Run 3]: Avg per-thread latency (waking 1/8 threads) in 0.0465 ms (+-39.35%)
+[Run 4]: Avg per-thread latency (waking 1/8 threads) in 0.0051 ms (+-18.23%)
+[Run 5]: Avg per-thread latency (waking 1/8 threads) in 0.0055 ms (+-10.87%)
+[Run 6]: Avg per-thread latency (waking 1/8 threads) in 0.0074 ms (+-30.74%)
+[Run 7]: Avg per-thread latency (waking 1/8 threads) in 0.0061 ms (+-19.38%)
+[Run 8]: Avg per-thread latency (waking 1/8 threads) in 0.0045 ms (+-14.55%)
+[Run 9]: Avg per-thread latency (waking 1/8 threads) in 0.0088 ms (+-29.36%)
+[Run 10]: Avg per-thread latency (waking 1/8 threads) in 0.0055 ms (+-9.72%)
+Avg per-thread latency (waking 1/8 threads) in 0.0112 ms (+-21.72%)

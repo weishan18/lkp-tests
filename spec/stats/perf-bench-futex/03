@@ -1,0 +1,15 @@
+2023-07-11 14:29:19 /lkp/benchmarks/perf/perf bench futex requeue --threads 8 --shared
+# Running 'futex/requeue' benchmark:
+Run summary [PID 3041]: Requeuing 8 threads (from [shared] 0x55d99d0529dc to 0x55d99d0529d8), 1 at a time.
+
+[Run 1]: Requeued 8 of 8 threads in 0.0140 ms
+[Run 2]: Requeued 8 of 8 threads in 0.0120 ms
+[Run 3]: Requeued 8 of 8 threads in 0.0130 ms
+[Run 4]: Requeued 8 of 8 threads in 0.0130 ms
+[Run 5]: Requeued 8 of 8 threads in 0.0170 ms
+[Run 6]: Requeued 8 of 8 threads in 0.0160 ms
+[Run 7]: Requeued 8 of 8 threads in 0.0130 ms
+[Run 8]: Requeued 8 of 8 threads in 0.0130 ms
+[Run 9]: Requeued 8 of 8 threads in 0.0150 ms
+[Run 10]: Requeued 8 of 8 threads in 0.0120 ms
+Requeued 8 of 8 threads in 0.0138 ms (+-3.86%)

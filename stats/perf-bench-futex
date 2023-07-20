@@ -5,8 +5,14 @@ $stdin.each_line do |line|
   when /Averaged ([\d.]+) operations\/sec \(\+- ([\d.]+)%\)/
     puts "ops/s: #{$1}"
     puts "stddev%: #{$2}"
-  when /Wokeup \d+ of \d+ threads in ([\d.]+) ms \(\+-([\d.]+)%\)/
+  when /^Wokeup \d+ of \d+ threads in ([\d.]+) ms \(\+-([\d.]+)%\)/
     puts "wokeup_time_ms: #{$1}"
+    puts "stddev%: #{$2}"
+  when /^Requeued \d+ of \d+ threads in ([\d.]+) ms \(\+-([\d.]+)%\)/
+    puts "requeued_time_ms: #{$1}"
+    puts "stddev%: #{$2}"
+  when /^Avg per-thread latency \(waking \d\/\d threads\) in ([\d.]+) ms \(\+-([\d.]+)%\)/
+    puts "avg_per_thread_latency_ms: #{$1}"
     puts "stddev%: #{$2}"
   end
 end
