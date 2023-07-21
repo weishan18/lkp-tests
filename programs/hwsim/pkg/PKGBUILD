@@ -75,11 +75,18 @@ package()
 	split_tests
 }
 
+hide()
+{
+	mv $1 .$1
+}
+
 split_tests()
 {
 	benchmark_path="${pkgdir}/lkp/benchmarks/${pkgname}"
 
 	cd $benchmark_path || return
 	$LKP_SRC/tools/split-tests hwsim-all 40 hwsim-group-
+	hide hwsim-all
 	$LKP_SRC/tools/split-tests hwsim-long-param 2 hwsim-long-param-group-
+	hide hwsim-long-param
 }
