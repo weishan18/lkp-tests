@@ -1,1 +1,2 @@
 url: https://github.com/AsahiLinux/linux
+branch_denylist: bits/210-gpu
