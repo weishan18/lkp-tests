@@ -10,7 +10,17 @@
 cd $BENCHMARK_ROOT/hwsim/tests/hwsim || die "no $BENCHMARK_ROOT/hwsim/tests/hwsim"
 
 test_file=$BENCHMARK_ROOT/hwsim/hwsim-$test
-[ -f "$test_file" ] || die "can not find $test_file under $BENCHMARK_ROOT/hwsim"
+
+if [ -f "$test_file" ]; then
+	group="$test"
+elif grep -q "$test" $BENCHMARK_ROOT/hwsim/hwsim-*; then
+	group=$(basename $(grep -l "$test" $BENCHMARK_ROOT/hwsim/hwsim-*) | sed "s/^hwsim-//")
+	grep -h "$test" $BENCHMARK_ROOT/hwsim/hwsim-* > $test_file
+else
+	die "can not find $test under $BENCHMARK_ROOT/hwsim"
+fi
+
+echo "group: $group, test: $test"
 
 nm_conf="/etc/NetworkManager/NetworkManager.conf"
 [ -f "$nm_conf" ] && log_eval "cat >> $nm_conf <<EOF
@@ -38,7 +48,7 @@ log_cmd ./build.sh 2>&1 || {
 run_tests_opt=
 start_opt=
 
-case "$test" in
+case "$group" in
 long-param-*)
 	run_tests_opt="--long"
 	;;
