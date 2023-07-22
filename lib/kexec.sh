@@ -306,6 +306,7 @@ kexec_to_next_job()
 	kexec -e 2>/dev/null
 
 	set_job_state "kexec_fail_from_job"
+	echo_info "WARNING: lkp next kexec fail!"
 
 	# in case kexec failed
 	echo_info "LKP: rebooting after kexec"
