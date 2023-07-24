@@ -673,26 +673,6 @@ platform_is_skylake_or_snb()
 	([[ $model -ge 85 ]] && [[ $model -le 94 ]]) || [[ $model -eq 42 ]]
 }
 
-cleanup_openat2()
-{
-	cd "$original_dir" || return
-	umount /mnt/selftests || return
-	rm -rf /mnt/selftests
-}
-
-fixup_openat2()
-{
-	original_dir=$(pwd)
-	# The default filesystem of testing workdir is none, some flags is not supported
-	# Create a virtual disk and format it with ext4 to run openat2
-	dd if=/dev/zero of=/tmp/raw.img bs=1M count=100 || return
-	mkfs -t ext4 /tmp/raw.img || return
-	mkdir -p /mnt/selftests || return
-	mount -t ext4 /tmp/raw.img /mnt/selftests || return
-	cp -af ./* /mnt/selftests || return
-	cd /mnt/selftests
-}
-
 fixup_breakpoints()
 {
 	platform_is_skylake_or_snb && grep -qw step_after_suspend_test breakpoints/Makefile && {
@@ -835,8 +815,6 @@ fixup_subtest()
 		fixup_netfilter || return
 	elif [[ $subtest = "lkdtm" ]]; then
 		fixup_lkdtm || return
-	elif [[ $subtest = "openat2" ]]; then
-		fixup_openat2 || return
 	elif [[ "$subtest" = "pstore" ]]; then
 		fixup_pstore || return
 	elif [[ "$subtest" = "firmware" ]]; then
@@ -915,7 +893,5 @@ cleanup_subtest()
 {
 	if [[ "$subtest" = "firmware" ]]; then
 		cleanup_for_firmware
-	elif [[ "$subtest" = "openat2" ]]; then
-		cleanup_openat2
 	fi
 }
