@@ -50,5 +50,5 @@ perf_num_levels = perf_levels.each_with_index.map do |level, _i|
 end
 
 perf_num_levels.each do |level, num|
-  printf "noise.%d%%: %g\n", 100 - level, num
+  printf "%d%%.noise: %g\n", 100 - level, num
 end
