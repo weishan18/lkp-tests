@@ -172,7 +172,8 @@ def parse
 
   $stdin.each_line do |line|
     # /lkp/benchmarks/perf/perf stat -a --scale -I 1000 -x , -e {cpu-cycles,instructions,cache-references,cache-misses,branch-instructions,branch-misses},{dTLB-loads,dTLB-load-misses},{dTLB-stores,dTLB-store-misses},{node-loads,node-load-misses},{node-stores,node-store-misses},cpu-clock,task-clock,page-faults,context-switches,cpu-migrations,minor-faults,major-faults --log-fd 1 -D 0 -- /lkp/lkp/src/bin/event/wait post-test
-    events = $1.gsub(/[{}]/, '').split(',') if line =~ /\/lkp\/benchmarks\/perf\/perf stat .+ -e ([^ ]+) /
+    # /usr/bin/perf stat -a --scale -I 1000 -x , -e {cpu-cycles,instructions,cache-references,cache-misses,branch-instructions,branch-misses},{dTLB-loads,dTLB-load-misses},{dTLB-stores,dTLB-store-misses},{iTLB-loads,iTLB-load-misses},{node-loads,node-load-misses},{node-stores,node-store-misses},cpu-clock,task-clock,page-faults,context-switches,cpu-migrations,minor-faults,major-faults --log-fd 1 -D 0 -- /lkp/lkp/src/bin/event/wait post-test
+    events = $1.gsub(/[{}]/, '').split(',') if line =~ /perf stat .+ -e ([^ ]+) /
 
     next unless line =~ /^\s*\d+\.\d+\W+/
 
