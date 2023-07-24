@@ -488,7 +488,7 @@ download_job()
 	# grep: /tmp/next-job-lkp: binary file matches
 	job="$(grep -o 'job=[^ ]*.yaml' $NEXT_JOB | awk -F 'job=' '{print $2}')"
 	[ -n "$job" ] || {
-		echo "WARNING: lkp next job broken!"
+		echo "WARNING: lkp next download broken!"
 		return 1
 	}
 

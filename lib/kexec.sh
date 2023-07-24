@@ -132,7 +132,7 @@ download_initrd()
 			rm -f $file && echo "remove the the broken initrd: $file"
 
 			set_job_state "initrd_broken"
-			echo_info "WARNING: lkp next initrd broken!"
+			echo_info "WARNING: lkp next download broken!"
 
 			return 1
 		}

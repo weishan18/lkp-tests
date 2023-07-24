@@ -1,9 +1,9 @@
 boot_failures: 1
 
-# WARNING: lkp next initrd broken!
-WARNING:lkp_next_initrd_broken: 1
-message:WARNING:lkp_next_initrd_broken: [  452.733269][  T447] WARNING: lkp next initrd broken!
-pattern:WARNING:lkp_next_initrd_broken: WARNING: lkp next initrd broken!
+# WARNING: lkp next download broken!
+WARNING:lkp_next_download_broken: 1
+message:WARNING:lkp_next_download_broken: [  452.733269][  T447] WARNING: lkp next download broken!
+pattern:WARNING:lkp_next_download_broken: WARNING: lkp next download broken!
 
 timestamp:last: 452.733289
-timestamp:WARNING:lkp_next_initrd_broken: 452.733269
+timestamp:WARNING:lkp_next_download_broken: 452.733269
