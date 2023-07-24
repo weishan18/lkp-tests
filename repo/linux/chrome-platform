@@ -1,4 +1,6 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/chrome-platform/linux.git
+branch_allowlist: for-kernelci|for-firmware-kernelci|for-next|for-firmware-next
+branch_denylist: .*
 git_am_branch:
 - for-next
 - for-firmware-next
