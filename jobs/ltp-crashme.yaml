@@ -4,7 +4,7 @@ category: functional
 
 need_memory: 7G
 
-reboot_for_next_job: 1
+force_reboot: 1
 
 oom-killer:
   ignored: 1
