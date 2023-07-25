@@ -117,16 +117,19 @@ while true; do
 		lsmod
 	fi
 
-	reboot_for_next_job
-	need_reboot=$?
-
 	next_job || {
 		echo "reboot tbox due to next job download failure"
 		lkp_reboot && exit
 	}
 
 	rsync_rootfs
-	[ "$need_reboot" -eq 0 ] && break
+
+	reboot_for_next_job && {
+		echo_to_tty "LKP: rebooting for next job"
+
+		lkp_reboot && exit
+	}
+
 	job_does_not_need_reboot || break
 done
 
