@@ -122,7 +122,7 @@ while true; do
 
 	next_job || {
 		echo "reboot tbox due to next job download failure"
-		reboot_tbox 2>/dev/null && exit
+		lkp_reboot && exit
 	}
 
 	rsync_rootfs
