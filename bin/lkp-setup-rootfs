@@ -81,6 +81,23 @@ downgrade_ucode()
 	ucode_less_than_current $next_version
 }
 
+lkp_reboot()
+{
+	set_tbox_wtmp 'rebooting'
+	# Avoid get stuck in yocto minimal rootfs.
+	# LKP: rebooting
+	# [    8.124081] LKP: rebooting
+	# # (shell prompt)
+	is_virt && [ -e '/proc/sysrq-trigger' ] && {
+		sync
+		echo s > /proc/sysrq-trigger
+		echo b > /proc/sysrq-trigger
+	}
+
+	start_reboot_watchdog
+	reboot_tbox 2>/dev/null
+}
+
 while true; do
 	echo_to_tty "$LKP_DEBUG_PREFIX $LKP_SRC/bin/run-lkp $job"
 	$LKP_DEBUG_PREFIX $LKP_SRC/bin/run-lkp $job
@@ -88,19 +105,7 @@ while true; do
 	if tbox_cant_kexec || job_force_reboot; then
 		echo_to_tty "LKP: rebooting forcely"
 
-		set_tbox_wtmp 'rebooting'
-		# Avoid get stuck in yocto minimal rootfs.
-		# LKP: rebooting
-		# [    8.124081] LKP: rebooting
-		# # (shell prompt)
-		is_virt && [ -e '/proc/sysrq-trigger' ] && {
-			sync
-			echo s > /proc/sysrq-trigger
-			echo b > /proc/sysrq-trigger
-		}
-
-		start_reboot_watchdog
-		reboot_tbox 2>/dev/null && exit
+		lkp_reboot && exit
 	fi
 
 	if [ -n "$LKP_DEBUG" ]; then
