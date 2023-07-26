@@ -101,7 +101,7 @@ if [ -n "$preload" ]; then
         wait
         end=$(date +%s.%N)
         duration=$(echo "$end-$begin" |bc)
-        echo "preload duration: \$duration"
+        echo "preload duration: $duration"
 fi
 
 for i in $(seq 1 "$nr_processes")
