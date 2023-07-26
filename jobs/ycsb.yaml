@@ -6,6 +6,7 @@ numactl:
   all: 1
 
 nr_processes: 2
+need_node: 2
 
 nr_threads: 32
 
