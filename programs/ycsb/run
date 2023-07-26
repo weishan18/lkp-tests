@@ -96,7 +96,7 @@ if [ -n "$preload" ]; then
                 -threads $nr_threads \
                 "
                 numa_bind=$(numa_node_binding "$i")
-                log_test $numa_bind ycsb $args > /dev/null &
+                log_test $numa_bind ycsb $args &
         done
         wait
         end=$(date +%s.%N)
