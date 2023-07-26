@@ -29,6 +29,7 @@ describe 'xfstests' do
     it 'judges the non belonging case' do
       [
         { test: 'generic-437', group: 'generic-group-[0-9]*' },
+        { test: 'ext4-group-00', group: 'ext4-logdev' },
         { test: 'xfs-115', group: 'generic-dax' },
         { test: 'generic-510', group: 'generic-dax' },
         { test: 'xfs-114', group: 'xfs-reflink-[0-9]*' }
