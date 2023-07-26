@@ -96,6 +96,8 @@ lkp_reboot()
 
 	start_reboot_watchdog
 	reboot_tbox 2>/dev/null
+
+	exit
 }
 
 while true; do
@@ -105,7 +107,7 @@ while true; do
 	if tbox_cant_kexec || job_force_reboot; then
 		echo_to_tty "LKP: rebooting forcely"
 
-		lkp_reboot && exit
+		lkp_reboot
 	fi
 
 	if [ -n "$LKP_DEBUG" ]; then
@@ -119,15 +121,14 @@ while true; do
 
 	next_job || {
 		echo "reboot tbox due to next job download failure"
-		lkp_reboot && exit
+		lkp_reboot
 	}
 
 	rsync_rootfs
 
 	reboot_for_next_job && {
 		echo_to_tty "LKP: rebooting for next job"
-
-		lkp_reboot && exit
+		lkp_reboot
 	}
 
 	job_does_not_need_reboot || break
