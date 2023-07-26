@@ -138,7 +138,7 @@ if downgrade_ucode; then
 	echo "reboot tbox to downgrade ucode"
 	set_job_state 'downgrade_ucode'
 	sleep 5
-	reboot_tbox 2>/dev/null && exit
+	lkp_reboot
 fi
 
 set_tbox_wtmp 'kexec_to_next_job'
