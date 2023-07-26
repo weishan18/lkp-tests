@@ -21,7 +21,7 @@ build() {
 
 	for i in $(seq 1 10)
 	do
-		$PIP install -i https://mirrors.aliyun.com/pypi/simple --user -r etc/pip/dev-requirements.txt && break
+		$PIP install --user -r etc/pip/dev-requirements.txt && break
 	done
 
 	[ "$DISTRO" = "centos" -o "$DISTRO" = "aliyun" ] && {
