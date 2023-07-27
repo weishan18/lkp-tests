@@ -1,11 +1,5 @@
 # btrfs/011        3434s
 011
-#
-068
-# btrfs/079        oom-kill in lkp-hsw-d01
-079
-# it's a known issue, refer to xfstests-dev commit: fb26a0cf
-130
 # btrfs/187        2019s
 187
 # btrfs/261        became much longer on v6.2 - 1265s
