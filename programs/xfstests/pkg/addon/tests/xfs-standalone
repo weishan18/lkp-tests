@@ -2,33 +2,17 @@
 001
 # execution time > 100m
 002
-# execution time 338s
-010
-# execution time 340s
-011
 # execution time > 1000s
 030
-# execution time 351s
-060
-# execution time 399s
-061
 # execution time 628s
 062
 # the filesystem has valuable metadata changes in a log which needs to 11 be replayed
 083
-# execution time 546s
-091
-# execution time 313s
-092
-# execution time 563s
-100
-# execution time 421s
-120
 # reflink not supported by test filesystem type: xfs
 132
 # execution time ~ 80m
 136
-# execution time > 40mins
+# execution time > 40m
 140
 # execution time > 1000s
 141
@@ -36,20 +20,14 @@
 152
 # execution time 680s
 170
-# execution time 443s
-180
 # execution time > 10m
 182
 # Reflink not supported by scratch filesystem type: xfs
 211
-# execution time 581s
-216
 # execution time > 20m
 227
 # execution time > 30m
 233
-# execution time about 500s
-234
 # 16 bit project IDs not supported on /dev/vdd
 244
 # it requires special configurations, which will break some other xfs tests
@@ -68,15 +46,13 @@
 507
 # execution time > 20m
 517
-# execution time 588s
-556
 # execution time > 2h
 562
 # execution time > 1600s
 563
 # execution time > 20m
 570
-# execution time > 15m on xfs
+# execution time > 15m
 580
 # execution time > 15m
 581

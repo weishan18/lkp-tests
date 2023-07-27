@@ -8,44 +8,22 @@
 017
 # execution time 2100s on btrfs, 2057s on udf, 354s on ext2
 027
-# execution time 548s on ext4
-054
 # execution time 1768s on ext4-smbv3, 358s on f2fs, 446s on xfs
 072
 # execution time ~ 10m
 074
-# execution time 309s on ext2
-075
-# execution time 310s on ext2
-082
-# execution time 310s on ext2
-112
 # execution time 651s on ext2
 113
 # execution time ~ 1h
 127
-# execution time 302s on btrfs
-170
 # execution time > 1h
 175
-# execution time 356s on btrfs, 763s on xfs
-176
 # execution time 992s on btrfs
 224
-# execution time 381s
-230
 # execution time > 50m
 231
-# execution time 501s
-232
-# execution time 531s
-233
-# execution time 515s
-234
 # execution time > 15m
 240
-# execution time 492s on ext2
-244
 # execution time > 10m
 256
 # execution time > 30m on ocfs2
@@ -54,20 +32,8 @@
 297
 # execution time > 30m on udf & ocfs2
 299
-# execution time 370s on ext2
-306
-# execution time 297s on ext2
-307
 # execution time > 30m
 311
-# execution time > 5m
-320
-# execution time > 3m
-323
-# execution time > 5m
-324
-# execution time 536s on xfs, 343s on btrfs
-333
 # execution time 534s on xfs, 850s on btrfs
 334
 # execution time > 1000s on udf
@@ -76,73 +42,43 @@
 379
 # the test will clear date on partition using dd command, it will takes a long time
 387
-# execution time 373s on ext2
-400
 # execution time ~ 10m
 409
 # execution time ~ 15m
 410
-# execution time 303s on ext2
-411
-# execution time 443s on ext2
-416
 # current xfsprogs package(i.e v4.9) has a bug of xfs_io command
 # and makes generic/430, generic/431 and generic/434 hang
 430
 431
 434
-# execution time 326s on ext2
-441
 # execution time 2491s on btrfs
 449
 # execution time > 1582s
 464
 # execution time > 30m
 466
-# execution time 311s on ext2
-472
 # execution time > 30m
 476
-# execution time 310s on ext2
-495
 # test is unstable and the average running time is about 400 seconds
 521
 # execution time > 30m
 522
 # execution time > 3h on udf
 525
-# execution time 547s on ext2
-551
-# execution time 364s on ext2
-554
 # execution time > 30m
 558
 # execution time > 2h on udf
 564
-# execution time 377s on ext2
-566
 # execution time 1415s on ext2
 589
 # execution time 387s on ext2
 596
-# execution time 365s on ext2
-600
-# execution time 372s on ext2
-601
-# execution time 340s on ext2
-615
-# execution time 362s on ext2
-636
 # execution time 898s on ext2
 642
-# execution time 342s on ext2
-643
 # execution time > 12h
 650
 # execution time > 20m on "fs: ext4; fs2: smbv2"
 676
-# execution time 384s on ext2
-696
 # execution time > 1000s on xfs
 705
 # execution time 1112s on ext2
