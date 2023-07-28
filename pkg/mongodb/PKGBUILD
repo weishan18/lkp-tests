@@ -1,5 +1,5 @@
 pkgname=mongodb
-pkgver=r6.3.2
+pkgver=r6.2.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://www.mongodb.com/"
