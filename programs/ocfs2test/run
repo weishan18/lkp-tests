@@ -7,6 +7,7 @@ shopt -s nullglob
 . $LKP_SRC/lib/debug.sh
 . $LKP_SRC/lib/reproduce-log.sh
 . $LKP_SRC/lib/upload.sh
+. $LKP_SRC/lib/install.sh
 
 ## test on a single node currently.
 
@@ -77,7 +78,7 @@ setup_test_env()
 
 single_node_test()
 {
-	local test_dir="$LKP_SRC/pkg/ocfs2test-addon/tests"
+	local test_dir="$(get_pkg_dir ocfs2test)/ocfs2test-addon/tests"
 	while read -r test_name
 	do
 		su - ocfs2test -c "$OCFS2TEST_HOME/ocfs2/bin/single_run-WIP.sh -k $OCFS2TEST_HOME/linux-kernel.tar.gz \
