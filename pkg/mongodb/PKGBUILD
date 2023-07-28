@@ -30,7 +30,7 @@ build() {
 		build_opts="CC=/opt/rh/devtoolset-7/root/usr/bin/gcc CXX=/opt/rh/devtoolset-7/root/usr/bin/g++"
 	}
 
-	buildscripts/scons.py core --disable-warnings-as-errors -j $(nproc) $build_opts
+	buildscripts/scons.py --disable-warnings-as-errors -j $(nproc) $build_opts
 }
 
 package() {
