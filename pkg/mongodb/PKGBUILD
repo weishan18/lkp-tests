@@ -35,6 +35,6 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/lkp/benchmarks/${pkgname}/bin"
-	cd "${srcdir}/mongo"
+	cd "${srcdir}/mongo/build/install/bin"
 	cp mongo* "${pkgdir}/lkp/benchmarks/${pkgname}/bin"
 }
