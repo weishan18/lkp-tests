@@ -3,3 +3,4 @@ scons
 python-pip
 python-dev
 libssl-dev
+liblzma-dev
