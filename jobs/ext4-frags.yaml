@@ -5,4 +5,8 @@ category: functional
 disk:
 - 1HDD
 
+need_memory: 1G
+
 ext4-frags:
+  nr_1Mfiles: 10000
+  nr_1Gfiles: 5
