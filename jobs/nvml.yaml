@@ -5,39 +5,40 @@ category: functional
 need_memory: 3G
 
 nvml:
-group:
-  - compat
-  - ctl
-  #  - daxio # donot have /dev/dax* device
-  - ex
-  - libpmempool
-  - magic
-  - obj
-  - out
-  - pmem
-  - pmemobjcli
-  - pmemspoil
-  - pmreorder
-  - set
-  - unicode
-
-test: non-pmem
+  group:
+    - compat
+    - ctl
+    #  - daxio # donot have /dev/dax* device
+    - ex
+    - libpmempool
+    - magic
+    - obj
+    - out
+    - pmem
+    - pmemobjcli
+    - pmemspoil
+    - pmreorder
+    - set
+    - unicode
+  test: non-pmem
 
 ---
-test: none
-group:
-  - arch
-  - checksum
-  - obj
-  - out
-  - pmem
-  - traces
-  - util
+nvml:
+  test: none
+  group:
+    - arch
+    - checksum
+    - obj
+    - out
+    - pmem
+    - traces
+    - util
 
 ---
 need_memory: 4G
 
-test: non-pmem
-group:
-  - pmempool
-  - util
+nvml:
+  test: non-pmem
+  group:
+    - pmempool
+    - util

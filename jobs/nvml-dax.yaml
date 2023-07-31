@@ -3,25 +3,24 @@ testcase: nvml
 category: functional
 
 nvml:
-test: pmem
-
-group:
-  - compat
-  - ctl
-  #  - daxio # donot have /dev/dax* device
-  - ex
-  - libpmempool
-  - magic
-  - obj
-  - out
-  - pmem
-  - pmemobjcli
-  - pmempool
-  - pmemspoil
-  - pmreorder
-  - set
-  - unicode
-  - util
+  test: pmem
+  group:
+    - compat
+    - ctl
+    #  - daxio # donot have /dev/dax* device
+    - ex
+    - libpmempool
+    - magic
+    - obj
+    - out
+    - pmem
+    - pmemobjcli
+    - pmempool
+    - pmemspoil
+    - pmreorder
+    - set
+    - unicode
+    - util
 
 disk:
   nr_pmem: 1
