@@ -8,12 +8,20 @@ check_group_param()
 
 	[[ -n "$group" ]] || die "Parameter \"group\" is empty"
 
-	testcases=$(ls -d "$group"_* 2>/dev/null)
+	if [[ $group =~ _ ]]; then
+		if [[ -d "$group" ]]; then
+			testcases=$group
+		else
+			die "single test $group is not found"
+		fi
+	else
+		testcases=$(ls -d "$group"_* 2>/dev/null)
+	fi
 
 	# Some testcase is contianed in folder named by $group (such as traces).
 	# Adding it into testcases. We think it's a testcase if there is a TEST0 or TESTS.py in the folder.
-	[[ -f "$group/TEST0" || -f "$group/TESTS.py" ]] && testcases+=" $group"
-	[[ -n "$testcases" ]] || die "Parameter \"group\" is invalid"
+	[[ -f "$group/TEST0" || -f "$group/TESTS.py" ]] && [[ ! $group =~ _ ]] && testcases+=" $group"
+	[[ -n "$testcases" ]] || die "Parameter group $group is invalid"
 }
 
 check_test_param()
