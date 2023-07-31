@@ -2,21 +2,9 @@
 
 . $LKP_SRC/lib/env.sh
 
-check_param()
+check_group_param()
 {
-	local casename=$1
-
-	log_cmd cd $BENCHMARK_ROOT/$casename/src/test || die "Can not find $casename/src/test dir"
-
-	if [[ "$test" = "non-pmem" ]] || [[ "$test" = "pmem" ]] || [[ "$test" = "none" ]]; then
-		tmp_dir=$(mktemp -d)
-		echo "NON_PMEM_FS_DIR=$tmp_dir" > testconfig.sh
-		echo "PMEM_FS_DIR=/fs/pmem0" >> testconfig.sh
-		echo "ENABLE_NFIT_TESTS=y" >> testconfig.sh
-		mkdir -p /fs/pmem0
-	else
-		die "Parameter \"test\" is wrong"
-	fi
+	cd $BENCHMARK_ROOT/nvml/src/test || die "Can not find nvml/src/test dir"
 
 	[[ -n "$group" ]] || die "Parameter \"group\" is empty"
 
@@ -26,6 +14,19 @@ check_param()
 	# Adding it into testcases. We think it's a testcase if there is a TEST0 or TESTS.py in the folder.
 	[[ -f "$group/TEST0" || -f "$group/TESTS.py" ]] && testcases+=" $group"
 	[[ -n "$testcases" ]] || die "Parameter \"group\" is invalid"
+}
+
+check_test_param()
+{
+	if [[ "$test" = "non-pmem" ]] || [[ "$test" = "pmem" ]] || [[ "$test" = "none" ]]; then
+		tmp_dir=$(mktemp -d)
+		echo "NON_PMEM_FS_DIR=$tmp_dir" > testconfig.sh
+		echo "PMEM_FS_DIR=/fs/pmem0" >> testconfig.sh
+		echo "ENABLE_NFIT_TESTS=y" >> testconfig.sh
+		mkdir -p /fs/pmem0
+	else
+		die "Parameter \"test\" is wrong"
+	fi
 }
 
 setup_compiler()

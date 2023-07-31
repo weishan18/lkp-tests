@@ -8,7 +8,8 @@
 
 cd $BENCHMARK_ROOT/nvml || die "fail to cd $BENCHMARK_ROOT/nvml"
 
-check_param "$testcase"
+check_group_param
+check_test_param
 
 setup_compiler
 
