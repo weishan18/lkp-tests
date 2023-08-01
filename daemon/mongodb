@@ -50,8 +50,6 @@ do
 # Where and how to store data.
 storage:
  dbPath: $MONGODB_DIR/mongodb/dbdir_$i
- journal:
-  enabled: true
 #  engine:
 #  mmapv1:
  wiredTiger:
