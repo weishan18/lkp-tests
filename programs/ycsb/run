@@ -42,7 +42,6 @@ do
         cat > "$TMP_RESULT_ROOT/configfile_mongodb.$i" <<EOF
 mongodb.url=mongodb://${ip_addr}:$port
 mongodb.database=ycsbdb
-mongodb.writeConcern=none
 EOF
 done
 

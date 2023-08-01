@@ -4,6 +4,5 @@ YCSB Client 0.15.0
 Loading workload...
 Starting test.
 Too large files\: *.*perf.data
-WARNING\: Invalid writeConcern\: *.*\]
 DBWrapper: report latency for each error is false and specific error codes to track for latency are.*
 .* sec: .* operations; .*
