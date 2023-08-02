@@ -453,7 +453,21 @@ phoronix-test-suite:
     option_a:
       - Default
       - 2 # Quality 75, Compression Effort 7
-      - 3 # Quality 95, Compression Effort 7
       - 4 # Quality 100, Compression Effort 5
-      - 5 # Quality 100, Lossless Compression
       # - Test All Options
+
+---
+phoronix-test-suite:
+  - test: webp2-1.0.0
+    option_a:
+      - 3 # Quality 95, Compression Effort 7
+
+timeout: 30m
+
+---
+phoronix-test-suite:
+  - test: webp2-1.0.0
+    option_a:
+      - 5 # Quality 100, Lossless Compression
+
+timeout: 1h
