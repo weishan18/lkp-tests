@@ -21,3 +21,12 @@ kernel-selftests:
     - conntrack_tcp_unreplied.sh
     - conntrack_vrf.sh
     - nft_synproxy.sh
+
+---
+kernel-selftests:
+  group:
+    - netfilter
+  test:
+    - nft_concat_range.sh
+
+timeout: 30m
