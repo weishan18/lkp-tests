@@ -135,7 +135,7 @@ phoronix-test-suite:
   - test:
     # - serial-loopback-1.0.2 # need to really plug to serial ports
     - smallpt-1.2.0
-    - smart-1.0.0
+    # - smart-1.0.0 # depending on the health of hard disk, may cost long time
   - test: sockperf-1.0.1
     option_a:
       - Latency Under Load
