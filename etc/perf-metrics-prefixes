@@ -43,3 +43,4 @@ vmstat.io.
 vmstat.swap.
 vmstat.system.
 perf-c2c.HITM.total
+perf-profile.children.cycles-pp.native_queued_spin_lock_slowpath

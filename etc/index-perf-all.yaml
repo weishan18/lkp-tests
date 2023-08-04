@@ -212,3 +212,4 @@ rcurefscale\..+-ref-scale\.duration_per_loop\.ns: -1
 kernel-selftests\..+\.usec_per_loop: -1
 kernel-selftests\..+\.packets_per_sec: 1
 perf-c2c.HITM.total: -1
+perf-profile.children.cycles-pp.native_queued_spin_lock_slowpath: -1

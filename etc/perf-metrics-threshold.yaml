@@ -43,3 +43,4 @@ vmstat.system.cs: 100
 vmstat.system.in: 100
 xfstests.*.seconds: 10
 perf-c2c.HITM.total: 3000
+perf-profile.children.cycles-pp.native_queued_spin_lock_slowpath: 2.00
