@@ -11,8 +11,8 @@ prepare_for_llvm()
 	llvm_version=${llvm_version##* }
 	llvm_version=${llvm_version%%.*}
 	echo "llvm_version: $llvm_version"
-	[[ $llvm_version -lt 10 ]] && {
-		echo "Please install llvm-10 before running bpf"
+	[[ $llvm_version -ge 10 ]] || {
+		echo "Please install llvm-10 or newer before running bpf"
 		return 1
 	}
 }
