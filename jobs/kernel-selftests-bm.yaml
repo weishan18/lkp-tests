@@ -5,13 +5,9 @@ category: functional
 kernel-selftests:
   group:
     - cpufreq
-    - firmware
----
-kernel-selftests:
-  group:
     - net
+    - firmware
 
-timeout: 30m
 ---
 kernel-selftests:
   group:
