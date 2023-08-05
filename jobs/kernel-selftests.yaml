@@ -23,20 +23,11 @@ kernel-selftests:
   group:
     - group-02
     - group-s
+    - mptcp
     - pidfd
 
 # for sysctl
 kernel_cmdline: sysctl.debug.test_sysctl.boot_int=1
-
----
-need_memory: 3G
-kernel-selftests:
-  group:
-    - mptcp
-
-# for sysctl
-kernel_cmdline: sysctl.debug.test_sysctl.boot_int=1
-timeout: 30m
 
 ---
 kernel-selftests:
