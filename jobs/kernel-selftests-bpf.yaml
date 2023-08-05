@@ -12,4 +12,3 @@ kernel-selftests-bpf:
     - bpf
 # never register ERST as pstore backend
 kernel_cmdline: erst_disable
-timeout: 30m
