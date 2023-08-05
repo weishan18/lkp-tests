@@ -27,5 +27,3 @@ ltp:
     - fork13.fork13
     - msgstress04.msgstress04
     - syscalls-setsockopt06 # need about 25mins
-
-timeout: 30m
