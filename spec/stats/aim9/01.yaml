@@ -51,7 +51,7 @@ shell_rtns_2.ops_per_sec: 9.74
 shell_rtns_3.ops_per_sec: 9.80
 series_1.ops_per_sec: 4560800.00
 shared_memory.ops_per_sec: 23100.00
-tcp_test.skip
+tcp_test.skip: 1
 udp_test.ops_per_sec: 7720.00
 fifo_test.ops_per_sec: 19640.00
 stream_pipe.ops_per_sec: 11420.00

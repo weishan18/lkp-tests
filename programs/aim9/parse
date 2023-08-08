@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 
 /^[ ]+[0-9]+.*[ ]+Skipping/ {
-	printf("%s.skip\n", $2)
+	printf("%s.skip: 1\n", $2)
 }
 
 /^[ ]+[0-9]+.*[ ]+[0-9|.]+.*/ {
