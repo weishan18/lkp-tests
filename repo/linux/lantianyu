@@ -1,0 +1,5 @@
+url: https://github.com/lantianyu/linux
+owner: Tianyu Lan <Tianyu.Lan@microsoft.com>
+branch_allowlist: test
+branch_denylist: .*
+notify_build_success_branch: .*
