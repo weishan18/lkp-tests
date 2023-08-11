@@ -10,7 +10,7 @@
 # - hard code    xxx_partitions; leave nr_xxx_partitions empty
 # - hard code nr_xxx_partitions; make     xxx_partitions a shell glob to be expanded in test box
 
-[ -n "$wait_disks_timeout" ] || wait_disks_timeout=30
+[ -n "$wait_disks_timeout" ] || wait_disks_timeout=180
 
 . $LKP_SRC/lib/unit.sh
 
