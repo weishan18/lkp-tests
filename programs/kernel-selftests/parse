@@ -496,7 +496,7 @@ class NetStater < Stater
       # ipv4
       #  no GRO                                  ok
       @test_case = $1
-    when /#  ([a-zA-Z].*)(ok|fail)/
+    when /^#  (.*)(\s+ok|fail)$/
       stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2
     when /^# (\w.*)(ok $|fail )/
       # selftests: net: veth.sh
