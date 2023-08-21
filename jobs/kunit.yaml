@@ -5,4 +5,10 @@ category: functional
 kunit:
   group:
     - group-00
+
+kernel_cmdline: kunit.enable=1
+
+---
+kunit:
+  group:
     - group-01

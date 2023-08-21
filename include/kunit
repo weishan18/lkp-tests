@@ -2,6 +2,7 @@ need_kconfig:
 % if ___.group == "group-00"
 - RUNTIME_TESTING_MENU: y
 - KUNIT: y
+- KUNIT_DEFAULT_ENABLED: n
 - KUNIT_DEBUGFS: y
 - KUNIT_ALL_TESTS: m
 
