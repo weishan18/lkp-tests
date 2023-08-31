@@ -1,6 +1,6 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/pcmoore/audit.git
 integration_testing_branches: next
-mail_cc: linux-audit@redhat.com
+mail_cc: audit@vger.kernel.org
 owner: Paul Moore <pmoore@redhat.com>
 subsystems:
 - audit
