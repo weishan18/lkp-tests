@@ -7,3 +7,4 @@ mail_to:
 - Michael Golant <michael.golant@intel.com>
 - Johannes Berg <johannes.berg@intel.com>
 private_report_branch: .*
+too_old_relative_commit_date: month|year|^[4-9]+ weeks
