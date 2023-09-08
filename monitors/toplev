@@ -24,6 +24,7 @@ is_virt && die "Don't run pmu-tools on virtual machine"
 set_perf_path "$BENCHMARK_ROOT/pmu-tools/perf"
 export PATH=$BENCHMARK_ROOT/pmu-tools:$PATH
 
+export PERF=$perf
 toplev=$BENCHMARK_ROOT/pmu-tools/toplev.py
 [ -x "$toplev" ] || die "Can't find pmu-tools"
 
