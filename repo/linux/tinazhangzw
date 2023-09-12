@@ -1,0 +1,3 @@
+url: https://github.com/TinaZhangZW/linux.git
+owner: Tina Zhang <tina.zhang@intel.com>
+notify_build_success_branch: .*
