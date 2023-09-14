@@ -3,8 +3,11 @@
 # netperf.workload is defined as the total transaction number or the total
 # packet number depended on transmission protocal used in netperf
 throughput = 0
+recv_throughput = 0
 num = 0
+recv_num = 0
 thp_index = 0
+recv_thp_index = 0
 time_index = 0
 pkt_index = 0
 iterations = 0
@@ -25,12 +28,18 @@ while (line = $stdin.gets)
   when /^Send\s+Recv\s+/
     lines = line.split
     lines.each_with_index do |word, v|
-      thp_index = v if word == 'Rate'
+      if word == 'Rate'
+        thp_index = v
+        recv_thp_index = v - 2
+      end
     end
   when /^Size\s+Size\s+/
     lines = line.split
     lines.each_with_index do |word, v|
-      thp_index = v if word == 'Throughput'
+      if word == 'Throughput'
+        thp_index = v
+        recv_thp_index = v - 2
+      end
     end
   when /\d+\s+\d+\s+\d+\s+\d.*$/
     data = line.split
@@ -38,20 +47,36 @@ while (line = $stdin.gets)
     time = data[time_index].to_f
     pkt_size = data[pkt_index].to_f if unit == 'Mbps'
     num += 1
+  when /^\d+\s+\d+\.\d+\s+\d+\s+/
+    data = line.split
+    recv_throughput += data[recv_thp_index].to_f
+    recv_num += 1
   end
 end
 
 exit if num.zero?
 
 avg_throughput = throughput / num
+avg_recv_throughput = 0
+avg_recv_throughput = recv_throughput / recv_num unless recv_num.zero?
+avg_both_throughput = avg_throughput + avg_recv_throughput
 
 # We only cares for the average total throughput/workload
 # within each iteration.
 
-throughput /= iterations if iterations.positive?
+if iterations.positive?
+  throughput /= iterations
+  recv_throughput /= iterations
+end
 
-workload = throughput * time
+both_throughput = throughput + recv_throughput
+
+workload = both_throughput * time
 workload = workload * 10**6 / 8.0 / pkt_size if unit == 'Mbps'
 puts "Throughput_#{unit}: #{avg_throughput}"
+puts "ThroughputRecv_#{unit}: #{avg_recv_throughput}"
+puts "ThroughputBoth_#{unit}: #{avg_both_throughput}"
 puts "Throughput_total_#{unit}: #{throughput}"
+puts "ThroughputRecv_total_#{unit}: #{recv_throughput}"
+puts "ThroughputBoth_total_#{unit}: #{both_throughput}"
 puts "workload: #{workload}"
