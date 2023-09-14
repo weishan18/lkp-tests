@@ -1,0 +1,145 @@
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 netperf -4 -H 127.0.0.1 -t UDP_STREAM -c -C -l 300  &
+2023-09-12 08:47:50 wait
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36395320      0    63577.2     24.11    3.977 
+212992           300.00    35314623           61689.4     24.11    3.977 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35751819      0    62453.1     24.11    4.049 
+212992           300.00    34692495           60602.6     24.11    4.049 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36348120      0    63494.8     24.11    3.982 
+212992           300.00    35194801           61480.1     24.11    3.982 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36413093      0    63608.3     24.11    3.975 
+212992           300.00    35248199           61573.4     24.11    3.975 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36229859      0    63288.2     24.11    3.995 
+212992           300.00    35152474           61406.2     24.11    3.995 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35995988      0    62879.7     24.11    4.021 
+212992           300.00    35011264           61159.5     24.11    4.021 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35964198      0    62824.1     24.11    4.025 
+212992           300.00    34842245           60864.2     24.11    4.025 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36189461      0    63217.6     24.11    4.000 
+212992           300.00    35241471           61561.6     24.11    4.000 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35580797      0    62154.4     24.11    4.068 
+212992           300.00    34767099           60733.0     24.11    4.068 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36089573      0    63043.1     24.11    4.011 
+212992           300.00    35158994           61417.6     24.11    4.011 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35744759      0    62440.8     24.11    4.049 
+212992           300.00    34899532           60964.3     24.11    4.049 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36186441      0    63212.3     24.11    4.000 
+212992           300.00    35153603           61408.1     24.11    4.000 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36130471      0    63114.6     24.11    4.006 
+212992           300.00    35070558           61263.1     24.11    4.006 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    35942138      0    62785.6     24.11    4.027 
+212992           300.00    35051170           61229.2     24.11    4.027 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36452403      0    63676.9     24.11    3.971 
+212992           300.00    35114283           61339.4     24.11    3.971 
+
+MIGRATED UDP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 127.0.0.1 () port 0 AF_INET : demo
+Socket  Message  Elapsed      Messages                   CPU      Service
+Size    Size     Time         Okay Errors   Throughput   Util     Demand
+bytes   bytes    secs            #      #   10^6bits/sec % SS     us/KB
+
+212992   65507   300.00    36207789      0    63249.6     24.11    3.998 
+212992           300.00    34969003           61085.7     24.11    3.998 
+
