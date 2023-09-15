@@ -226,3 +226,6 @@ libtraceevent1: libtraceevent
 libc-dev: glibc-devel
 python2-libs:
 rng-tools5: rng-tools
+libbabeltrace-ctf1: libbabeltrace
+libdw1: libdwarves1
+libbinutils:

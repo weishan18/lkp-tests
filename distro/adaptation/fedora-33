@@ -1,7 +1,2 @@
-# reason (1)
-libbinutils:
-
 # reason (3)
 default-jdk: java-latest-openjdk
-libbabeltrace-ctf1: libbabeltrace
-libdw1: libdwarves1
