@@ -181,11 +181,14 @@ need_kconfig:
 - CHECKPOINT_RESTORE: y
 - DRM_DEBUG_SELFTEST: m
 - EFIVAR_FS: y
-- EMBEDDED: y
 - EXPERT: y
+
+# tools/testing/selftests/gpio
 - GPIOLIB: y
+- GPIO_CDEV: y
 - GPIO_MOCKUP: m
 - GPIO_SIM: m
+
 - IMA: y
 - IMA_APPRAISE: y
 - IMA_ARCH_POLICY: y
@@ -371,7 +374,6 @@ need_kconfig:
 - TEST_USER_COPY
 - TUN: m
 - XFS_FS: m # Depends on: BLOCK [: y]
-- GPIO_CDEV: y
 - OVERLAY_FS
 - PERF_EVENTS: y
 - SCHED_DEBUG: y
