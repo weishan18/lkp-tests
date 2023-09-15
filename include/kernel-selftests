@@ -39,12 +39,18 @@ need_kconfig:
 - KVM
 - KVM_INTEL
 % elsif ___.group == "mm"
-- MEM_SOFT_DIRTY: y, x86_64
+- CHECKPOINT_RESTORE: y
+- EXPERT: y
+- PROC_FS: y
+- MEM_SOFT_DIRTY: y, x86_64 # depends on: CONFIG_CHECKPOINT_RESTORE && CONFIG_HAVE_ARCH_SOFT_DIRTY && CONFIG_PROC_FS
 - GUP_BENCHMARK: y
 - GUP_TEST: y
-# conflict with group-01 EMBEDDED
-# - SECRETMEM: y
-# - ARCH_HAS_SET_DIRECT_MAP: y
+- SYSVIPC: y
+- USERFAULTFD: y
+- TEST_VMALLOC: m
+- DEVICE_PRIVATE: y
+- TEST_HMM: m
+- TRANSPARENT_HUGEPAGE: y
 % elsif ___.group == "net"
 - PACKET: y
 - USER_NS: y
@@ -310,20 +316,16 @@ need_kconfig:
 - NF_CONNTRACK_MARK: y
 - NF_CONNTRACK_ZONES: y
 - NF_NAT: m
-- SYSVIPC: y
 - VIRT_DRIVERS: y
 - INTEL_TDX_GUEST: y
 - TDX_GUEST_DRIVER
 - TEST_USER_COPY: m
-- TEST_VMALLOC: m
 - TIME_NS: y
 - USERFAULTFD: y
 - USER_NS: y
 - ZRAM: m
 - ZSMALLOC: y
 - ZONE_DEVICE: y
-- DEVICE_PRIVATE: y
-- TEST_HMM: m
 % elsif ___.group == "resctrl"
 - X86_CPU_RESCTRL: y
 - PROC_CPU_RESCTRL: y
