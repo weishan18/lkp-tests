@@ -6,6 +6,8 @@
 # - no_affinity
 # - smt
 
+. $LKP_SRC/lib/debug.sh
+
 ## It Scale takes a testcase and runs it from 1 through to n
 ## parallel copies to see if the testcase will scale. It
 ## builds both a process and threads based test in order
@@ -44,4 +46,5 @@ fi
 
 ulimit -n 65536
 
-log_cmd /lkp/benchmarks/python3/bin/python3 ./runtest.py $test $duration $mode $no_affinity $smt $threads_to_iterate
+has_cmd python3 || die "python3 is not found in $PATH"
+log_cmd python3 ./runtest.py $test $duration $mode $no_affinity $smt $threads_to_iterate
