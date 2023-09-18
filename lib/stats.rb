@@ -31,8 +31,6 @@ $perf_metrics_prefixes = File.read("#{LKP_SRC_ETC}/perf-metrics-prefixes").split
 $index_perf = load_yaml "#{LKP_SRC_ETC}/index-perf-all.yaml"
 $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 
-$kill_pattern_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/dmesg-kill-pattern")
-
 class LinuxTestcasesTableSet
   LINUX_PERF_TESTCASES =
     %w[aim7 aim9 angrybirds blogbench dbench
@@ -656,7 +654,7 @@ def __get_changed_stats(a, b, is_incomplete_run, options)
       if max_a.zero?
         has_boot_fix = true if k =~ /^dmesg\./
         next if options['regression-only'] ||
-                (k !~ $kill_pattern_allowlist_re && options['all-critical'])
+                (!LKP::DmesgKillPattern.instance.contain?(k) && options['all-critical'])
       end
         # this relies on the fact dmesg.* comes ahead
         # of kmsg.* in etc/default_stats.yaml
