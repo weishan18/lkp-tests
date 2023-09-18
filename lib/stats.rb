@@ -17,6 +17,7 @@ require "#{LKP_SRC}/lib/changed_stat"
 require "#{LKP_SRC}/lib/lkp_path"
 require "#{LKP_SRC}/lib/programs"
 require "#{LKP_SRC}/lib/lkp_pattern"
+require "#{LKP_SRC}/lib/perf_metrics"
 
 MARGIN_SHIFT = 5
 MAX_RATIO = 5
@@ -27,7 +28,6 @@ $metric_add_max_latency = IO.read("#{LKP_SRC_ETC}/add-max-latency").split("\n")
 $metric_failure = IO.read("#{LKP_SRC_ETC}/failure").split("\n")
 $metric_pass = IO.read("#{LKP_SRC_ETC}/pass").split("\n")
 $perf_metrics_threshold = YAML.load_file "#{LKP_SRC_ETC}/perf-metrics-threshold.yaml"
-$perf_metrics_prefixes = File.read("#{LKP_SRC_ETC}/perf-metrics-prefixes").split
 $index_perf = load_yaml "#{LKP_SRC_ETC}/index-perf-all.yaml"
 $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 
@@ -68,19 +68,6 @@ class LinuxTestcasesTableSet
        bust-shm-exit build-llvm_project upgrade-trinity build-0day-crosstools deploy-clang kmemleak-test kunit].freeze
 end
 
-# => ["tcrypt.", "hackbench.", "dd.", "xfstests.", "aim7.", ..., "oltp.", "fileio.", "dmesg."]
-def test_prefixes
-  stats = LKP::Programs.all_stats
-  tests = LKP::Programs.all_tests_and_daemons
-  tests = stats & tests
-  tests.delete 'wrapper'
-  tests.push 'kmsg'
-  tests.push 'dmesg'
-  tests.push 'stderr'
-  tests.push 'last_state'
-  tests.map { |test| "#{test}." }
-end
-
 def functional_test?(testcase)
   LinuxTestcasesTableSet::LINUX_TESTCASES.index testcase
 end
@@ -90,30 +77,9 @@ def other_test?(testcase)
 end
 
 $test_prefixes = test_prefixes
-additional_perf_metrics_prefixes = $test_prefixes.reject do |test|
-  test_name = test[0..-2]
-  functional_test?(test_name) || other_test?(test_name) || %w(kmsg dmesg stderr last_state).include?(test_name)
-end
-
-$perf_metrics_prefixes.concat(additional_perf_metrics_prefixes)
-
-def __is_perf_metric(name)
-  return true if LKP::PerfMetricsPatterns.instance.contain?(name)
-
-  $perf_metrics_prefixes.each do |prefix|
-    return true if name.index(prefix) == 0
-  end
-
-  false
-end
 
 def perf_metric?(name)
-  $__is_perf_metric_cache ||= {}
-  if $__is_perf_metric_cache.include? name
-    $__is_perf_metric_cache[name]
-  else
-    $__is_perf_metric_cache[name] = __is_perf_metric(name)
-  end
+  LKP::PerfMetrics.instance.contain? name
 end
 
 # Check whether it looks like a reasonable performance change,
