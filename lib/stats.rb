@@ -31,7 +31,6 @@ $perf_metrics_prefixes = File.read("#{LKP_SRC_ETC}/perf-metrics-prefixes").split
 $index_perf = load_yaml "#{LKP_SRC_ETC}/index-perf-all.yaml"
 $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 
-$stat_allowlist = load_regular_expressions("#{LKP_SRC_ETC}/stat-allowlist")
 $report_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/report-allowlist")
 $kill_pattern_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/dmesg-kill-pattern")
 
@@ -513,7 +512,7 @@ def filter_incomplete_run(hash)
 end
 
 def bisectable_stat?(stat)
-  return true if stat =~ $stat_allowlist
+  return true if LKP::StatAllowlist.instance.contain?(stat)
 
   !LKP::StatDenylist.instance.contain?(stat)
 end
