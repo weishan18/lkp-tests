@@ -31,7 +31,6 @@ $perf_metrics_prefixes = File.read("#{LKP_SRC_ETC}/perf-metrics-prefixes").split
 $index_perf = load_yaml "#{LKP_SRC_ETC}/index-perf-all.yaml"
 $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 
-$report_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/report-allowlist")
 $kill_pattern_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/dmesg-kill-pattern")
 
 class LinuxTestcasesTableSet
@@ -592,7 +591,7 @@ def __get_changed_stats(a, b, is_incomplete_run, options)
     next if v[-1].is_a?(String)
     next if options['perf'] && !perf_metric?(k)
     next if is_incomplete_run && k !~ /^(dmesg|last_state|stderr)\./
-    next if !options['more'] && !bisectable_stat?(k) && k !~ $report_allowlist_re
+    next if !options['more'] && !bisectable_stat?(k) && !LKP::ReportAllowlist.instance.contain?(k)
 
     is_function_stat = function_stat?(k)
     if !is_force_stat && is_function_stat && k !~ /^(dmesg|kmsg|last_state|stderr)\./
