@@ -16,6 +16,7 @@ require "#{LKP_SRC}/lib/tests"
 require "#{LKP_SRC}/lib/changed_stat"
 require "#{LKP_SRC}/lib/lkp_path"
 require "#{LKP_SRC}/lib/programs"
+require "#{LKP_SRC}/lib/lkp_pattern"
 
 MARGIN_SHIFT = 5
 MAX_RATIO = 5
@@ -30,7 +31,6 @@ $perf_metrics_prefixes = File.read("#{LKP_SRC_ETC}/perf-metrics-prefixes").split
 $index_perf = load_yaml "#{LKP_SRC_ETC}/index-perf-all.yaml"
 $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 
-$perf_metrics_re = load_regular_expressions("#{LKP_SRC_ETC}/perf-metrics-patterns")
 $stat_denylist = load_regular_expressions("#{LKP_SRC_ETC}/stat-denylist")
 $stat_allowlist = load_regular_expressions("#{LKP_SRC_ETC}/stat-allowlist")
 $report_allowlist_re = load_regular_expressions("#{LKP_SRC_ETC}/report-allowlist")
@@ -103,7 +103,7 @@ end
 $perf_metrics_prefixes.concat(additional_perf_metrics_prefixes)
 
 def __is_perf_metric(name)
-  return true if name =~ $perf_metrics_re
+  return true if LKP::PerfMetricsPatterns.instance.contain?(name)
 
   $perf_metrics_prefixes.each do |prefix|
     return true if name.index(prefix) == 0
