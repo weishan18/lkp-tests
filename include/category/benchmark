@@ -1,4 +1,5 @@
 need_kconfig:
+  - XFS_ONLINE_SCRUB_STATS: n
   - XFS_DEBUG: n
   - XFS_WARN: y
   - PM_DEBUG: n
