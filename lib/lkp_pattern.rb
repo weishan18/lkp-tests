@@ -59,7 +59,7 @@ module LKP
   end
 
   # generate class like LKP::StatDenylist
-  %w[dmesg-kill-pattern report-allowlist stat-allowlist stat-denylist oops-pattern perf-metrics-patterns].each do |file_name|
+  %w[event-counter-patterns dmesg-kill-pattern report-allowlist stat-allowlist stat-denylist oops-pattern perf-metrics-patterns].each do |file_name|
     LKP::Pattern.generate_klass(LKP::Path.src('etc', file_name))
   end
 end

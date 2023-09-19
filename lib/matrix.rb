@@ -11,6 +11,7 @@ require "#{LKP_SRC}/lib/run_env"
 require "#{LKP_SRC}/lib/constant"
 require "#{LKP_SRC}/lib/lkp_path"
 require "#{LKP_SRC}/lib/yaml"
+require "#{LKP_SRC}/lib/lkp_pattern"
 
 LKP_SRC_ETC ||= LKP::Path.src('etc')
 
@@ -19,7 +20,7 @@ def event_counter?(name)
   $event_counter_prefixes.each do |prefix|
     return true if name.index(prefix) == 0
   end
-  $event_counter_patterns ||= load_regular_expressions("#{LKP_SRC_ETC}/event-counter-patterns")
+  $event_counter_patterns ||= LKP::EventCounterPatterns.instance.regexp
 
   name =~ $event_counter_patterns
 end
