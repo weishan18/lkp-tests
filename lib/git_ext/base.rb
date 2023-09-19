@@ -179,8 +179,14 @@ module Git
         r = command('rev-list', ['-n', '1', "^#{scommits[0]}", scommits[1]])
         scommits.reverse! if r.strip.empty?
       else
-        r = command('rev-list', ['--no-walk', '--topo-order', '--reverse'] + scommits)
-        scommits = r.split
+        scommits.sort! do |c1, c2|
+          r = command('rev-list', ['-n', '1', "^#{c1}", c2])
+          if r.strip.empty?
+            1
+          else
+            -1
+          end
+        end
       end
 
       scommits.map { |sc| gcommit sc }
