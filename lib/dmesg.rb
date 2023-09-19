@@ -8,6 +8,7 @@ require "#{LKP_SRC}/lib/string_ext"
 require "#{LKP_SRC}/lib/lkp_path"
 require "#{LKP_SRC}/lib/log"
 require "#{LKP_SRC}/lib/programs"
+require "#{LKP_SRC}/lib/lkp_pattern"
 
 LKP_SRC_ETC ||= LKP::Path.src('etc')
 
@@ -109,7 +110,6 @@ def grep_crash_head(dmesg_file)
 
   oops_map = {}
 
-  oops_re = load_regular_expressions("#{LKP_SRC_ETC}/oops-pattern")
   prev_line = nil
   has_oom = false
 
@@ -125,7 +125,7 @@ def grep_crash_head(dmesg_file)
           .flat_map { |l| concat_context_from_dmesg(dmesg_file, l) }
           .each do |line|
     case line
-    when oops_re
+    when LKP::OopsPattern.instance.regexp
       oops_map[$1] ||= line
 
       has_oom = true if line =~ OOM_PATTERN
