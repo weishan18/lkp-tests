@@ -117,16 +117,6 @@ def reasonable_perf_change?(name, delta, max)
   true
 end
 
-def deny_auto_report_author?(author)
-  regexp = load_regular_expressions("#{LKP_SRC_ETC}/auto-report-author-denylist")
-  author =~ regexp
-end
-
-def deny_auto_report_stat?(stat)
-  regexp = load_regular_expressions("#{LKP_SRC_ETC}/auto-report-stat-denylist")
-  stat =~ regexp
-end
-
 def changed_stats?(sorted_a, min_a, mean_a, max_a,
                    sorted_b, min_b, mean_b, max_b,
                    is_function_stat, is_latency_stat,
