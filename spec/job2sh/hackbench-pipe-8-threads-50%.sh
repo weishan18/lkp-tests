@@ -5,7 +5,6 @@ export_top_env()
 	export suite='hackbench'
 	export testcase='hackbench'
 	export category='benchmark'
-	export disable_latency_stats=1
 	export nr_threads=18
 	export iterations=8
 	export job_origin='jobs/hackbench.yaml'
