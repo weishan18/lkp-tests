@@ -21,8 +21,6 @@ def calc_addon_keys(results_sum, results_nr, interval, interval_nr, prefix)
       next if value.zero?
 
       calc_misses(results_sum, key, value, prefix)
-    when /(.*)cache-references/
-      calc_cache_references($1, results_sum, value, prefix)
     when /(.*)UNC_M_(.*)_INSERTS/
       stem = "#{$1}UNC_M_#{$2}"
       calc_latency(stem, $1, results_sum, value, results_nr, interval, interval_nr, prefix)
@@ -58,12 +56,9 @@ def calc_misses(results_sum, key, value, prefix)
     stem = $1
     cycles = results_sum["#{stem}cpu-cycles"]
     puts "#{prefix}#{stem}cycles-between-cache-misses: #{cycles / value}" unless cycles.zero?
+    instructions = results_sum["#{stem}instructions"]
+    puts "#{prefix}#{stem}MPKI: #{value / instructions * 1000}" unless instructions.zero?
   end
-end
-
-def calc_cache_references(stem, results_sum, value, prefix)
-  instructions = results_sum["#{stem}instructions"]
-  puts "#{prefix}#{stem}MPKI: #{value / instructions * 1000}" unless instructions.zero?
 end
 
 def calc_latency(stem, stem1, results_sum, value, results_nr, interval, interval_nr, prefix)
