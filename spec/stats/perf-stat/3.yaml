@@ -24,9 +24,9 @@ i.minor-faults: 8749.226997550206
 i.major-faults: 0.9993406050885444
 i.ipc: 0.5794583266118535
 i.cpi: 1.7257496425102605
-i.MPKI: 3.970310096852432
 i.cache-miss-rate%: 23.82805907262459
 i.cycles-between-cache-misses: 1824.1674239067179
+i.MPKI: 0.9460478352443761
 i.branch-miss-rate%: 1.2832973422911065
 i.dTLB-load-miss-rate%: 0.017226642734644956
 i.dTLB-store-miss-rate%: 0.035902353505044476
@@ -63,9 +63,9 @@ i.minor-faults: 6915.059179375814
 i.major-faults: 0.9945432445528282
 i.ipc: 0.6320691992549756
 i.cpi: 1.5821052523658912
-i.MPKI: 3.001051381097169
 i.cache-miss-rate%: 13.292908858670067
 i.cycles-between-cache-misses: 3965.9014146704008
+i.MPKI: 0.39892702489110593
 i.branch-miss-rate%: 0.9088009689331764
 i.dTLB-load-miss-rate%: 0.009497507969546652
 i.dTLB-store-miss-rate%: 0.010732908350381626
@@ -102,9 +102,9 @@ ps.major-faults: 0.6642000700395653
 total.instructions: 6082557041.0
 overall.ipc: 0.6104215930844269
 overall.cpi: 1.6382120346481432
-overall.MPKI: 3.3796390007417605
 overall.cache-miss-rate%: 18.12707464330498
 overall.cycles-between-cache-misses: 2674.0657146192457
+overall.MPKI: 0.6126296843387055
 overall.branch-miss-rate%: 1.0607878394019565
 overall.dTLB-load-miss-rate%: 0.012456304191132975
 overall.dTLB-store-miss-rate%: 0.02068516043070262
