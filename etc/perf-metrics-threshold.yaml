@@ -8,7 +8,6 @@ iostat.*.[rw]_await: 50
 iostat.*.[rw]kB/s: 100
 iostat.*.[rw]/s: 50
 iostat.*.util: 10
-latency_stats.*: 10000
 perf-profile.*: 1
 proc-vmstat.allocstall: 100
 proc-vmstat.compact_fail: 100

@@ -138,8 +138,6 @@
 ^last_state\.running
 ^last_state\.soft_timeout
 ^last_state\.wget_kernel_fail
-^latency_stats.
-^latency_stats.*cifs.*
 ^leaking-addresses\.dmesg.R
 ^leaking-addresses\.leaking_number
 ^leaking-addresses\.proc.*:0000000

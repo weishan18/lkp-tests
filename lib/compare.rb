@@ -14,8 +14,7 @@ require "#{LKP_SRC}/lib/constant"
 
 # How many components in the stat sort key
 $stat_sort_key_number = {
-  'perf-profile' => 2,
-  'latency_stats' => 2
+  'perf-profile' => 2
 }
 
 $stat_absolute_changes = [

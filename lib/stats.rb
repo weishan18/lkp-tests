@@ -578,7 +578,7 @@ def __get_changed_stats(a, b, is_incomplete_run, options)
     # newly added monitors don't have values to compare in the base matrix
     next unless b[k] ||
                 is_function_stat ||
-                (k =~ /^(lock_stat|perf-profile|latency_stats)\./ && b_monitors[$1])
+                (k =~ /^(lock_stat|perf-profile)\./ && b_monitors[$1])
 
     b_k = b[k] || [0] * cols_b
     b_k << 0 while b_k.size < cols_b

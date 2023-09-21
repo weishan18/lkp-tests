@@ -3,7 +3,6 @@
 ^boot-time.
 ^cpuidle.
 ^iostat.
-^latency_stats.
 ^lock_stat.
 ^meminfo.
 ^mpstat.

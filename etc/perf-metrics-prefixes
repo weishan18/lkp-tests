@@ -15,9 +15,6 @@ boot-time.
 energy.
 interrupts.CAL:Function_call_interrupts
 iostat.
-latency_stats.avg.
-latency_stats.max.
-latency_stats.sum.
 perf-stat.
 pmeter.
 proc-vmstat.
