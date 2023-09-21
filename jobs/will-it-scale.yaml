@@ -47,8 +47,8 @@ will-it-scale:
     - pwrite3
     - read1
     - read2
-    #  - read3
-    #  - read4
+    - read3
+    - read4
     - readseek1
     - readseek2
     - readseek3
