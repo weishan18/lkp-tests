@@ -98,5 +98,6 @@ xfstests:
     - generic-group-70
     - generic-group-71
     - generic-group-72
+    - generic-group-73
     - generic-logdev
     - generic-525
