@@ -14,12 +14,16 @@
 
 [ -n "$target" ] || target=vmlinux
 
+parallel=$((nr_task / nr_instances))
+
 run_kbuild()
 {
 	# when using gcc-11 instead of gcc-9, there is this error.
 	# /usr/bin/ld: scripts/dtc/dtc-parser.tab.o:(.bss+0x20): multiple definition of `yylloc'
-	log_cmd rm /usr/bin/gcc
-	log_cmd ln -s /usr/bin/gcc-9 /usr/bin/gcc
+	if [ "$(readlink /usr/bin/gcc)" != "/usr/bin/gcc-9" ]; then
+		log_cmd rm /usr/bin/gcc
+		log_cmd ln -s /usr/bin/gcc-9 /usr/bin/gcc
+	fi
 
 	start_time=$(date +%s)
 	iterations=0
@@ -40,7 +44,7 @@ run_kbuild()
 		log_cmd scripts/config --file .config --disable CONFIG_UNUSED_SYMBOLS
 		log_cmd scripts/config --file .config --enable CONFIG_TRIM_UNUSED_KSYMS
 
-		log_cmd make -j $nr_task $target 2> /dev/null || die "make -j $nr_task $target failed"
+		log_cmd make -j $parallel $target > /dev/null 2>&1 || die "make -j $parallel $target failed"
 		iterations=$((iterations + 1))
 		now=$(date +%s)
 		[ $((now - start_time)) -gt "$runtime" ] && break
@@ -52,16 +56,22 @@ run_kbuild()
 linux_src="$BENCHMARK_ROOT/kbuild/linux"
 [ -d "$linux_src" ] || die "no kernel source code in $BENCHMARK_ROOT/kbuild/linux"
 
-: "${kbuild_work_dirs:=$linux_src}"
+if [ -z "$kbuild_work_dirs" ]; then
+	kbuild_work_dirs="$BENCHMARK_ROOT/kbuild"
+	log_cmd mkdir -p "$kbuild_work_dirs"
+	iwdir="$kbuild_work_dirs/$instance_id"
+	log_cmd rm -rf "$iwdir"
+	log_cmd cp -a "$linux_src" "$iwdir"
+fi
 
-kbuild_tmp_dir="$TMP/kbuild"
-i=0
-
+kbuild_tmp_dir="$TMP/kbuild-$instance_id"
 mkdir -p $kbuild_tmp_dir
 
+i=0
 for wdir in $kbuild_work_dirs; do
 	(
-		log_eval cd "$wdir"
+		iwdir="$wdir/$instance_id"
+		log_eval cd "$iwdir"
 		run_kbuild > "$kbuild_tmp_dir/kbuild.$i"
 	) &
 	i=$((i+1))
