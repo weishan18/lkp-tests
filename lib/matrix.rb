@@ -163,7 +163,7 @@ def create_stats_matrix(result_root)
                  elsif event_counter? k
                    v[-1] - v[0]
                  else
-                   v.sum / stats_part_len
+                   v.sum.to_f / stats_part_len
                  end
       stats["#{k}.max"] = v.max if should_add_max_latency k
     end
