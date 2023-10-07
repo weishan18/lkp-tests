@@ -1,7 +1,6 @@
 LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
 
 require 'ostruct'
-require "#{LKP_SRC}/lib/log"
 
 module Cacheable
   def self.included(mod)
