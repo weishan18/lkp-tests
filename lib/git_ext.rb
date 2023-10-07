@@ -46,5 +46,9 @@ module Git
 
       Git.orig_open(working_dir, options)
     end
+
+    def sha1_40?(commit)
+      commit =~ /^[\da-f]{40}$/
+    end
   end
 end
