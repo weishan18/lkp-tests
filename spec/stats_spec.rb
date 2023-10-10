@@ -15,7 +15,7 @@ describe 'stats' do
         old_stat = File.read yaml_file
 
         stat_script = LKP::Programs.find_parser(script)
-        new_stat = if script =~ /^(kmsg|dmesg|mpstat|fio|perf-stat-tests)$/
+        new_stat = if script =~ /^(kmsg|dmesg|mpstat|fio)$/
                      `#{stat_script} #{file}`
                    else
                      `#{stat_script} < #{file}`
