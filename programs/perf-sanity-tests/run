@@ -6,9 +6,6 @@
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/tests/perf_test.sh
 
-# this function will build perf from linux source code, and link the binary to /usr/bin/perf
-setup_linux_perf || die "failed to setup linux perf"
-
 set_perf_path '/usr/bin/perf'
 
 $perf --version
