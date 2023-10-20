@@ -1,0 +1,4 @@
+url: https://gitlab.freedesktop.org/drm/xe/kernel.git
+notify_build_success_branch: .*
+mail_cc:
+- intel-xe@lists.freedesktop.org
