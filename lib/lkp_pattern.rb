@@ -27,17 +27,22 @@ module LKP
     end
 
     class << self
+      attr_reader :klass_2_path
+
       def generate_klass(file_path)
+        @klass_2_path ||= {}
+
         klass = Class.new(self) do
           include Singleton
 
           def initialize
-            file_name = self.class.name.sub(/^LKP::/, '').underscore.dasherize
-            super LKP::Path.src('etc', file_name)
+            super self.class.superclass.klass_2_path[self.class.name]
           end
         end
 
         LKP.const_set File.basename(file_path).underscore.camelize, klass
+
+        @klass_2_path[klass.name] = file_path
       end
     end
   end
