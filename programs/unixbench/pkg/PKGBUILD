@@ -10,7 +10,7 @@ md5sums=('SKIP')
 patch_source()
 {
         cd $srcdir/byte-unixbench
-        patch -p1 < "$LKP_SRC/pkg/${pkgname}/${pkgname}.patch"
+        patch -p1 < "$LKP_SRC/programs/${pkgname}/pkg/${pkgname}.patch"
 }
 
 build()
