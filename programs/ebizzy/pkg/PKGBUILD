@@ -13,7 +13,7 @@ md5sums=('af038bc506066bb3d28db08aba62bc38')
 
 patch_source() {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 < "$LKP_SRC/pkg/${pkgname}/0001-${pkgname}.patch"
+    patch -p1 < "$LKP_SRC/programs/${pkgname}/pkg/0001-${pkgname}.patch"
 }
 
 build() {
