@@ -92,7 +92,11 @@ show_url_hint()
 {
 	echo "Please set new URL env variable and rerun"
 	echo "  * crosstool provided by kernel org:"
-	echo "    export URL=https://cdn.kernel.org/pub/tools/crosstool/files/bin/x86_64"
+	if [[ $COMPILER =~ clang ]]; then
+		echo "    export URL=https://cdn.kernel.org/pub/tools/llvm/files"
+	else
+		echo "    export URL=https://cdn.kernel.org/pub/tools/crosstool/files/bin/x86_64"
+	fi
 	echo "  * crosstool provided by 0-Day CI:"
 	echo "    export URL=https://download.01.org/0day-ci/cross-package"
 }
@@ -113,10 +117,42 @@ get_installed_cross_gcc()
 	[[ -x $cross_gcc ]] && echo $cross_gcc
 }
 
+get_installed_cross_clang()
+{
+	local cross_clang
+	if [[ $URL =~ cdn.kernel.org ]]; then
+		local cross_clang_candidates=($COMPILER_INSTALL_PATH/${COMPILER//clang/llvm}*/bin/clang)
+		cross_clang=$(echo "${cross_clang_candidates[@]}" | tr ' ' '\n' | sort -V | tail -1)
+	else
+		cross_clang=$COMPILER_INSTALL_PATH/$COMPILER/bin/clang
+	fi
+
+	[[ -x $cross_clang ]] && echo $cross_clang
+}
+
 install_crosstool_clang()
 {
-	local URL='https://download.01.org/0day-ci/cross-package'
-	local file="$COMPILER/$COMPILER.tar.xz"
+	[[ $URL ]] || URL='https://cdn.kernel.org/pub/tools/llvm/files'
+	local list=/tmp/0day-ci-llvm-files
+
+	local cross_clang=$(get_installed_cross_clang)
+	[[ $cross_clang ]] && return
+
+	local file
+	if [[ $URL =~ cdn.kernel.org ]]; then
+		# ./llvm-13.0.1-x86_64.tar.xz
+		# ./llvm-14.0.6-x86_64.tar.xz
+		# ./llvm-15.0.7-x86_64.tar.xz
+		# ./llvm-16.0.0-x86_64.tar.xz
+		# ./llvm-16.0.1-x86_64.tar.xz
+		# ./llvm-17.0.3-x86_64.tar.xz
+		# ./llvm-17.0.4-x86_64.tar.xz
+		get_toolchain_list
+		file=$(grep -E "${COMPILER//clang/llvm}\..*-x86_64\.tar\.xz$" $list | tail -1)
+		rm $list
+	else
+		file="$COMPILER/$COMPILER.tar.xz"
+	fi
 
 	download_extract "$URL/$file" || {
 		echo "Failed to download $URL/$file"
@@ -357,11 +393,13 @@ is_llvm_equal_one_supported()
 
 setup_crosstool_clang()
 {
-	local cross_clang=("$COMPILER_INSTALL_PATH"/$COMPILER/bin/clang)
-	[[ -x $cross_clang ]] || install_cross_compiler || {
+	install_cross_compiler || {
 		echo "Install clang compiler failed"
 		return 1
 	}
+
+	local cross_clang=$(get_installed_cross_clang)
+	[[ $cross_clang ]] || return
 
 	install_dependence "$cross_clang" || return
 
@@ -375,6 +413,7 @@ setup_crosstool_clang()
 	}
 
 	export PATH="$cross_clang_path:$PATH"
+	echo "PATH=$PATH"
 	# https://www.kernel.org/doc/html/latest/kbuild/llvm.html
 	local opt_default_cross="HOSTCC=$cross_clang CC=$cross_clang $opt_ldd $opt_objcopy \
 		AR=llvm-ar NM=llvm-nm STRIP=llvm-strip OBJDUMP=llvm-objdump OBJSIZE=llvm-size READELF=llvm-readelf HOSTCXX=clang++ HOSTAR=llvm-ar"
