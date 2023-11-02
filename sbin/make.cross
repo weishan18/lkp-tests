@@ -97,6 +97,13 @@ show_url_hint()
 	echo "    export URL=https://download.01.org/0day-ci/cross-package"
 }
 
+get_installed_cross_gcc()
+{
+	local cross_gcc_candidates=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/bin/${gcc_arch}-gcc)
+	local cross_gcc=$(echo "${cross_gcc_candidates[@]}" | tr ' ' '\n' | sort -V | tail -1)
+	[[ -x $cross_gcc ]] && echo $cross_gcc
+}
+
 install_crosstool_clang()
 {
 	local URL='https://download.01.org/0day-ci/cross-package'
@@ -110,6 +117,9 @@ install_crosstool_clang()
 
 install_crosstool_gcc()
 {
+	local cross_gcc=$(get_installed_cross_gcc)
+	[[ $cross_gcc ]] && return
+
 	[[ $URL ]] || local URL='https://cdn.kernel.org/pub/tools/crosstool/files/bin/x86_64'
 	local list=/tmp/0day-ci-crosstool-files
 
@@ -168,20 +178,16 @@ install_cross_compiler()
 
 setup_gcc_exec()
 {
-	gcc_exec=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/bin/${gcc_arch}-gcc)
-	[[ -x $gcc_exec ]] || install_cross_compiler || {
+	install_cross_compiler || {
 		echo "Install gcc cross compiler failed"
 		return 1
 	}
 
-	gcc_exec=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/bin/${gcc_arch}-gcc)
-	[[ -x $gcc_exec ]] || {
-		echo "No cross compiler for $ARCH"
+	gcc_exec=$(get_installed_cross_gcc)
+	[[ $gcc_exec ]] || {
+		echo "No gcc cross compiler for $ARCH"
 		return 1
 	}
-
-	# use highest available version
-	gcc_exec=$(tr ' ' '\n' <<< ${gcc_exec[@]} | sort -V | tail -n1)
 }
 
 update_path_env_for_parisc()
