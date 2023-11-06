@@ -43,16 +43,8 @@ def load_yaml(file, template_context = nil)
 end
 
 def load_yaml_with_flock(file, timeout = nil)
-  lock_file = "#{file}.lock"
-
-  if timeout
-    with_flock_timeout(lock_file, timeout) do
-      load_yaml file
-    end
-  else
-    with_flock(lock_file) do
-      load_yaml file
-    end
+  with_flock("#{file}.lock", timeout) do
+    load_yaml file
   end
 end
 
@@ -145,16 +137,8 @@ def save_yaml(object, file, compress: false)
 end
 
 def save_yaml_with_flock(object, file, timeout = nil, compress: false)
-  lock_file = "#{file}.lock"
-
-  if timeout
-    with_flock_timeout(lock_file, timeout) do
-      save_yaml object, file, compress: compress
-    end
-  else
-    with_flock(lock_file) do
-      save_yaml object, file, compress: compress
-    end
+  with_flock("#{file}.lock", timeout) do
+    save_yaml object, file, compress: compress
   end
 end
 

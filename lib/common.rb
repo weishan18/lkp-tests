@@ -305,18 +305,12 @@ def mkdir_p(dir, mode = 0o2775)
   FileUtils.mkdir_p dir, mode: mode
 end
 
-def with_flock(lock_file)
-  File.open(lock_file, File::RDWR | File::CREAT, 0o664) do |f|
-    f.flock(File::LOCK_EX)
-    yield
-  end
-end
-
-def with_flock_timeout(lock_file, timeout)
+def with_flock(lock_file, timeout = nil)
   File.open(lock_file, File::RDWR | File::CREAT, 0o664) do |f|
     Timeout.timeout(timeout) do
       f.flock(File::LOCK_EX)
     end
+
     yield
   end
 end
