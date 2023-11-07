@@ -20,6 +20,35 @@ unixbench:
     - fstime
     - fsbuffer
     - fsdisk
+    - fstime-w
+    - fstime-r
+    - fsbuffer-w
+    - fsbuffer-r
+    - fsdisk-w
+    - fsdisk-r
+    - shell16
+    - short
+    - int
+    - long
+    - float
+    - double
+    - arithoh
+    - C
+    - dc
+    - hanoi
+    - grep
+    - sysexec
+    - 2d-rects
+    - 2d-lines
+    - 2d-circle
+    - 2d-ellipse
+    - 2d-shapes
+    - 2d-aashapes
+    - 2d-polys
+    - 2d-text
+    - 2d-blit
+    - 2d-window
+    - ubgears
 
 ---
 # execl uses a lot of mmap syscall which will cause perf to record
