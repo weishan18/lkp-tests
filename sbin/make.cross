@@ -518,7 +518,7 @@ is_supported_compiler_option()
 	# $ clang-15 -Winvalid-option -xc /dev/null
 	# warning: unknown warning option '-Winvalid-option' [-Wunknown-warning-option]
 
-	$compiler $option -xc /dev/null 2>&1 | grep -q -e "unrecognized command-line option" -e "unknown warning option" && return 1
+	$compiler $option -xc /dev/null 2>&1 | grep -q -e "unrecognized command.line option" -e "unknown warning option" && return 1
 
 	return 0
 }
