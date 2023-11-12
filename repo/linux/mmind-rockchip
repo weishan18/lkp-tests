@@ -1,4 +1,0 @@
-url: https://github.com/mmind/linux-rockchip
-owner: Heiko Stuebner <heiko@sntech.de>
-branch_deny_runtime_test: .*
-branch_denylist: .*
