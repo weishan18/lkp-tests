@@ -12,7 +12,7 @@ if [[ "$group" = "group-00" ]]; then
 	            "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" \
 	            "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "kasan_test" \
 	            "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit" \
-	            "apparmor_policy_unpack_test" "fortify_kunit" \
+	            "apparmor_policy_unpack_test" "fortify_kunit" "property-entry-test" \
 	            "drm_cmdline_parser_test" "drm_damage_helper_test" "drm_dp_mst_helper_test" "drm_mm_test" \
 	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test"\
 	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit_proto_test" "hid-uclogic-test" "iio-test-format" \
@@ -77,7 +77,7 @@ run_kunit_tests()
 			fi
 		}
 
-		[[ $i =~ "cros_kunit_proto_test" ]] && {
+		[[ $i = "cros_kunit_proto_test" || $i = "property-entry-test" ]] && {
 			is_kernel_version_ge 6.7 || continue
 		}
 

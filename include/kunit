@@ -28,6 +28,8 @@ need_kconfig:
 - TEST_LIST_SORT: m
 - TEST_SORT: m
 
+- DRIVER_PE_KUNIT_TEST: ~m
+
 - DRM
 - DRM_KUNIT_TEST: m
 
@@ -90,7 +92,6 @@ need_kconfig:
 - FAT_KUNIT_TEST: m
 
 # below are kunit test configs of bool type
-- DRIVER_PE_KUNIT_TEST: y
 - PM_QOS_KUNIT_TEST: y
 - USB4: y
 - USB4_KUNIT_TEST: y
