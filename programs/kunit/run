@@ -15,7 +15,7 @@ if [[ "$group" = "group-00" ]]; then
 	            "apparmor_policy_unpack_test" "fortify_kunit" \
 	            "drm_cmdline_parser_test" "drm_damage_helper_test" "drm_dp_mst_helper_test" "drm_mm_test" \
 	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test"\
-	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit" "hid-uclogic-test" "iio-test-format" \
+	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit_proto_test" "hid-uclogic-test" "iio-test-format" \
 	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
 	            "siphash_kunit" "strscpy_kunit" "fat_test")
 elif [[ "$group" = "group-01" ]]; then
@@ -70,12 +70,17 @@ run_kunit_tests()
 				continue
 			fi
 		}
-		[[ $i =~ "cros_kunit" || $i =~ "iio-test-format" || $i =~ "iio-test-rescale" || $i =~ "snd-soc-avs-i2s-test" ]] && {
+		[[ $i =~ "iio-test-format" || $i =~ "iio-test-rescale" || $i =~ "snd-soc-avs-i2s-test" ]] && {
 			if ! is_kernel_version_ge 6.0; then
 				# skip not exist module
 				continue
 			fi
 		}
+
+		[[ $i =~ "cros_kunit_proto_test" ]] && {
+			is_kernel_version_ge 6.7 || continue
+		}
+
 		[[ $i =~ "hid-uclogic-test" ]] && {
 			if ! is_kernel_version_ge 6.1; then
 				# skip not exist module
