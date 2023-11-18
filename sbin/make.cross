@@ -608,7 +608,7 @@ make_cross_main()
 
 	check_install_path || {
 		echo "Please set COMPILER_INSTALL_PATH to specify compiler install path"
-		echo "E.g. COMPILER_INSTALL_PATH=\$HOME/0day COMPILER=clang make.cross ARCH=x86_64"
+		echo "E.g. COMPILER_INSTALL_PATH=\$HOME/0day COMPILER=clang-17 make.cross ARCH=x86_64"
 		echo
 		exit 1
 	}
