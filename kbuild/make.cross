@@ -154,6 +154,12 @@ install_crosstool_clang()
 		file="$COMPILER/$COMPILER.tar.xz"
 	fi
 
+	[[ $file ]] || {
+		echo "Cannot find $COMPILER under $URL"
+		show_url_hint
+		return 1
+	}
+
 	download_extract "$URL/$file" || {
 		echo "Failed to download $URL/$file"
 		return 1
