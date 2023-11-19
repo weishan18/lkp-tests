@@ -7,3 +7,4 @@ test_old_branches: .*
 branch_denylist: .*-release|.*-mr.*|android-4.14-q|android-mainline-track.*|deprecated/.*|android-4.14-stable
 arch_denylist: .*
 arch_allowlist: x86_64|i386|arm|arm64
+no_merge_branch: .*
