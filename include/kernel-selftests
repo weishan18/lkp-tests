@@ -361,6 +361,8 @@ need_kconfig:
 - NETFILTER_XT_MATCH_STATISTIC
 - NETFILTER_XT_TARGET_MARK
 - IP_NF_TARGET_REJECT
+% elsif ___.group == "user_events"
+- USER_EVENTS: y
 % else
 - BLOCK: y
 - BTRFS_FS: m
