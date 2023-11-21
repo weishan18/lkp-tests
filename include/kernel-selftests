@@ -52,6 +52,7 @@ need_kconfig:
 - TEST_HMM: m
 - TRANSPARENT_HUGEPAGE: y
 % elsif ___.group == "net"
+- CRYPTO_ARIA: y
 - PACKET: y
 - USER_NS: y
 - BPF_SYSCALL: y
