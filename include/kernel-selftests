@@ -330,6 +330,7 @@ need_kconfig:
 - X86_CPU_RESCTRL: y
 - PROC_CPU_RESCTRL: y
 % elsif ___.group == "tc-testing"
+- ATM: y
 - IP_SET
 - NET_EMATCH_IPSET: m
 - NET_SCH_FQ_PIE
@@ -339,6 +340,7 @@ need_kconfig:
 - NET_SCH_TAPRIO
 - NET_ACT_GATE
 - PACKET
+- PTP_1588_CLOCK_MOCK
 - NET_SCH_RED
 - NETDEVSIM: m
 % elsif ___.group == "memory-hotplug"
