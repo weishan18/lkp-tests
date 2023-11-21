@@ -191,6 +191,7 @@ need_kconfig:
 - DRM_DEBUG_SELFTEST: m
 - EFIVAR_FS: y
 - EXPERT: y
+- LEDS_CLASS_MULTICOLOR: y
 
 # tools/testing/selftests/gpio
 - GPIOLIB: y
