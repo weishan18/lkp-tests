@@ -3,3 +3,4 @@ owner: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 notify_build_success_branch: .*
 no_merge_branch: .*
 branch_denylist: .*
+belongs_to: stable
