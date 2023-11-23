@@ -1,0 +1,8 @@
+need_kconfig:
+- CRYPTO_HW: y
+- CRYPTO_DEV_QAT: m
+- CRYPTO_DEV_QAT_4XXX: m
+- CRYPTO_MANAGER: y
+- CRYPTO_MANAGER2: y
+
+rootfs: debian-12-x86_64-20220629.cgz
