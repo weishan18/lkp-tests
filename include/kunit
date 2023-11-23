@@ -28,7 +28,7 @@ need_kconfig:
 - TEST_LIST_SORT: m
 - TEST_SORT: m
 
-- DRIVER_PE_KUNIT_TEST: ~m
+- DRIVER_PE_KUNIT_TEST
 
 - DRM
 - DRM_KUNIT_TEST: m
