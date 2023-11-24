@@ -1,5 +1,32 @@
 #!/bin/bash
 
+KBUILD_SUPPORTED_ARCHS="alpha
+arc
+arm
+arm64
+csky
+hexagon
+i386
+loongarch
+m68k
+microblaze
+mips
+openrisc
+parisc
+parisc64
+nios2
+powerpc
+powerpc64
+riscv
+s390
+sh
+sparc
+sparc64
+um
+x86_64
+xtensa
+"
+
 is_supported_compiler_option()
 {
 	local compiler_bin=$1
