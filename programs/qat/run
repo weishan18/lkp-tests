@@ -35,9 +35,20 @@ check_dmesg()
 	dmesg | grep "qat_dev.* started .* acceleration engines"
 }
 
+remove_module()
+{
+	rmmod -v qat_4xxx
+	rmmod -v intel_qat
+	rmmod -v dh_generic
+	rmmod -v crc8
+	rmmod -v authenc
+}
+
 check_firmware || die "qat firmware not found"
 check_lspci || die "qat pci device not found"
 check_module || die "qat modules not fully loaded"
 check_dmesg || die "qat device failed to start"
 
 cat /proc/crypto
+
+remove_module
