@@ -385,22 +385,6 @@ setup_crosstool_gcc()
 	return 0
 }
 
-is_llvm_equal_one_supported()
-{
-	[[ $kernel_version_major ]] || return
-
-	[[ $kernel_version_major -lt 5 ]] && return 1
-	[[ $kernel_version_major -eq 5 && $kernel_version_minor -lt 7 ]] && return 1
-
-	grep -q -F "ifneq (\$(LLVM),)" Makefile || return
-
-	[[ $ARCH = "s390" ]] && return 1
-	[[ $ARCH =~ "powerpc" || $ARCH =~ "mips" || $ARCH =~ "riscv" ]] &&
-	[[ $kernel_version_major -eq 5 && $kernel_version_minor -lt 18 ]] && return 1
-
-	return 0
-}
-
 setup_crosstool_clang()
 {
 	install_cross_compiler || {

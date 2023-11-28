@@ -87,3 +87,37 @@ add_kbuild_kcflags()
 		add_kcflag "$flag"
 	done < <(grep -v -e "^#" -e "^$" $kcflags_file)
 }
+
+is_llvm_equal_one_supported()
+{
+	# handle v2.6.X version, similar to is_clang_supported_arch function
+	local kernel_version_major=${kernel_version_major%%.*}
+
+	# LLVM=1 is introduced by below commit which merged into v5.7-rc1
+	# irb(main):001:0> Git.open.gcommit('a0d1c951ef0').merged_by
+	# => "v5.7-rc1"
+	# commit a0d1c951ef08ed24f35129267e3595d86f57f5d3
+	# Author: Masahiro Yamada <masahiroy@kernel.org>
+	# Date:   Wed Apr 8 10:36:23 2020 +0900
+	# 	kbuild: support LLVM=1 to switch the default tools to Clang/LLVM
+	#
+	# 	As Documentation/kbuild/llvm.rst implies, building the kernel with a
+	# 	full set of LLVM tools gets very verbose and unwieldy.
+	#
+	# 	Provide a single switch LLVM=1 to use Clang and LLVM tools instead
+	# 	of GCC and Binutils. You can pass it from the command line or as an
+	# 	environment variable.
+	[[ $kernel_version_major -lt 5 ]] && return 1
+
+	[[ $kernel_version_major -eq 5 ]] && [[ $kernel_version_minor -lt 7 ]] && return 1
+
+	if [[ $ARCH = "s390" ]]; then
+		return 1
+	elif [[ $ARCH =~ "powerpc" || $ARCH =~ "mips" || $ARCH =~ "riscv" ]]; then
+		# https://www.kernel.org/doc/html/v5.18/kbuild/llvm.html
+		# https://www.kernel.org/doc/html/v5.19/kbuild/llvm.html
+		[[ $kernel_version_major -eq 5 ]] && [[ $kernel_version_minor -lt 18 ]] && return 1
+	fi
+
+	return 0
+}
