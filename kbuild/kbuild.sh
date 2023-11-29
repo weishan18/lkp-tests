@@ -128,5 +128,6 @@ get_config_value()
 
 	grep -s -h "^$config=" .config $KBUILD_OUTPUT/.config $BUILD_DIR/.config |
 		head -n1 |
-		cut -f2 -d'"'
+		cut -f2- -d= |
+		sed 's/\"//g'
 }
