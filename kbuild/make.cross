@@ -266,21 +266,6 @@ setup_compiler_for_parisc()
 	echo "PATH=$PATH"
 }
 
-setup_compiler_for_xtensa()
-{
-	local variant
-
-	variant=$(get_config_value CONFIG_XTENSA_VARIANT_CUSTOM_NAME)
-
-	if [[ "$variant" = 'fsf' ]]; then
-		gcc_arch=$ARCH-linux
-	elif [[ $variant ]]; then
-		gcc_arch=xtensa-${variant}-linux
-	else
-		gcc_arch=$ARCH-linux
-	fi
-}
-
 setup_crosstool_gcc()
 {
 	local gcc_arch
@@ -354,7 +339,7 @@ setup_crosstool_gcc()
 			gcc_arch=nds32le-linux
 			;;
 		xtensa)
-			setup_compiler_for_xtensa
+			gcc_arch=xtensa-linux
 			;;
 		loongarch)
 			gcc_arch=loongarch64-linux
