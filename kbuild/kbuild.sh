@@ -121,3 +121,12 @@ is_llvm_equal_one_supported()
 
 	return 0
 }
+
+get_config_value()
+{
+	local config=$1
+
+	grep -s -h "^$config=" .config $KBUILD_OUTPUT/.config $BUILD_DIR/.config |
+		head -n1 |
+		cut -f2 -d'"'
+}

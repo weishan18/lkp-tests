@@ -270,9 +270,7 @@ setup_compiler_for_xtensa()
 {
 	local variant
 
-	variant=$(grep -s -h '^CONFIG_XTENSA_VARIANT_CUSTOM_NAME=' $BUILD_DIR/.config |
-		  head -n1 |
-		  cut -f2 -d'"')
+	variant=$(get_config_value CONFIG_XTENSA_VARIANT_CUSTOM_NAME)
 
 	if [[ "$variant" = 'fsf' ]]; then
 		gcc_arch=$ARCH-linux
