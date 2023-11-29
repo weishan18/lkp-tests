@@ -125,8 +125,9 @@ is_llvm_equal_one_supported()
 get_config_value()
 {
 	local config=$1
+	local config_file=$2
 
-	grep -s -h "^$config=" .config $KBUILD_OUTPUT/.config $BUILD_DIR/.config |
+	grep -s -h "^$config=" $config_file .config $KBUILD_OUTPUT/.config $BUILD_DIR/.config |
 		head -n1 |
 		cut -f2- -d= |
 		sed 's/\"//g'
