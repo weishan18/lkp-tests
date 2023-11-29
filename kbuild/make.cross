@@ -239,6 +239,13 @@ setup_gcc_exec()
 		echo "No gcc cross compiler for $ARCH"
 		return 1
 	}
+
+	# load build-in depends libs
+	local deplibs_path=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/libexec/gcc/${gcc_arch}/*)
+	deplibs_path=$(tr ' ' '\n' <<< ${deplibs_path[@]} | sort -V | tail -n1)
+	[[ -d $deplibs_path ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$deplibs_path
+
+	install_dependence "$gcc_exec"
 }
 
 update_path_env_for_parisc()
@@ -352,13 +359,6 @@ setup_crosstool_gcc()
 	if [[ $gcc_arch ]]; then
 		setup_gcc_exec || return
 		opt_cross="CROSS_COMPILE=${gcc_exec%gcc}"
-
-		# load build-in depends libs
-		local deplibs_path=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/libexec/gcc/${gcc_arch}/*)
-		deplibs_path=$(tr ' ' '\n' <<< ${deplibs_path[@]} | sort -V | tail -n1)
-		[[ -d $deplibs_path ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$deplibs_path
-
-		install_dependence "$gcc_exec" || return
 	else
 		opt_cross=
 	fi
