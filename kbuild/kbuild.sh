@@ -131,3 +131,40 @@ get_config_value()
 		cut -f2- -d= |
 		sed 's/\"//g'
 }
+
+# is_config_enabled CONFIG_BOOT_LINK_OFFSET
+# - 202003/h8300-randconfig-a001-20200327:CONFIG_BOOT_LINK_OFFSET= # false
+# - 202003/sh-randconfig-a001-20200313:CONFIG_BOOT_LINK_OFFSET=0x00800000 # true
+#
+# is_config_enabled CONFIG_BOOT_LINK_OFFSET=
+# - 202003/h8300-randconfig-a001-20200327:CONFIG_BOOT_LINK_OFFSET= # true
+# - 202003/sh-randconfig-a001-20200313:CONFIG_BOOT_LINK_OFFSET=0x00800000 # true
+is_config_enabled()
+{
+	local config="$1"
+	local config_file
+
+	[[ $config ]] || return
+
+	if [[ $2 ]]; then
+		config_file="$2"
+	elif [[ -s .config ]]; then
+		config_file=.config
+	elif [[ $KBUILD_OUTPUT ]] && [[ -s $KBUILD_OUTPUT/.config ]]; then
+		config_file=$KBUILD_OUTPUT/.config
+	elif [[ $BUILD_PATH ]] && [[ -s $BUILD_PATH/.config ]]; then
+		config_file=$BUILD_PATH/.config
+	elif [[ $BUILD_DIR ]] && [[ -s $BUILD_DIR/.config ]]; then
+		config_file=$BUILD_DIR/.config
+	else
+		return 2 # ENOENT
+	fi
+
+	# $ echo "CONFIG_CPU_BIG_ENDIAN=y" | grep "^CONFIG_CPU_BIG_ENDIAN=[^n]"; echo $?
+	# CONFIG_CPU_BIG_ENDIAN=y
+	# 0
+	# $ echo "CONFIG_CPU_BIG_ENDIAN=n" | grep "^CONFIG_CPU_BIG_ENDIAN=[^n]"; echo $?
+	# 1
+	[[ $config =~ '=' ]] || config+='=[^n]'
+	grep -q "^$config" "$config_file"
+}

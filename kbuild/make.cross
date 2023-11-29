@@ -254,7 +254,7 @@ setup_compiler_for_parisc()
 {
 	local gcc_arch=hppa-linux
 	update_path_env_for_parisc $gcc_arch || return
-	if grep -s -q 'CONFIG_64BIT=y' $BUILD_DIR/.config; then
+	if is_config_enabled 'CONFIG_64BIT'; then
 		# 64bit build needs both hppa-linux and hppa64-linux
 		# > Assembler messages:
 		# > ../arch/parisc/kernel/vdso32/sigtramp.S:39: Error: unknown pseudo-op: `.proc'
@@ -279,7 +279,7 @@ setup_crosstool_gcc()
 			# start to support big endian arc toolchain form gcc-9.3.0
 			# for earlier gcc version, will failed to find arceb-elf for
 			# big endian arceb-elf tool chain
-			if grep -q 'CONFIG_CPU_BIG_ENDIAN=y' $BUILD_DIR/.config; then
+			if is_config_enabled 'CONFIG_CPU_BIG_ENDIAN'; then
 				gcc_arch=arceb-elf
 			else
 				gcc_arch=arc-elf
@@ -299,8 +299,8 @@ setup_crosstool_gcc()
 			;;
 		powerpc)
 			gcc_arch=powerpc-linux
-			grep -q 'CONFIG_PPC64=y' $BUILD_DIR/.config && {
-				if grep -q 'CONFIG_CPU_LITTLE_ENDIAN=y' $BUILD_DIR/.config; then
+			is_config_enabled 'CONFIG_PPC64' && {
+				if is_config_enabled 'CONFIG_CPU_LITTLE_ENDIAN'; then
 					gcc_arch=powerpc64le-linux
 				else
 					gcc_arch=powerpc64-linux
@@ -320,7 +320,7 @@ setup_crosstool_gcc()
 			gcc_arch=or1k-linux
 			;;
 		riscv)
-			if grep -q 'CONFIG_32BIT=y' $BUILD_DIR/.config; then
+			if is_config_enabled 'CONFIG_32BIT=y'; then
 				gcc_arch=riscv32-linux
 			else
 				gcc_arch=riscv64-linux
@@ -415,8 +415,8 @@ setup_crosstool_clang()
 		opt_llvm_ias="LLVM_IAS=1"
 	elif [[ $ARCH = "powerpc" ]]; then
 		local cross_compile='powerpc-linux-gnu-'
-		grep -q 'CONFIG_PPC64=y' $BUILD_DIR/.config && {
-			if grep -q 'CONFIG_CPU_LITTLE_ENDIAN=y' $BUILD_DIR/.config; then
+		is_config_enabled 'CONFIG_PPC64' && {
+			if is_config_enabled 'CONFIG_CPU_LITTLE_ENDIAN'; then
 				cross_compile='powerpc64le-linux-gnu-'
 			else
 				cross_compile='powerpc64-linux-gnu-'
@@ -425,7 +425,7 @@ setup_crosstool_clang()
 		opt_cross="$opt_cross CROSS_COMPILE=$cross_compile"
 		[[ $kernel_version_major -eq 5 && $kernel_version_minor -gt 14 && $kernel_version_minor -lt 18 ]] && opt_llvm_ias="LLVM_IAS=0"
 	elif [[ $ARCH = "riscv" ]]; then
-		if grep -q 'CONFIG_32BIT=y' $BUILD_DIR/.config; then
+		if is_config_enabled 'CONFIG_32BIT'; then
 			opt_cross="$opt_cross $(COMPILER=gcc && setup_crosstool_gcc && echo $opt_cross)"
 		else
 			opt_cross="$opt_cross CROSS_COMPILE=riscv64-linux-gnu-"
