@@ -116,7 +116,7 @@ get_toolchain_list()
 
 get_installed_cross_gcc()
 {
-	local cross_gcc_candidates=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/bin/${gcc_arch}-gcc)
+	local cross_gcc_candidates=($COMPILER_INSTALL_PATH/${COMPILER}*/${crosstool}/bin/${crosstool}-gcc)
 	local cross_gcc=$(echo "${cross_gcc_candidates[@]}" | tr ' ' '\n' | sort -V | tail -1)
 	[[ -x $cross_gcc ]] && echo $cross_gcc
 }
@@ -181,7 +181,7 @@ install_crosstool_gcc()
 	get_toolchain_list
 
 	local file
-	local gcc_arch_pattern=$(echo "${gcc_arch}" | sed 's/*/.*/g')
+	local gcc_arch_pattern=$(echo "${crosstool}" | sed 's/*/.*/g')
 
 	local gcc_version
 	[[ $COMPILER =~ - ]] && gcc_version=${COMPILER##*-}
@@ -241,7 +241,7 @@ setup_gcc_exec()
 	}
 
 	# load build-in depends libs
-	local deplibs_path=($COMPILER_INSTALL_PATH/${COMPILER}*/${gcc_arch}/libexec/gcc/${gcc_arch}/*)
+	local deplibs_path=($COMPILER_INSTALL_PATH/${COMPILER}*/${crosstool}/libexec/gcc/${crosstool}/*)
 	deplibs_path=$(tr ' ' '\n' <<< ${deplibs_path[@]} | sort -V | tail -n1)
 	[[ -d $deplibs_path ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$deplibs_path
 
@@ -250,7 +250,7 @@ setup_gcc_exec()
 
 update_path_env_for_parisc()
 {
-	local gcc_arch=$1
+	local crosstool=$1
 	setup_gcc_exec || return
 	gcc_path=$(dirname $gcc_exec)
 	[[ $PATH =~ $gcc_path ]] || export PATH=$gcc_path:$PATH
@@ -264,7 +264,7 @@ setup_parisc_crosstool()
 	# > ../arch/parisc/kernel/vdso32/restart_syscall.S:16: Error: bad or irreducible absolute expression
 	# > ../arch/parisc/kernel/vdso32/sigtramp.S:40: Error: unknown pseudo-op: `.callinfo'
 	update_path_env_for_parisc hppa-linux || return
-	[[ $gcc_arch =~ hppa64-linux ]] && {
+	[[ $crosstool =~ hppa64-linux ]] && {
 		update_path_env_for_parisc hppa64-linux || return
 	}
 	return 0
@@ -277,96 +277,13 @@ setup_parisc_crosstool()
 
 setup_crosstool_gcc()
 {
-	local gcc_arch
+	local crosstool
 	local gcc_exec
 
-	case $ARCH in
-		i386|x86_64)
-			gcc_arch=
-			;;
-		arc)
-			# start to support big endian arc toolchain form gcc-9.3.0
-			# for earlier gcc version, will failed to find arceb-elf for
-			# big endian arceb-elf tool chain
-			if is_config_enabled 'CONFIG_CPU_BIG_ENDIAN'; then
-				gcc_arch=arceb-elf
-			else
-				gcc_arch=arc-elf
-			fi
-			;;
-		c6x)
-			gcc_arch=$ARCH-elf
-			;;
-		um)
-			gcc_arch=
-			;;
-		arm)
-			gcc_arch=arm-linux-gnueabi
-			;;
-		arm64)
-			gcc_arch=aarch64-linux*
-			;;
-		powerpc)
-			gcc_arch=powerpc-linux
-			is_config_enabled 'CONFIG_PPC64' && {
-				if is_config_enabled 'CONFIG_CPU_LITTLE_ENDIAN'; then
-					gcc_arch=powerpc64le-linux
-				else
-					gcc_arch=powerpc64-linux
-				fi
-			}
-			;;
-		blackfin)
-			gcc_arch=bfin-uclinux
-			;;
-		sh)
-			gcc_arch=sh4-linux
-			;;
-		parisc)
-			if is_config_enabled 'CONFIG_64BIT'; then
-				gcc_arch=hppa64-linux
-			else
-				gcc_arch=hppa-linux
-			fi
-			;;
-		parisc64)
-			gcc_arch=hppa64-linux
-			;;
-		openrisc)
-			gcc_arch=or1k-linux
-			;;
-		riscv)
-			if is_config_enabled 'CONFIG_32BIT=y'; then
-				gcc_arch=riscv32-linux
-			else
-				gcc_arch=riscv64-linux
-			fi
-			;;
-		s390)
-			gcc_arch=s390-linux
-			;;
-		tile|tilegx)
-			gcc_arch=tilegx-linux
-			;;
-		mn10300)
-			gcc_arch=am33_2.0-linux
-			;;
-		nds32)
-			gcc_arch=nds32le-linux
-			;;
-		xtensa)
-			gcc_arch=xtensa-linux
-			;;
-		loongarch)
-			gcc_arch=loongarch64-linux
-			;;
-		*)
-			gcc_arch=$ARCH-linux
-			;;
-	esac
+	setup_cross_vars
 
-	if [[ $gcc_arch ]]; then
-		if [[ $gcc_arch =~ hppa ]]; then
+	if [[ $crosstool ]]; then
+		if [[ $crosstool =~ hppa ]]; then
 			setup_parisc_crosstool || return
 		else
 			setup_gcc_exec || return

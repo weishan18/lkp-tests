@@ -169,3 +169,132 @@ is_config_enabled()
 	[[ $config =~ '=' ]] || config+='=[^n]'
 	grep -q "^$config" "$config_file"
 }
+
+setup_cross_vars()
+{
+	case $ARCH in
+		arm)
+			cross_pkg=arm-linux-gnueabi
+			# cross_gcc=arm-linux-gnueabihf-gcc
+			crosstool=arm-linux-gnueabi
+			;;
+		arm64)
+			cross_pkg=aarch64-linux-gnu
+			crosstool=aarch64-linux
+			;;
+		mips)
+			if is_config_enabled CONFIG_64BIT; then
+				if is_config_enabled CONFIG_CPU_LITTLE_ENDIAN; then
+					cross_pkg=mips64el-linux-gnuabi64
+					crosstool=mips64el-linux
+				else
+					cross_pkg=mips64-linux-gnuabi64
+					crosstool=mips64-linux
+				fi
+			elif is_config_enabled CONFIG_32BIT; then
+				if is_config_enabled CONFIG_CPU_LITTLE_ENDIAN; then
+					cross_pkg=mipsel-linux-gnu
+					crosstool=mipsel-linux
+				else
+					cross_pkg=mips-linux-gnu
+					crosstool=mips-linux
+				fi
+			else
+				cross_pkg=mips-linux-gnu
+				crosstool=mips-linux
+			fi
+			;;
+		powerpc|powerpc64)
+			if is_config_enabled CONFIG_PPC64; then
+				if is_config_enabled CONFIG_CPU_LITTLE_ENDIAN; then
+					cross_pkg=powerpc64le-linux-gnu
+					crosstool=powerpc64le-linux
+				else
+					cross_pkg=powerpc64-linux-gnu
+					crosstool=powerpc64-linux
+				fi
+			else
+				cross_pkg=powerpc-linux-gnu
+				crosstool=powerpc-linux
+			fi
+			;;
+		sh)
+			cross_pkg=sh4-linux-gnu
+			crosstool=sh4-linux
+			;;
+		alpha)
+			cross_pkg=alpha-linux-gnu
+			crosstool=alpha-linux
+			;;
+		sparc64)
+			cross_pkg=sparc64-linux-gnu
+			crosstool=sparc64-linux
+			;;
+		sparc)
+			if is_config_enabled CONFIG_64BIT; then
+				cross_pkg=sparc64-linux-gnu
+				crosstool=sparc64-linux
+			else
+				crosstool=sparc-linux
+			fi
+			;;
+		parisc)
+			if is_config_enabled CONFIG_64BIT; then
+				cross_pkg=hppa64-linux-gnu
+				crosstool=hppa64-linux
+			else
+				cross_pkg=hppa-linux-gnu
+				crosstool=hppa-linux
+			fi
+			;;
+		parisc64)
+			cross_pkg=hppa64-linux-gnu
+			crosstool=hppa64-linux
+			;;
+		openrisc)
+			crosstool=or1k-linux
+			;;
+		s390)
+			cross_pkg=s390x-linux-gnu
+			crosstool=s390-linux
+			;;
+		m68k)
+			cross_pkg=m68k-linux-gnu
+			crosstool=m68k-linux
+			;;
+		xtensa)
+			crosstool=xtensa-linux
+			;;
+		arc)
+			# start to support big endian arc toolchain form gcc-9.3.0
+			# for earlier gcc version, will failed to find arceb-elf for
+			# big endian arceb-elf tool chain
+			if is_config_enabled CONFIG_CPU_BIG_ENDIAN; then
+				crosstool=arceb-elf
+			else
+				crosstool=arc-elf
+			fi
+			;;
+		c6x)
+			crosstool=c6x-elf
+			;;
+		riscv)
+			if is_config_enabled CONFIG_64BIT; then
+				cross_pkg=riscv64-linux-gnu
+				crosstool=riscv64-linux
+			elif is_config_enabled CONFIG_32BIT; then
+				crosstool=riscv32-linux
+			else
+				cross_pkg=riscv64-linux-gnu
+				crosstool=riscv64-linux
+			fi
+			;;
+		loongarch)
+			crosstool=loongarch64-linux
+			;;
+		# nios2
+		*)
+			crosstool=$ARCH-linux
+			;;
+	esac
+}
