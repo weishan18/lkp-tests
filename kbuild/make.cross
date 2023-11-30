@@ -251,26 +251,28 @@ setup_gcc_exec()
 update_path_env_for_parisc()
 {
 	local gcc_arch=$1
-	local gcc_exec
 	setup_gcc_exec || return
 	gcc_path=$(dirname $gcc_exec)
 	[[ $PATH =~ $gcc_path ]] || export PATH=$gcc_path:$PATH
 }
 
-setup_compiler_for_parisc()
+setup_parisc_crosstool()
 {
-	local gcc_arch=hppa-linux
-	update_path_env_for_parisc $gcc_arch || return
-	if is_config_enabled 'CONFIG_64BIT'; then
-		# 64bit build needs both hppa-linux and hppa64-linux
-		# > Assembler messages:
-		# > ../arch/parisc/kernel/vdso32/sigtramp.S:39: Error: unknown pseudo-op: `.proc'
-		# > ../arch/parisc/kernel/vdso32/restart_syscall.S:16: Error: bad or irreducible absolute expression
-		# > ../arch/parisc/kernel/vdso32/sigtramp.S:40: Error: unknown pseudo-op: `.callinfo'
-		gcc_arch=hppa64-linux
-		update_path_env_for_parisc $gcc_arch || return
-	fi
-	echo "PATH=$PATH"
+	# 64bit build needs both hppa-linux and hppa64-linux
+	# > Assembler messages:
+	# > ../arch/parisc/kernel/vdso32/sigtramp.S:39: Error: unknown pseudo-op: `.proc'
+	# > ../arch/parisc/kernel/vdso32/restart_syscall.S:16: Error: bad or irreducible absolute expression
+	# > ../arch/parisc/kernel/vdso32/sigtramp.S:40: Error: unknown pseudo-op: `.callinfo'
+	update_path_env_for_parisc hppa-linux || return
+	[[ $gcc_arch =~ hppa64-linux ]] && {
+		update_path_env_for_parisc hppa64-linux || return
+	}
+	return 0
+
+	# https://lore.kernel.org/lkml/570878b9-a9c8-a12e-4721-32b6ca010995@gmx.de/
+	# Please drop the "CROSS_COMPILE=hppa64-linux-" part.
+	# It will autodetect the cross compiler, so this is sufficient:
+	# make W=1 --keep-going -j32 O=./build_dir ARCH=parisc64 prepare
 }
 
 setup_crosstool_gcc()
@@ -320,8 +322,15 @@ setup_crosstool_gcc()
 		sh)
 			gcc_arch=sh4-linux
 			;;
-		parisc|parisc64)
-			setup_compiler_for_parisc || return
+		parisc)
+			if is_config_enabled 'CONFIG_64BIT'; then
+				gcc_arch=hppa64-linux
+			else
+				gcc_arch=hppa-linux
+			fi
+			;;
+		parisc64)
+			gcc_arch=hppa64-linux
 			;;
 		openrisc)
 			gcc_arch=or1k-linux
@@ -357,14 +366,19 @@ setup_crosstool_gcc()
 	esac
 
 	if [[ $gcc_arch ]]; then
-		setup_gcc_exec || return
-		opt_cross="CROSS_COMPILE=${gcc_exec%gcc}"
+		if [[ $gcc_arch =~ hppa ]]; then
+			setup_parisc_crosstool || return
+		else
+			setup_gcc_exec || return
+			opt_cross="CROSS_COMPILE=${gcc_exec%gcc}"
+		fi
 	else
 		opt_cross=
 	fi
 
 	setup_kcflags "$gcc_exec"
 
+	echo "PATH=$PATH"
 	return 0
 }
 
