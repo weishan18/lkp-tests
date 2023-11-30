@@ -12,3 +12,4 @@ subsystems:
 private_report_branch: .*
 mail_to: Otavio Salvador <otavio@ossystems.com.br>
 test_old_branches: .*
+branch_denylist: pr/.*
