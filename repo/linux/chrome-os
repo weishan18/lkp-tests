@@ -1,6 +1,6 @@
 url: https://chromium.googlesource.com/chromiumos/third_party/kernel
 belongs_to: chrome-os
-branch_allowlist: chromeos-5.4|chromeos-5.10|chromeos-5.15|chromeos-6.1
+branch_allowlist: chromeos-5.4|chromeos-5.10|chromeos-5.15|chromeos-6.1|chromeos-6.6
 branch_denylist: .*
 arch_denylist: .*
 arch_allowlist: x86_64|i386|arm|arm64
