@@ -7,6 +7,8 @@ subsystems:
 - intel
 - mm
 - sched
+integration_testing_branches:
+- sched/core
 notify_build_success_branch: .*
 clone_from_upsteam_repos:
 - tip
