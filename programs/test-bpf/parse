@@ -39,7 +39,7 @@ while (line = $stdin.gets)
     is_divided = true
   when /(PASS|FAIL)/
     if is_divided
-      stats.add type, $1.downcase
+      stats.add type, $1.downcase unless stats.key? type.to_s
       is_divided = false
     end
   end
