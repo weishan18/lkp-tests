@@ -38,5 +38,5 @@ filebench-setup:
     - cvar_example.f
     - webproxy.f
     - webserver.f
-    - netsfs.f
+    # - netsfs.f # more than 1h 20m
 filebench:
