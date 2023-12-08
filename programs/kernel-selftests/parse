@@ -151,6 +151,36 @@ class NetStater < Stater
       return
     end
 
+    if @test_script == 'veth.sh'
+      # selftests: net: veth.sh
+      case line
+      when /^# (\s+?) - (.+?)\s+\b(ok|fail)\b/
+        #         - peer gro flag                                      ok
+        @test_subcase = $2
+        result = $3
+        test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
+      when /^# (.+?) - (.+?)\s+\b(ok|fail)\b/
+        # default - gro flag                                           ok
+        @test_case = $1
+        @test_subcase = $2
+        result = $3
+        test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
+      when /^# (.*?)\s+\b(ok|fail)\b/
+        # default channels                                             fail rx:1:1 tx:1:1 combined:n/a:0
+        @test_case = $1
+        result = $2
+        test_name = "#{@test_prefix}.#{@test_case}"
+      when /^(ok|not ok) .* selftests: net: veth.sh/
+        test_name = @test_prefix
+        result = $1
+      end
+
+      return unless test_name
+
+      stats.add test_name, result unless stats.key? test_name
+      return
+    end
+
     case line
     # begain for net.fcnal-test.sh
     when /(IPv4 ping|IPv4\/TCP|IPv4\/UDP|IPv4 Netfilter)/,
