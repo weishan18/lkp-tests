@@ -25,7 +25,7 @@ elif [[ "$group" = "group-01" ]]; then
 	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" \
 	            "test_kstrtox" "test_string_helpers" "test_overflow" "test_ida" "udelay_test" \
 	            "test_vmalloc" "test_klp_state" "test_meminit" "test_printf" "test_maple_tree" \
-	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug")
+	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug" "raid6test")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi
