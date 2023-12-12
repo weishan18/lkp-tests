@@ -8,3 +8,4 @@ branch_denylist: .*-release|.*-mr.*|android-4.14-q|android-mainline-track.*|depr
 arch_denylist: .*
 arch_allowlist: x86_64|i386|arm|arm64
 no_merge_branch: .*
+branch_deny_runtime_test: .*
