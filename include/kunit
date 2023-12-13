@@ -211,6 +211,8 @@ need_kconfig:
 - ASYNC_RAID6_TEST: m
 
 - BACKTRACE_SELF_TEST: m
+
+- BTRFS_FS_RUN_SANITY_TESTS: y
 % elsif ___.group == "group-03"
 - DRM
 - DRM_KUNIT_TEST: m
