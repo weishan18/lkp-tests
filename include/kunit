@@ -209,6 +209,8 @@ need_kconfig:
 - TEST_DYNAMIC_DEBUG: m
 
 - ASYNC_RAID6_TEST: m
+
+- BACKTRACE_SELF_TEST: m
 % elsif ___.group == "group-03"
 - DRM
 - DRM_KUNIT_TEST: m
