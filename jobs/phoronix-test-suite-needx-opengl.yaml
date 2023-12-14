@@ -1,0 +1,14 @@
+suite: phoronix-test-suite
+testcase: phoronix-test-suite
+category: benchmark
+
+need_x: true
+
+phoronix-test-suite:
+  - test: unigine-valley-1.1.7
+    option_a:
+      - 1024 x 768
+    option_b:
+      - Fullscreen
+      - Windowed
+      - Test All Options
