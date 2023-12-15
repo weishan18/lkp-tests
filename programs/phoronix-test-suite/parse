@@ -5,6 +5,7 @@ LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.dirname(File.realpath
 require "#{LKP_SRC}/lib/string_ext"
 require "#{LKP_SRC}/lib/log"
 
+stats = {}
 test_subname = []
 test_id = -1
 is_begin_of_subtest = false
@@ -21,7 +22,7 @@ while (line = $stdin.gets)
   case line.chomp!
   when %r{(pts|system)/(\S+)-[0-9.]+ is not installed}
     item = Regexp.last_match[2]
-    puts "#{item}.not_installed: 1"
+    stats["#{item}.not_installed"] = 1
 
     log_warn "#{item} is not installed"
     exit 1
@@ -43,9 +44,9 @@ while (line = $stdin.gets)
     end
     unit = unit.downcase.tr(' ', '_').tr('/', '_')
     if !test_subname.empty?
-      puts "#{test_name}.#{test_subname.at(test_id)}.#{unit}: #{value}"
+      stats["#{test_name}.#{test_subname.at(test_id)}.#{unit}"] = value
     else
-      puts "#{test_name}.#{test_id}.#{unit}: #{value}"
+      stats["#{test_name}.#{test_id}.#{unit}"] = value
     end
   when /Final: ([0-9.]+) (.*)/
     value = Regexp.last_match[1]
@@ -54,17 +55,19 @@ while (line = $stdin.gets)
       is_begin_of_subtest = false
     end
     if !test_subname.empty?
-      puts "#{test_name}.#{test_subname.at(test_id)}.Final: #{value}"
+      stats["#{test_name}.#{test_subname.at(test_id)}.Final"] = value
     else
-      puts "#{test_name}.#{test_id}.Final: #{value}"
+      stats["#{test_name}.#{test_id}.Final"] = value
     end
   when /The following tests failed to properly run:/
-    puts "#{test_name}.fail: 1"
-  when /idle-([0-9.]+)seconds/
+    stats["#{test_name}.fail"] = 1
+  when /(idle-[\d.]+seconds): ([\d.]+)/
     # idle-1.1.0.seconds: 36.055191180
-    puts line
-  when /smart-([0-9.]+)seconds/
+    stats[$1] = $2
+  when /(smart-[\d.]+seconds): ([\d.]+)/
     # smart-1.0.0.seconds: 7.252623981
-    puts line
+    stats[$1] = $2
   end
 end
+
+stats.each { |k, v| puts "#{k}: #{v}" }
