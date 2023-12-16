@@ -3,5 +3,5 @@ owner: Kent Overstreet <kent.overstreet@linux.dev>
 mail_cc:
 - Kent Overstreet <kent.overstreet@linux.dev>
 branch_denylist: .*
-branch_allowlist: header_cleanup
-notify_build_success_branch: header_cleanup
+branch_allowlist: header_cleanup|master|bcachefs-testing|.*for-bot
+notify_build_success_branch: .*
