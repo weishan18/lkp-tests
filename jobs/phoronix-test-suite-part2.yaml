@@ -470,4 +470,4 @@ phoronix-test-suite:
     option_a:
       - 5 # Quality 100, Lossless Compression
 
-timeout: 1h
+timeout: 90m
