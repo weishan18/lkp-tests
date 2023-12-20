@@ -333,33 +333,9 @@ setup_crosstool_clang()
 	fi
 
 	# TODO: CROSS_COMPILE is not necessary for new kernel
-	if [[ $ARCH = "arm64" ]]; then
-		opt_cross="$opt_cross CROSS_COMPILE=aarch64-linux-gnu-"
-	elif [[ $ARCH = "arm" ]]; then
-		opt_cross="$opt_cross CROSS_COMPILE=arm-linux-gnueabi-"
-	elif [[ $ARCH = "s390" ]]; then
-		opt_cross="$opt_default_cross CROSS_COMPILE=s390x-linux-gnu-"
-	elif [[ $ARCH = "hexagon" ]]; then
-		opt_cross="$opt_cross CROSS_COMPILE=hexagon-linux-"
-	elif [[ $ARCH = "powerpc" ]]; then
-		local cross_compile='powerpc-linux-gnu-'
-		is_config_enabled 'CONFIG_PPC64' && {
-			if is_config_enabled 'CONFIG_CPU_LITTLE_ENDIAN'; then
-				cross_compile='powerpc64le-linux-gnu-'
-			else
-				cross_compile='powerpc64-linux-gnu-'
-			fi
-		}
-		opt_cross="$opt_cross CROSS_COMPILE=$cross_compile"
-	elif [[ $ARCH = "riscv" ]]; then
-		if is_config_enabled 'CONFIG_32BIT'; then
-			opt_cross="$opt_cross $(COMPILER=gcc && setup_crosstool_gcc && echo $opt_cross)"
-		else
-			opt_cross="$opt_cross CROSS_COMPILE=riscv64-linux-gnu-"
-		fi
-	else
-		opt_cross="$opt_cross CROSS_COMPILE=$ARCH-linux-gnu-"
-	fi
+	setup_cross_vars
+	[[ $ARCH = s390 ]] && crosstool=s390x-linux
+	opt_cross="$opt_cross CROSS_COMPILE=$crosstool-"
 
 	local opt_llvm_ias=$(setup_llvm_ias "$opt_cross")
 	[[ $opt_llvm_ias ]] && opt_cross="$opt_cross $opt_llvm_ias"
