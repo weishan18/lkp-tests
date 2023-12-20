@@ -122,6 +122,25 @@ is_llvm_equal_one_supported()
 	return 0
 }
 
+setup_llvm_ias()
+{
+	local opt_cc=$1
+
+	if [[ $ARCH =~ "powerpc" ]]; then
+		# f12b034afeb3 ("scripts/Makefile.clang: default to LLVM_IAS=1")
+		# above commit is merged by v5.15-rc1, and will enable clang integrated assembler by default
+		# it will raise below errors:
+		# clang-14: error: unsupported argument '-mpower4' to option 'Wa,'
+		# clang-14: error: unsupported argument '-many' to option 'Wa,'
+		# explicitly set LLVM_IAS=0 to disable integrated assembler and switch back to gcc assembler
+		[[ $kernel_version_major -eq 5 && $kernel_version_minor -gt 14 && $kernel_version_minor -lt 18 ]] && echo "LLVM_IAS=0"
+	elif [[ $ARCH =~ "hexagon" ]]; then
+		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && echo "LLVM_IAS=1"
+	elif [[ $ARCH =~ arm ]]; then
+		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && [[ $opt_cc = "LLVM=1" ]] && echo "LLVM_IAS=1"
+	fi
+}
+
 get_config_value()
 {
 	local config=$1

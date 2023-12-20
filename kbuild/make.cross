@@ -326,10 +326,8 @@ setup_crosstool_clang()
 	local opt_default_cross="HOSTCC=$cross_clang CC=$cross_clang $opt_ldd $opt_objcopy \
 		AR=llvm-ar NM=llvm-nm STRIP=llvm-strip OBJDUMP=llvm-objdump OBJSIZE=llvm-size READELF=llvm-readelf HOSTCXX=clang++ HOSTAR=llvm-ar"
 
-	local opt_llvm_ias=
 	if is_llvm_equal_one_supported; then
 		opt_cross="LLVM=1"
-		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && opt_llvm_ias="LLVM_IAS=1"
 	else
 		opt_cross=$opt_default_cross
 	fi
@@ -343,7 +341,6 @@ setup_crosstool_clang()
 		opt_cross="$opt_default_cross CROSS_COMPILE=s390x-linux-gnu-"
 	elif [[ $ARCH = "hexagon" ]]; then
 		opt_cross="$opt_cross CROSS_COMPILE=hexagon-linux-"
-		opt_llvm_ias="LLVM_IAS=1"
 	elif [[ $ARCH = "powerpc" ]]; then
 		local cross_compile='powerpc-linux-gnu-'
 		is_config_enabled 'CONFIG_PPC64' && {
@@ -354,7 +351,6 @@ setup_crosstool_clang()
 			fi
 		}
 		opt_cross="$opt_cross CROSS_COMPILE=$cross_compile"
-		[[ $kernel_version_major -eq 5 && $kernel_version_minor -gt 14 && $kernel_version_minor -lt 18 ]] && opt_llvm_ias="LLVM_IAS=0"
 	elif [[ $ARCH = "riscv" ]]; then
 		if is_config_enabled 'CONFIG_32BIT'; then
 			opt_cross="$opt_cross $(COMPILER=gcc && setup_crosstool_gcc && echo $opt_cross)"
@@ -364,6 +360,8 @@ setup_crosstool_clang()
 	else
 		opt_cross="$opt_cross CROSS_COMPILE=$ARCH-linux-gnu-"
 	fi
+
+	local opt_llvm_ias=$(setup_llvm_ias "$opt_cross")
 	[[ $opt_llvm_ias ]] && opt_cross="$opt_cross $opt_llvm_ias"
 
 	setup_kcflags "$cross_clang"
