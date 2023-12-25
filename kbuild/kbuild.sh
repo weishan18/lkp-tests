@@ -325,3 +325,23 @@ setup_cross_vars()
 			;;
 	esac
 }
+
+# usage:
+#   is_kernel_version "<=" 5.16
+#   is_kernel_version "==" 6.0
+is_kernel_version()
+{
+	local operator=$1
+	local other=$2
+
+	warn_empty "$operator" || return
+	warn_empty "$other" || return
+
+	warn_empty "$kernel_version_major" || return
+	warn_empty "$kernel_version_minor" || return
+
+	local other_kernel_version_major=${other%.*}
+	local other_kernel_version_minor=${other#*.}
+
+	(( (kernel_version_major * 100 + kernel_version_minor) $operator (other_kernel_version_major * 100 + other_kernel_version_minor) ))
+}
