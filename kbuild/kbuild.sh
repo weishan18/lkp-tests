@@ -27,6 +27,14 @@ x86_64
 xtensa
 "
 
+warn_empty()
+{
+	[[ "$1" ]] && return
+
+	echo "empty parameter" >&2
+	return 1
+}
+
 is_supported_compiler_option()
 {
 	local compiler_bin=$1
