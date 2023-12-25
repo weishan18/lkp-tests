@@ -115,16 +115,14 @@ is_llvm_equal_one_supported()
 	# 	Provide a single switch LLVM=1 to use Clang and LLVM tools instead
 	# 	of GCC and Binutils. You can pass it from the command line or as an
 	# 	environment variable.
-	[[ $kernel_version_major -lt 5 ]] && return 1
-
-	[[ $kernel_version_major -eq 5 ]] && [[ $kernel_version_minor -lt 7 ]] && return 1
+	is_kernel_version "<" 5.7 && return 1
 
 	if [[ $ARCH = "s390" ]]; then
 		return 1
 	elif [[ $ARCH =~ "powerpc" || $ARCH =~ "mips" || $ARCH =~ "riscv" ]]; then
 		# https://www.kernel.org/doc/html/v5.18/kbuild/llvm.html
 		# https://www.kernel.org/doc/html/v5.19/kbuild/llvm.html
-		[[ $kernel_version_major -eq 5 ]] && [[ $kernel_version_minor -lt 18 ]] && return 1
+		is_kernel_version "<" 5.18 && return 1
 	fi
 
 	return 0
@@ -141,11 +139,11 @@ setup_llvm_ias()
 		# clang-14: error: unsupported argument '-mpower4' to option 'Wa,'
 		# clang-14: error: unsupported argument '-many' to option 'Wa,'
 		# explicitly set LLVM_IAS=0 to disable integrated assembler and switch back to gcc assembler
-		[[ $kernel_version_major -eq 5 && $kernel_version_minor -gt 14 && $kernel_version_minor -lt 18 ]] && echo "LLVM_IAS=0"
+		is_kernel_version ">" 5.14 && is_kernel_version "<" 5.18 && echo "LLVM_IAS=0"
 	elif [[ $ARCH =~ "hexagon" ]]; then
-		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && echo "LLVM_IAS=1"
+		is_kernel_version "<" 5.15 && echo "LLVM_IAS=1"
 	elif [[ $ARCH =~ arm ]]; then
-		[[ $kernel_version_major -lt 5 || ($kernel_version_major -eq 5 && $kernel_version_minor -lt 15) ]] && [[ $opt_cc = "LLVM=1" ]] && echo "LLVM_IAS=1"
+		is_kernel_version "<" 5.15 && [[ $opt_cc = "LLVM=1" ]] && echo "LLVM_IAS=1"
 	fi
 }
 
