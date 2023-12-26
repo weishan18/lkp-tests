@@ -1,0 +1,4 @@
+url: https://gitee.com/OpenCloudOS/OpenCloudOS-Kernel.git
+test_old_branches: .*
+arch_denylist: .*
+arch_allowlist: x86_64|arm64
