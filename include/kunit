@@ -92,6 +92,8 @@ need_kconfig:
 - FAT_KUNIT_TEST: m
 
 # below are kunit test configs of bool type
+- VCAP_KUNIT_TEST: y
+- VCAP: y
 - PM_QOS_KUNIT_TEST: y
 - USB4: y
 - USB4_KUNIT_TEST: y
