@@ -17,6 +17,7 @@ need_kconfig:
 - LINEAR_RANGES_TEST: m
 - LIST_KUNIT_TEST: m
 - MEMCPY_KUNIT_TEST: m
+- SND_SOC_TOPOLOGY_KUNIT_TEST: m
 # disable slow memcpy kunit test which are also part of MEMCPY_KUNIT_TEST but exhaustive
 - MEMCPY_SLOW_KUNIT_TEST: n
 - NETDEV_ADDR_LIST_TEST: m
