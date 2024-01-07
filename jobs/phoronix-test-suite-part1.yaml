@@ -314,28 +314,28 @@ phoronix-test-suite:
     # - hpcc-1.2.8 # run time more than 2h on clear, install failed on debian
     - hpcg-1.2.1
     - idle-1.1.0
-  - test: interbench-1.0.1
-    option_a:
-      - Gaming
-      - Compile
+  # - test: interbench-1.0.1 # all the option combinations result in "no space left on device"
+    # option_a:
+      # - Gaming
+      # - Compile
       # - Audio # run more than 40m on lkp-skl-nuc2
       # - Video # Video-Compile combination writes more than 400G file to disk
       # - X # run more than 3h on lkp-csl-2sp8
-      - Burn
-      - Memload
-      - Write
-      - Read
+      # - Burn
+      # - Memload
+      # - Write
+      # - Read
       # - Test All Options
-    option_b:
-      - Gaming
+    # option_b:
+      # - Gaming
       # - Compile # Video-Compile combination writes more than 400G file to disk
       # - Audio # no passed job in our env
-      - Video
-      - X
-      - Burn
-      - Memload
-      - Write
-      - Read
+      # - Video
+      # - X
+      # - Burn
+      # - Memload
+      # - Write
+      # - Read
       # - Test All Options
   - test:
     - ior-1.1.1
