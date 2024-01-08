@@ -10,7 +10,7 @@ arch=$(get_system_arch)
 if [[ "$group" = "group-00" ]]; then
 	test_array=("bitfield_kunit" "test_bits" "cmdline_kunit" "ext4-inode-test" "test_hash" \
 	            "test_linear_ranges" "list-test" "memcpy_kunit" "dev_addr_lists_test" "resource_kunit" \
-	            "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "kasan_test" \
+	            "lib_test" "sysctl-test" "time_test" "test_list_sort" "test_sort" "kasan_test" "kcsan_test" \
 	            "kfence_test" "mptcp_crypto_test" "mptcp_token_test" "rational-test" "slub_kunit" \
 	            "apparmor_policy_unpack_test" "fortify_kunit" "property-entry-test" \
 	            "drm_cmdline_parser_test" "drm_damage_helper_test" "drm_dp_mst_helper_test" "drm_mm_test" \

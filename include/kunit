@@ -39,7 +39,7 @@ need_kconfig:
 
 - KASAN: y
 - KASAN_KUNIT_TEST: m
-
+- KCSAN_KUNIT_TEST: m
 - TRACEPOINTS: y
 - KFENCE: y
 - KFENCE_KUNIT_TEST: m
