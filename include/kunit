@@ -159,6 +159,8 @@ need_kconfig:
 - SPI_LOOPBACK_TEST: m
 - GLOB_SELFTEST: m
 - KPROBES_SANITY_TEST: m
+- MCTP_TEST: y
+- MCTP: y
 
 - CRC32: y
 - CRC32_SELFTEST: m
