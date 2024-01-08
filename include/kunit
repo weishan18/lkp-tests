@@ -166,6 +166,7 @@ need_kconfig:
 - SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
 
 - KALLSYMS: y
+- USB4_DMA_TEST: m
 
 # below are kunit test configs of bool type
 - FUNCTION_TRACER: y
