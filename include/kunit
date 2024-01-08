@@ -167,6 +167,8 @@ need_kconfig:
 
 - KALLSYMS: y
 - USB4_DMA_TEST: m
+- UNICODE_NORMALIZATION_SELFTEST: m
+- UNICODE: m
 
 # below are kunit test configs of bool type
 - FUNCTION_TRACER: y
