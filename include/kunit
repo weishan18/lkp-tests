@@ -177,6 +177,8 @@ need_kconfig:
 - TEST_LOCKUP: m
 - TEST_DHRY: m
 - TEST_CLOCKSOURCE_WATCHDOG: m
+- SYNTH_EVENT_GEN_TEST: m
+- SYNTH_EVENTS: y
 
 # below are kunit test configs of bool type
 - TSNEP
