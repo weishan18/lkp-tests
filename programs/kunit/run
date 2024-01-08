@@ -23,7 +23,7 @@ elif [[ "$group" = "group-01" ]]; then
 	            "test_scanf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" \
 	            "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" \
 	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "test_ref_tracker" "test_objagg" "test_lockup" \
-	            "test_kstrtox" "test_string_helpers" "test_overflow" "test_ida" "udelay_test" "utf8-selftest" "test_dhry" "synth_event_gen_test" \
+	            "test_kstrtox" "test_string_helpers" "test_overflow" "test_ida" "udelay_test" "utf8-selftest" "test_dhry" "synth_event_gen_test" "snd-soc-test-component" \
 	            "test_vmalloc" "test_klp_state" "test_meminit" "test_printf" "test_maple_tree" "thunderbolt_dma_test" "clocksource-wdtest" \
 	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug" "raid6test" "backtracetest")
 elif [[ "$group" = "group-03" ]]; then

@@ -181,6 +181,7 @@ need_kconfig:
 - SYNTH_EVENTS: y
 - STMMAC_SELFTESTS: y
 - STMMAC_ETH: m
+- SND_TEST_COMPONENT: m
 
 # below are kunit test configs of bool type
 - TSNEP
