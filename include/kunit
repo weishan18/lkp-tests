@@ -93,6 +93,7 @@ need_kconfig:
 - FAT_KUNIT_TEST: m
 
 # below are kunit test configs of bool type
+- DAMON_KUNIT_TEST: y
 - VCAP_KUNIT_TEST: y
 - VCAP: y
 - PM_QOS_KUNIT_TEST: y
