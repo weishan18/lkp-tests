@@ -1,2 +1,3 @@
 url: https://github.com/tobetter/linux
 owner: tobetter <tobetter@gmail.com>
+test_old_branches: .*
