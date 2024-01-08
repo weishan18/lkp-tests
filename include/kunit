@@ -183,6 +183,7 @@ need_kconfig:
 - STMMAC_ETH: m
 - SND_TEST_COMPONENT: m
 - SCF_TORTURE_TEST: m
+- REED_SOLOMON_TEST: m
 
 # below are kunit test configs of bool type
 - TSNEP
