@@ -179,6 +179,8 @@ need_kconfig:
 - TEST_CLOCKSOURCE_WATCHDOG: m
 - SYNTH_EVENT_GEN_TEST: m
 - SYNTH_EVENTS: y
+- STMMAC_SELFTESTS: y
+- STMMAC_ETH: m
 
 # below are kunit test configs of bool type
 - TSNEP
