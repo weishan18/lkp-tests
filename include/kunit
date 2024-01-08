@@ -175,6 +175,7 @@ need_kconfig:
 - TEST_OBJAGG: m
 - OBJAGG: m
 - TEST_LOCKUP: m
+- TEST_DHRY: m
 
 # below are kunit test configs of bool type
 - TSNEP
