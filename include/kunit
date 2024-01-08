@@ -172,6 +172,8 @@ need_kconfig:
 - TSNEP: m
 - PTP_1588_CLOCK_OPTIONAL: m
 - TEST_REF_TRACKER: m
+- TEST_OBJAGG: m
+- OBJAGG: m
 
 # below are kunit test configs of bool type
 - TSNEP
