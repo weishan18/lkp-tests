@@ -186,11 +186,17 @@ need_kconfig:
 - SND_TEST_COMPONENT: m
 - SCF_TORTURE_TEST: m
 - REED_SOLOMON_TEST: m
+- NITRO_ENCLAVES: m
 
 # below are kunit test configs of bool type
 - TSNEP
 - PTP_1588_CLOCK_OPTIONAL
 - TSNEP_SELFTESTS: y
+
+- PCI: y
+- HAVE_PCI: y
+- NITRO_ENCLAVES_MISC_DEV_TEST: y 
+
 - GUP_TEST: y
 - CRYPTO_MANAGER_EXTRA_TESTS: y
 - KCSAN_SELFTEST: y
