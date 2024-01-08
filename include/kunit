@@ -115,6 +115,7 @@ need_kconfig:
 - DAMON_DBGFS_KUNIT_TEST: y
 % elsif ___.group == "group-01"
 # below are not kunit test
+- KPROBE_EVENT_GEN_TEST: m
 - STRING_SELFTEST: m
 - TEST_DIV64: m
 - TEST_BPF: m
