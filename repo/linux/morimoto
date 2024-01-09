@@ -1,2 +1,3 @@
 url: https://github.com/morimoto/linux
 owner: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+test_old_branches: .*
