@@ -5,4 +5,4 @@ arch_allowlist: x86_64|arm64
 compiler: gcc
 mail_to: Wu Zheng <wu.zheng@intel.com>
 private_report_branch: .*
-
+notify_build_success_branch: .*
