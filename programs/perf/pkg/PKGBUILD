@@ -12,7 +12,8 @@ build()
 	cd $srcdir/linux/tools/perf
 
 	# NO_JEVENTS=1 to support python older than 3.6
-	PATH=$BUILD_DIR:$PATH NO_JEVENTS=1 make
+	# NO_LIBTRACEEVENT=1 to support the distributions which have no libtraceevent
+	PATH=$BUILD_DIR:$PATH NO_JEVENTS=1 NO_LIBTRACEEVENT=1 make
 }
 
 package()
