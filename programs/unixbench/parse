@@ -30,6 +30,9 @@ while (line = $stdin.gets)
       lines = line.split
       throughput = lines[-2].to_f
     end
+  when /^.+? ([\d.]+) KBps\s+\([\d.]+ s, \d+ samples?\)/
+    # File Write 1024 bufsize 2000 maxblocks      3121976.0 KBps  (30.0 s, 7 samples)
+    throughput = $1.to_f
   when /^System Benchmarks Index Score .* ([0-9.]+)$/
     score = $1
   end
@@ -41,10 +44,6 @@ if duration.nil? || throughput.nil?
 end
 
 workload = duration * throughput
-if score
-  puts "score: #{score}"
-  puts "workload: #{workload}"
-else
-  puts 'incomplete_result: 1'
-  log_error "unixbench: missing score, check #{ENV['RESULT_ROOT']}"
-end
+puts "score: #{score}" if score
+puts "throughput: #{throughput}"
+puts "workload: #{workload}"
