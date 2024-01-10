@@ -42,6 +42,7 @@ tbench\.throughput-MB\/sec: 1
 thrulay\.throughput: 1
 tlbflush\.mem_acc_cost_ns_time: -1
 unixbench\.score: 1
+unixbench\.throughput: 1
 vm-scalability\.migrate_mbps: 1
 vm-scalability\.throughput: 1
 will-it-scale\..+\_ops: 1
