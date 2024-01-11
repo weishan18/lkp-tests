@@ -20,7 +20,7 @@ if [[ "$group" = "group-00" ]]; then
 	            "siphash_kunit" "strscpy_kunit" "soc-topology-test" "fat_test")
 elif [[ "$group" = "group-01" ]]; then
 	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" \
-	            "test_scanf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "dmabuf_selftests" "test_kprobes" \
+	            "test_scanf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "dmabuf_selftests" "test_kprobes" "dmapool_test" \
 	            "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_rslib" "ntb_msi_test" "kprobe_event_gen_test" \
 	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "test_ref_tracker" "test_objagg" "test_lockup" "scftorture" \
 		    "vc4_mock" "vc4_mock_crtc" "vc4_mock_output" "vc4_mock_plane" "vc4_test_pv_muxing" "hte-tegra194-test" "preemptirq_delay_test" "test_blackhole_dev" \
