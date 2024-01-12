@@ -220,6 +220,10 @@ need_kconfig:
 - TEST_OBJAGG: m
 - OBJAGG: m
 
+- NET_SELFTESTS: m
+- PHYLIB
+- INET: y
+
 # below are test configs of bool type
 - EVENT_TRACE_STARTUP_TEST: y
 - GUP_TEST: y
@@ -258,10 +262,6 @@ need_kconfig:
 - FUNCTION_TRACER: y
 - DYNAMIC_FTRACE: y
 - BUILDTIME_MCOUNT_SORT: y
-
-- NET_SELFTESTS: y
-- PHYLIB
-- INET: y
 
 - FIPS_SIGNATURE_SELFTEST: y
 - ASYMMETRIC_KEY_TYPE: y
