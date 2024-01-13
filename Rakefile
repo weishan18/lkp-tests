@@ -8,20 +8,22 @@ require 'English'
 desc 'Show help'
 task :help do
   puts <<~EOF
+  ## SPEC
 
-  == SPEC ==
+  usage
+    rake spec [spec=result_path]
 
-  usage: rake spec [spec=result_path]
-  example:
+  example
     rake spec                       # check all unit tests status
-    rake spec spec=job"             # check spec/job_spec.rb status
+    rake spec spec=job              # check spec/job_spec.rb status
 
-  == RUBOCOP ==
+  ## RUBOCOP
 
-  usage: rake rubocop [file=pattern]
-  example:
+  usage
+    rake rubocop [file=pattern]
+
+  example
     rake rubocop file="lib/**/*.rb" # check all lib files
-
   EOF
 end
 
