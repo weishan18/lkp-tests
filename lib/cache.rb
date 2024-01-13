@@ -35,9 +35,11 @@ module Cacheable
       # rli9 FIXME: better solution for generating key can refer to
       # https://github.com/seamusabshere/cache_method/blob/master/lib/cache_method.rb
       define_method(method_name) do |*args|
-        kclass.cache_fetch(self, method_name, *args)
-      rescue StandardError
-        send("#{method_name}_without_cache", *args)
+        begin
+          kclass.cache_fetch(self, method_name, *args)
+        rescue StandardError
+          send("#{method_name}_without_cache", *args)
+        end
       end
     end
 

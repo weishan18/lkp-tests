@@ -361,9 +361,11 @@ def read_matrix_from_csv_file(file_name)
 
   convert = lambda do |input|
     %i[Integer Float].each do |m|
-      return send(m, input)
-    rescue StandardError
-      next
+      begin
+        return send(m, input)
+      rescue StandardError
+        next
+      end
     end
     input
   end
