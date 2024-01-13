@@ -455,7 +455,7 @@ def filter_incomplete_run(hash)
   end
   delete_index_list.reverse!
 
-  hash.each do |_k, v|
+  hash.each_value do |v|
     delete_index_list.each do |index|
       v.delete_at(index)
     end
@@ -517,9 +517,7 @@ end
 def __get_changed_stats(a, b, is_incomplete_run, options)
   changed_stats = {}
 
-  has_boot_fix = if options['regression-only'] || options['all-critical']
-                   (b['last_state.booting'] && !a['last_state.booting'])
-                 end
+  has_boot_fix = (b['last_state.booting'] && !a['last_state.booting'] if options['regression-only'] || options['all-critical'])
 
   resize = options['resize']
 
@@ -727,8 +725,8 @@ def _get_changed_stats(a, b, options)
   filter_incomplete_run(a)
   filter_incomplete_run(b)
 
-  is_all_incomplete_run = (a['stats_source'].to_s.empty? ||
-                           b['stats_source'].to_s.empty?)
+  is_all_incomplete_run = a['stats_source'].to_s.empty? ||
+                          b['stats_source'].to_s.empty?
   return changed_stats if is_all_incomplete_run
 
   more_changed_stats = __get_changed_stats(a, b, false, options)
@@ -756,7 +754,7 @@ def add_stats_to_matrix(stats, matrix)
   return matrix unless stats
 
   columns = 0
-  matrix.each { |_k, v| columns = v.size if columns < v.size }
+  matrix.each_value { |v| columns = v.size if columns < v.size }
   stats.each do |k, v|
     matrix[k] ||= []
     matrix[k] << 0 while matrix[k].size < columns
