@@ -108,7 +108,7 @@ def check_all(kernel_kconfigs, needed_kconfigs)
     next if kernel_match_kconfig?(kernel_kconfigs, expected_kernel_kconfig)
 
     uncompiled_kconfig = expected_kernel_kconfig
-    uncompiled_kconfig += " (#{expected_kernel_versions.join(', ').gsub('"', '')})" if expected_kernel_versions
+    uncompiled_kconfig += " (#{expected_kernel_versions.join(', ').delete('"')})" if expected_kernel_versions
     uncompiled_kconfigs.push uncompiled_kconfig
   end
 

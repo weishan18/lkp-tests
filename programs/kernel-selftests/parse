@@ -1345,7 +1345,7 @@ class BpfStater < Stater
                    # #1/2 shift:OK
                    $3
                  end
-      subname = "#{@test_prefix}.#{pattern1.gsub(' ', '_')}"
+      subname = "#{@test_prefix}.#{pattern1.tr(' ', '_')}"
       stats.add subname, r unless stats.key? subname
     when /^# selftests:\s(.*)\s\[(PASS|SKIP|FAIL)/
       # echo "selftests: test_xdp_redirect $xdpmode [FAILED]";
@@ -1405,7 +1405,7 @@ class FtraceStater < Stater
     when /^# \[\d+\] (.*)\[(.*)\]/
       pattern1 = $1
       result = $2
-      subname = "ftrace.#{pattern1.gsub(' ', '_')}"
+      subname = "ftrace.#{pattern1.tr(' ', '_')}"
       stats.add subname, result unless stats.key? subname
     else
       super(line, stats)
@@ -1423,7 +1423,7 @@ class TCTestingStater < Stater
     when /^# (ok|not ok) (\d+) (.*) - (.*)/
       result = $1
       # e7d|1298|45a0 is unique for each sub-test
-      subname = "tc-testing.#{$3}.#{$4.gsub(' ', '_')}"
+      subname = "tc-testing.#{$3}.#{$4.tr(' ', '_')}"
       stats.add subname, result
     else
       super(line, stats)

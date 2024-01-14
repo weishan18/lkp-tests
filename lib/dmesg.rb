@@ -512,7 +512,7 @@ def stat_unittest(unittests)
 
     # ### dt-test ### FAIL of_unittest_overlay_high_level():2475 overlay_base_root not initialized
     if line =~ /(.*)### dt-test ### FAIL (.*)/
-      e = $2.gsub(/:|\d+/, '').gsub(' ', '_')
+      e = $2.gsub(/:|\d+/, '').tr(' ', '_')
       puts "unittest.#{e}.fail: 1"
     end
   end
