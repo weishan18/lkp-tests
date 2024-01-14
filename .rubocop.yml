@@ -105,6 +105,12 @@ Lint/ShadowingOuterLocalVariable:
 Lint/ErbNewArguments:
   Enabled: false
 
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
+Lint/FloatComparison:
+  Enabled: false
+
 Layout/LineLength:
   Enabled: false
 
