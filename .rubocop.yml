@@ -48,12 +48,6 @@ Style/FrozenStringLiteralComment:
 Style/SafeNavigation:
   Enabled: false
 
-Layout/FirstArrayElementIndentation:
-  Enabled: false
-
-Layout/CommentIndentation:
-  Enabled: false
-
 Style/PerlBackrefs:
   Enabled: false
 
@@ -66,13 +60,7 @@ Style/RegexpLiteral:
 Style/PercentLiteralDelimiters:
   Enabled: false
 
-Layout/LineLength:
-  Enabled: false
-
 Style/GlobalVars:
-  Enabled: false
-
-Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
 Style/NumericPredicate:
@@ -81,26 +69,10 @@ Style/NumericPredicate:
     - 'lib/matrix.rb'
     - 'lib/stats.rb'
 
-Security/Eval:
-  Enabled: false
-
-Security/JSONLoad:
-  Enabled: false
-
-Layout/HeredocIndentation:
-  Enabled: false
-
-# Disable this temporarily to let rubocop 1.12.1 work with ruby3.2
-Layout/BlockAlignment:
-  Enabled: false
-
-Lint/ShadowingOuterLocalVariable:
-  Enabled: false
+# Style/MethodMissing:
+#   Enabled: false
 
 Style/MissingRespondToMissing:
-  Enabled: false
-
-Security/YAMLLoad:
   Enabled: false
 
 Style/FormatStringToken:
@@ -109,6 +81,43 @@ Style/FormatStringToken:
 Style/FloatDivision:
   Exclude:
     - 'programs/pmbench/parse'
+
+Security/Eval:
+  Enabled: false
+
+Security/JSONLoad:
+  Enabled: false
+
+Security/YAMLLoad:
+  Enabled: false
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+# Layout/IndentFirstArrayElement:
+#   Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  Enabled: false
+
+Layout/CommentIndentation:
+  Enabled: false
+
+# Layout/IndentHeredoc:
+#   Enabled: false
+
+Layout/HeredocIndentation:
+  Enabled: false
+
+# Disable this temporarily to let rubocop 1.12.1 work with ruby3.2
+Layout/BlockAlignment:
+  Enabled: false
 
 Naming/AccessorMethodName:
   Exclude:
@@ -123,4 +132,3 @@ Naming/MethodParameterName:
 
 Naming/HeredocDelimiterNaming:
   Enabled: false
-
