@@ -7,23 +7,23 @@ require 'English'
 
 desc 'Show help'
 task :help do
-  puts <<~EOF
-  ## SPEC
+  puts <<-EOF
+## SPEC
 
-  usage
-    rake spec [spec=result_path]
+usage
+  rake spec [spec=result_path]
 
-  example
-    rake spec                       # check all unit tests status
-    rake spec spec=job              # check spec/job_spec.rb status
+example
+  rake spec                       # check all unit tests status
+  rake spec spec=job              # check spec/job_spec.rb status
 
-  ## RUBOCOP
+## RUBOCOP
 
-  usage
-    rake rubocop [file=pattern]
+usage
+  rake rubocop [file=pattern]
 
-  example
-    rake rubocop file="lib/**/*.rb" # check all lib files
+example
+  rake rubocop file="lib/**/*.rb" # check all lib files
   EOF
 end
 

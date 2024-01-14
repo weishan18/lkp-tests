@@ -203,10 +203,10 @@ class Job
   def load(jobfile, expand_template: false)
     yaml = File.read jobfile
     # give a chance
-    if yaml.size.zero? && !File.size(jobfile).zero?
+    if yaml.empty? && !File.size(jobfile).zero?
       log_error "start reload #{jobfile}"
       yaml = File.read jobfile
-      if yaml.size.zero?
+      if yaml.empty?
         log_error "reload #{jobfile} failed"
       else
         log_error "reload #{jobfile} succeed"

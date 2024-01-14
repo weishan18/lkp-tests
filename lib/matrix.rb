@@ -43,7 +43,7 @@ end
 
 def max_cols(matrix)
   cols = 0
-  matrix.each do |_k, v|
+  matrix.each_value do |v|
     cols = v.size if cols < v.size
   end
   cols
@@ -51,7 +51,7 @@ end
 
 def matrix_fill_missing_zeros(matrix)
   cols = (matrix['stats_source'] || []).size
-  matrix.each do |_k, v|
+  matrix.each_value do |v|
     v << 0 while v.size < cols
   end
   matrix
@@ -227,7 +227,7 @@ def shrink_matrix(matrix, max_cols)
 end
 
 def matrix_delete_col(matrix, col)
-  matrix.each do |_k, v|
+  matrix.each_value do |v|
     v.delete_at col
   end
 end

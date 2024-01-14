@@ -66,7 +66,7 @@ ARGV.delete_if do |arg|
   end
 end
 
-if ARGV.size.zero?
+if ARGV.empty?
   puts options
   exit
 end

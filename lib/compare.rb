@@ -692,9 +692,9 @@ module Compare
         axis_converter = lambda { |axis_key|
           if @axes_as_num && (@axes_as_num == true ||
                   @axes_as_num.index(axis_key))
-            return method(:string_to_num)
+            method(:string_to_num)
           else
-            return ->(x) { x }
+            ->(x) { x }
           end
         }
 
