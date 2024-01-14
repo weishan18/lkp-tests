@@ -81,10 +81,7 @@ while (line = $stdin.gets)
   end
 end
 
-results = results.sort_by do |k, v|
-  fields = k.split '.'
-  [fields[1], fields[0], -v]
-end
-results.each do |record, percent|
+results.sort_by { |k, _v| k }
+       .each do |record, percent|
   puts "#{record}: #{format('%.2f', percent)}" if percent >= 0.05
 end
