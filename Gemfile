@@ -16,4 +16,4 @@ group :test do
   gem 'simplecov-rcov'
 end
 
-gem 'activesupport'
+gem 'activesupport', '<= 6.0.6'
