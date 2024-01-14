@@ -141,6 +141,6 @@ Naming/MethodParameterName:
 Naming/HeredocDelimiterNaming:
   Enabled: false
 
-# Required Ruby version: 2.4
-Performance/RegexpMatch:
-  Enabled: false
+# # Required Ruby version: 2.4
+# Performance/RegexpMatch:
+#   Enabled: false
