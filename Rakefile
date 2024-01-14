@@ -44,7 +44,12 @@ end
 
 begin
   RuboCop::RakeTask.new(:rubocop) do |t|
-    t.options = ['-D', '-c.rubocop.yml']
+    ruby_version = `ruby --version | grep -oE "[0-9]+\\.[0-9]+"`.chomp
+
+    rubocop_config_file = ".rubocop.#{ruby_version}.yml"
+    rubocop_config_file = '.rubocop.yml' unless File.size?(rubocop_config_file)
+
+    t.options = ['-D', "-c#{rubocop_config_file}"]
     t.patterns = [ENV['file']] if ENV['file']
 
     puts "PWD = #{Dir.pwd}"
