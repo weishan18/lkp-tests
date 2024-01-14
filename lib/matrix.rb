@@ -309,11 +309,11 @@ end
 
 def check_warn_test_error(matrix, _result_root)
   ids = %w(
-      last_state.is_incomplete_run
-      last_state.exit_fail
-      stderr.has_stderr
-      phoronix-test-suite.has_failure
-    )
+    last_state.is_incomplete_run
+    last_state.exit_fail
+    stderr.has_stderr
+    phoronix-test-suite.has_failure
+  )
 
   ids.each do |errid|
     samples = matrix[errid]
