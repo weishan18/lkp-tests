@@ -5,6 +5,7 @@ LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(__dir__)
 require 'active_support/core_ext/string'
 require "#{LKP_SRC}/lib/yaml"
 require "#{LKP_SRC}/lib/lkp_path"
+require "#{LKP_SRC}/lib/ruby_ext"
 
 module LKP
   class Pattern

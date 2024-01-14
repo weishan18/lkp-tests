@@ -6,6 +6,7 @@ require 'yaml'
 require 'ostruct'
 require "#{LKP_SRC}/lib/kernel_tag"
 require "#{LKP_SRC}/lib/log"
+require "#{LKP_SRC}/lib/ruby_ext"
 
 def load_kernel_context
   context_file = File.expand_path '../context.yaml', kernel
