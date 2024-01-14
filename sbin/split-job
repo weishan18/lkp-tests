@@ -81,7 +81,7 @@ def refine_job_file(jobfile)
   return jobfile if File.readlines(jobfile).none? { |l| l =~ /^(:|)#! / }
 
   # job file is a dirty yaml which may contains invalid values
-  file = Tempfile.open do |f|
+  file = Tempfile.open('split-job') do |f|
     p = true
     File.readlines(jobfile).each do |line|
       p = !line.match(/^(:|)#! .*\.yaml(:|)$/).nil? if line =~ /^(:|)#! /
