@@ -3,6 +3,7 @@
 LKP_SRC ||= ENV['LKP_SRC'] || File.dirname(File.dirname(__dir__))
 
 require 'git'
+require "#{LKP_SRC}/lib/ruby_ext"
 
 module Git
   class Base

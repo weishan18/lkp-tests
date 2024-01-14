@@ -11,6 +11,7 @@ require "#{LKP_SRC}/lib/axis"
 require "#{LKP_SRC}/lib/result_root"
 require "#{LKP_SRC}/lib/log"
 require "#{LKP_SRC}/lib/constant"
+require "#{LKP_SRC}/lib/ruby_ext"
 
 # How many components in the stat sort key
 $stat_sort_key_number = {

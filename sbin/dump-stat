@@ -3,13 +3,14 @@
 RESULT_ROOT = ENV['RESULT_ROOT']
 LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.realpath($PROGRAM_NAME)))
 
+require 'set'
 require "#{LKP_SRC}/lib/statistics"
 require "#{LKP_SRC}/lib/bounds"
 require "#{LKP_SRC}/lib/yaml"
 require "#{LKP_SRC}/lib/job"
 require "#{LKP_SRC}/lib/string_ext"
 require "#{LKP_SRC}/lib/log"
-require 'set'
+require "#{LKP_SRC}/lib/ruby_ext"
 
 monitor = ARGV[0]
 monitor_file = ARGV[1]
