@@ -12,6 +12,7 @@ group :test do
   gem 'ci_reporter_rspec'
   gem 'rspec'
   gem 'rubocop'
+  gem 'rubocop-performance', require: false
   gem 'simplecov'
   gem 'simplecov-rcov'
 end
