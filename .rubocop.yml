@@ -84,6 +84,10 @@ Style/FloatDivision:
   Exclude:
     - 'programs/pmbench/parse'
 
+# Required Ruby version: 2.6
+Style/SlicingWithRange:
+  Enabled: false
+
 Security/Eval:
   Enabled: false
 
@@ -97,6 +101,10 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: false
 
 Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+# Required Ruby version: 2.6
+Lint/ErbNewArguments:
   Enabled: false
 
 Layout/LineLength:
@@ -133,4 +141,8 @@ Naming/MethodParameterName:
   Enabled: false
 
 Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+# Required Ruby version: 2.4
+Performance/RegexpMatch:
   Enabled: false
