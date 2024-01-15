@@ -8,3 +8,4 @@ mail_to:
 - Johannes Berg <johannes.berg@intel.com>
 private_report_branch: .*
 too_old_relative_commit_date: month|year|^[4-9]+ weeks
+test_old_branches: .*
