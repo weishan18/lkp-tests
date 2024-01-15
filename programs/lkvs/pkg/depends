@@ -10,5 +10,6 @@ libelf1
 libelf-dev
 linux-perf
 make
+msr-tools
 stress
 trace-cmd
