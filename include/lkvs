@@ -1,3 +1,6 @@
 initrds+:
 - linux_headers
 - linux_selftests
+
+need_kconfig:
+- INTEL_UNCORE_FREQ_CONTROL: m
