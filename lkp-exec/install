@@ -5,6 +5,7 @@
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/constant.sh
 . $LKP_SRC/lib/lkp_path.sh
+. $LKP_SRC/lib/host.sh
 
 if ! [ $(id -u) = 0 ]; then
 	echo "This script must be run as root" 1>&2
@@ -116,7 +117,8 @@ create_lkp_dirs() {
 create_host_config() {
 	[ -n "$DRY_RUN" ] && return
 
-	local host_config="$LKP_SRC/hosts/${HOSTNAME}"
+	local host_name=$(get_hostname)
+	local host_config="$LKP_SRC/hosts/${host_name}"
 	[ -e $host_config ] || {
 		echo "Creating testbox configuration file: $host_config."
 
@@ -134,7 +136,7 @@ EOT
 	}
 
 	local tbox_group
-	set_tbox_group $HOSTNAME
+	set_tbox_group $host_name
 
 	local host_group_config="$LKP_SRC/hosts/${tbox_group}"
 	[ -e $host_group_config ] || {
