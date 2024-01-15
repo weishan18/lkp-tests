@@ -1,0 +1,30 @@
+suite: lkvs
+testcase: lkvs
+category: functional
+
+lkvs:
+  test:
+    - cet
+    - guest-test
+    - pt
+    - ufs
+    - ifs
+    - rapl-client
+    - rapl-server
+    - tdx-compliance
+    - umip
+    - isst
+    - th
+    - workload-xsave
+    - thermal
+    - xsave
+    - fred
+    - sdsi
+    - cstate-client
+    - cstate-server
+    - topology-client
+    - topology-server
+    - pmu
+    - splitlock
+
+turbostat:
