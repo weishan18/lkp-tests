@@ -1,0 +1,3 @@
+initrds+:
+- linux_headers
+- linux_selftests
