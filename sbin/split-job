@@ -72,6 +72,11 @@ if ARGV.empty?
 end
 
 @opt_testbox ||= `hostname`.chomp
+unless File.exist?(File.join(LKP_SRC, 'hosts', @opt_testbox))
+  puts "hosts/#{@opt_testbox} doesn't exist, please rerun \"lkp install\""
+  exit
+end
+
 atom_jobs = []
 
 distroinfo = LKP::DistroInfo.instance
