@@ -71,7 +71,7 @@ if ARGV.empty?
   exit
 end
 
-@opt_testbox ||= `hostname`.chomp
+@opt_testbox ||= ENV['HOSTNAME'] || `hostname`.chomp
 unless File.exist?(File.join(LKP_SRC, 'hosts', @opt_testbox))
   puts "hosts/#{@opt_testbox} doesn't exist, please rerun \"lkp install\""
   exit
