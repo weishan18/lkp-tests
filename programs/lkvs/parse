@@ -16,5 +16,5 @@ while (line = $stdin.gets)
   _duration = $4
 
   # cet_tests.sh_-t_cp_test_-n_glibc_shstk_test_-k_control_protection_-p_s2.fail: 1
-  puts "#{testcase.strip.gsub('"', '').gsub(' ', '_')}.#{result.downcase}: 1"
+  puts "#{testcase.strip.delete('"').tr(' ', '_')}.#{result.downcase}: 1"
 end
