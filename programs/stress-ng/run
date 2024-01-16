@@ -34,7 +34,7 @@ set_for_universal()
 		--timeout $testtime \
 		--times \
 		--verify \
-		--metrics-brief
+		--metrics
 	"
 
 	## stressors spawn exec can't run as root
@@ -82,7 +82,7 @@ run_test()
 		test="--$test"
 		if [ "$class" = "exec_spawn" ]; then
 			mkdir /home/lkp && chown -R lkp:lkp /home/lkp
-			log_cmd su - lkp -s /bin/bash -c "stress-ng --timeout $testtime --times --verify --metrics-brief $test $nr_threads 2>&1"
+			log_cmd su - lkp -s /bin/bash -c "stress-ng --timeout $testtime --times --verify --metrics $test $nr_threads 2>&1"
 		else
 			log_cmd stress-ng $default_option $test $nr_threads 2>&1
 		fi
