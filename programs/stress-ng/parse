@@ -71,7 +71,14 @@ while (line = $stdin.gets)
       puts "#{res_line[3]}.#{substressor}: #{res_line[4]}"
     end
   else
-    if res_line.size != 10
+    # stress-ng: info:  [4372] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s
+    # stress-ng: info:  [4372]                           (secs)    (secs)    (secs)   (real time) (usr+sys time)
+    # stress-ng: info:  [4372] flock         470916710     60.00    128.04   1291.13   7848529.59      331824.84
+
+    # stress-ng: metrc: [4382] stressor       bogo ops real time  usr time  sys time   bogo ops/s     bogo ops/s CPU used per       RSS Max
+    # stress-ng: metrc: [4382]                           (secs)    (secs)    (secs)   (real time) (usr+sys time) instance (%)          (KB)
+    # stress-ng: metrc: [4382] flock         171659332     60.00     44.80    771.49   2860967.69      210292.23       226.75          2564
+    if res_line.size != 10 && res_line.size != 12
       log_warn "unexpected output: #{line}"
       exit 1
     end
