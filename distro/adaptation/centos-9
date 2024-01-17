@@ -1,0 +1,14 @@
+default-jdk: 
+libclang-dev: clang-devel
+libmpfr6: mpfr
+libpfm4: libpfm
+libpfm4-dev: libpfm-devel
+libpython3.9: python3-libs
+libtraceevent1: libtraceevent
+libtraceevent-dev: libtraceevent-devel
+llvm-dev: llvm-devel
+python-dev: 
+python: python3
+rng-tools5: rng-tools
+python3: python3 
+libpython2.7: python3-libs
