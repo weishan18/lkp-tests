@@ -1,0 +1,13 @@
+default-jdk:
+g++: gcc-c++
+ibtraceevent-dev:
+libclang-dev: clang-devel
+libmpfr6: mpfr
+libpfm4: libpfm
+libpfm4-dev: libpfm-devel
+libpython3.9: python3-libs
+libtraceevent1:
+libtraceevent-dev:
+llvm-dev: llvm-devel
+python-dev: python-devel
+rng-tools5: rng-tools
