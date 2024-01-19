@@ -8,6 +8,7 @@ libtraceevent1: libtraceevent
 libtraceevent-dev: libtraceevent-devel
 llvm-dev: llvm-devel
 python-dev: 
+python-minimal: python3
 python: python3
 rng-tools5: rng-tools
 python3: python3 
