@@ -6,6 +6,9 @@ libpfm4-dev: libpfm-devel
 libpython3.9: python3-libs
 libtraceevent1: libtraceevent
 libtraceevent-dev: libtraceevent-devel
+libipsec-mb0: 
+libjudydebian1: Judy
+libjudy-dev: Judy-devel
 llvm-dev: llvm-devel
 python-dev: 
 python-minimal: python3
