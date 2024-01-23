@@ -189,9 +189,6 @@ need_kconfig:
 - CRC32_SELFTEST: m
 - CRC32: y
 
-- HTE_TEGRA194_TEST: m
-- HTE_TEGRA194: m
-
 - SND_SOC_INTEL_AVS_MACH_I2S_TEST: m
 - SND: m
 - SND_SOC: m
