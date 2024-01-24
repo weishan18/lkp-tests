@@ -13,8 +13,9 @@ clang-6.0: clang.x86_64
 cmake: cmake cmake3
 cron: cronie
 dbench=4.0-2: dbench
+default-jdk: java-1.8.0-openjdk-devel 
 dnsutils: bind-utils
-dpkg-dev: dpkg-devel
+dpkg-dev: 
 e2fslibs-dev: e2fsprogs-devel
 f2fs-tools: f2fs-tools
 freeglut3: freeglut
