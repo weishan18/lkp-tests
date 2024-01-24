@@ -17,6 +17,7 @@ default-jdk: java-1.8.0-openjdk-devel
 dnsutils: bind-utils
 dpkg-dev: 
 e2fslibs-dev: e2fsprogs-devel
+exfat-fuse:
 f2fs-tools: f2fs-tools
 freeglut3: freeglut
 fsmark: fs_mark
