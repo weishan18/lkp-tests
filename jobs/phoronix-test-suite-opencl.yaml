@@ -3,7 +3,7 @@ testcase: phoronix-test-suite
 category: benchmark
 
 phoronix-test-suite:
-  # - test: arrayfire-1.1.0 # temporarily comment out the failed test
+  # - test: arrayfire-1.2.0 # temporarily comment out the failed test
     # option_a:
       # - BLAS CPU
       # - Conjugate Gradient CPU
@@ -19,7 +19,7 @@ phoronix-test-suite:
       # - tConvolve MT
       # - Hogbom Clean OpenMP
       # - Test All Options
-  # - test: clpeak-1.0.1 # temporarily comment out the failed test
+  # - test: clpeak-1.1.0 # temporarily comment out the failed test
     # option_a:
       # - Global Memory Bandwidth
       # - Single-Precision Float
@@ -69,7 +69,7 @@ phoronix-test-suite:
       # - OpenCL Particle Filter [Medical Imaging]
       # - NVIDIA CUDA GPU Myocyte[Biological Simulation]
       # - Test All Options
-  # - test: geekbench-1.2.1 # temporarily comment out the failed test
+  # - test: geekbench-6.1.0 # temporarily comment out the failed test
     # option_a:
       # - CPU Single Core
       # - CPU Multi Core
