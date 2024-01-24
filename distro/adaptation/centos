@@ -20,7 +20,7 @@ e2fslibs-dev: e2fsprogs-devel
 exfat-fuse:
 f2fs-tools: f2fs-tools
 freeglut3: freeglut
-fsmark: fs_mark
+fsmark: 
 gcc-4.9: gcc
 gcc-5: gcc
 gcc-6-multilib:
