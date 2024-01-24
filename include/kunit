@@ -251,6 +251,7 @@ need_kconfig:
 - NITRO_ENCLAVES
 - PCI: y
 - HAVE_PCI: y
+- VIRT_DRIVERS: y
 
 - TEST_IRQ_TIMINGS: y
 - IRQ_TIMINGS: y
