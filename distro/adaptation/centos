@@ -25,8 +25,9 @@ gcc-4.9: gcc
 gcc-5: gcc
 gcc-6-multilib:
 gcc-6: gcc
-gcc-multilib: libgcc.i686
-gfortran: gcc-c++
+gcc-multilib:
+gdbserver: gdb-gdbserver
+gfortran: gcc-gfortran
 heirloom-mailx: mailx
 hpcc:
 initramfs-tools: dracut
