@@ -32,7 +32,7 @@ heirloom-mailx: mailx
 hpcc:
 initramfs-tools: dracut
 install-info: info
-iozone3: gnuplot*
+iozone3: 
 iproute2: iproute
 klibc-utils:
 libacl1-dev: libacl-devel
