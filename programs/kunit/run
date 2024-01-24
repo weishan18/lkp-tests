@@ -26,7 +26,7 @@ elif [[ "$group" = "group-01" ]]; then
 		    "vc4_mock" "vc4_mock_crtc" "vc4_mock_output" "vc4_mock_plane" "vc4_test_pv_muxing" "preemptirq_delay_test" "test_blackhole_dev" \
 	            "test_kstrtox" "test_string_helpers" "test_overflow" "test_ida" "udelay_test" "utf8-selftest" "test_dhry" "synth_event_gen_test" "snd-soc-test-component" \
 	            "test_vmalloc" "test_klp_state" "test_meminit" "test_printf" "test_maple_tree" "thunderbolt_dma_test" "clocksource-wdtest" \
-	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug" "raid6test" "backtracetest" "selftests")
+	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug" "raid6test" "backtracetest")
 elif [[ "$group" = "group-03" ]]; then
 	test_array=("drm_buddy_test")
 fi
