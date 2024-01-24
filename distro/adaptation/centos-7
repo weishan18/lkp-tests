@@ -1,4 +1,5 @@
 default-jdk:
+cgroup-tools: libcgroup-tools
 g++: gcc-c++
 ibtraceevent-dev:
 libclang-dev: clang-devel

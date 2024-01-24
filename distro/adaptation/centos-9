@@ -1,4 +1,6 @@
 btrfs-tools:
+cgroup-bin:
+cgroup-tools:
 default-jdk:
 libclang-dev: clang-devel
 libipsec-mb0:
