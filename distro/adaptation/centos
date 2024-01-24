@@ -34,6 +34,7 @@ initramfs-tools: dracut
 install-info: info
 iozone3: 
 iproute2: iproute
+junit4: junit
 klibc-utils:
 libacl1-dev: libacl-devel
 libaio-dev: libaio-devel
