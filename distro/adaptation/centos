@@ -258,7 +258,7 @@ trinity:
 tshark: wireshark
 update-inetd: xinetd
 uuid-dev: libuuid-devel
-uuid-runtime:
+uuid-runtime: util-linux
 wireless-regdb: crda
 wpasupplicant: wpa_supplicant
 xfslibs-dev: xfsprogs-devel
