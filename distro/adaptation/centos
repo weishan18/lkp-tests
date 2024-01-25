@@ -214,6 +214,7 @@ netpipe-mpich2:
 netpipe-openmpi:
 netpipe-pvm:
 netpipe-tcp:
+network-manager: NetworkManager
 nfs-common: nfs-utils
 nfs-kernel-server: nfs-utils
 ocfs2-tools-dev: ocfs2-tools-devel
