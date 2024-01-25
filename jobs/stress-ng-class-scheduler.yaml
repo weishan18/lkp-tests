@@ -35,7 +35,7 @@ stress-ng:
     - nanosleep
     - netlink-proc
     - netlink-task
-    - nice poll
+    - nice
     - pthread
     - schedpolicy
     - sem
