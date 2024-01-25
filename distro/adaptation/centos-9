@@ -38,3 +38,4 @@ rng-tools5: rng-tools
 rusersd:
 rstatd:
 update-inetd: 
+xutils-dev:
