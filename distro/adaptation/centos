@@ -221,16 +221,20 @@ ocfs2-tools-dev: ocfs2-tools-devel
 openbsd-inetd: xinetd
 openjdk: java-1.8.0-openjdk-devel
 perl-base: perl
-perl-modules-5: perl-CPAN
+perl-modules-5: perl
 pixz: pxz
 pkg-config: pkgconfig
 plzip:
 postmark:
-python-dev: platform-python-devel.x86_64
+protobuf-compiler: protobuf
+python-dev: python3-devel
+python-gi-cairo:
+python-gi:
 python-minimal: python2
 python-numpy: numpy
 python-openssl: pyOpenSSL
 python-pkg-resources: python-setuptools
+python2-libs:
 python3-mako: python-pyramid-mako
 python3-markupsafe: python34-markupsafe
 python3-numpy: python36-numpy
