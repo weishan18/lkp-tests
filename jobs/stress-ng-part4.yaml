@@ -48,7 +48,6 @@ stress-ng:
     - sockabuse
     - sockdiag
     - sockfd
-    - sockpair
     - sockmany
     - softlockup
     - spawn
@@ -65,6 +64,14 @@ stress-ng:
     - sysinfo
     - sysinval
     - sysfs
+
+---
+oom-killer:
+  ignored: 1
+
+stress-ng:
+  test:
+    - sockpair
 
 # ---
 # need_memoey: 238G
