@@ -1,13 +1,24 @@
 default-jdk:
+cgroup-tools: libcgroup-tools
 g++: gcc-c++
 ibtraceevent-dev:
-libclang-dev: clang-devel
+libclang-dev:
+libcunit1-dev: 
+libbabeltrace-ctf-dev:
+libbabeltrace-ctf1:
+libdw1: 
+libgoogle-perftools-dev: gperftools-devel
+libmariadbclient-dev:
+libmariadbclient18:  
 libmpfr6: mpfr
 libpfm4: libpfm
 libpfm4-dev: libpfm-devel
 libpython3.9: python3-libs
 libtraceevent1:
 libtraceevent-dev:
-llvm-dev: llvm-devel
+libuv1-dev:
+llvm-dev: 
 python-dev: python-devel
+python3-dev: python3-devel
+python-minimal: python3
 rng-tools5: rng-tools
