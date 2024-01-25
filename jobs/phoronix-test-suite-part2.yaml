@@ -55,11 +55,11 @@ phoronix-test-suite:
     - pjsip-1.0.1
     # - plaidml-1.0.4 # need to connect to internet
     - pmbench-1.0.2
-  # - test: polybench-c-1.2.0 # temporarily comment out the failed test
-    # option_a:
-      # - 3 Matrix Multiplications
-      # - Correlation Computation
-      # - Covariance Computation
+  - test: polybench-c-1.2.0
+    option_a:
+      - 3 Matrix Multiplications
+      - Correlation Computation
+      - Covariance Computation
       # - Test All Options
   - test:
     - polyhedron-1.0.1
@@ -86,7 +86,7 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - rays1bench-1.0.0
-    - rbenchmark-1.0.3 # temporarily comment out the failed test
+    - rbenchmark-1.0.3
     - realsr-ncnn-1.0.0
   - test: redis-1.4.0
     option_a:
@@ -202,7 +202,7 @@ phoronix-test-suite:
     - stargate-1.1.0
     - startup-time-1.4.1
     - stockfish-1.4.0
-    # - stream-dynamic-1.0.0 # temporarily comment out the failed test
+    - stream-dynamic-1.0.0
   - test: stress-ng-1.11.0
     option_a:
       - CPU Stress
@@ -244,13 +244,13 @@ phoronix-test-suite:
     - system-decompress-xz-1.0.2
     # - systemd-boot-kernel-1.0.1 # too old to run, use systemd-boot-total instead
     # - systemd-boot-userspace-1.0.1 # too old to run, use systemd-boot-total instead
-  # - test: systemd-boot-total-1.0.6 # temporarily comment out the failed test
-    # option_a:
-      # - Total
-      # - Userspace
-      # - Kernel
-      # - Loader
-      # - Firmware
+  - test: systemd-boot-total-1.0.6
+    option_a:
+      - Total
+      - Userspace
+      - Kernel
+      - Loader
+      - Firmware
       # - Test All Options
   # - test: system-libxml2-1.0.3 # install failed
     # option_a:
@@ -432,23 +432,23 @@ phoronix-test-suite:
       # - 32
       # - 64
       # - Test All Options
-  # - test: hbase-1.0.1 # temporarily comment out the failed test
-    # option_a:
-      # - Random Write
-      # - Async Random Write
-      # - Random Read
-      # - Async Random Read
-      # - Sequential Write
-      # - Sequential Read
-      # - Increment
+  - test: hbase-1.1.0
+    option_a:
+      - Random Write
+      - Async Random Write
+      - Random Read
+      - Async Random Read
+      - Sequential Write
+      - Sequential Read
+      - Increment
       # - Test All Options
-    # option_b:
-      # - 1
-      # - 4
-      # - 16
-      # - 32
-      # - 64
-      # - 128
+    option_b:
+      - 1
+      - 4
+      - 16
+      - 32
+      - 64
+      - 128
       # - 256 # need large storage and cost too much time
       # - Test All Options
   - test: helsing-1.0.2
@@ -469,10 +469,10 @@ phoronix-test-suite:
       - IMB-MPI1 Exchange
       - IMB-P2P PingPong
       # - Test All Options
-  # - test: jpegxl-decode-1.1.0 # temporarily comment out the failed test
-    # option_a:
-      # - 1
-      # - All
+  - test: jpegxl-decode-1.5.0
+    option_a:
+      - 1
+      - All
       # - Test All Options
   - test: libgav1-1.2.1
     option_a:

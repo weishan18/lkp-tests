@@ -11,7 +11,7 @@ phoronix-test-suite:
       - Classroom
       # - Fishy Cat
       # - Pabellon Barcelona
-      # - Barbershop # temporarily comment out the failed test
+      - Barbershop
       # - Test All Options
     option_b:
       - CPU-Only

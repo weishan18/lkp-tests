@@ -103,7 +103,7 @@ phoronix-test-suite:
     - cloverleaf-1.2.0
     - cockroach-1.0.2
     # - coh2-1.0.3 # install failed
-    # - comd-cl-1.0.0 # temporarily comment out the failed test
+    - comd-cl-1.0.0
   - test: compilebench-1.0.3
     option_a:
       - Initial Create
@@ -147,13 +147,13 @@ phoronix-test-suite:
       # - Test All Options
   # - test:
     # - cython-bench-1.1.0 # install failed
-  # - test: dacapobench-1.1.0 # temporarily comment out the failed test
-    # option_a:
-      # - Eclipse
-      # - H2
-      # - Jython
-      # - Tradebeans
-      # - Tradesoap
+  - test: dacapobench-1.1.0
+    option_a:
+      - Eclipse
+      - H2
+      - Jython
+      - Tradebeans
+      - Tradesoap
       # - Test All Options
   - test: dav1d-1.14.0
     option_a:
@@ -174,7 +174,7 @@ phoronix-test-suite:
   - test:
     # - dcraw-1.1.0 not an available test
     - deeprec-1.0.2
-    # - deepspeech-1.0.0 # temporarily comment out the failed test
+    - deepspeech-1.0.0
     # - deus-exmd-1.1.1 # install failed
     # - dirt-rally-1.1.0 # install failed
     # - dirt-showdown-1.1.2 # install failed
@@ -197,8 +197,8 @@ phoronix-test-suite:
       # - Test All Options
     # - encode-ape-1.3.0 # this test profile is marked Deprecated
   - test:
-    # - encode-flac-1.8.1 # temporarily comment out the failed test
-    # - encode-mp3-1.7.4 # temporarily comment out the failed test
+    - encode-flac-1.8.1
+    - encode-mp3-1.7.4
     # - encode-ogg-1.4.1 # this test profile is marked Deprecated
     # - encode-opus-1.1.1 # this test profile is marked Deprecated
     - encode-wavpack-1.4.1
@@ -286,7 +286,7 @@ phoronix-test-suite:
   - test:
     - gcrypt-1.1.3
     - geexlab-rt-1.0.1
-    # - git-1.1.0 # temporarily comment out the failed test
+    - git-1.1.0
   - test: glibc-bench-1.8.0
     option_a:
       - ffsll
@@ -331,18 +331,18 @@ phoronix-test-suite:
   - test:
     - gravitymark-1.9.0
     - gromacs-1.8.0
-  # - test: hackbench-1.0.0 # temporarily comment out the failed test
-    # option_a: # group count
-      # - 1
-      # - 2
-      # - 4
-      # - 8
-      # - 16
-      # - 32
+  - test: hackbench-1.0.0
+    option_a: # group count
+      - 1
+      - 2
+      - 4
+      - 8
+      - 16
+      - 32
       # - Test All Options
-    # option_b:
-      # - Process
-      # - Thread
+    option_b:
+      - Process
+      - Thread
       # - Test All Options
   - test:
     - hadoop-1.0.0
@@ -404,8 +404,8 @@ phoronix-test-suite:
       # - Test All Options
   - test:
       - ipc-benchmark-1.0.0
-      # - iperf-1.2.0 # temporarily comment out the failed test
-      # - java-gradle-perf-1.1.0 # temporarily comment out the failed test
+      - iperf-1.2.0
+      - java-gradle-perf-1.1.0
       - java-jmh-1.0.1
   - test: java-scimark2-1.2.0
     option_a:
@@ -445,7 +445,7 @@ phoronix-test-suite:
   - test:
     - luaradio-1.0.0
     - lulesh-1.1.1
-    # - lulesh-cl-1.0.1 # temporarily comment out the failed test
+    - lulesh-cl-1.0.1
     - luxcorerender-1.4.0
   - test: lzbench-1.1.1
     option_a:
@@ -495,8 +495,8 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - memcached-1.2.0
-    # - memtier-benchmark-1.5.0 # temporarily comment out the failed test
-    # - mencoder-1.5.0 # temporarily comment out the failed test
+    - memtier-benchmark-1.5.0
+    - mencoder-1.5.0
     # - metro2033-redux-1.1.1 # install failed
     # - metroll-redux-1.2.1 # install failed
     - minibude-1.0.0
@@ -562,24 +562,24 @@ phoronix-test-suite:
     - node-express-loadtest-1.0.1
     - node-octane-1.0.1
     # - noise-level-1.1.0 # not an available test
-  # - test: npb-1.4.5 # temporarily comment out the failed test
-    # option_a:
-      # - BT.C [Block Tri-diagonal solver]
-      # - EP.C [Embarrassingly Parallel]
-      # - EP.D [Embarrassingly Parallel]
-      # - FT.C [discrete 3D fast Fourier Transform]
-      # - LU.C [Lower-Upper Gauss-Seidel solver]
-      # - SP.B [Scalar Penta-diagonal solver]
-      # - IS.D [Integer Sort]
-      # - MG.C [Multi-Grid on a sequence of meshes]
-      # - CG.C [Conjugate Gradient]
+  - test: npb-1.4.5
+    option_a:
+      - BT.C [Block Tri-diagonal solver]
+      - EP.C [Embarrassingly Parallel]
+      - EP.D [Embarrassingly Parallel]
+      - FT.C [discrete 3D fast Fourier Transform]
+      - LU.C [Lower-Upper Gauss-Seidel solver]
+      - SP.B [Scalar Penta-diagonal solver]
+      - IS.D [Integer Sort]
+      - MG.C [Multi-Grid on a sequence of meshes]
+      - CG.C [Conjugate Gradient]
       # - Test All Options
   - test:
     # - numenta-nab-1.1.0 # install failed
     # - numpy-1.2.1 # run time more than 1h
     - nuttcp-1.0.3
     - nwchem-1.1.1
-    # - octave-benchmark-1.0.0 # temporarily comment out the failed test
+    # - octave-benchmark-1.0.0 # not an available test
     - oidn-2.1.0
     - onednn-3.3.0
     - onnx-1.6.0
