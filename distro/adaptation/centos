@@ -253,7 +253,7 @@ rusersd: rusers-server
 samba-dev: samba-devel
 sg3-utils: sg3_utils
 stress-ng: stress-ng
-systemtap-sdt-dev: systemtap-sdt-devel.x86_64
+systemtap-sdt-dev: systemtap-sdt-devel
 trinity:
 tshark: wireshark
 update-inetd: xinetd
