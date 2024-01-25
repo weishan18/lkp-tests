@@ -214,9 +214,6 @@ need_kconfig:
 - DEBUG_FS: y
 - PRINTK: y
 
-- TEST_OBJAGG: m
-- OBJAGG: m
-
 # below are test configs of bool type
 - FTRACE_STARTUP_TEST: y
 - EVENT_TRACE_STARTUP_TEST: y
