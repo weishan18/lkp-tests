@@ -15,10 +15,11 @@ fs:
   - xfs
 
 stress-ng:
-  class:
-    - filesystem
   test:
     - access
+    - acl
+    - aiol
+    - bind-mount
     # - binderfs
     - chattr
     - chdir
@@ -28,6 +29,7 @@ stress-ng:
     - dentry
     - dir
     - dirdeep
+    - dirmany
     - dnotify
     - dup
     - eventfd
@@ -38,9 +40,12 @@ stress-ng:
     - file-ioctl
     - filename
     - flock
+    - fpunch
+    - fsize
     - fstat
     - getdent
     - handle
+    - hdd
     # - inode-flags
     - inotify
     - io
@@ -51,12 +56,14 @@ stress-ng:
     - locka
     - lockf
     - lockofd
+    - metamix
     - mknod
     - open
     - procfs
     - rename
     - symlink
     - sync-file
+    - touch
     - utime
     # - verity
     - xattr
