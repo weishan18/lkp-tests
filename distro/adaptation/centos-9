@@ -3,16 +3,27 @@ cgroup-bin:
 cgroup-tools:
 default-jdk:
 libclang-dev: clang-devel
+libbabeltrace-ctf-dev: libbabeltrace-devel
+libbabeltrace-ctf1: libbabeltrace
+libbabeltrace-dev: libbabeltrace-devel
+libcunit1-dev: CUnit-devel
+libdw1: libdwarves1
+libfdt-dev: libfdt-devel
+libgles2-mesa:
+libgoogle-perftools-dev:  
 libipsec-mb0:
 libjudy-dev: Judy-devel
 libjudydebian1: Judy
 libmpfr6: mpfr
 libpfm4-dev: libpfm-devel
 libpfm4: libpfm
+libpng12-dev:
 libpython2.7: python3-libs
 libpython3.9: python3-libs
 libtraceevent-dev: libtraceevent-devel
 libtraceevent1: libtraceevent
+libunwind-dev:
+libunwind8:  
 llvm-dev: llvm-devel
 python-dev: python3-devel
 python-minimal: python3

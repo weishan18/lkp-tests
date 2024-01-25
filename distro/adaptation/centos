@@ -46,20 +46,24 @@ libarchive13: libarchive
 libattr1-dev: libattr-devel
 libattr1: libattr
 libaudit-dev: audit-libs-devel
+libasound2-dev: alsa-lib-devel
 libbabeltrace-dev:
-libblas3: liblas-libs
+libbinutils:
+libblas3: blas
 libblkid-dev: libblkid-devel
-libbsd-dev: libbsd-devel
-libbsd0: libbsd
+libbsd-dev: 
+libbsd0: 
 libbz2-dev: bzip2-devel
 libc-bin: glibc-common
 libc-dev-bin: glibc-common
 libc-dev: glibc-devel
-libc6-dev-i386: glibc-devel.i686 glibc-static.i686
+libc6-dev-i386: 
 libc6-dev-x32:
 libc6-dev: glibc-devel glibc-static
 libc6-dev:i386: glibc-devel.i686 glibc-static.i686
-libc6: glibc.x86_64
+libc6: 
+libc6-dbg:
+libc6-i386: 
 libcairo2-dev: cairo-devel
 libcap-dev: libcap-devel
 libcap-ng-dev: libcap-ng-devel
@@ -71,11 +75,14 @@ libdbd-mysql-perl: perl-DBD-MySQL
 libdbi-perl: perl-DBI
 libdbus-1-dev: dbus-devel
 libdrm-dev: libdrm-devel
-libdw-dev: libdwarf-devel.x86_64
+libdw-dev: elfutils-devel
+libedit-dev: libedit-devel
 libegl1-mesa-dev: mesa-libEGL-devel
-libelf-dev: elfutils-libelf-devel
+libelf-dev: elfutils-devel
+libelf1: elfutils-libelf
 libevent-2: libevent
 libevent-dev: libevent-devel
+libexpat1-dev: expat-devel
 libfabric-dev: libfabric-devel
 libfdt-dev:
 libffi-dev: libffi-devel
@@ -87,15 +94,15 @@ libgcrypt20: libgcrypt
 libgdbm-dev: gdbm-devel
 libgl1-mesa-dev: mesa-libGL-devel
 libgles2-mesa: mesa-libGLES
-libglib2.0-0: glib
+libglib2.0-0: 
 libglib2.0-dev: glib2-devel
 libglu-dev: mesa-libGLU-devel
 libgmp-dev: gmp-devel
 libgomp1: libgomp
-libgtk2.0-dev: gtk2-devel.x86_64
+libgtk2.0-dev: gtk2-devel
 libhwloc-dev: hwloc-devel
-libiberty-dev:
-libibverbs-dev: libibverbs-devel
+libiberty-dev: binutils-devel
+libibverbs-dev: 
 libicu: libicu57
 libipc-run-perl: perl-IPC-Run
 libipsec-mb-dev:
@@ -107,24 +114,29 @@ libkeyutils1: keyutils-libs
 libklibc-dev:
 libkmod-dev: kmod-devel
 libkmod2: kmod-libs
+libldap2-dev: openldap-devel
 liblsan0:
 liblz-dev:
 liblzma-dev: xz-devel
 libmariadbclient-dev: mysql-devel
 libmariadbclient18: mariadb-connector-c
+libmnl-dev: libmnl-devel
 libmount-dev: libmount-devel
 libmpx2:
+libmpfr6: mpfr
 libncurses5-dev: ncurses-devel
 libnl-3-200: libnl3
 libnl-3-dev: libnl3-devel
 libnl-genl-3-200: libnl3
 libnl-genl-3-dev: libnl3-devel
 libnl-route-3-dev: libnl3-devel
+libntfs:
 libnuma-dev: numactl-devel
 libnuma1: numactl
+liboath-dev:
 libobjc-7-dev: libobjc.x86_64
 liboop-dev:
-liboop-dev: liboop
+libopencryptoki0: opencryptoki-libs
 libopenmpi-dev: openmpi-devel
 libopenmpi2: openmpi
 libpcap-dev: libpcap-devel
@@ -133,25 +145,33 @@ libpcap0.8: libpcap
 libpci-dev: pciutils-devel
 libpci3: pciutils
 libpciaccess-dev: libpciaccess-devel
-libperl-dev: perl-devel.x86_64
+libperl-dev: perl-devel
 libperl5: perl-libs
+libpfm4-dev: libpfm-devel
+libpfm4: libpfm
 libpixman-1-dev: pixman-devel
+libpmem-dev: libpmem-devel
+libpmem1: libpmem
 libpng-dev: libpng-devel
 libpng12-dev: libpng12-devel
 libpng16-16: libpng
 libpopt-dev: popt-devel
 libpopt0: popt
 libprocps-dev: procps-ng-devel
-libpython2.7: python2-libs
+libprotobuf-dev: protobuf-devel
+libpython2.7: python3-libs
+libpython3.9: python3-libs
 libquadmath0: libquadmath.x86_64
-librdmacm-dev: librdmacm-devel
+librdmacm-dev: 
 libreadline-dev: readline-devel
 libreadline5: readline
 libsctp-dev: lksctp-tools-devel
 libsctp1: lksctp-tools
+libseccomp2:
 libselinux1:
-libslang2-dev:
+libslang2-dev: slang-devel
 libsmbclient-dev: libsmbclient-devel
+libsnappy-dev: snappy-devel
 libsqlite3-dev: sqlite-devel
 libssl-dev: openssl-devel
 libssl: openssl-devel
@@ -167,14 +187,20 @@ libunwind-dev: libunwind-devel
 libunwind8: libunwind
 libuuid1: libuuid
 libuv1-dev: libuv-devel
+libvirt-clients: libvirt-client
+libvirt-daemon-system: libvirt-client libvirt-daemon
+libvirt-dev: libvirt-devel
 libwaffle-dev: waffle-devel
 libx11-dev: libX11-devel
 libx11-xcb-dev: libX11-devel
 libxkbcommon-dev: libxkbcommon-devel
 libxml2-dev: libxml2-devel
+libyaml-cpp-dev: 
+libyaml-dev: libyaml-devel
 libzstd-dev: zlib-devel
-linux-libc-dev:
-linux-libc-dev:i386:
+linux-base:
+linux-libc-dev: kernel-headers
+linux-libc-dev:i386: kernel-headers
 linux-perf: perf
 linux-tools: perf
 llvm-6.0: llvm7.0.x86_64
