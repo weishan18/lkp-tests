@@ -1,4 +1,10 @@
 linux-base
+linux-perf
 php-cli
 php-xml
 unzip
+bc
+expect
+numactl
+sudo
+xinit
