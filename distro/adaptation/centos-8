@@ -20,3 +20,5 @@ python-dev:
 python-pkg-resources: 
 python-setuptools: python2-setuptools
 python3-dev:
+rusersd:
+rstatd: 
