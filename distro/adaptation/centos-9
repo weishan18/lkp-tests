@@ -25,6 +25,7 @@ libtraceevent1: libtraceevent
 libunwind-dev:
 libunwind8:  
 llvm-dev: llvm-devel
+openbsd-inetd:
 python-dev: python3-devel
 python-minimal: python3
 python-setuptools: python3-setuptools
