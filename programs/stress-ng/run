@@ -35,7 +35,8 @@ set_common_options()
 		--timeout $testtime \
 		--times \
 		--verify \
-		--metrics
+		--metrics \
+		--no-rand-seed
 	"
 }
 
