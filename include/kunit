@@ -47,7 +47,8 @@ need_kconfig:
 - EXT4_KUNIT_TESTS: m
 - EXT4_FS
 
-- KCSAN_KUNIT_TEST: m
+# conflict with KASAN
+# - KCSAN_KUNIT_TEST: m
 - TRACEPOINTS: y
 
 - KFENCE_KUNIT_TEST: m
