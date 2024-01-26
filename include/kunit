@@ -164,7 +164,11 @@ need_kconfig:
 - TEST_LOCKUP: m
 - TEST_DHRY: m
 - TEST_CLOCKSOURCE_WATCHDOG: m
-- SND_TEST_COMPONENT: m
+
+# temporarily diable SND_TEST_COMPONENT which depends on CONFIG_OF
+# - SND_TEST_COMPONENT: m
+# - OF: y
+
 - REED_SOLOMON_TEST: m
 - ASYNC_RAID6_TEST: m
 - BACKTRACE_SELF_TEST: m
