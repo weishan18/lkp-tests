@@ -36,7 +36,8 @@ set_common_options()
 		--times \
 		--verify \
 		--metrics \
-		--no-rand-seed
+		--no-rand-seed \
+		--oom-avoid
 	"
 }
 
