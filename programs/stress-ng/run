@@ -77,7 +77,7 @@ setup_test()
 		mount_dev || return
 	}
 
-	case "$class" in
+	case "$test" in
 	"swap")
 		# shellcheck disable=SC2164
 		cd ${mount_points%% *}
