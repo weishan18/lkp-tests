@@ -6,4 +6,5 @@ arch_allowlist: x86_64|arm64|loongarch
 arch_denylist: .*
 mail_to: kernel@openeuler.org
 private_report_branch: .*
+extra_mail_to: COMMITTER
 notify_build_success_branch: .*
