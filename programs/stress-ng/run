@@ -27,7 +27,7 @@ mount_dev()
 }
 
 ## some options are universal, put them in universal_setting
-set_common_options()
+set_common_opts()
 {
 	[ -n "$testtime" ] || testtime=1
 
@@ -36,8 +36,7 @@ set_common_options()
 		--times \
 		--verify \
 		--metrics \
-		--no-rand-seed \
-		--oom-avoid
+		--no-rand-seed
 	"
 }
 
@@ -86,6 +85,9 @@ setup_test()
 	"ping-sock")
 		log_cmd sysctl -w net.ipv4.ping_group_range="0 $nr_threads"
 		;;
+	"bigheap"|"brk"|"io")
+		common_opts="${common_opts} --oom-avoid"
+		;;
 	"aiol")
 		# 081aa00e16a9 ("tests/stress-ng: sleep 2s before run_test to fix stress-ng-aiol open fail")
 		sleep 2
@@ -97,7 +99,7 @@ setup_test()
 
 run_test()
 {
-	set_common_options
+	set_common_opts
 
 	if [ -n "$test" ]; then
 		setup_test || die "setup test failed"
