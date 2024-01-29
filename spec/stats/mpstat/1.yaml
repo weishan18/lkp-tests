@@ -151,3 +151,5 @@ cpu.3.steal%: 0.0
 cpu.3.guest%: 0.0
 cpu.3.gnice%: 0.0
 cpu.3.idle%: 85.71
+max_utilization_pct: 870.0
+max_utilization.seconds: 210
