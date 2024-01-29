@@ -50,6 +50,8 @@ openssl-speed\..+_per_sec: 1
 openssl-speed\..+_size_block_Kbps: 1
 pbzip2\.throughput: 1
 perf-bench-futex\.ops\/s: 1
+perf-bench-futex\.wokeup_time_ms: -1
+perf-bench-futex\.requeued_time_ms: -1
 perf-bench-numa-mem\.GB_sec_thread: 1
 perf-bench-numa-mem\.GB_sec_total: 1
 perf-bench-sched-pipe\.ops_per_sec: 1
@@ -66,6 +68,7 @@ phoronix-test-suite\..+\.mib_s: 1
 phoronix-test-suite\..+\.milliseconds: 1
 phoronix-test-suite\..+\.mipolys___sec: 1
 phoronix-test-suite\..+\.ms: -1
+phoronix-test-suite\..+\.mp_s: 1
 phoronix-test-suite\..+\.nodes_per_second: 1
 phoronix-test-suite\..+\.nanoseconds: -1
 phoronix-test-suite\..+\.nanoseconds_operation: -1
@@ -211,3 +214,4 @@ rcurefscale\..+-ref-scale\.duration_per_loop\.ns: -1
 kernel-selftests\..+\.usec_per_loop: -1
 kernel-selftests\..+\.packets_per_sec: 1
 fsmark.app_overhead: -1
+swapin\.throughput: 1
