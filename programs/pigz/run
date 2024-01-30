@@ -15,7 +15,7 @@ nr_threads = ENV['nr_threads'] || ENV['nr_cpu']
 blocksize = (ENV['blocksize'] || 128).to_i
 total_iterations = (ENV['iterations'] || 0).to_i
 
-case File.basename($PROGRAM_NAME)
+case File.basename(File.dirname($PROGRAM_NAME))
 when /pigz/
   pigz_threads = "-p #{nr_threads}" if nr_threads
   pigz_threads ||= ''
