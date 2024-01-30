@@ -21,6 +21,7 @@ cassandra\.Op.+rate: 1
 chromeswap\.throughput_swap_cycles_per_second: -1
 coremark\.iterations_per_sec: 1
 dbench\.throughput-MB\/sec: 1
+dbench\.throughput_MB\/s: 1
 dd\..+_time_ms: -1
 ebizzy\.throughput: 1
 exit-free\.duration: -1
@@ -28,7 +29,7 @@ filebench\.sum_operations\/s: 1
 fileio\..+_operations\/s: 1
 fio\..+_bw_MBps: 1
 fio\..+_iops: 1
-fsmark.app_overhead: -1
+fsmark\.app_overhead: -1
 fsmark\.files_per_sec: 1
 ftq\.max: 1
 ftq\.mean: 1
@@ -80,6 +81,7 @@ phoronix-test-suite\..+\.average_mbytes_sec: 1
 phoronix-test-suite\..+\.average_msg_sec: 1
 phoronix-test-suite\..+\.average_usec: 1
 phoronix-test-suite\..+\.bogo_ops_s: 1
+phoronix-test-suite\..+\.cg_mflops: 1
 phoronix-test-suite\..+\.clocks: -1
 phoronix-test-suite\..+\.cycles_per_byte: 1
 phoronix-test-suite\..+\.days_ns: -1
@@ -87,6 +89,7 @@ phoronix-test-suite\..+\.events_per_second: 1
 phoronix-test-suite\..+\.figure_of_merit: 1
 phoronix-test-suite\..+\.files_s: 1
 phoronix-test-suite\..+\.final_score: 1
+phoronix-test-suite\..+\.flops_rank: 1
 phoronix-test-suite\..+\.fps: 1
 phoronix-test-suite\..+\.frames: 1
 phoronix-test-suite\..+\.frames_per_second: 1
@@ -127,6 +130,7 @@ phoronix-test-suite\..+\.milliwatts: -1
 phoronix-test-suite\..+\.mipolys___sec: 1
 phoronix-test-suite\..+\.mips: 1
 phoronix-test-suite\..+\.mivoxels___sec: 1
+phoronix-test-suite\..+\.mpx_s: 1
 phoronix-test-suite\..+\.mp_s: 1
 phoronix-test-suite\..+\.ms: -1
 phoronix-test-suite\..+\.msec: -1
