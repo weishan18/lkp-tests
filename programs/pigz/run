@@ -40,7 +40,7 @@ when /pxz/
   run_cmd = "pxz -c #{pxz_threads}"
 end
 
-exit unless run_cmd
+exit 99 unless run_cmd
 puts "# run_cmd: #{run_cmd}"
 
 F_LINUX_SPECIFIC_BASE = 1024
