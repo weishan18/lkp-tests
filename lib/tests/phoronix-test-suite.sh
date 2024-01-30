@@ -829,6 +829,8 @@ run_test()
 		test_opt=${test_opt}n
 	fi
 
+	[ "$test_opt" ] && echo "test_opt: $test_opt"
+
 	root_access="/usr/share/phoronix-test-suite/pts-core/static/root-access.sh"
 	[ -f "$root_access" ] || die "$root_access not exist"
 	sed -i 's,#!/bin/sh,#!/bin/dash,' $root_access
