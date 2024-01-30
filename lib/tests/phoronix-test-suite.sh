@@ -817,7 +817,7 @@ run_test()
 
 	patch_to_detect_wrong_test_option
 	if [ -n "$option_a" ]; then
-		test_opt='\n'
+		test_opt=''
 		for i in {a..j}
 		do
 			eval option=\$option_${i}
