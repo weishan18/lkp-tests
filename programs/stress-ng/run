@@ -92,7 +92,7 @@ setup_test()
 		# 081aa00e16a9 ("tests/stress-ng: sleep 2s before run_test to fix stress-ng-aiol open fail")
 		sleep 2
 		;;
-	"bad_ioctl")
+	"bad_ioctl"|"sysinval"|"cpu-online"|"mlockmany"|"oom-pipe"|"bind-mount"|"watchdog"|"smi")
 		common_opts="${common_opts} --pathological"
 		;;
 	*)
