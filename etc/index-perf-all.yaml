@@ -80,6 +80,7 @@ phoronix-test-suite\..+\.activity_level: 1
 phoronix-test-suite\..+\.average_mbytes_sec: 1
 phoronix-test-suite\..+\.average_msg_sec: 1
 phoronix-test-suite\..+\.average_usec: 1
+phoronix-test-suite\..+\.billion_interactions_s: 1
 phoronix-test-suite\..+\.bogo_ops_s: 1
 phoronix-test-suite\..+\.cg_mflops: 1
 phoronix-test-suite\..+\.clocks: -1
@@ -96,6 +97,7 @@ phoronix-test-suite\..+\.frames_per_second: 1
 phoronix-test-suite\..+\.frames___sec: 1
 phoronix-test-suite\..+\.gbps: 1
 phoronix-test-suite\..+\.gb_s: 1
+phoronix-test-suite\..+\.gfinst_s: 1
 phoronix-test-suite\..+\.gflops: 1
 phoronix-test-suite\..+\.gflop_s: 1
 phoronix-test-suite\..+\.ghash_s: 1
@@ -130,6 +132,7 @@ phoronix-test-suite\..+\.milliwatts: -1
 phoronix-test-suite\..+\.mipolys___sec: 1
 phoronix-test-suite\..+\.mips: 1
 phoronix-test-suite\..+\.mivoxels___sec: 1
+phoronix-test-suite\..+\.mpix_sec: 1
 phoronix-test-suite\..+\.mpx_s: 1
 phoronix-test-suite\..+\.mp_s: 1
 phoronix-test-suite\..+\.ms: -1
@@ -145,6 +148,7 @@ phoronix-test-suite\..+\.ns: -1
 phoronix-test-suite\..+\.ns_per_event: 1
 phoronix-test-suite\..+\.operations_per_second: 1
 phoronix-test-suite\..+\.operations___second: 1
+phoronix-test-suite\..+\.ops_per_sec: 1
 phoronix-test-suite\..+\.ops_s: 1
 phoronix-test-suite\..+\.ops_sec: 1
 phoronix-test-suite\..+\.op_s: 1
@@ -154,11 +158,13 @@ phoronix-test-suite\..+\.quips: 1
 phoronix-test-suite\..+\.real_c_s: 1
 phoronix-test-suite\..+\.records_s: 1
 phoronix-test-suite\..+\.requests_per_second: 1
+phoronix-test-suite\..+\.rows_per_second: 1
 phoronix-test-suite\..+\.samples_sec: 1
 phoronix-test-suite\..+\.score: 1
 phoronix-test-suite\..+\.sec: -1
 phoronix-test-suite\..+\.seconds: -1
 phoronix-test-suite\..+\.signs_per_second: 1
+phoronix-test-suite\..+\.sign_s: 1
 phoronix-test-suite\..+\.speedup: 1
 phoronix-test-suite\..+\.throughput_fom: 1
 phoronix-test-suite\..+\.total_mop_s: 1
@@ -170,6 +176,7 @@ phoronix-test-suite\..+\.units_per_second: 1
 phoronix-test-suite\..+\.us: -1
 phoronix-test-suite\..+\.usec: -1
 phoronix-test-suite\..+\.us_per_event: -1
+phoronix-test-suite\..+\.verify_s: 1
 phoronix-test-suite\..+\.vgr_performance_metric: 1
 phoronix-test-suite\..+\.z_s: 1
 pigz\.throughput: 1
