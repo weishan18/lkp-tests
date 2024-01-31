@@ -30,7 +30,7 @@ stress-ng:
     - pipe
     - pipeherd
     - pkey
-    - plugin
+    # - plugin # run user provided stressor functions loaded from a shared library
     - poll
     - prctl
     - prefetch
