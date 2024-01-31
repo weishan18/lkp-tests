@@ -243,6 +243,14 @@ setup_fcnal_test_atomic()
 	export TESTS=$atomic_test
 }
 
+recover_sysctl_output()
+{
+	# 79bf0d4a07d4 ("selftest: Fix set of ping_group_range in fcnal-test")
+	# This commit hides the SYSCTL output of setting ping group.
+	# Manually add it back to recover the lines.
+	sed -i "/\t\${NSA_CMD} sysctl -q -w net.ipv4.ping_group_range='0 2147483647'/i \\\techo \"SYSCTL: net.ipv4.ping_group_range=0 2147483647\"\n\techo" net/fcnal-test.sh
+}
+
 fixup_net()
 {
 	# udpgro tests need enable bpf firstly
@@ -261,6 +269,7 @@ fixup_net()
 	modprobe -q nf_conntrack_broadcast
 
 	[ "$test" = "fcnal-test.sh" ] && [ "$atomic_test" ] && setup_fcnal_test_atomic
+	[ "$test" = "fcnal-test.sh" ] && recover_sysctl_output
 
 	export CCINCLUDE="-I../bpf/tools/include"
 	log_cmd make -j${nr_cpu} -C ../../../tools/testing/selftests/net 2>&1 || return
