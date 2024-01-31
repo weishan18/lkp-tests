@@ -46,7 +46,7 @@ stress-ng:
     - getdent
     - handle
     - hdd
-    # - inode-flags
+    - inode-flags
     - inotify
     - io
     - iomix
