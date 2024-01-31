@@ -80,31 +80,39 @@ def check_all(kernel_kconfigs, needed_kconfigs)
   kernel_arch = context['kconfig'].split('-').first
 
   kconfigs_yaml = KernelTag.kconfigs_yaml
-  if File.exist? kconfigs_yaml
+  if File.size? kconfigs_yaml
     kconfig_constraints = YAML.load_file kconfigs_yaml
     kconfig_constraints = kconfig_constraints.transform_values { |constraints| split_constraints(constraints) }
+  else
+    kconfig_constraints = {}
   end
 
   needed_kconfigs.each do |e|
-    if e.instance_of? Hashugar
-      config_name, config_options = e.to_hash.first
-      config_options = split_constraints(config_options)
+    config_name, config_options = if e.instance_of? Hashugar
+                                    # e.to_hash: {"KVM_GUEST"=>"y"}
+                                    e.to_hash.first
+                                  else
+                                    # e: IA32_EMULATION=y
+                                    # e: SATA_AHCI
+                                    e.split('=')
+                                  end
 
-      # global arch constraint that means the kconfig is only supported on the specific arch
-      expected_archs = kconfig_constraints[config_name].archs if kconfig_constraints && kconfig_constraints[config_name]
-      next unless expected_archs.nil? || expected_archs.empty? || kernel_match_arch?(kernel_arch, expected_archs)
+    config_options = split_constraints(config_options)
 
-      # test arch constraint that means the kconfig is only enabled on the specific arch as required by test
-      next unless config_options.archs.empty? || kernel_match_arch?(kernel_arch, config_options.archs)
+    # global arch constraint that means the kconfig is only supported on the specific arch
+    expected_archs = kconfig_constraints[config_name].archs if kconfig_constraints[config_name]
+    next unless expected_archs.nil? || expected_archs.empty? || kernel_match_arch?(kernel_arch, expected_archs)
 
-      expected_kernel_versions = kconfig_constraints[config_name].kernel_versions if kconfig_constraints && kconfig_constraints[config_name]
+    # test arch constraint that means the kconfig is only enabled on the specific arch as required by test
+    next unless config_options.archs.empty? || kernel_match_arch?(kernel_arch, config_options.archs)
+
+    if kconfig_constraints[config_name]
+      expected_kernel_versions = kconfig_constraints[config_name].kernel_versions
       # ignore the check of kconfig type if kernel is not within the valid range
       next if expected_kernel_versions && !kernel_match_version?(kernel_version, expected_kernel_versions)
-
-      expected_kernel_kconfig = "#{config_name}=#{config_options.types.first}"
-    else
-      expected_kernel_kconfig = e
     end
+
+    expected_kernel_kconfig = "#{config_name}=#{config_options.types.first}"
 
     next if kernel_match_kconfig?(kernel_kconfigs, expected_kernel_kconfig)
 
