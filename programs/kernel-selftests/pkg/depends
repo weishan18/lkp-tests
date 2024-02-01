@@ -84,6 +84,8 @@ tcpdump
 arping
 linux-perf
 file
+clang
+libclang-dev
 llvm-dev
 attr
 pesign
