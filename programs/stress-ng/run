@@ -85,7 +85,7 @@ setup_test()
 	"ping-sock")
 		log_cmd sysctl -w net.ipv4.ping_group_range="0 $nr_threads"
 		;;
-	"bigheap"|"brk"|"sockpair")
+	"bigheap"|"brk"|"sockpair"|"mmaphuge")
 		common_opts="${common_opts} --oom-avoid"
 		;;
 	"aiol")
