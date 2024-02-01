@@ -5,6 +5,11 @@
 # mannually.
 prepare_for_llvm()
 {
+	# Due to some low dependency version issues, the latest version of the llvm_project.cgz package
+	# cannot be generated in alios.
+	# But bpf must use llvm v10 or higher, so don't run bpf on alios.
+	is_aliyunos && die "alios doesn't support bpf due to some dependency issues"
+
 	#   LLVM version 11.0.1
 	# Ubuntu LLVM version 14.0.0
 	local llvm_version=$(llc --version | grep "LLVM version")
