@@ -590,8 +590,11 @@ phoronix-test-suite:
       - 1 # Sedov Blast Wave, ube_922_hex.mesh
       - 2 # Triple Point Problem
       # - 3 # Test All Options
-  - test:
-    - lammps-1.4.0
+  - test: lammps-1.4.0
+    option_a:
+      - 1 # Rhodopsin Protein [Small input, runs very quickly on modern hardware.]
+      - 2 # 20k Atoms         [A larger input for large core-count systems.]
+      # - 3 # Test All Options
   - test: lczero-1.7.0
     option_a:
       - BLAS
