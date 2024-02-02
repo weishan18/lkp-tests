@@ -351,10 +351,30 @@ install_base_support()
 	create_host_config
 }
 
+enable_centos_source(){
+    if ! yum list installed | grep -q yum-utils; then
+        yum install -y yum-utils 
+    fi
+
+    if [ "$_system_version" = 9 ]; then
+	echo "enable source crb"
+        dnf config-manager --set-enabled crb
+    elif [ "$_system_version" = 8 ]; then
+	echo "enable source powertools"
+        dnf config-manager --set-enabled powertools
+    fi
+
+}
+
 . $LKP_SRC/lib/install.sh
 
 detect_system
 distro=$_system_name_lowercase
+
+echo "distro=$distro"
+echo "version=$_system_version"
+
+[ "$distro" = "centos" ] && enable_centos_source
 
 DISTRO=$distro
 export DISTRO
