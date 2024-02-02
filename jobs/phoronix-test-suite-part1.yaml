@@ -804,7 +804,18 @@ phoronix-test-suite:
     - onednn-3.3.0
     - onnx-1.6.0
     - opencl-benchmark-1.0.0
-    - opencv-1.3.0
+  - test: opencv-1.3.0
+    option_a:
+      - DNN - Deep Neural Network
+      - Features 2D
+      - Object Detection
+      - Core
+      - Graph API
+      - Image Processing
+      - Stitching
+      - Video
+      # - Test All Options
+  - test:
     - opencv-bench-1.0.0
     - openems-1.0.0
     - openfoam-1.2.0
