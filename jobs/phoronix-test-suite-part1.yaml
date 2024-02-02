@@ -494,8 +494,22 @@ phoronix-test-suite:
       # - Write
       # - Read
       # - Test All Options
-  - test:
-    - ior-1.1.1
+  - test: ior-1.1.1
+    option_a:
+      - 2MB
+      - 4MB
+      - 8MB
+      - 16MB
+      - 32MB
+      - 64MB
+      - 256MB
+      - 512MB
+      - 1024MB
+      # - Test All Options
+    option_b:
+      - Default Test Directory
+      # - /opt/rootfs # don't touch the rootfs dir
+      # - Test All Options
   - test: iozone-1.9.5
     option_a:
       - 4Kb
