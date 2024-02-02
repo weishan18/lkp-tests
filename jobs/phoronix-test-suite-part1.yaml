@@ -585,8 +585,12 @@ phoronix-test-suite:
       - 4 # Super Fast
       - 5 # Ultra Fast
       # - 6 # Test All Options
+  - test: laghos-1.0.0
+    option_a:
+      - 1 # Sedov Blast Wave, ube_922_hex.mesh
+      - 2 # Triple Point Problem
+      # - 3 # Test All Options
   - test:
-    - laghos-1.0.0
     - lammps-1.4.0
   - test: lczero-1.7.0
     option_a:
