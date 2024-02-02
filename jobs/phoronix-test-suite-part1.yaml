@@ -131,8 +131,17 @@ phoronix-test-suite:
     # - compress-zstd-1.5.0 # install failed
     # - core-latency-1.0.0 # runtime > 10h
     - coremark-1.0.1
-    - couchdb-1.3.0   
     # - cp2k-1.2.0 # install failed
+  - test: couchdb-1.3.0
+    option_a:
+      - 100
+      - 300
+      - 500
+      # - Test All Options
+    option_b:
+      - 1000
+      - 3000
+      # - Test All Options
   - test: cpp-perf-bench-1.0.0
     option_a:
       - Stepanov Abstraction
