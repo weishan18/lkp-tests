@@ -755,7 +755,14 @@ phoronix-test-suite:
   - test:
     - nero2d-1.1.0
     # - netperf-1.0.4 # install failed
-    - nettle-1.1.0
+  - test: nettle-1.1.0
+    option_a:
+      - sha512
+      - poly1305-aes
+      - aes256
+      - chacha
+      # - Test All Options
+  - test:
     - network-loopback-1.0.3
     # - nexuiz-iqc-1.0.0 # this test profile is currently marked Deprecated
     - nginx-3.0.1
