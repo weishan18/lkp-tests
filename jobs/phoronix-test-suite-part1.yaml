@@ -526,8 +526,22 @@ phoronix-test-suite:
       - Write Performance
       - Read Performance
       # - Test All Options
+  - test: ipc-benchmark-1.0.0
+    option_a:
+      - Unnamed Pipe
+      - FIFO Named Pipe
+      - Unnamed Unix Domain Socket
+      - TCP Socket
+      # - Test All Options
+    option_b:
+      - 128
+      - 256
+      - 512
+      - 1024
+      - 2048
+      - 4096
+      # - Test All Options
   - test:
-      - ipc-benchmark-1.0.0
       - iperf-1.2.0
       - java-gradle-perf-1.1.0
       - java-jmh-1.0.1
