@@ -222,8 +222,13 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - duckdb-1.0.0
-    - easywave-1.0.0
     - ebizzy-1.0.4
+  - test: easywave-1.0.0
+    option_a:
+      - 1 # 240  [Intended for very slow systems or just a quick reference run.]
+      - 2 # 1200
+      - 3 # 2400 [Just intended for very large core count servers / HPC]
+      # - 4 # Test All Options
   - test: embree-1.6.1
     option_a:
       - Pathtracer
