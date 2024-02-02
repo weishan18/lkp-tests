@@ -154,9 +154,14 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - crafty-1.4.5
-    - cryptopp-1.1.0
     # - csgo-1.7.2 # install failed
     - ctx-clock-1.0.0
+  - test: cryptopp-1.1.0
+    option_a:
+      - Unkeyed Algorithms
+      - Keyed Algorithms
+      # - All Algorithms     [This option can be very time consuming.]
+      # - Test All Options
   - test: cyclictest-1.0.0
     option_a:
       - 1 # clock_nanosleep TIME_ABSTIME, Interval 10000 ms, 10000 Loops
