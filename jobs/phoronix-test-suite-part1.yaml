@@ -722,8 +722,18 @@ phoronix-test-suite:
       # - 256
       # - 512
       # - Test All Options
+  - test: mutex-1.0.0
+    option_a:
+      - Mutex Lock Unlock std::mutex
+      # - Mutex Lock Unlock std::mutex # duplicate to the first one
+      - Mutex Lock Unlock pthread_mutex
+      - Mutex Lock Unlock ticket_spinlock
+      - Mutex Lock Unlock spinlock
+      - Mutex Lock Unlock spinlock_amd
+      - Shared Mutex Lock Shared
+      - Semaphore Release And Acquire
+      # - Test All Options
   - test:
-    - mutex-1.0.0
     - mysqlslap-1.4.0
     - n-queens-1.2.1
     - namd-1.2.1
