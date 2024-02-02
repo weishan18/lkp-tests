@@ -261,8 +261,16 @@ phoronix-test-suite:
       # - 100
       # - 1000
       # - Test All Options
+  - test: etcpak-1.1.0
+    option_a:
+      - Single-Threaded
+      - Multi-Threaded
+      # - Test All Options
+    option_b:
+      - ETC2
+      - DXT1
+      # - Test All Options
   - test:
-    - etcpak-1.1.0
     # - f12017-1.1.1 # install failed
     - fahbench-1.0.2
     - fast-cli-1.0.0
