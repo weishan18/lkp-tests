@@ -559,8 +559,17 @@ phoronix-test-suite:
       - MD5
       - Blowfish
       # - Test All Options
+  - test: jpegxl-1.5.0
+    option_a:
+      - JPEG
+      - PNG
+      # - Test All Options
+    option_b:
+      - 1 # 80
+      - 2 # 90  [Default]
+      - 3 # 100 [Lossless]
+      # - 4 # Test All Options
   - test:
-    - jpegxl-1.5.0
     - jpegxl-decode-1.5.0
     # - keydb-1.2.0 # install failed
     - kripke-1.2.0
