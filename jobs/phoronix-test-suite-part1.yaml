@@ -747,8 +747,12 @@ phoronix-test-suite:
       # - GPU # need CUDA compatible hardware
       - All (CPU + GPU)
       # - Test All Options
+  - test: nekrs-1.1.0
+    option_a:
+      - TurboPipe Periodic
+      - Kershaw
+      # - Test All Options
   - test:
-    - nekrs-1.1.0
     - nero2d-1.1.0
     # - netperf-1.0.4 # install failed
     - nettle-1.1.0
