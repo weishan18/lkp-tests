@@ -68,8 +68,12 @@ phoronix-test-suite:
     - build-mplayer-1.5.0
     - build-nodejs-1.3.0
     - build-php-1.6.0
-    - build-python-1.0.0
     # - build-webkitfltk-1.0.0 # the test costs more than 2h
+  - test: build-python-1.0.0
+    option_a:
+      - Default
+      - Released Build, PGO + LTO Optimized
+      # - Test All Options
   - test: bullet-1.2.2
     option_a:
       - 3000 Fall
