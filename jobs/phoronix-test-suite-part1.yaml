@@ -663,8 +663,15 @@ phoronix-test-suite:
       # - 128
       # - 256
       # - Test All Options
+  - test: memcached-1.2.0
+    option_a:
+      - "1:100"
+      - "1:10"
+      - "1:5"
+      - "1:1"
+      - "5:1"
+      # - Test All Options
   - test:
-    - memcached-1.2.0
     - memtier-benchmark-1.5.0
     - mencoder-1.5.0
     # - metro2033-redux-1.1.1 # install failed
