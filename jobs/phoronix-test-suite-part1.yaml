@@ -693,7 +693,12 @@ phoronix-test-suite:
     - mkl-dnn-1.3.1
     - mlpack-1.0.2
     - mnn-2.1.0
-    - mocassin-1.1.0
+  - test: mocassin-1.1.0
+    option_a:
+      - Dust 2D tau100.0
+      - Gas HII40
+      # - Test All Options
+  - test:
     - mpcbench-1.0.1
     # - mrbayes-1.5.0 # temporarily comment out  the failed test
     - mt-dgemm-1.2.0
