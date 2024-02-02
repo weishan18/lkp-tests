@@ -429,7 +429,12 @@ phoronix-test-suite:
     - kvazaar-1.2.0
     - laghos-1.0.0
     - lammps-1.4.0
-    - lczero-1.7.0
+  - test: lczero-1.7.0
+    option_a:
+      - BLAS
+      - Eigen
+      # - Test All Options
+  - test:
     - libraw-1.0.0
     # - llvm-test-suite-1.0.1 # not an available test
     - liquid-dsp-1.6.0
