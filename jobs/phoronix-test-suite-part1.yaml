@@ -573,7 +573,19 @@ phoronix-test-suite:
     - jpegxl-decode-1.5.0
     # - keydb-1.2.0 # install failed
     - kripke-1.2.0
-    - kvazaar-1.2.0
+  - test: kvazaar-1.2.0
+    option_a:
+      - Bosphorus 1080p
+      - Bosphorus 4K
+      # - Test All Options
+    option_b:
+      - 1 # Slow
+      - 2 # Medium     [Default]
+      - 3 # Very Fast
+      - 4 # Super Fast
+      - 5 # Ultra Fast
+      # - 6 # Test All Options
+  - test:
     - laghos-1.0.0
     - lammps-1.4.0
   - test: lczero-1.7.0
