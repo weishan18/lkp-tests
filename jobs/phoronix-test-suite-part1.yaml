@@ -677,7 +677,12 @@ phoronix-test-suite:
     # - metro2033-redux-1.1.1 # install failed
     # - metroll-redux-1.2.1 # install failed
     - minibude-1.0.0
-    - minife-1.0.0
+  - test: minife-1.0.0
+    option_a:
+      - Small
+      - Medium
+      - Large
+      # - Test All Options
   # - test: minion-1.5.2 # install failed
     # option_a:
       # - Graceful
