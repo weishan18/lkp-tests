@@ -462,8 +462,13 @@ phoronix-test-suite:
   - test: idle-1.2.0
     option_a:
       - 1 # Enter Positive Number
+  - test: influxdb-1.0.2
+    option_a:
+      - 4
+      - 64
+      - 1024
+      # - Test All Options
   - test:
-    - influxdb-1.0.2
     - insurgency-1.2.0
     - intel-mlc-1.1.0
   # - test: interbench-1.0.1 # all the option combinations result in "no space left on device"
