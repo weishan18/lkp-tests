@@ -787,10 +787,17 @@ phoronix-test-suite:
       - MG.C [Multi-Grid on a sequence of meshes]
       - CG.C [Conjugate Gradient]
       # - Test All Options
+  - test: nuttcp-1.0.3
+    option_a:
+      - TCP Transfer - Default
+      - TCP Transfer - Server To Client
+      - 10G+ UDP
+      # - Test All Options
+    option_b:
+      - "127.0.0.1"
   - test:
     # - numenta-nab-1.1.0 # install failed
     # - numpy-1.2.1 # run time more than 1h
-    - nuttcp-1.0.3
     - nwchem-1.1.1
     # - octave-benchmark-1.0.0 # not an available test
     - oidn-2.1.0
