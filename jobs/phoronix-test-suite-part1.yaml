@@ -247,7 +247,21 @@ phoronix-test-suite:
     # - encode-opus-1.1.1 # this test profile is marked Deprecated
     - encode-wavpack-1.4.1
     - espeak-1.7.0
-    - etcd-1.0.0
+  - test: etcd-1.0.0
+    option_a:
+      - PUT
+      - RANGE
+      # - Test All Options
+    option_b:
+      - 50
+      - 100
+      - 500
+      # - Test All Options
+    option_c:
+      - 100
+      - 1000
+      # - Test All Options
+  - test:
     - etcpak-1.1.0
     # - f12017-1.1.1 # install failed
     - fahbench-1.0.2
