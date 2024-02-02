@@ -24,7 +24,9 @@
 # [v6.6-rc1] 6d4ab2e97dcf ("extrawarn: enable format and stringop overflow warnings in W=1")
 -Wformat-overflow
 -Wformat-truncation
--Wstringop-overflow
+# 021533194476 ("Kconfig: Disable -Wstringop-overflow for GCC globally")
+# Do not add stringop-overflow unconditionally which is disabled by 021533194476 for gcc
+# -Wstringop-overflow
 
 # [v6.6-rc1] 26030cb984dd ("extrawarn: move -Wrestrict into W=1 warnings")
 -Wrestrict
