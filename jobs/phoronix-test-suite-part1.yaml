@@ -274,8 +274,19 @@ phoronix-test-suite:
     # - f12017-1.1.1 # install failed
     - fahbench-1.0.2
     - fast-cli-1.0.0
-    - ffmpeg-6.1.0
     - ffte-1.2.1
+  - test: ffmpeg-6.1.0
+    option_a:
+      - libx264
+      - libx265
+      # - Test All Options
+    option_b:
+      - Live
+      - Upload
+      - Platform
+      - Video On Demand
+      # - Upload # this is duplicate to the second
+      # - Test All Options
   - test: fftw-1.2.0
     option_a:
       - Stock
