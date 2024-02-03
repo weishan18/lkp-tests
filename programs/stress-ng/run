@@ -92,7 +92,7 @@ setup_test()
 		# 081aa00e16a9 ("tests/stress-ng: sleep 2s before run_test to fix stress-ng-aiol open fail")
 		sleep 2
 		;;
-	"bad_ioctl"|"sysinval"|"cpu-online"|"mlockmany"|"oom-pipe"|"bind-mount"|"watchdog"|"smi")
+	"bad-ioctl"|"sysinval"|"cpu-online"|"mlockmany"|"oom-pipe"|"bind-mount"|"watchdog"|"smi")
 		common_opts="${common_opts} --pathological"
 		;;
 	*)
@@ -107,7 +107,7 @@ run_test()
 	if [ -n "$test" ]; then
 		setup_test || die "setup test failed"
 
-		if [ "$test" = "exec" ] || [ "$test" = "spawn" ] || [ "$test" = "bad_ioctl" ]; then
+		if [ "$test" = "exec" ] || [ "$test" = "spawn" ] || [ "$test" = "bad-ioctl" ]; then
 			# these stressors need to be running without root privilege
 			mkdir /home/lkp && chown -R lkp:lkp /home/lkp
 			log_cmd su - lkp -s /bin/bash -c "stress-ng --timeout $testtime --times --verify --metrics --$test $nr_threads 2>&1"
