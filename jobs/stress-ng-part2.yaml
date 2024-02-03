@@ -65,6 +65,7 @@ stress-ng:
     - mmaphuge
     - mmapmany
     - module
+    - monte-carlo
     - mprotect
     - mpfr
     - mq
