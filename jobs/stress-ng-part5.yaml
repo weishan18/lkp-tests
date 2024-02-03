@@ -44,7 +44,7 @@ stress-ng:
     - vnni
     - wait
     - waitcpu
-    - watchdog
+    # - watchdog # watchdog: /dev/watchdog does not exist, skipping test
     - wcs
     - workload
     - x86cpuid
