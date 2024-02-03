@@ -51,18 +51,11 @@ class StressorStater
     # stress-ng: metrc: [5237] udp-flood           1097.62 sendto calls per sec (geometric mean of 128 instances)
     # stress-ng: metrc: [5237] udp-flood            100.00 % sendto calls succeeded (geometric mean of 128 instances)
     # stress-ng: metrc: [4382] flock               1883.42 nanosecs per flock unlock call (harmonic mean of 6 instances)
-    return unless line =~ /stress-ng: (info|metrc):.*\((average|geometr?ic mean|harmonic mean)/
-
-    items = line.split
+    items = line.sub(/ \((average|geometr?ic mean|harmonic mean).*\)$/, '')
+                .split
 
     # unit is "write128_MB/sec" and it has variable length
-    unit = line.split(/ \((average|geometr?ic mean|harmonic mean)/)[0]
-               .split(/ \d/, 2)[1]
-               .to_s
-               .split(/\d /, 2)[1]
-               .to_s
-               .rstrip
-               .tr(' ', '_')
+    unit = items[5..-1].join('_')
 
     stressor = items[3]
 
