@@ -817,7 +817,6 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - opencv-bench-1.0.0
-    - openems-1.0.0
   - test: openfoam-1.2.0
     option_a:
       - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
@@ -885,3 +884,9 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - ospray-studio-1.2.0
+
+---
+phoronix-test-suite:
+  - test: openems-1.0.0
+
+timeout: 30m
