@@ -717,7 +717,7 @@ run_test()
 		sqlite-[0-9]*)
 			fixup_sqlite $test || die "failed to fixup test $test"
 			;;
-		cyclictest-*|parboil-*|cp2k-*|llvm-test-suite-*|blender-*|svt-av1-*|helsing-*|build-gcc-*|core-latency-*|jxrendermark-*|renaissance-*|openems-*)
+		cyclictest-*|parboil-*|cp2k-*|llvm-test-suite-*|blender-*|svt-av1-*|helsing-*|build-gcc-*|core-latency-*|jxrendermark-*|renaissance-*|openems-*|openvkl-*)
 			# 96 cpu, 128G memory tbox, run once cost about
 			# cyclictest-1.0.0: 2m
 			# cp2k-1.2.0: 30m
@@ -730,6 +730,7 @@ run_test()
 			#
 			# 96 cpu, 512G memory tbox, run once cost about
 			# openems-1.0.0: 22m
+			# openvkl-2.0.0: 12m
 			reduce_runtimes $test || die "failed to reduce run times when run $test"
 			;;
 		blogbench-*)
