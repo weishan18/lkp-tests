@@ -19,3 +19,5 @@ phoronix-test-suite:
       # - CUDA # need CUDA compatible hardware
       # - NVIDIA OptiX # need NVIDIA compatible hardware
       # - Test All Options
+
+timeout: 1h

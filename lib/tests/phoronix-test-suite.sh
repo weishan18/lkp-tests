@@ -727,6 +727,7 @@ run_test()
 			# 12 cpu, 16G memory tbox, run once cost about
 			# jxrendermark-1.2.4: 3m
 			# blender-1.9.0: 14m
+			# blender-4.0.0: 43m
 			#
 			# 96 cpu, 512G memory tbox, run once cost about
 			# openems-1.0.0: 22m
