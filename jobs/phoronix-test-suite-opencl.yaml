@@ -40,11 +40,6 @@ phoronix-test-suite:
       - CPU-only
       - OpenCL
       # - Test All Options
-  - test: gpu-residency-1.0.2
-    option_a:
-      - RC6
-      - RC6P
-      # - Test All Options
   - test: parboil-1.2.1
     option_a:
       - OpenMP CUTCP
