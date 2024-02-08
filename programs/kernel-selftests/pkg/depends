@@ -2,7 +2,6 @@ gcc
 g++
 gcc-multilib
 xz-utils
-dwarves
 libbpf-dev
 libc6-dev
 libc-bin
@@ -32,6 +31,8 @@ libnuma-dev
 libmount-dev
 libpci3
 libelf-dev
+libdw-dev
+libdwarf-dev
 libfuse-dev
 gcc-multilib
 pkg-config
@@ -85,6 +86,7 @@ arping
 linux-perf
 file
 clang
+lld
 libclang-dev
 llvm-dev
 attr

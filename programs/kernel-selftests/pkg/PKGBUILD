@@ -4,8 +4,8 @@ pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 license=('GPL')
-source=('https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git')
-md5sums=('SKIP')
+source=('https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git' 'https://git.kernel.org/pub/scm/devel/pahole/pahole.git')
+md5sums=('SKIP' 'SKIP')
 
 # Download kernel from git.kernel.org.
 # If the kernel has been download into the computer, you can copy it to ${srcdir}.
@@ -43,6 +43,17 @@ build_tools()
 	make
 }
 
+build_pahole()
+{
+	cd "${srcdir}/pahole"
+
+	mkdir build
+	cd build
+	mkdir -p $pkgdir/usr
+	cmake -D__LIB=lib -DCMAKE_INSTALL_PREFIX=$pkgdir/usr ..
+	make install
+}
+
 install_selftests()
 {
 	cd "${srcdir}/linux"
@@ -72,6 +83,7 @@ build()
 	benchmark_path="${pkgdir}/lkp/benchmarks/${pkgname}"
 	mkdir -p "${benchmark_path}"
 	build_tools
+	build_pahole
 	install_selftests
 }
 

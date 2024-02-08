@@ -3,6 +3,8 @@ libpci-dev
 gettext
 systemd
 libelf-dev
+libdw-dev
+libdwarf-dev
 libudev1
 libudev-dev
 pkg-config
@@ -19,3 +21,4 @@ automake
 libtool
 m4
 libbpf-dev
+cmake
