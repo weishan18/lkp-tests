@@ -61,14 +61,14 @@ phoronix-test-suite:
       - 4 # OpenMP Streamcluster   [Data Mining]
       - 5 # OpenMP HotSpot3D       [Physics Simulation]
       # - 6 # Test All Options
-  - test: geekbench-6.1.0
-    option_a:
-      - CPU Single Core
-      - CPU Multi Core
-      - GPU OpenCL
-      - GPU Apple Metal
-      - GPU NVIDIA CUDA # not supported and not display
-      - GPU Vulkan
+  # - test: geekbench-6.1.0 # requires registration for a license
+    # option_a:
+      # - CPU Single Core
+      # - CPU Multi Core
+      # - GPU OpenCL
+      # - GPU Apple Metal
+      # - GPU NVIDIA CUDA # not supported and not display
+      # - GPU Vulkan
       # - Test All Options
   - test:
     - xsbench-cl-1.0.0
