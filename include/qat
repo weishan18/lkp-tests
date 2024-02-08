@@ -5,4 +5,4 @@ need_kconfig:
 - CRYPTO_MANAGER: y
 - CRYPTO_MANAGER2: y
 
-rootfs: debian-12-x86_64-20220629.cgz
+rootfs: debian-12-x86_64-20240206.cgz
