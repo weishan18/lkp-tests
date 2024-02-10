@@ -110,7 +110,7 @@ run_test()
 		if [ "$test" = "exec" ] || [ "$test" = "spawn" ] || [ "$test" = "bad-ioctl" ]; then
 			# these stressors need to be running without root privilege
 			mkdir /home/lkp && chown -R lkp:lkp /home/lkp
-			log_cmd su - lkp -s /bin/bash -c "stress-ng --timeout $testtime --times --verify --metrics --$test $nr_threads 2>&1"
+			log_cmd su - lkp -s /bin/bash -c "stress-ng $common_opts --$test $nr_threads 2>&1"
 		else
 			log_cmd stress-ng $common_opts --$test $nr_threads 2>&1
 		fi
