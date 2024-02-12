@@ -83,6 +83,7 @@ phoronix-test-suite\..+\.average_msg_sec: 1
 phoronix-test-suite\..+\.average_usec: 1
 phoronix-test-suite\..+\.billion_interactions_s: 1
 phoronix-test-suite\..+\.bogo_ops_s: 1
+phoronix-test-suite\..+\.byte_s: 1
 phoronix-test-suite\..+\.cg_mflops: 1
 phoronix-test-suite\..+\.clocks: -1
 phoronix-test-suite\..+\.cycles_per_byte: 1
@@ -116,8 +117,11 @@ phoronix-test-suite\..+\.k_s: 1
 phoronix-test-suite\..+\.lookups_s: 1
 phoronix-test-suite\..+\.loop_time: -1
 phoronix-test-suite\..+\.lps: 1
+phoronix-test-suite\..+\.major_kernels_total_rate: 1
+phoronix-test-suite\..+\.marks: 1
 phoronix-test-suite\..+\.mbits_sec: 1
 phoronix-test-suite\..+\.mbytes_s: 1
+phoronix-test-suite\..+\.mbyte_s: 1
 phoronix-test-suite\..+\.mb_s: 1
 phoronix-test-suite\..+\.megapixels_sec: 1
 phoronix-test-suite\..+\.mflops: 1
@@ -136,6 +140,7 @@ phoronix-test-suite\..+\.mp_s: 1
 phoronix-test-suite\..+\.ms: -1
 phoronix-test-suite\..+\.msec: -1
 phoronix-test-suite\..+\.ms_average: -1
+phoronix-test-suite\..+\.mt_s: 1
 phoronix-test-suite\..+\.m_samples_s: 1
 phoronix-test-suite\..+\.m_samples_sec: 1
 phoronix-test-suite\..+\.nanoseconds: -1
@@ -152,6 +157,7 @@ phoronix-test-suite\..+\.points: -1
 phoronix-test-suite\..+\.quips: 1
 phoronix-test-suite\..+\.real_c_s: 1
 phoronix-test-suite\..+\.records_s: 1
+phoronix-test-suite\..+\.samples: 1
 phoronix-test-suite\..+\.samples_sec: 1
 phoronix-test-suite\..+\.score: 1
 phoronix-test-suite\..+\.sec: -1
