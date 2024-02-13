@@ -20,7 +20,9 @@
 # Author: Fengguang Wu <fengguang.wu@intel.com>
 # Credit: Tony Breeds <tony@bakeyournoodle.com> for crosstool
 
-lkp_src_kbuild=$(dirname $0)
+set -e
+
+lkp_src_kbuild=$(dirname "$(realpath "$0")")
 
 source $lkp_src_kbuild/kbuild.sh
 
