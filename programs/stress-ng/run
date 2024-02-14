@@ -31,13 +31,7 @@ set_common_opts()
 {
 	[ -n "$testtime" ] || testtime=1
 
-	common_opts="
-		--timeout $testtime \
-		--times \
-		--verify \
-		--metrics \
-		--no-rand-seed
-	"
+	common_opts="--timeout $testtime --times --verify --metrics --no-rand-seed"
 }
 
 # some classes need special setup
@@ -117,12 +111,7 @@ run_test()
 	else
 		setup_class || die "setup class failed"
 
-		log_cmd stress-ng \
-			$common_opts \
-			--sequential $nr_threads \
-			--class $class \
-			$stress_opts \
-			$exclude_opt 2>&1
+		log_cmd stress-ng $common_opts --sequential $nr_threads --class $class $stress_opts $exclude_opt 2>&1
 	fi
 }
 
