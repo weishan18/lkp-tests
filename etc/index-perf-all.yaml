@@ -137,6 +137,7 @@ phoronix-test-suite\..+\.mivoxels___sec: 1
 phoronix-test-suite\..+\.mpix_sec: 1
 phoronix-test-suite\..+\.mpx_s: 1
 phoronix-test-suite\..+\.mp_s: 1
+phoronix-test-suite\..+\.mrays_s: 1
 phoronix-test-suite\..+\.ms: -1
 phoronix-test-suite\..+\.msec: -1
 phoronix-test-suite\..+\.ms_average: -1
@@ -173,6 +174,7 @@ phoronix-test-suite\..+\.usec: -1
 phoronix-test-suite\..+\.us_per_event: -1
 phoronix-test-suite\..+\.verify_s: 1
 phoronix-test-suite\..+\.vgr_performance_metric: 1
+phoronix-test-suite\..+\.voices: 1
 phoronix-test-suite\..+\.z_s: 1
 pigz\.throughput: 1
 pixz\.throughput: 1
