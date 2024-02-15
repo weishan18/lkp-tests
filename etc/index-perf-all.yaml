@@ -105,6 +105,7 @@ phoronix-test-suite\..+\.giops: 1
 phoronix-test-suite\..+\.global_score: 1
 phoronix-test-suite\..+\.gmpbench_score: 1
 phoronix-test-suite\..+\.hydro_cycle_time_-_seconds: -1
+phoronix-test-suite\..+\.h_s: 1
 phoronix-test-suite\..+\.images___sec: 1
 phoronix-test-suite\..+\.iops: 1
 phoronix-test-suite\..+\.ips: 1
