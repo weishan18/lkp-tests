@@ -11,7 +11,7 @@ libdw1: libdwarves1
 libfdt-dev: libfdt-devel
 libgles2-mesa:
 libgoogle-perftools-dev:  
-libipsec-mb0:
+libipsec-mb:
 libjudy-dev: Judy-devel
 libjudydebian1: Judy
 libmpfr6: mpfr
