@@ -1,4 +1,3 @@
-libacl1-dev
 libaio1
 libapparmor1
 libattr1
@@ -10,3 +9,4 @@ libjudydebian1
 libsctp1
 libkeyutils1
 zlib1g
+libacl1
