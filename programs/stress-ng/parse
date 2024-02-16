@@ -75,7 +75,9 @@ while (line = $stdin.gets)
 
   case line
   when /(this stressor is not implemented on this system)/,
-       /(No stress workers invoked)/
+       /(No stress workers invoked)/,
+       /(all bogo-op counters are zero, data may be incorrect)/
+    # stress-ng: warn:  [4124] metrics-check: all bogo-op counters are zero, data may be incorrect
     log_warn $1
     exit 1
   when /stress-ng: fail:.*sigaction signal/
@@ -86,7 +88,6 @@ while (line = $stdin.gets)
     # stress-ng: fail:  [2694] qsort instance 51 corrupted bogo-ops counter, 18298 vs 0
     # stress-ng: fail:  [2694] qsort instance 51 hash error in bogo-ops counter and run flag, 3808369776 vs 0
     # stress-ng: fail:  [2694] metrics-check: stressor metrics corrupted, data is compromised
-    # stress-ng: warn:  [5308] metrics-check: all bogo-op counters are zero, data may be incorrect
     #
     # There's nothing need to do for other fail/warn now
     next
