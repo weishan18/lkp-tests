@@ -12,3 +12,11 @@ zlib1g-dev
 linux-libc-dev
 libbsd-dev
 libacl1-dev
+libgbm-dev
+libegl-dev
+libgles2-mesa-dev
+libkmod-dev
+libjpeg-dev
+libmpfr-dev
+libxxhash-dev
+libpthread-stubs0-dev

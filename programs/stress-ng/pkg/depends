@@ -10,3 +10,10 @@ libsctp1
 libkeyutils1
 zlib1g
 libacl1
+libgbm1
+libegl1
+libgles2
+libkmod2
+libjpeg62-turbo
+libmpfr6
+libxxhash0
