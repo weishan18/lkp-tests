@@ -2,7 +2,7 @@ suite: stress-ng
 testcase: stress-ng
 category: benchmark
 
-nr_threads: 10%
+nr_threads: 100%
 
 disk: 1HDD
 
@@ -33,7 +33,6 @@ stress-ng:
     - dup
     - eventfd
     - fallocate
-    - fanotify
     - fcntl
     - fiemap
     - file-ioctl
@@ -75,3 +74,11 @@ fs:
 stress-ng:
   test:
     - chattr
+
+---
+# Avoid issue "too many open files" when running with 100% threads on tbox with large number of cpu
+nr_threads: 10%
+
+stress-ng:
+  test:
+    - fanotify
