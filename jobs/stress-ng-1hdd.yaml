@@ -21,7 +21,6 @@ stress-ng:
     - aiol
     - bind-mount
     # - binderfs
-    - chattr
     - chdir
     - chmod
     - chown
@@ -67,3 +66,12 @@ stress-ng:
     - utime
     # - verity
     - xattr
+
+---
+# Only the ext file system support chattr system call
+fs:
+  - ext4
+
+stress-ng:
+  test:
+    - chattr
