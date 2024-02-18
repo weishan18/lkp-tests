@@ -67,7 +67,7 @@ setup_class()
 
 setup_test()
 {
-	[ -n "$disk" ] && {
+	[ -n "$fs" ] && {
 		mount_dev || return
 	}
 
