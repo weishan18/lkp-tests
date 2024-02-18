@@ -32,7 +32,7 @@ stress-ng:
     - klog
     - kvm
     - l1cache
-    - landlock
+    # - landlock # require CONFIG_SECURITY_LANDLOCK
     - led
     - list
     - llc-affinity
