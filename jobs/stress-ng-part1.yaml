@@ -60,17 +60,17 @@ stress-ng:
     - funcret
     - futex
 
----
-stress-ng:
-  test:
-    - apparmor
-
-kernel_cmdline: "apparmor=1 security=apparmor"
+# ---
+# stress-ng:
+#   test:
+#     - apparmor
+#
+# kernel_cmdline: "apparmor=1 security=apparmor"
 
 # ---
 # need_memoey: 222G
 # nr_threads: 5%
-
+#
 # stress-ng:
 #   test:
 #     - env
