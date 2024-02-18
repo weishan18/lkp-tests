@@ -9,6 +9,8 @@ need_kconfig:
 - TUN: m
 % elsif job['stress-ng']['test'] == "userfaultfd"
 - USERFAULTFD: y
+% elsif job['stress-ng']['test'] == "module"
+- TEST_LKM: m
 % end
 
 rootfs: debian-12-x86_64.cgz
