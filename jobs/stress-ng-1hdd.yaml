@@ -17,7 +17,7 @@ fs:
 stress-ng:
   test:
     - access
-    # - acl # this stressor is not implemented on this system
+    - acl
     - aiol
     - bind-mount
     # - binderfs
