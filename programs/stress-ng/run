@@ -58,7 +58,7 @@ setup_class()
 		;;
 	"vm")
 		# shellcheck disable=SC2164
-		cd ${mount_points%% *}
+		log_cmd cd ${mount_points%% *}
 		;;
 	*)
 		;;
@@ -74,7 +74,7 @@ setup_test()
 	case "$test" in
 	"swap")
 		# shellcheck disable=SC2164
-		cd ${mount_points%% *}
+		log_cmd cd ${mount_points%% *}
 		;;
 	"ping-sock")
 		log_cmd sysctl -w net.ipv4.ping_group_range="0 $nr_threads"
