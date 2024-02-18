@@ -59,6 +59,7 @@ stress-ng:
     - open
     - procfs
     - rename
+    - swap
     - symlink
     - sync-file
     - touch

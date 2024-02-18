@@ -57,7 +57,6 @@ stress-ng:
     - stackmmap
     - str
     - stream
-    - swap
     - switch
     - syncload
     - sysbadaddr
