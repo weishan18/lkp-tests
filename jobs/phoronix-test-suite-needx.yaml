@@ -5,6 +5,22 @@ category: benchmark
 need_x: true
 
 phoronix-test-suite:
+  - test:
+    - insurgency-1.2.0
+    - quadray-1.0.0
+    - sam2017-1.0.2
+    - shadowofthetombraider-1.1.0
+    - ss3bfe-1.0.0
+    - unigine-super-1.0.8
+    - vkmark-1.3.2
+    - vkresample-1.0.2
+    - xplane11-1.1.2
+    - xplane12-1.0.1
+    - realsr-ncnn-1.0.0
+    - riseofthetombraider-1.0.2
+    - talos-principle-1.2.1
+    - waifu2x-ncnn-1.0.0
+    - yquake2-1.3.0
   - test: apitest-1.1.1
     option_a:
       - 1024 x 768

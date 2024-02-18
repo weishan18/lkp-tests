@@ -74,7 +74,6 @@ phoronix-test-suite:
     # - pyopencl-1.0.0 # 3rd party url is N/A
     - qe-1.3.1
     - qmcpack-1.7.0
-    - quadray-1.0.0
     - quake2rtx-1.6.1
     - quantlib-1.2.0
     - quicksilver-1.0.0
@@ -87,7 +86,6 @@ phoronix-test-suite:
   - test:
     - rays1bench-1.0.0
     - rbenchmark-1.0.3
-    - realsr-ncnn-1.0.0
   - test: redis-1.4.0
     option_a:
       - SET
@@ -113,8 +111,9 @@ phoronix-test-suite:
       - 10 # Genetic Algorithm Using Jenetics + Futures
       # - Test All Options
   - test:
-    - riseofthetombraider-1.0.2
     - rnnoise-1.0.2
+    # - rust-prime-1.0.0 # install failed
+    # - sample-program-1.1.1 # not an available test
   - test: rocksdb-1.5.0
     option_a:
       - Sequential Fill
@@ -123,10 +122,6 @@ phoronix-test-suite:
       - Random Read
       - Read While Writing
       # - Test All Options
-  - test:
-    # - rust-prime-1.0.0 # install failed
-    - sam2017-1.0.2
-    # - sample-program-1.1.1 # not an available test
   - test: schbench-1.1.0
     option_a: # message threads
       - 2
@@ -159,7 +154,6 @@ phoronix-test-suite:
   - test:
     - securemark-1.0.0
     # - serial-loopback-1.0.2 # need to really plug to serial ports
-    - shadowofthetombraider-1.1.0
     - simdjson-2.0.1
     - smallpt-1.2.1
     # - smart-1.0.0 # depending on the health of hard disk, may cost long time
@@ -198,7 +192,6 @@ phoronix-test-suite:
       # - /opt/rootfs
   - test:
     - srsran-2.1.0
-    - ss3bfe-1.0.0
     - stargate-1.1.0
     - startup-time-1.4.1
     - stockfish-1.4.0
@@ -301,7 +294,6 @@ phoronix-test-suite:
   - test:
     - t-test1-1.0.1
     - tachyon-1.3.0
-    - talos-principle-1.2.1
     # - thronesofbritannia-1.0.0 # install failed
     - tinymembench-1.0.2
   - test: tiobench-1.3.1
@@ -339,15 +331,12 @@ phoronix-test-suite:
       - Volumetric Caustic
       # - Test All Options
   - test:
-    - unigine-super-1.0.8
     - unpack-firefox-1.0.0
     - unpack-linux-1.2.0
     - uvg266-1.0.0
     # - v-ray-1.0.2 # 3rd party url is N/A
     - viennacl-1.1.0
-    - vkmark-1.3.2
     - vkpeak-1.1.0
-    - vkresample-1.0.2
   - test: vpxenc-3.2.0
     option_a:
       - Speed 5 [Fastest - Default]
@@ -355,16 +344,12 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - vvenc-1.9.1
-    - waifu2x-ncnn-1.0.0
     - webp-1.2.0
     - whisper-cpp-1.0.0
     # - x264-2.5.0 # not an available test
     # - x265-1.3.0 # install failed
     - xmrig-1.2.0
-    - xplane11-1.1.2
-    - xplane12-1.0.1
     - xsbench-1.0.0
-    - yquake2-1.3.0
     - yugabytedb-1.0.0
     # - y-cruncher-1.1.0 # install failed
     - amg-1.1.0
