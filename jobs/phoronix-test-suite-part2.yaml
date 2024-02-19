@@ -182,12 +182,12 @@ phoronix-test-suite:
     - speedtest-cli-1.0.0
   - test: sqlite-2.2.0
     option_a: # threads per copy
-      - 1
-      # - 8
-      # - 32
-      # - 64
-      - 128
-      # - Test All Options
+      - 1 # 1
+      - 2 # 2
+      - 3 # 4
+      - 4 # 8
+      - 5 # 12
+      # - 6 # Test All Options
   - test:
     - sqlite-speedtest-1.0.1
       # - test: startup-time-1.4.1
