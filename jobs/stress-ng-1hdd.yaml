@@ -58,6 +58,7 @@ stress-ng:
     - mknod
     - open
     - procfs
+    - rawdev
     - rename
     - swap
     - symlink

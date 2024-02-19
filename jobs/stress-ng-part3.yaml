@@ -45,7 +45,6 @@ stress-ng:
     - radixsort
     - randlist
     - ramfs
-    - rawdev
     - rawpkt
     - rawsock
     - rawudp
