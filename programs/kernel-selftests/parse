@@ -184,6 +184,27 @@ class NetStater < Stater
     if @test_script == 'test_vxlan_mdb.sh'
       # selftests: net: test_vxlan_mdb.sh
       case line
+      when /^# TEST: (Flush by unspecified UDP destination port)\s+\[\s*(OK|FAIL|SKIP)\s*\]/,
+           /^# TEST: (Flush by unspecified destination VNI)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
+        # Control path: Flush
+        # -------------------
+        # TEST: Flush by unspecified destination IP - IPv6                    [ OK ]
+        # TEST: Flush by specified UDP destination port                       [ OK ]
+        # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
+        # TEST: Flush by device's UDP destination port                        [ OK ]
+        # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
+        # TEST: Flush by specified destination VNI                            [ OK ]
+        # TEST: Flush by specified destination VNI                            [ OK ]
+        # TEST: Flush by unspecified destination VNI                          [ OK ]   <--
+        # TEST: Flush by destination VNI equal to source VNI                  [ OK ]
+        # TEST: Flush by unspecified destination VNI                          [ OK ]   <--
+        # TEST: Flush by VLAN ID                                              [ OK ]
+        stat_name = "#{@test_prefix}.#{@test_case}.#{$1}"
+        if stats.key? stat_name
+          stats.add "#{stat_name}_1", $2
+        else
+          stats.add stat_name, $2
+        end
       when /^# TEST: (.+?)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
         # TEST: IP multicast - first VTEP                                     [ OK ]
         stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2
