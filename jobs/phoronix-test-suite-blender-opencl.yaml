@@ -9,8 +9,8 @@ phoronix-test-suite:
     option_a:
       - BMW27
       - Classroom
-      # - Fishy Cat
-      # - Pabellon Barcelona
+      # - Fishy Cat # elapsed_time: 2935s
+      # - Pabellon Barcelona # elapsed_time: 3164s
       - Barbershop
       # - Test All Options
     option_b:
