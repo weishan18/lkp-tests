@@ -5,10 +5,9 @@ category: benchmark
 phoronix-test-suite:
   - test: arrayfire-1.2.0
     option_a:
-      - BLAS CPU
+      - BLAS CPU FP32
+      - BLAS CPU FP16
       - Conjugate Gradient CPU
-      - BLAS OpenCL
-      - Conjugate Gradient OpenCL
       # - Test All Options
   - test: askap-2.1.0
     option_a:
