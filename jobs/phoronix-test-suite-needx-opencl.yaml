@@ -13,8 +13,6 @@ phoronix-test-suite:
       # - Test All Options
   - test: financebench-1.1.1
     option_a:
-      - Black-Scholes OpenCL
-      - Monte-Carlo OpenCL
       - Bonds OpenMP
       - Repo OpenMP
       # - Test All Options
