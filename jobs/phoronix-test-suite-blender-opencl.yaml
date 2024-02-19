@@ -15,9 +15,7 @@ phoronix-test-suite:
       # - Test All Options
     option_b:
       - CPU-Only
-      - OpenCL
-      # - CUDA # need CUDA compatible hardware
-      # - NVIDIA OptiX # need NVIDIA compatible hardware
+      - Intel oneAPI
       # - Test All Options
 
 timeout: 1h
