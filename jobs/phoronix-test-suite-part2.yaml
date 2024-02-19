@@ -94,6 +94,11 @@ phoronix-test-suite:
       - LPOP
       - SADD
       # - Test All Options
+    option_b:
+      - 50
+      - 500
+      - 1000
+      # - Test All Options
   - test:
     - redshift-1.0.1
     - remhos-1.0.0
