@@ -339,8 +339,12 @@ phoronix-test-suite:
     - vkpeak-1.1.0
   - test: vpxenc-3.2.0
     option_a:
-      - Speed 5 [Fastest - Default]
-      - Speed 0 [Slowest]
+      - 1 # Speed 5 [Fastest - Default]
+      - 2 # Speed 0 [Slowest]
+      # - 3 # Test All Options
+    option_b:
+      - Bosphorus 1080p
+      - Bosphorus 4K
       # - Test All Options
   - test:
     - vvenc-1.9.1
