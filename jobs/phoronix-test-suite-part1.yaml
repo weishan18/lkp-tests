@@ -441,7 +441,6 @@ phoronix-test-suite:
     - hadoop-1.0.0
     - hammerdb-postgresql-1.1.1
     - hashcat-1.1.1
-    - hbase-1.1.0
     - hdparm-read-1.0.0
     - heffte-1.1.0
     - himeno-1.3.0
