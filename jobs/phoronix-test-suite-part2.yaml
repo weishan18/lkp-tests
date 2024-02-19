@@ -228,8 +228,27 @@ phoronix-test-suite:
       - MEMFD
       - MMAP
       - NUMA
-      - RdRand
+      - x86_64 RdRand
       - SENDFILE
+      - IO_uring
+      - Futex
+      - Mutex
+      - Function Call
+      - Poll
+      - Hash
+      - Pthread
+      - Zlib
+      - Floating Point
+      - Fused Multiply-Add
+      - Pipe
+      - Matrix 3D Math
+      - AVL Tree
+      - Vector Floating Point
+      - Vector Shuffle
+      - Wide Vector Math
+      - Cloning
+      - AVX-512 VNNI
+      - Mixed Scheduler
       # - Test All Options
   - test:
     - stressapptest-1.0.1
