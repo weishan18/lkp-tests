@@ -31,14 +31,21 @@ phoronix-test-suite:
     - petsc-1.0.0
   - test: pgbench-1.14.0
     option_a:
-      - Buffer Test
-      # - Mostly RAM # need more than 3h
-      # - On-Disk # need more than 3h
-      # - Test All Options
+      - 1 # 1
+      - 2 # 100
+      - 3 # 1000
+      - 4 # 10000
+      - 5 # 25000 [Intended for very large servers.]
+      # - 6 # Test All Options
     option_b:
-      - Single Thread
-      - Normal Load
-      # - Heavy Contention
+      - 1
+      - 50
+      - 100
+      - 250
+      - 500
+      - 800
+      - 1000
+      - 5000
       # - Test All Options
     option_c:
       - Read Write
