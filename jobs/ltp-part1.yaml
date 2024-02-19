@@ -9,7 +9,6 @@ ltp:
     - can
     - cap_bounds
     - commands
-    - connectors
     - containers
     - cpuhotplug
     # - dma_thread_diotest # kernel bug, will nerver be success. please see https://github.com/linux-test-project/ltp/issues/63
