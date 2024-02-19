@@ -8,7 +8,8 @@ while (line = $stdin.gets)
   next unless summary_start
 
   # cet_tests.sh -t cp_test -n glibc_shstk_test -k "control protection" -p s2    FAIL      1           1.231s
-  next unless line =~ /^(.+)\s+(FAIL|BLOCK|PASS|NA)\s+(\d+)\s+(.+)s/
+  # [RESULT][intel_sst.sh -t isst_pp_config_enable_status]                       [BLOCK]   [2]         [1.174s]
+  next unless line =~ /^(.+)\s+(FAIL|BLOCK|PASS|NA)\s+(\d+)\s+(.+)s/ || line =~ /^\[RESULT\]\[(.+)\]\s+\[(FAIL|BLOCK|PASS|NA)\]\s+\[(\d+)\]\s+\[(.+)s\]/
 
   testcase = $1
   result = $2
