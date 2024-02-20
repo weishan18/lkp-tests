@@ -8,3 +8,5 @@ x11-apps
 libx11-6
 freeglut3
 libgl1-mesa-dri
+xinit
+xorg
