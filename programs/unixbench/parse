@@ -22,19 +22,21 @@ while (line = $stdin.gets)
                else
                  end_time + 3600 * 24 - start_time # date overflow
                end
-  when /^(System|2D Graphics|3D Graphics) Benchmarks .*Index .* INDEX$/
+  when /^.+ Benchmarks .*Index .* INDEX$/
     # System Benchmarks Partial Index              BASELINE       RESULT    INDEX
     # 2D Graphics Benchmarks Partial Index         BASELINE       RESULT    INDEX
     # 3D Graphics Benchmarks Index Values          BASELINE       RESULT    INDEX
+    # Non-Index Benchmarks Partial Index           BASELINE       RESULT    INDEX
     line = $stdin.gets
     line = line.chomp.resolve_invalid_bytes
 
     throughput = line.split[-2].to_f unless line.empty?
-  when /^.+? ([\d.]+) KBps\s+\([\d.]+ s, \d+ samples?\)/
+  when /^.+? ([\d.]+) (KBps|lps)\s+\([\d.]+ s, \d+ samples?\)/
     # File Write 1024 bufsize 2000 maxblocks      3121976.0 KBps  (30.0 s, 7 samples)
     # File Read 1024 bufsize 2000 maxblocks     438625975.6 KBps  (30.0 s, 7 samples)
+    # Recursion Test -- Tower of Hanoi           16724188.3 lps   (20.0 s, 7 samples)
     throughput = $1.to_f
-  when /^(System|2D Graphics|3D Graphics) Benchmarks Index Score .* ([0-9.]+)$/
+  when /^.+ Benchmarks Index Score .* ([0-9.]+)$/
     score = $2
   end
 end
