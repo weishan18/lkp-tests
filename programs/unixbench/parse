@@ -8,39 +8,40 @@ require "#{LKP_SRC}/lib/log"
 require "#{LKP_SRC}/lib/string_ext"
 require 'time'
 
-# Benchmark run time format displayed as below:
-# Benchmark Run: Tue Jan 01 2019 15:48:24 - 15:56:36
-
 while (line = $stdin.gets)
-  line = line.resolve_invalid_bytes
+  line = line.chomp.resolve_invalid_bytes
 
-  case line.chomp!
+  case line
   when /^Benchmark Run: .+ (\d+:\d+:\d+) - (\d+:\d+:\d+)$/
-# We only care about the difference value between end time and start time
+    # Benchmark Run: Tue Jan 01 2019 15:48:24 - 15:56:36
+    # We only care about the difference value between end time and start time
     start_time = Time.parse($1).to_f
     end_time = Time.parse($2).to_f
     duration = if end_time > start_time
                  end_time - start_time
                else
-                 end_time + 3600 * 24 - start_time # date overflo
+                 end_time + 3600 * 24 - start_time # date overflow
                end
-  when /^System Benchmarks Partial Index .* INDEX$/
+  when /^(System|2D Graphics|3D Graphics) Benchmarks .*Index .* INDEX$/
+    # System Benchmarks Partial Index              BASELINE       RESULT    INDEX
+    # 2D Graphics Benchmarks Partial Index         BASELINE       RESULT    INDEX
+    # 3D Graphics Benchmarks Index Values          BASELINE       RESULT    INDEX
     line = $stdin.gets
-    if line.chomp!
-      lines = line.split
-      throughput = lines[-2].to_f
-    end
+    line = line.chomp.resolve_invalid_bytes
+
+    throughput = line.split[-2].to_f unless line.empty?
   when /^.+? ([\d.]+) KBps\s+\([\d.]+ s, \d+ samples?\)/
     # File Write 1024 bufsize 2000 maxblocks      3121976.0 KBps  (30.0 s, 7 samples)
+    # File Read 1024 bufsize 2000 maxblocks     438625975.6 KBps  (30.0 s, 7 samples)
     throughput = $1.to_f
-  when /^System Benchmarks Index Score .* ([0-9.]+)$/
-    score = $1
+  when /^(System|2D Graphics|3D Graphics) Benchmarks Index Score .* ([0-9.]+)$/
+    score = $2
   end
 end
 
 if duration.nil? || throughput.nil?
-  log_error 'unixbench: missing duration or throughput'
-  exit
+  log_error 'miss duration or throughput'
+  exit 1
 end
 
 workload = duration * throughput
