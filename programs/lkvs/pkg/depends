@@ -13,3 +13,4 @@ make
 msr-tools
 stress
 trace-cmd
+cpuid
