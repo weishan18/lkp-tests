@@ -1,2 +1,9 @@
 pkg-config
 libmariadbclient-dev
+automake
+make
+libtool
+pkg-config
+libaio-dev
+libssl-dev
+libpq-dev
