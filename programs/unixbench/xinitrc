@@ -11,7 +11,7 @@
 . $LKP_SRC/lib/reproduce-log.sh
 . $LKP_SRC/lib/upload.sh
 
-cd $BENCHMARK_ROOT/unixbench || die "no $BENCHMARK_ROOT/unixbench"
+cd $BENCHMARK_ROOT/unixbench/UnixBench || die "no $BENCHMARK_ROOT/unixbench/UnixBench dir"
 
 export LANG=C
 
@@ -24,7 +24,9 @@ iteration=$(( runtime / 10 ))
 
 [ -n "$nr_task" ] && other_params="-c $nr_task"
 
-cd UnixBench || exit
-log_cmd ./Run $test $other_params -i $iteration || exit
+log_cmd ./Run $test $other_params -i $iteration
+exit_status=$?
 
 upload_files -t results $BENCHMARK_ROOT/unixbench/UnixBench/results/*
+
+exit $exit_status
