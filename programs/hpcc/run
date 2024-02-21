@@ -1,4 +1,5 @@
 #!/bin/sh
+# - nr_processes
 
 ## The mpirun command controls several aspects of program
 ## execution in Open MPI. mpirun uses the Open Run-Time
@@ -7,6 +8,8 @@
 cd /tmp || exit
 cp -a /usr/share/doc/hpcc/examples/_hpccinf.txt hpccinf.txt
 
-log_cmd orterun --allow-run-as-root -np $nr_cpu hpcc
+[ -n "$nr_processes" ] || nr_processes=$nr_cpu
+
+log_cmd orterun --allow-run-as-root -np $nr_processes hpcc
 
 cat /tmp/hpccoutf.txt
