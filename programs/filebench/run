@@ -14,6 +14,11 @@ task=$(cat /$TMP_RESULT_ROOT/filebench.task)
 $task
 exit_status=$?
 
+# Sleep to wait for nfs to complete the write. The 100s is chosen to be longer than
+# the common nfs grace period (90 seconds). This can avoid rm failure when cleaning
+# up the test data.
+log_cmd sleep 100
+
 mntpoint=${mount_points%% *}
 # Remove all files/directories created by test
 ls -d ${mntpoint:?}/*
