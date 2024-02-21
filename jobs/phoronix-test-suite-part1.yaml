@@ -31,7 +31,6 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - asmfish-1.1.2
-    - bioshock-infinite-1.0.2
     - blake2-1.2.2
   - test: blogbench-1.1.0
     option_a:
