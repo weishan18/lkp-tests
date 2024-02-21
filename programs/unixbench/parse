@@ -37,7 +37,7 @@ while (line = $stdin.gets)
     # Recursion Test -- Tower of Hanoi           16724188.3 lps   (20.0 s, 7 samples)
     throughput = $1.to_f
   when /^.+ Benchmarks Index Score .* ([0-9.]+)$/
-    score = $2
+    score = $1.to_f
   end
 end
 
