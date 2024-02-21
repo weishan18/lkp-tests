@@ -72,6 +72,9 @@ setup_test()
 	}
 
 	case "$test" in
+	"swap")
+		common_opts="${common_opts} --temp-path /mnt/stress-ng"
+		;;
 	"ping-sock")
 		log_cmd sysctl -w net.ipv4.ping_group_range="0 $nr_threads"
 		;;
