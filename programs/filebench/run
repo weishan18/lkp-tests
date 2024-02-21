@@ -12,7 +12,11 @@ task=$(cat /$TMP_RESULT_ROOT/filebench.task)
 . $LKP_SRC/lib/reproduce-log.sh
 
 $task
+exit_status=$?
 
 mntpoint=${mount_points%% *}
 # Remove all files/directories created by test
-rm -rf ${mntpoint:?}/*
+ls -d ${mntpoint:?}/*
+log_cmd rm -rf ${mntpoint:?}/*
+
+exit $exit_status
