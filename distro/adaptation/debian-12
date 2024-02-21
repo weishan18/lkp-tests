@@ -19,7 +19,7 @@ btrfs-tools: btrfs-progs
 libreadline5: readline-common
 libntfs: libntfs-3g89
 libtirpc: libtirpc-common
-libicu: libicu71
+libicu: libicu72
 libjson: libjson-c5
 python3-crypto: python3-pycryptodome
 python-docutils: python3-docutils
@@ -33,3 +33,5 @@ lib64asan3: lib64asan6
 exfat-utils: exfatprogs
 dwarves: pahole
 libipsec-mb: libipsec-mb1
+libssl: libssl3
+libmysqlclient-dev: default-libmysqlclient-dev
