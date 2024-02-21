@@ -1,5 +1,5 @@
 need_kconfig:
-% if job['stress-ng']['class'] == "security"
+% if job['stress-ng']['class'] == "security" || job['stress-ng']['test'] == "apparmor"
 - SECURITY: y
 - NET: y
 - SECURITY_APPARMOR: y
