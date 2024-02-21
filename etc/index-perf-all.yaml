@@ -175,6 +175,7 @@ phoronix-test-suite\..+\.usec: -1
 phoronix-test-suite\..+\.us_per_event: -1
 phoronix-test-suite\..+\.verify_s: 1
 phoronix-test-suite\..+\.vgr_performance_metric: 1
+phoronix-test-suite\..+\.vkmark_score: 1
 phoronix-test-suite\..+\.voices: 1
 phoronix-test-suite\..+\.z_s: 1
 pigz\.throughput: 1
