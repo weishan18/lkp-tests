@@ -222,5 +222,6 @@ detect_system()
 get_system_arch()
 {
 	detect_system_arch
+	[ "$_system_arch" = "unknown" ] && _system_arch=x86_64
 	echo $_system_arch
 }
