@@ -67,3 +67,4 @@ telnetd-ssl
 dwarves
 ima-evm-utils
 squashfs-tools
+nfs-kernel-server
