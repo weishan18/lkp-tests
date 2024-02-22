@@ -14,7 +14,7 @@ device-dax: ndctl
 eatmem: vm-scalability
 ebizzy::
 filebench::
-fileio::
+sysbench-fileio::
 fsmark::
 ftq::
 fwq::

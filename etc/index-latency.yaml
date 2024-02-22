@@ -1,7 +1,7 @@
 apachebench\.connection_time\..+\.max: -0.1
 apachebench\.max_latency\..+\%: -0.1
 dbench\.max_latency: -0.1
-fileio\..+\_ms: -0.2
+sysbench-fileio\..+\_ms: -0.2
 fio\..+\%: -0.1
 ftq\.stddev: -0.1
 fwq\.stddev: -0.1

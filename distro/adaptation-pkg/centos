@@ -13,7 +13,7 @@ eatmem: vm-scalability
 ebizzy::
 f2fs-tools:: 
 filebench::
-fileio::
+sysbench-fileio::
 fsmark:
 ftq::
 fwq::

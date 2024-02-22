@@ -33,7 +33,7 @@ $index_latency = load_yaml "#{LKP_SRC_ETC}/index-latency-all.yaml"
 class LinuxTestcasesTableSet
   LINUX_PERF_TESTCASES =
     %w[aim7 aim9 angrybirds blogbench dbench
-       dd-write ebizzy fileio fishtank fsmark glbenchmark
+       dd-write ebizzy sysbench-fileio fishtank fsmark glbenchmark
        hackbench uperf hpcc idle iozone iperf jsbenchmark kbuild
        ku-latency linpack mlc nepim netperf netpipe
        nuttcp octane oltp openarena pbzip2 rcurefscale
