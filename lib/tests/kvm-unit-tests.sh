@@ -18,6 +18,7 @@
 # 13 [hyperv_connections]
 # 14 ...
 . $LKP_SRC/lib/env.sh
+. $LKP_SRC/lib/install.sh
 
 remove_case()
 {
@@ -38,7 +39,7 @@ remove_case()
 
 check_ignored_cases()
 {
-	local ignored_by_lkp=$LKP_SRC/pkg/"$testcase"/addon/ignored_by_lkp
+	local ignored_by_lkp=$(get_pkg_dir $testcase)/addon/ignored_by_lkp
 	[ -f "$ignored_by_lkp" ] || return
 
 	for ignore in $(cat $ignored_by_lkp | grep -v '^#')

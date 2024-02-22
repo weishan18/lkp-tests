@@ -59,7 +59,7 @@ generate_new_tests()
 {
 	benchmark_path="${pkgdir}/lkp/benchmarks/${pkgname}"
 
-	for tests in $LKP_SRC/pkg/${pkgname}/addon/tests/*
+	for tests in $(get_pkg_dir ${pkgname})/addon/tests/*
 	do
 		cat $tests | grep -v '^#' > $benchmark_path/tests/$(basename $tests)
 	done
