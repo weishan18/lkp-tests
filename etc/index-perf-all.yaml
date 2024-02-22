@@ -109,6 +109,7 @@ phoronix-test-suite\..+\.h_s: 1
 phoronix-test-suite\..+\.images___sec: 1
 phoronix-test-suite\..+\.iops: 1
 phoronix-test-suite\..+\.ips: 1
+phoronix-test-suite\..+\.items___sec: 1
 phoronix-test-suite\..+\.iterations_per_minute: 1
 phoronix-test-suite\..+\.iterations_sec: 1
 phoronix-test-suite\..+\.kb: 1
@@ -147,6 +148,7 @@ phoronix-test-suite\..+\.m_samples_s: 1
 phoronix-test-suite\..+\.m_samples_sec: 1
 phoronix-test-suite\..+\.nanoseconds: -1
 phoronix-test-suite\..+\.nanoseconds_operation: -1
+phoronix-test-suite\..+\.new_orders_per_minute: 1
 phoronix-test-suite\..+\.nodes_second: 1
 phoronix-test-suite\..+\.ns: -1
 phoronix-test-suite\..+\.ns_per_event: 1
@@ -170,9 +172,11 @@ phoronix-test-suite\..+\.throughput_fom: 1
 phoronix-test-suite\..+\.total_mop_s: 1
 phoronix-test-suite\..+\.total_score: 1
 phoronix-test-suite\..+\.tps: 1
+phoronix-test-suite\..+\.transactions_per_minute: 1
 phoronix-test-suite\..+\.us: -1
 phoronix-test-suite\..+\.usec: -1
 phoronix-test-suite\..+\.us_per_event: -1
+phoronix-test-suite\..+\.val_sec: 1
 phoronix-test-suite\..+\.verify_s: 1
 phoronix-test-suite\..+\.vgr_performance_metric: 1
 phoronix-test-suite\..+\.vkmark_score: 1
