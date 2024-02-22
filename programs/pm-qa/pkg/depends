@@ -7,3 +7,9 @@ xinit
 xorg
 glmark2
 sudo
+libdrm2
+libgbm1
+libudev1
+libwayland-cursor0
+libwayland-client0
+libwayland-egl1
