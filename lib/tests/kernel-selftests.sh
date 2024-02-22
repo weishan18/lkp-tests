@@ -272,8 +272,8 @@ fixup_net()
 	[ "$test" = "fcnal-test.sh" ] && recover_sysctl_output
 
 	export CCINCLUDE="-I../bpf/tools/include"
-	log_cmd make -j${nr_cpu} -C ../../../tools/testing/selftests/net 2>&1 || return
-	log_cmd make install INSTALL_PATH=/usr/bin/ -C ../../../tools/testing/selftests/net 2>&1 || return
+	log_cmd make -j${nr_cpu} -C net 2>&1 || return
+	log_cmd make install INSTALL_PATH=/usr/bin/ -C net 2>&1 || return
 }
 
 fixup_efivarfs()
