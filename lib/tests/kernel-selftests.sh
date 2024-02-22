@@ -273,7 +273,7 @@ fixup_net()
 
 	export CCINCLUDE="-I../bpf/tools/include"
 	log_cmd make -j${nr_cpu} -C net 2>&1 || return
-	log_cmd make install INSTALL_PATH=/usr/bin/ -C net 2>&1 || return
+	log_cmd make install TARGETS=net INSTALL_PATH=/usr/bin/ 2>&1 || return
 }
 
 fixup_efivarfs()
