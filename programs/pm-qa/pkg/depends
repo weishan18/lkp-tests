@@ -1,8 +1,7 @@
 make
-libx11-dev
-libgl1-mesa-dev
-libjpeg-dev
-libpng-dev
+libx11-6
+libgl1-mesa-dri
+libjpeg62-turbo
 libpng16-16
 xinit
 xorg
