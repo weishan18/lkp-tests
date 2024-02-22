@@ -34,6 +34,8 @@ need_kconfig:
 % elsif ___.test == "kvm"
 - KVM
 - KVM_INTEL
+% elsif ___.test == "smoketest"
+- MACSEC
 % end
 
 % if ___.test != "kvm"
