@@ -46,9 +46,10 @@ get_pkg_info()
 # due to schedule stage will auto detect symbolic link, so no need generate new link
 check_shared_pkg()
 {
-	local pkg_dir=$(get_pkg_dir $benchmark)
-	if [ -L $pkg_dir ]; then
-		basename $(readlink $pkg_dir)
+	if [ -L $LKP_SRC/pkg/$benchmark ]; then
+		basename $(readlink $LKP_SRC/pkg/$benchmark)
+	elif [ -L $LKP_SRC/programs/$benchmark/pkg ]; then
+		basename $(dirname $(readlink $LKP_SRC/programs/$benchmark/pkg))
 	else
 		echo $benchmark
 	fi
