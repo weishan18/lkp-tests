@@ -45,7 +45,7 @@ run_kbuild()
 		log_cmd scripts/config --file .config --enable CONFIG_TRIM_UNUSED_KSYMS
 
 		echo "start time: $(date +%s.%N)"
-		log_cmd make -j $parallel $target > /dev/null 2>&1 || die "make -j $parallel $target failed"
+		{ time make -j $parallel $target > /dev/null; } 2>&1 || die "make -j $parallel $target failed"
 		echo "end time: $(date +%s.%N)"
 		iterations=$((iterations + 1))
 		now=$(date +%s)
