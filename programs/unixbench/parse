@@ -43,7 +43,7 @@ end
 
 if duration.nil? || throughput.nil?
   log_error 'miss duration or throughput'
-  exit 1
+  exit
 end
 
 workload = duration * throughput
