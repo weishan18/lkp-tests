@@ -62,7 +62,6 @@ stress-ng:
     - mmapfiles
     - mmapfixed
     - mmapfork
-    - mmaphuge
     - mmapmany
     - module
     - monte-carlo
@@ -75,3 +74,10 @@ stress-ng:
     - msyncmany
     - munmap
     - mutex
+
+---
+nr_threads: 50%
+
+stress-ng:
+  test:
+    - mmaphuge
