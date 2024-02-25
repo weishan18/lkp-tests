@@ -1,10 +1,16 @@
 #!/usr/bin/env ruby
 
+LKP_SRC = ENV['LKP_SRC'] || File.dirname(File.dirname(File.dirname(File.realpath($PROGRAM_NAME))))
+
+require "#{LKP_SRC}/lib/string_ext"
+
 # the workload of kbuild is defined as the iteration number
 runtime = 0
 iterations = 0
 start_time = 0
 $stdin.each_line do |line|
+  line = line.resolve_invalid_bytes
+
   start_time = $1.to_f if line =~ /^start time: (\d+\.\d+)/
   if line =~ /^end time: (\d+\.\d+)/
     runtime += $1.to_f - start_time
