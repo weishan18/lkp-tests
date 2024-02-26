@@ -38,3 +38,4 @@ libssl: libssl3
 libmysqlclient-dev: default-libmysqlclient-dev
 openjdk: openjdk-17-jdk
 python: python3
+libprocps-dev: libproc2-dev
