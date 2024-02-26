@@ -38,3 +38,4 @@ kpartx
 iproute2
 bsdextrautils
 libsqlite3-0
+nvme-cli
