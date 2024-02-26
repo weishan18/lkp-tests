@@ -119,19 +119,19 @@ phoronix-test-suite:
       - Fullscreen
       - Windowed
       # - Test All Options
-  # - test: gtkperf-1.2.2
-  #   option_a:
-  #     - GtkComboBox
-  #     - GtkComboBoxEntry
-  #     - GtkToggleButton
-  #     - GtkCheckButton
-  #     - GtkRadioButton
-  #     - GtkTextView - Add Text
-  #     - GtkTextView - Scroll
-  #     - GtkDrawingArea - Circles
-  #     - GtkDrawingArea - Pixbufs
-  #     - Total Time
-  #     # - Test All Options
+  - test: gtkperf-1.2.2
+    option_a:
+      - GtkComboBox
+      - GtkComboBoxEntry
+      - GtkToggleButton
+      - GtkCheckButton
+      - GtkRadioButton
+      - GtkTextView - Add Text
+      - GtkTextView - Scroll
+      - GtkDrawingArea - Circles
+      - GtkDrawingArea - Pixbufs
+      - Total Time
+      # - Test All Options
   - test: indigobench-1.1.0
     option_a:
       - Supercar
