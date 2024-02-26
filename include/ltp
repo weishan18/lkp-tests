@@ -53,5 +53,3 @@ need_kconfig:
 - EXPERT: y
 - CHECKPOINT_RESTORE: y
 % end
-
-rootfs: debian-12-x86_64-20240206.cgz

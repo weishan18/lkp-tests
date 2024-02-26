@@ -29,5 +29,3 @@ need_kconfig:
 - FAIL_MAKE_REQUEST: y
 - FAULT_INJECTION_DEBUG_FS: y
 - DM_LOG_WRITES: m
-
-rootfs: debian-12-x86_64.cgz

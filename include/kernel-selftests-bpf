@@ -260,5 +260,3 @@ need_kconfig:
 - XFRM_SUB_POLICY: y
 - XFRM_USER: y
 - ZEROPLUS_FF: y
-
-rootfs: debian-12-x86_64-20240206.cgz

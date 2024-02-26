@@ -14,5 +14,3 @@ need_kconfig:
 % elsif job['stress-ng']['test'] == "sctp"
 - IP_SCTP: m
 % end
-
-rootfs: debian-12-x86_64.cgz
