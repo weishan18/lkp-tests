@@ -20,3 +20,5 @@ node.all.steal%: 0.0
 node.all.guest%: 0.0
 node.all.gnice%: 0.0
 node.all.idle%: 69.47
+max_utilization_pct: 55.980000000000004
+max_utilization.seconds: 4

@@ -90,11 +90,13 @@ rescue JSON::ParserError
   end
 end
 
+idle_pct = []
+iowait_pct = []
 results = {}
 # Every array data includes some hash type data.
 # Such as: "cpu-load" => [{"cpu" => "all", "usr" => 3.06,
 #                        "nice" => 0.00, "sys" => 5.87, ... }, {...}, ...]
-def get_array_result(prefix, array, results)
+def get_array_result(prefix, array, results, idle_pct, iowait_pct)
   array.each do |item|
     next unless item.instance_of?(Hash)
 
@@ -110,6 +112,14 @@ def get_array_result(prefix, array, results)
             else
               "#{prefix}.#{value0}.#{k_}"
             end
+
+      case k_
+      when 'idle'
+        idle_pct << item[k_]
+      when 'iowait'
+        iowait_pct << item[k_]
+      end
+
       results[key] = item[k_]
     end
   end
@@ -132,15 +142,25 @@ def display_result(hash)
   end
 end
 
+def display_max_util(idle_pct, iowait_pct)
+  utils = idle_pct.each_with_index.map { |idle, index| 100 - idle - iowait_pct[index] }
+  max_util, max_index = utils.each_with_index.max_by { |util, _index| util }
+
+  # multiplied by number of 'timestamps' as this value is printed only once
+  # and it will get average out in stats.csv
+  puts "max_utilization_pct: #{max_util * idle_pct.length}"
+  puts "max_utilization.seconds: #{(max_index + 1) * idle_pct.length}"
+end
+
 data = mpstat_hash['sysstat']['hosts'][0]['date']
 mpstat_hash['sysstat']['hosts'][0]['statistics'].each do |item|
   item.each do |k, v|
     if v.instance_of?(Array)
-      get_array_result k, v, results
+      get_array_result k, v, results, idle_pct, iowait_pct
     elsif v.instance_of?(Hash)
       v.each do |k_, v_|
         if v_.instance_of?(Array)
-          get_array_result k_, v_, results
+          get_array_result k_, v_, results, idle_pct, iowait_pct
         elsif v_.instance_of?(Hash)
           get_hash_result k_, v_, results
         else
@@ -156,3 +176,5 @@ mpstat_hash['sysstat']['hosts'][0]['statistics'].each do |item|
   end
   display_result results
 end
+
+display_max_util idle_pct, iowait_pct
