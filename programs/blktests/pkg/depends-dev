@@ -4,3 +4,4 @@ pkg-config
 gettext
 libncursesw5-dev
 uuid-runtime
+libsqlite3-dev

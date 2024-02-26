@@ -37,3 +37,4 @@ multipath-tools
 kpartx
 iproute2
 bsdextrautils
+libsqlite3-0
