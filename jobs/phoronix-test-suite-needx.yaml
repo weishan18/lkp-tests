@@ -192,17 +192,17 @@ phoronix-test-suite:
     option_b:
       - 1024 x 768
     # - prey-1.1.2 # need to download files from stream
-  # - test: qgears2-1.0.1
-  #   option_a:
-  #     - CPU-based Raster
-  #     - XRender Extension
-  #     - OpenGL
-  #     # - Test All Options
-  #   option_b:
-  #     - Gears
-  #     - Text
-  #     - Image Scaling
-  #     # - Test All Options
+  - test: qgears2-1.0.1
+    option_a:
+      - CPU-based Raster
+      - XRender Extension
+      - OpenGL
+      # - Test All Options
+    option_b:
+      - Gears
+      - Text
+      - Image Scaling
+      # - Test All Options
   # - test: qmlbench-1.0.0
   #   option_a:
   #     - Canvas Text Simple
