@@ -650,13 +650,6 @@ run_test()
 			# 3: Hotel
 			test_opt="\n2\n3\nn"
 			;;
-		ut2004-demo-*)
-			# Choose
-			# 1: ONS-Torlan Botmatch
-			# 2: 800 x 600
-			test_opt="\n6\n1\nn"
-			export DISPLAY=:0
-			;;
 		x11perf-*)
 			# Choose
 			# 1: 500px PutImage Square

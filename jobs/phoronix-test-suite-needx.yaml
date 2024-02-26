@@ -291,22 +291,7 @@ phoronix-test-suite:
     # - unvanquished-1.8.0 # this test profile is currently marked Broken
     option_a:
       - 1024 x 768
-  # - test: ut2004-demo-1.2.0
-  #   option_a:
-  #     - AS-Convoy Botmatch
-  #     - BR-Colossus Botmatch
-  #     - CTF-BridgeOfFate Botmatch
-  #     - CTF-FaceClassic Botmatch
-  #     - DM-Rankin Botmatch
-  #     - ONS-Torlan Botmatch
-  #     # - Test All Options
-    option_b:
-      - 800 x 600
-      - 1024 x 768
-      - 1280 x 1024
-      - 1680 x 1050
-      - 1920 x 1200
-      # - Test All Options
+  # - test:
     # - vdrift-1.2.0 # build with old g++ (g++-3.4)
     # - video-cpu-usage-1.2.1 # need soundcard
     # - warsow-1.5.1 # need to upgrade to newer version
