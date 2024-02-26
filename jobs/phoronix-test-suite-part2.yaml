@@ -109,19 +109,19 @@ phoronix-test-suite:
   - test:
     - redshift-1.0.1
     - remhos-1.0.0
-  - test: renaissance-1.3.0
-    option_a:
-      - 1 # Akka Unbalanced Cobwebbed Tree
-      - 2 # Savina Reactors.IO
-      - 3 # Apache Spark ALS
-      - 4 # Random Forest
-      - 5 # Apache Spark Bayes
-      - 6 # Apache Spark PageRank
-      - 7 # In-Memory Database Shootout
-      - 8 # Scala Dotty
-      - 9 # Twitter HTTP Requests
-      - 10 # Genetic Algorithm Using Jenetics + Futures
-      # - Test All Options
+  # - test: renaissance-1.3.0
+  #   option_a:
+  #     - 1 # Akka Unbalanced Cobwebbed Tree
+  #     - 2 # Savina Reactors.IO
+  #     - 3 # Apache Spark ALS
+  #     - 4 # Random Forest
+  #     - 5 # Apache Spark Bayes
+  #     - 6 # Apache Spark PageRank
+  #     - 7 # In-Memory Database Shootout
+  #     - 8 # Scala Dotty
+  #     - 9 # Twitter HTTP Requests
+  #     - 10 # Genetic Algorithm Using Jenetics + Futures
+  #     # - Test All Options
   - test:
     - rnnoise-1.0.2
     # - rust-prime-1.0.0 # install failed
