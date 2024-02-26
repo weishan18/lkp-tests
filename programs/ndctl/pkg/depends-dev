@@ -10,3 +10,6 @@ libkeyutils-dev
 meson
 asciidoctor
 libiniparser-dev
+libtraceevent-dev
+cmake
+libtracefs-dev
