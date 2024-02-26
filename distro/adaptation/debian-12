@@ -35,3 +35,5 @@ dwarves: pahole
 libipsec-mb: libipsec-mb1
 libssl: libssl3
 libmysqlclient-dev: default-libmysqlclient-dev
+openjdk: openjdk-17-jdk
+python: python3
