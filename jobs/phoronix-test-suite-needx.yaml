@@ -49,12 +49,12 @@ phoronix-test-suite:
   #     - TexturedQuadsProblem GLSBTA
   #     - TexturedQuadsProblem GLTextureArray
   #     # - Test All Options
-  # - test: cairo-perf-trace-1.0.1
-  #   option_a:
-  #     # - Firefox Canvas
-  #     # - GNOME Terminal Vim
-  #     - Poppler
-  #     # - Test All Options
+  - test: cairo-perf-trace-1.0.2
+    option_a:
+      # - Firefox Canvas # out of memory
+      # - GNOME Terminal Vim # out of memory
+      - Poppler
+      # - Test All Options
     # - cuda-mini-nbody-1.1.1 # need CUDA compatible hardware
   - test: et-1.1.0
     option_a:
