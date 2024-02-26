@@ -212,7 +212,7 @@ phoronix-test-suite:
   #     # - Test All Options
   - test:
     # - quake4-1.1.0 # need extra quake4 gamefile and key
-    # - render-bench-1.1.2
+    - render-bench-1.1.2
     # - smokin-guns-1.2.2 # need 32bit libs (libjpeg62:i386 etc), runtime > 1h
     # - specviewperf9-1.1.1 # need csh or tcsh
   # - test: selenium-top-sites-1.0.3 # not an available test
