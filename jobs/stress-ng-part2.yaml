@@ -12,7 +12,7 @@ stress-ng:
     - get
     - getrandom
     - goto
-    - gpu
+    # - gpu
     - hash
     - heapsort
     - hrtimers

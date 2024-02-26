@@ -39,7 +39,7 @@ stress-ng:
     - dev
     - dev-shm
     - dynlib
-    - eigen
+    # - eigen
     - efivar
     - enosys
     - epoll
