@@ -797,7 +797,6 @@ phoronix-test-suite:
     - nwchem-1.1.1
     # - octave-benchmark-1.0.0 # not an available test
     - oidn-2.1.0
-    - onednn-3.3.0
     - onnx-1.6.0
     - opencl-benchmark-1.0.0
   - test: opencv-1.3.0
