@@ -761,7 +761,6 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - network-loopback-1.0.3
-    # - nexuiz-iqc-1.0.0 # this test profile is currently marked Deprecated
     - nginx-3.0.1
   - test: ngspice-1.0.0
     option_a:

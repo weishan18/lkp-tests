@@ -673,9 +673,6 @@ run_test()
 			# 1: /dev/sda
 			test_opt="\n1\nn"
 			;;
-		nexuiz-*)
-			export DISPLAY=:0
-			;;
 		plaidml-*)
 			# Choose
 			# 1: No
