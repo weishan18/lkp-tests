@@ -36,12 +36,12 @@ phoronix-test-suite:
       - GPU
       - CPU+GPU
       # - Test All Options
-  # - test: mixbench-1.0.0
-  #   option_a:
-  #     - Single Precision
-  #     - Double Precision
-  #     - Integer
-  #     # - Test All Options
+  - test: mixbench-1.0.0
+    option_a:
+      - Single Precision
+      - Double Precision
+      - Integer
+      # - Test All Options
   - test: shoc-1.2.0
     option_a:
       - Bus Speed Download
