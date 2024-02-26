@@ -30,7 +30,10 @@ need_kconfig:
 % elsif ___.test == "cve-07"
 - CRYPTO_SM3
 - CRYPTO_SM3_GENERIC
+
 - SND_SEQUENCER
+- SOUND
+- SND
 % elsif ___.test == "kvm"
 - KVM
 - KVM_INTEL
