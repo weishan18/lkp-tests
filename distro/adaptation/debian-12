@@ -5,6 +5,7 @@ winpdb:
 python3-gobject:
 xfsdump:
 python-setuptools:
+crda:
 
 # reason (3)
 fsverity: fsverity
