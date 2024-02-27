@@ -12,5 +12,3 @@ need_kconfig:
 - VETH
 - BRIDGE
 - MACSEC: m
-
-rootfs: debian-11-x86_64.cgz

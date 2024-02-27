@@ -25,5 +25,3 @@ need_kconfig:
 - RDMA_SIW: m, x86_64
 - BTRFS_FS: m
 - BTRFS_FS_POSIX_ACL: y
-
-rootfs: debian-11-x86_64.cgz
