@@ -19,7 +19,7 @@ libpfm4-dev: libpfm-devel
 libpfm4: libpfm
 libpng12-dev:
 libpython2.7: python3-libs
-libpython3.9: python3-libs
+libpython3: python3-libs
 libtraceevent-dev: libtraceevent-devel
 libtraceevent1: libtraceevent
 libunwind-dev:

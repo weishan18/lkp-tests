@@ -6,6 +6,7 @@ python3-gobject:
 xfsdump:
 python-setuptools:
 crda:
+libpython2.7:
 
 # reason (3)
 fsverity: fsverity
@@ -39,3 +40,4 @@ libmysqlclient-dev: default-libmysqlclient-dev
 openjdk: openjdk-17-jdk
 python: python3
 libprocps-dev: libproc2-dev
+libpython3: libpython3.11

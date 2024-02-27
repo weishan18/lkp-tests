@@ -1,7 +1,7 @@
 # buster
 
 # reason (1)
-libpython3.9:
+libpython3:
 libtraceevent1:
 libtraceevent-dev:
 

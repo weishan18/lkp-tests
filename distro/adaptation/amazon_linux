@@ -181,7 +181,7 @@ libicu:
 libpython2.7:
 libc-dev: glibc-devel
 libtraceevent-dev:
-libpython3.9: python3-libs
+libpython3: python3-libs
 libmpfr6: mpfr
 libtraceevent1:
 libsigsegv2:

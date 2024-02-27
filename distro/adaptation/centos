@@ -159,8 +159,8 @@ libpopt-dev: popt-devel
 libpopt0: popt
 libprocps-dev: procps-ng-devel
 libprotobuf-dev: protobuf-devel
-libpython2.7: python3-libs
-libpython3.9: python3-libs
+libpython2.7:
+libpython3: python3-libs
 libquadmath0: libquadmath.x86_64
 librdmacm-dev: 
 libreadline-dev: readline-devel
