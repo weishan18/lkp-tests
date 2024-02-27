@@ -28,3 +28,5 @@ strace
 gdb
 sudo
 cmake
+libndctl-dev
+libdaxctl-dev
