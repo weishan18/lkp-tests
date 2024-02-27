@@ -34,3 +34,4 @@ libdw-dev
 libpixman-1-dev
 libcairo2-dev
 libudev-dev
+python3-venv
