@@ -41,3 +41,4 @@ openjdk: openjdk-17-jdk
 python: python3
 libprocps-dev: libproc2-dev
 libpython3: libpython3.11
+gcc: gcc-12

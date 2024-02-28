@@ -26,3 +26,4 @@ lib64asan3: lib64asan6
 lib64gcc1: lib64gcc-s1
 libipsec-mb: libipsec-mb0
 libpython3: libpython3.9
+gcc: gcc-10
