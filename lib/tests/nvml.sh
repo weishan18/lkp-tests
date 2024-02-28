@@ -104,7 +104,7 @@ enable_remote_node()
 	expect -c "set timeout -1;
         spawn ssh 127.0.0.1 exit;
         expect {
-            *(yes/no)* {send -- yes\r;exp_continue;}
+            *(yes/no*)* {send -- yes\r;exp_continue;}
         }";
 
 	return 0
