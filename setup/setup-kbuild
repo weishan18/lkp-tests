@@ -4,13 +4,6 @@
 . "$LKP_SRC"/lib/debug.sh
 . "$LKP_SRC"/lib/reproduce-log.sh
 
-# when using gcc-11 instead of gcc-9, there is this error.
-# /usr/bin/ld: scripts/dtc/dtc-parser.tab.o:(.bss+0x20): multiple definition of `yylloc'
-if [ "$(readlink /usr/bin/gcc)" != "/usr/bin/gcc-9" ]; then
-	log_cmd rm /usr/bin/gcc
-	log_cmd ln -s /usr/bin/gcc-9 /usr/bin/gcc
-fi
-
 : "${nr_instances:=1}"
 
 linux_src="$BENCHMARK_ROOT/kbuild/linux"
