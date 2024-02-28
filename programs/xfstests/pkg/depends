@@ -18,14 +18,14 @@ lvm2
 libssl
 dump
 file
-libgdbm-dev
+libgdbm6
 dbench
 uuid-runtime
 locales
 thin-provisioning-tools
 libcap2-bin
 libicu
-libgdbm-compat-dev
+libgdbm-compat4
 man-db
 gcc
 fsverity
