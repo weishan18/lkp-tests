@@ -2,4 +2,4 @@ libzmq5
 libevent-2
 memcached
 libhugetlbfs-bin
-libhugetlbfs-dev
+libhugetlbfs0
