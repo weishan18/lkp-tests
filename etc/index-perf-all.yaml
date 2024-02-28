@@ -46,7 +46,7 @@ idle\.turbostat.Busy% : -1
 iostat\..+\.wkB\/s: 1
 iozone\.average_KBps: 1
 iperf\..+\.bps: 1
-kbuild\.buildtime_per_iteration: -1
+kbuild\..+_per_iteration: -1
 kernbench\.elapsed_time: -1
 kernel-selftests\..+\.packets_per_sec: 1
 kernel-selftests\..+\.usec_per_loop: -1
