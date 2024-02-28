@@ -6,10 +6,10 @@ dkms
 flex
 openssl
 libiberty-dev
-libpci-dev
-libssl-dev
-libelf-dev
-libudev-dev
+libpci3
+libssl1.1
+libelf1
+libudev1
 libmpfr6
 libgmp10
 libsigsegv2
