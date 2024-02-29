@@ -1,6 +1,6 @@
 autoconf
-libpcre3-dev
-libevent-dev
+libpcre3
+libevent-2.1-6
 pkg-config
-zlib1g-dev
+zlib1g
 bc
