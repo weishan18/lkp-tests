@@ -6,7 +6,7 @@
 ## Environment (ORTE) to launch jobs.
 
 cd /tmp || exit
-cp -a /usr/share/doc/hpcc/examples/_hpccinf.txt hpccinf.txt
+log_cmd cp -a /usr/share/doc/hpcc/examples/_hpccinf.txt hpccinf.txt
 
 [ -n "$nr_processes" ] || nr_processes=$nr_cpu
 
