@@ -117,6 +117,18 @@ need_kconfig:
 - NFT_SYNPROXY: m
 - NF_CT_NETLINK: m
 - NF_TABLES_INET: y
+- GENEVE: m
+- INET: y
+- NETDEVICES: y
+- NET_CORE: y
+- UML: y
+- IPV6_SEG6_LWTUNNEL: y
+- CONFIG_XFRM_INTERFACE
+- XFRM: y
+- BONDING
+- IP_DCCP
+- MACVLAN
+- MACVTAP
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
