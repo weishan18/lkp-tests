@@ -123,6 +123,8 @@ need_kconfig:
 - NET_CORE: y
 - UML: y
 - IPV6_SEG6_LWTUNNEL: y
+- CONFIG_XFRM_INTERFACE
+- XFRM: y
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
