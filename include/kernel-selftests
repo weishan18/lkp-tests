@@ -127,6 +127,7 @@ need_kconfig:
 - XFRM: y
 - BONDING
 - IP_DCCP
+- MACVLAN
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
