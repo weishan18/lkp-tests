@@ -16,9 +16,6 @@
 
 parallel=$((nr_task / nr_instances))
 
-echo 'show /usr/bin'
-ls -lrt /usr/bin
-
 run_kbuild()
 {
 	start_time=$(date +%s)
