@@ -125,6 +125,7 @@ need_kconfig:
 - IPV6_SEG6_LWTUNNEL: y
 - CONFIG_XFRM_INTERFACE
 - XFRM: y
+- BONDING
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
