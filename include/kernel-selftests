@@ -126,6 +126,7 @@ need_kconfig:
 - CONFIG_XFRM_INTERFACE
 - XFRM: y
 - BONDING
+- IP_DCCP
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
