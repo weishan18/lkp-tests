@@ -122,6 +122,7 @@ need_kconfig:
 - NETDEVICES: y
 - NET_CORE: y
 - UML: y
+- IPV6_SEG6_LWTUNNEL: y
 % elsif ___.group == "livepatch"
 - DYNAMIC_DEBUG: y
 - LIVEPATCH: y
