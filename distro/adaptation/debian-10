@@ -4,6 +4,8 @@
 libpython3:
 libtraceevent1:
 libtraceevent-dev:
+libglut3:
+libglut-dev:
 
 # reason (3)
 bsdtar: libarchive-tools

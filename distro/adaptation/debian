@@ -12,8 +12,6 @@ libntfs: libntfs-3g871
 libtirpc: libtirpc1
 libssl: libssl1.1
 libasan: libasan3
-libperl5: libperl5.24
-perl-modules-5: perl-modules-5.24
 libgcc-dev: libgcc-6-dev
 openjdk: openjdk-11-jdk
 procps-ng: procps

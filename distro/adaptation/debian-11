@@ -3,6 +3,8 @@
 # reason (1)
 winpdb:
 python3-gobject:
+libglut3:
+libglut-dev:
 
 # reason (3)
 fsverity: fsverity
