@@ -10,8 +10,8 @@ url="http://www.nongnu.org/lzip/lzlib.html"
 license=('GPL3')
 depends=()
 options=('!emptydirs')
-source=(http://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.gz{,.sig}) # http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.14.tar.lz
-sha256sums=('SKIP' 'SKIP')
+source=(http://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.gz) # http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.14.tar.gz
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
