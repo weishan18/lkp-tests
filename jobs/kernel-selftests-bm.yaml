@@ -20,7 +20,7 @@ kernel-selftests:
     - net
   test:
     - fcnal-test.sh
-  atomic_test:
+  test_atomic:
     - ipv4_ping
     - ipv4_tcp
     - ipv4_udp

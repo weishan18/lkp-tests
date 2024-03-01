@@ -240,7 +240,7 @@ setup_fcnal_test_atomic()
 {
 	# fcnal-test.sh will read environment value TESTS, otherwise
 	# it will run all tests
-	export TESTS=$atomic_test
+	export TESTS=$test_atomic
 }
 
 recover_sysctl_output()
@@ -268,7 +268,7 @@ fixup_net()
 	modprobe -q fou
 	modprobe -q nf_conntrack_broadcast
 
-	[ "$test" = "fcnal-test.sh" ] && [ "$atomic_test" ] && setup_fcnal_test_atomic
+	[ "$test" = "fcnal-test.sh" ] && [ "$test_atomic" ] && setup_fcnal_test_atomic
 	[ "$test" = "fcnal-test.sh" ] && recover_sysctl_output
 
 	export CCINCLUDE="-I../bpf/tools/include"
