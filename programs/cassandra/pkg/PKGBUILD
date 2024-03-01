@@ -5,7 +5,7 @@ pkgdesc="The Apache Cassandra database is the right choice when you need scalabi
 arch=('i386' 'x86_64' 'aarch64')
 url="http://cassandra.apache.org/"
 license=(Apache)
-source=(https://www.apache.org/dyn/closer.lua/cassandra/$pkgver/$pkgname-$pkgver-bin.tar.gz)
+source=(https://dlcdn.apache.org/cassandra/$pkgver/$pkgname-$pkgver-bin.tar.gz) # https://dlcdn.apache.org/cassandra/4.1.4/apache-cassandra-4.1.4-bin.tar.gz
 md5sums=('SKIP')
 
 build()
