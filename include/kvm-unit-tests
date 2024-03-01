@@ -4,3 +4,5 @@ need_kconfig:
 - X86_INTEL_TSX_MODE_OFF: n
 - X86_INTEL_TSX_MODE_AUTO: y
 - X86_INTEL_TSX_MODE_ON: n
+
+rootfs: debian-11-x86_64.cgz
