@@ -17,7 +17,7 @@ lib32gcc-dev: lib32gcc-11-dev
 libx32gcc-dev: libx32gcc-11-dev
 lib64gcc-dev: lib64gcc-11-dev
 libx32gcc1: libx32gcc-s1
-lib64gcc1 (i386): lib64gcc-s1 (i386)
+lib64gcc1: lib64gcc-s1
 btrfs-tools: btrfs-progs
 libreadline5: readline-common
 libntfs: libntfs-3g89
