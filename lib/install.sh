@@ -95,8 +95,6 @@ remove_packages_repository()
 parse_packages_arch()
 {
 	local arch=$(get_system_arch)
-	echo "$FUNCNAME: arch=$arch" 1>&2
-
 	#remove space between package name and ARCH info
 	#"liblsan0 (x86_64)" => "liblsan0(x86_64)"
 	generic_packages=$(echo $generic_packages | sed 's/ (/(/g')
