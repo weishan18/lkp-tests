@@ -27,3 +27,4 @@ libc6-dbg: libc6
 libjson: libjson-c3
 libevent-2: libevent-2.1-6
 gcc: gcc-9
+libgsl: libgsl23

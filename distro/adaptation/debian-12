@@ -44,3 +44,4 @@ libprocps-dev: libproc2-dev
 libpython3: libpython3.11
 gcc: gcc-12
 libglut3: libglut3.12
+libgsl: libgsl27
