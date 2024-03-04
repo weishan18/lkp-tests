@@ -41,6 +41,7 @@ libmysqlclient-dev: default-libmysqlclient-dev
 openjdk: openjdk-17-jdk
 python: python3
 libprocps-dev: libproc2-dev
+libprocps: libproc2-0
 libpython3: libpython3.11
 gcc: gcc-12
 libglut3: libglut3.12

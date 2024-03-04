@@ -10,7 +10,7 @@ libc6
 libdrm2
 libpciaccess0
 libkmod2
-libprocps7
+libprocps
 libelf1
 libdw1
 libpixman-1-0

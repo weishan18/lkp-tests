@@ -30,3 +30,4 @@ libipsec-mb: libipsec-mb0
 libpython3: libpython3.9
 gcc: gcc-10
 libgsl: libgsl25
+libprocps: libprocps8
