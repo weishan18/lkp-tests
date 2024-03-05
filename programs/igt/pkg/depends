@@ -16,3 +16,6 @@ libdw1
 libpixman-1-0
 libcairo2
 libudev1
+libglib2.0-0
+libdrm-nouveau2
+libdrm-amdgpu1
