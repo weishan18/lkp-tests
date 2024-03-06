@@ -103,11 +103,10 @@ need_kconfig:
 - TRACEPOINTS: y
 - AMT: m
 - IPV6_IOAM6_LWTUNNEL: y
-- GENEVE: m
+- GENEVE: y
 - INET: y
 - NETDEVICES: y
 - NET_CORE: y
-- UML: y
 - IPV6_SEG6_LWTUNNEL: y
 - XFRM_INTERFACE
 - XFRM: y
