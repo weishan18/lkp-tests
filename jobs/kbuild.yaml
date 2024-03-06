@@ -10,7 +10,7 @@ nr_task:
 
 setup-kbuild:
 
-target: autoksyms_recursive
+target: vmlinux
 
 build_kconfig:
   - allyesconfig

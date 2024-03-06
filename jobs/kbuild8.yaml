@@ -13,7 +13,7 @@ cgroup2:
 
 setup-kbuild:
 
-target: autoksyms_recursive
+target: vmlinux
 
 build_kconfig: allyesconfig
 
