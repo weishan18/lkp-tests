@@ -14,9 +14,12 @@ DISTRO=${DISTRO##*/}
 
 . $LKP_SRC/distro/${DISTRO}
 
-DEPS_MNT=/osimage/deps
+[[ -n "$DEPS_MNT" ]] || DEPS_MNT=/osimage/deps
 mkdir -p "$DEPS_MNT"
-mount $LKP_SERVER:$DEPS_MNT $DEPS_MNT || die "Failed to run mount"
+
+[ -n "$LKP_SERVER" ] && {
+	mount $LKP_SERVER:$DEPS_MNT $DEPS_MNT || die "Failed to run mount"
+}
 
 umask 002
 

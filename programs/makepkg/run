@@ -25,7 +25,7 @@ export GIT_SSL_NO_VERIFY=true
 cd $(get_pkg_dir $benchmark) || die "pkg is empty"
 
 pack_to=$(basename $rootfs)
-PKG_MNT=/osimage/pkg
+[[ -n "$PKG_MNT" ]] || PKG_MNT=/osimage/pkg
 mkdir -p "$PKG_MNT"
 
 [ -n "$LKP_SERVER" ] && {
