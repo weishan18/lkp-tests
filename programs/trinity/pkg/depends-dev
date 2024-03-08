@@ -14,4 +14,4 @@ libtimedate-perl
 libxml2
 man-db
 po-debconf
-gcc-multilib
+gcc-multilib (x86_64)
