@@ -51,7 +51,7 @@ detect_arch_by_readelf()
 		#   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
 		#   Class:                             ELF64
 		#   Machine:                           RISC-V
-		readelf -h $1 | grep -qE -m1 '  Class:.+ELF64' && $_system_arch="${_system_arch}64"
+		readelf -h $1 | grep -qE -m1 '  Class:.+ELF64' && _system_arch="${_system_arch}64"
 	}
 
 	return 0
@@ -65,7 +65,7 @@ detect_arch_by_file()
 
 	[ "$_system_arch" = "riscv" ] && {
 		# ELF 64-bit LSB pie executable, UCB RISC-V, RVC, double-float ABI
-		file -b $1 | grep -q -m1 'ELF 64-bit' && $_system_arch="${_system_arch}64"
+		file -b $1 | grep -q -m1 'ELF 64-bit' && _system_arch="${_system_arch}64"
 	}
 
 	return 0
