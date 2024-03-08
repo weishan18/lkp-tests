@@ -246,7 +246,7 @@ create_lkp_src_initrd()
 		archive="${CACHE_DIR}"
 
 		# shellcheck disable=SC2164
-		pushd "$LKP_SRC/pkg/lkp-src"
+		pushd "$LKP_SRC/programs/lkp-src/pkg"
 		LKP_USER="$user" PACMAN=true BUILDDIR=/tmp/$USER CARCH=$arch PKGEXT=.cgz CGZDEST="$CACHE_DIR/lkp-$arch.cgz" \
 		$LKP_SRC/sbin/makepkg --config $(lkp_src)/etc/makepkg.conf -e
 		[[ -f $CACHE_DIR/lkp-$arch.cgz ]] || {
