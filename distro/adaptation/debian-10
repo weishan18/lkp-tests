@@ -8,7 +8,6 @@ libglut3:
 libglut-dev:
 
 # reason (3)
-bsdtar: libarchive-tools
 btrfs-tools: btrfs-progs
 lib32gcc-dev: lib32gcc-8-dev
 libx32gcc-dev: libx32gcc-8-dev
