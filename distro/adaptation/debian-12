@@ -46,3 +46,14 @@ libpython3: libpython3.11
 gcc: gcc-12
 libglut3: libglut3.12
 libgsl: libgsl27
+python2:
+qemu: 
+qt5-default: qtbase5-dev
+mcelog: rasdaemon
+libldap-2.4-2: libldap-2.5-0
+cython: 
+dh-systemd: debhelper
+libevent-2.1-6: libevent-2.1-7
+libhwloc5: libhwloc15
+libssl1.1: libssl3
+python-tox: tox
