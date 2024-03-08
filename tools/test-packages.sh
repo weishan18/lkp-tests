@@ -7,12 +7,13 @@
 
 export LKP_SRC
 
-get_all_dependency_packages()
+list_packages()
 {
-	local distro=$1
-	local _system_version=$2
+	xargs cat | grep -hv "^\s*#\|^\s*$" | sort | uniq
+}
 
-	local generic_packages="$(find $LKP_SRC -type f -name depends\* | xargs cat | grep -hv "^\s*#\|^\s*$" | sort | uniq)"
+map_packages()
+{
 	parse_packages_arch
 
 	[[ "$distro" != "debian" ]] && remove_packages_version && remove_packages_repository
@@ -34,7 +35,14 @@ arch=$(get_system_arch)
 
 echo "arch=$arch, distro=$distro, _system_version=$_system_version" 1>&2
 
-packages=$(get_all_dependency_packages "$distro" "$_system_version")
+depends=$1
+if [[ $depends ]]; then
+	generic_packages="$(echo $depends | list_packages)"
+else
+	generic_packages="$(find $LKP_SRC -type f -name depends\* | list_packages)"
+fi
+
+packages=$(map_packages)
 
 echo "$LKP_SRC/distro/installer/$distro" 1>&2
 $LKP_SRC/distro/installer/$distro $packages
