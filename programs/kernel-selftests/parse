@@ -1020,7 +1020,7 @@ class SgxStater < Stater
     when /RUN\s+([^\s]+)/
       # #  RUN           enclave.augment_via_eaccept ...
       @test_case = $1
-    when /^# (ok|not ok) \d+ ([^#].*)/
+    when /^# (ok|not ok) \d+ ([^#]*)/
       # not ok 1 enclave.unclobbered_vdso
       if $2 != @test_case
         log_warn "#{$2} not equals to #{@test_case}"
