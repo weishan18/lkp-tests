@@ -255,7 +255,10 @@ redirect_stdout_stderr()
 	local stdbuf='stdbuf -o0 -e0'
 	has_cmd stdbuf || stdbuf=
 
-	if [ -n "$stdbuf$sed_u" ]; then
+	if uname -m | grep -q riscv64; then
+		# do not use stdbuf or sed -u to avoid unnecessary buffering on ricsv64 distro
+		redirect_stdout_stderr_directly
+	elif [ -n "$stdbuf$sed_u" ]; then
 		# limit 300 characters is to fix the following errro info:
 		# sed: couldn't write N items to stdout: Invalid argument
 		tail -f /tmp/stdout | $stdbuf sed $sed_u -r 's/^(.{0,900}).*$/<5>\1/' > /dev/kmsg &
