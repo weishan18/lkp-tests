@@ -224,6 +224,16 @@ announce_bootup()
 	echo_to_tty "HOSTNAME $HOSTNAME, MAC $mac, kernel $release $version"
 }
 
+redirect_stdout_stderr_directly()
+{
+	echo "redirect stdout and stderr directly"
+
+	tail -f /tmp/stdout > /dev/kmsg 2>/dev/null &
+	echo $! >> /tmp/pid-tail-global
+	tail -f /tmp/stderr > /dev/kmsg 2>/dev/null &
+	echo $! >> /tmp/pid-tail-global
+}
+
 redirect_stdout_stderr()
 {
 	[ -c /dev/kmsg ] || {
@@ -253,10 +263,7 @@ redirect_stdout_stderr()
 		tail -f /tmp/stderr | $stdbuf sed $sed_u -r 's/^(.{0,900}).*$/<3>\1/' > /dev/kmsg &
 		echo $! >> /tmp/pid-tail-global
 	else
-		tail -f /tmp/stdout > /dev/kmsg 2>/dev/null &
-		echo $! >> /tmp/pid-tail-global
-		tail -f /tmp/stderr > /dev/kmsg 2>/dev/null &
-		echo $! >> /tmp/pid-tail-global
+		redirect_stdout_stderr_directly
 	fi
 }
 
