@@ -18,4 +18,4 @@ ltp:
     - uevent
     # - s390x_tests # designed to be executed in s390x environment (zVM or LPAR)
     # - watchqueue # test broken
-    - staging
+    # - staging # pan(3133): Must supply a file collection or a command
