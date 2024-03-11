@@ -22,6 +22,8 @@ phoronix-test-suite:
     - waifu2x-ncnn-1.0.0
     - yquake2-1.3.0
     - bioshock-infinite-1.0.2
+    - vkpeak-1.1.0
+
   - test: apitest-1.1.1
     option_a:
       - 1024 x 768
