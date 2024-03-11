@@ -6,7 +6,7 @@ need_x: true
 
 phoronix-test-suite:
   - test:
-    - insurgency-1.2.0
+    # - insurgency-1.2.0 # The test run did not produce a result.
     - quadray-1.0.0
     - sam2017-1.0.2
     - shadowofthetombraider-1.1.0
@@ -137,13 +137,15 @@ phoronix-test-suite:
       - Supercar
       - Bedroom
       # - Test All Options
-  - test: j2dbench-1.1.2
-    option_a:
-      - All Rendering Tests
-      - Vector Graphics Rendering
-      - Image Rendering
-      - Text Rendering
-      # - Test All Options
+
+  # - test: j2dbench-1.1.2 # The test run did not produce a result.
+  #   option_a:
+  #     - All Rendering Tests
+  #     - Vector Graphics Rendering
+  #     - Image Rendering
+  #     - Text Rendering
+  #     # - Test All Options
+
     # - jgfxbat-1.1.0 # 3rd party url is N/A
   - test: jxrendermark-1.2.4
     option_a:
