@@ -36,14 +36,14 @@ OPS.each do |ops|
   workload += res['total_ios'].to_i
   res_clat = res['clat'] || res['clat_ns']
   res_clat_percentiles = res_clat['percentile']
-  puts "#{ops}_clat_mean_us: #{res_clat['mean']}"
+  puts "#{ops}_clat_mean_ns: #{res_clat['mean']}"
   puts "#{ops}_clat_stddev: #{res_clat['stddev']}"
   if res_clat_percentiles
     PERCENTILES.each do |p|
       sp = p.chomp('0')
       true while sp.chomp!('0')
       sp.chomp!('.')
-      puts "#{ops}_clat_#{sp}%_us: #{res_clat_percentiles[p]}"
+      puts "#{ops}_clat_#{sp}%_ns: #{res_clat_percentiles[p]}"
     end
   end
   res_slat = res['slat'] || res['slat_ns']
