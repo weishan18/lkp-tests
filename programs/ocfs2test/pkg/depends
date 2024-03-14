@@ -1,6 +1,5 @@
-libopenmpi2
-openmpi-bin
 libopenmpi3
+openmpi-bin
 ocfs2-tools
 winpdb
 sudo

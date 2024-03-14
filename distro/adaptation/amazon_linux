@@ -102,7 +102,7 @@ liblz-dev:
 liblzma-dev: xz-devel
 libmount-dev: libmount-devel
 libldap2-dev: openldap-devel
-libmariadbclient-dev: 
+libmariadb-dev:
 libmpx2:
 libmnl-dev: libmnl-devel
 libncurses5-dev: ncurses-devel
@@ -116,7 +116,7 @@ libnuma1: numactl
 libnuma-dev: numactl-devel
 liboath-dev: 
 liboop-dev:
-libopenmpi2: openmpi
+libopenmpi3: openmpi
 libopenmpi-dev: openmpi-devel
 libpcap0.8-dev: libpcap-devel
 libpcap0.8: libpcap

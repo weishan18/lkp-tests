@@ -1,4 +1,4 @@
-libopenmpi2
+libopenmpi-dev
 openmpi-bin
 libopenmpi-dev
 libaio-dev

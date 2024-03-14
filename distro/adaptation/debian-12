@@ -10,7 +10,6 @@ libpython2.7:
 freeglut3:
 
 # reason (3)
-fsverity: fsverity
 libgcrypt-dev: libgcrypt20-dev
 libgcc-dev: libgcc-11-dev
 lib32gcc-dev: lib32gcc-11-dev

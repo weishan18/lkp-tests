@@ -2,7 +2,7 @@ apache2: apache
 apt-file: pkgfile
 autotools-dev: autoconf
 binutils-dev: binutils
-bsdtar:
+libarchive-tools:
 btrfs-tools: btrfs-progs
 build-essential: base-devel
 cgroup-bin: libcgroup cgmanager

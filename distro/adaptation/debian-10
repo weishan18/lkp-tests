@@ -6,6 +6,7 @@ libtraceevent1:
 libtraceevent-dev:
 libglut3:
 libglut-dev:
+fsverity:
 
 # reason (3)
 btrfs-tools: btrfs-progs
@@ -22,7 +23,6 @@ libntfs: libntfs-3g883
 libperl5: libperl5.28
 libtirpc: libtirpc3
 perl-modules-5: perl-modules-5.28
-libc6-dbg: libc6
 libjson: libjson-c3
 libevent-2: libevent-2.1-6
 gcc: gcc-9

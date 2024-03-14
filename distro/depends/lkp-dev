@@ -23,7 +23,7 @@ libc6-dev:i386 (x86_64)
 ruby
 ruby-dev
 bzip2
-bsdtar
+libarchive-tools
 fakeroot
 flex
 bison

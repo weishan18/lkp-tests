@@ -1,5 +1,5 @@
 pkg-config
-libmariadbclient-dev
+libmariadb-dev
 automake
 make
 libtool

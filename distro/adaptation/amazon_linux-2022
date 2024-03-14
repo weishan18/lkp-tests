@@ -39,5 +39,5 @@ libbsd-dev: libbsd-devel
 libzstd-dev: libzstd-devel
 libbabeltrace-dev: libbabeltrace-devel
 libbabeltrace-ctf-dev: libbabeltrace-devel
-libmariadbclient18: mariadb-connector-c
+libmariadb3: mariadb-connector-c
 linux-libc-dev: kernel-headers

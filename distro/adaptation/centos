@@ -118,8 +118,8 @@ libldap2-dev: openldap-devel
 liblsan0:
 liblz-dev:
 liblzma-dev: xz-devel
-libmariadbclient-dev: mysql-devel
-libmariadbclient18: mariadb-connector-c
+libmariadb-dev: mysql-devel
+libmariadb3: mariadb-connector-c
 libmnl-dev: libmnl-devel
 libmount-dev: libmount-devel
 libmpx2:
@@ -138,7 +138,7 @@ libobjc-7-dev: libobjc.x86_64
 liboop-dev:
 libopencryptoki0: opencryptoki-libs
 libopenmpi-dev: openmpi-devel
-libopenmpi2: openmpi
+libopenmpi3: openmpi
 libpcap-dev: libpcap-devel
 libpcap0.8-dev: libpcap-devel
 libpcap0.8: libpcap

@@ -8,8 +8,8 @@ libbabeltrace-ctf-dev:
 libbabeltrace-ctf1:
 libdw1: 
 libgoogle-perftools-dev: gperftools-devel
-libmariadbclient-dev:
-libmariadbclient18:  
+libmariadb-dev:
+libmariadb3:
 libmpfr6: mpfr
 libpfm4: libpfm
 libpfm4-dev: libpfm-devel

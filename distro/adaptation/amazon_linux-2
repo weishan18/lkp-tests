@@ -9,7 +9,7 @@ libcap-dev: libcap-devel
 libdw-dev: libdwarf-devel
 libelf-dev: elfutils-libelf-devel
 libgles2-mesa: mesa-libGLES
-libmariadbclient18: 
+libmariadb3:
 libobjc-7-dev: libobjc
 libopencryptoki0: opencryptoki-libs
 libpng12-dev: libpng12-devel
