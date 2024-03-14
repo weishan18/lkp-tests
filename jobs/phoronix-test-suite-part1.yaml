@@ -678,12 +678,14 @@ phoronix-test-suite:
     # - metro2033-redux-1.1.1 # install failed
     # - metroll-redux-1.2.1 # install failed
     - minibude-1.0.0
+
   - test: minife-1.0.0
     option_a:
       - Small
-      - Medium
+      # - Medium # PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted
       - Large
       # - Test All Options
+
   # - test: minion-1.5.2 # install failed
     # option_a:
       # - Graceful
