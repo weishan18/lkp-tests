@@ -161,6 +161,16 @@ need_kconfig:
 - NET_NS: y
 - CGROUPS: y
 - CHECKPOINT_RESTORE: y
+% elsif ___.group == "rust"
+- SAMPLE_RUST_MINIMAL
+- SAMPLE_RUST_PRINT
+- SAMPLES: y
+- SAMPLES_RUST: y
+- RUST: y
+- MODVERSIONS: n
+- GCC_PLUGINS: n
+- RANDSTRUCT: n
+- DEBUG_INFO_BTF: n
 % elsif ___.group == "group-00"
 - ANDROID: y
 - DRM
