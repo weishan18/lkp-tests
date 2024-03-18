@@ -21,7 +21,10 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 Metrics/BlockNesting:
-  Enabled: false
+  Exclude:
+    - programs/test-bpf/parse
+    - lib/hash.rb
+    - programs/suspend/parse
 
 Metrics/ClassLength:
   Enabled: false
