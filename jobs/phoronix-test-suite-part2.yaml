@@ -181,11 +181,11 @@ phoronix-test-suite:
     - speedb-1.0.1
     - speedtest-cli-1.0.0
   - test: sqlite-2.2.0
-    option_a: # threads per copy
+    option_a: # Threads / Copies
       - 1 # 1
-      - 2 # 2
-      - 3 # 4
-      - 4 # 8
+      # - 2 # 2
+      # - 3 # 4
+      # - 4 # 8
       - 5 # 12
       # - 6 # Test All Options
   - test:
