@@ -24,6 +24,9 @@ phoronix-test-suite:
     - bioshock-infinite-1.0.2
     - vkpeak-1.1.0
     - quake2rtx-1.6.1
+    - madmax-1.2.1
+    - gravitymark-1.9.0
+    - geexlab-rt-1.0.1
 
   - test: apitest-1.1.1
     option_a:

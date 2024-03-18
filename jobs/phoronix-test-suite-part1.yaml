@@ -365,7 +365,6 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - gcrypt-1.1.3
-    - geexlab-rt-1.0.1
     - git-1.1.0
   - test: glibc-bench-1.8.0
     option_a:
@@ -409,7 +408,6 @@ phoronix-test-suite:
       - Swirl
       # - Test All Options
   - test:
-    - gravitymark-1.9.0
     - gromacs-1.8.0
   - test: hackbench-1.0.0
     option_a: # group count
@@ -631,7 +629,6 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - m-queens-1.1.0
-    - madmax-1.2.1
     - mafft-1.6.2
   - test: mbw-1.0.0
     option_a:
