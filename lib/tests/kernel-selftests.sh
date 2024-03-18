@@ -56,6 +56,8 @@ prepare_test_env()
 		local linux_headers_bpf_dir=(/usr/src/linux-headers*-bpf)
 		[[ $linux_headers_bpf_dir ]] || die "failed to find linux-headers-bpf package"
 		cp -af $linux_headers_bpf_dir/* $linux_selftests_dir/
+
+		get_kconfig $linux_selftests_dir/.config
 	elif [ -d "/tmp/build-kernel-selftests/linux" ]; then
 		# commit bb5ef9c change build directory to /tmp/build-$BM_NAME/xxx
 		linux_selftests_dir="/tmp/build-kernel-selftests/linux"
