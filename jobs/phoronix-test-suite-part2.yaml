@@ -51,6 +51,8 @@ phoronix-test-suite:
       - Read Write
       - Read Only
       # - Test All Options
+    times_to_run: 1
+
   - test: php-1.0.0
     option_a:
       - Zend bench
@@ -122,6 +124,8 @@ phoronix-test-suite:
       - 10 # Genetic Algorithm Using Jenetics + Futures
       - 11 # ALS Movie Lens
       # - 12 # Test All Options
+    times_to_run: 1
+
   - test:
     - rnnoise-1.0.2
     # - rust-prime-1.0.0 # install failed
@@ -188,24 +192,24 @@ phoronix-test-suite:
       # - 4 # 8
       - 5 # 12
       # - 6 # Test All Options
-  - test:
-    - sqlite-speedtest-1.0.1
-      # - test: startup-time-1.4.1
-      # option_a:
-      # - Only Sequential Reads # need more than 1h
-      # - Sequential Reads + Writes
-      # - Test All Options
-      # option_b:
-      # - GNOME Terminal
+  - test: startup-time-1.4.1
+    option_a: # Background I/O Mix
+      - Only Sequential Reads # need more than 1h
+      - Sequential Reads + Writes
+      - Test All Options
+    option_b: # Application To Start
+      - GNOME Terminal
       # - xterm
       # - LibreOffice Writer
-      # - Test All Options
-      # option_c:
-      # - /opt/rootfs
+      - Test All Options
+    option_c: # Disk Target
+      - /opt/rootfs
+    times_to_run: 1
+
   - test:
+    - sqlite-speedtest-1.0.1
     - srsran-2.1.0
     - stargate-1.1.0
-    - startup-time-1.4.1
     - stockfish-1.4.0
     - stream-dynamic-1.0.0
   - test: stress-ng-1.11.0
@@ -473,6 +477,8 @@ phoronix-test-suite:
       - 12 digit
       - 14 digit
       # - Test All Options
+    times_to_run: 1
+
   - test: incompact3d-2.0.2
     option_a:
       - input.i3d 129 Cells Per Direction [Intended For Small Systems]

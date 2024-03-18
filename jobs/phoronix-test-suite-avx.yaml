@@ -33,6 +33,8 @@ phoronix-test-suite:
       - Bosphorus 1080p
       - Bosphorus 4K
       # - Test All Options
+    times_to_run: 1
+
   - test: svt-vp9-1.3.0
     option_a:
       - Visual Quality Optimized

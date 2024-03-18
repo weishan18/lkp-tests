@@ -17,5 +17,6 @@ phoronix-test-suite:
       - CPU-Only
       - Intel oneAPI
       # - Test All Options
+    times_to_run: 1 # 12 cpu, 16G memory tbox, run once cost about 43m
 
 timeout: 1h

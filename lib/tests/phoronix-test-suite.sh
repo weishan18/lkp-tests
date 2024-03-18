@@ -134,13 +134,16 @@ fixup_sqlite()
 }
 
 # reduce run times to avoid soft_timeout
-reduce_runtimes()
+fixup_times_to_run()
 {
+	[[ $times_to_run ]] || return 0
+
 	[ -n "$environment_directory" ] || return
+
 	local test=$1
 	local target=${environment_directory}/../test-profiles/pts/${test}/test-definition.xml
 	[ -f $target.bak ] || cp $target $target.bak
-	sed -i 's,<TimesToRun>.</TimesToRun>,<TimesToRun>1</TimesToRun>,' "$target"
+	sed -i "s,<TimesToRun>.</TimesToRun>,<TimesToRun>${times_to_run}</TimesToRun>," "$target"
 }
 
 # fix issue: [NOTICE] Undefined: min_result in pts_test_result_parser:478
@@ -589,6 +592,9 @@ fixup_install()
 run_test()
 {
 	local test=$1
+
+	fixup_times_to_run $test || die "failed to fixup times to run of $test"
+
 	case $test in
 		systester-[0-9]*)
 			# Choose
@@ -612,7 +618,6 @@ run_test()
 		interbench-*)
 			# produce big file to /opt/rootfs when test on cluster
 			[ "$LKP_LOCAL_RUN" = "1" ] || fixup_interbench $test || die "failed to fixup test $test"
-			reduce_runtimes $test || die "failed to reduce run times when run $test"
 			# Choose
 			# 1: Video
 			# 2: Burn
@@ -693,7 +698,6 @@ run_test()
 			;;
 		startup-time-*)
 			fixup_startup_time $test || die "failed to fixup test $test"
-			reduce_runtimes $test || die "failed to reduce run times when run $test"
 			;;
 		ior-*)
 			fixup_ior $test || die "failed to fixup test $test"
@@ -707,26 +711,8 @@ run_test()
 		sqlite-[0-9]*)
 			fixup_sqlite $test || die "failed to fixup test $test"
 			;;
-		cyclictest-*|parboil-*|cp2k-*|llvm-test-suite-*|blender-*|svt-av1-*|helsing-*|build-gcc-*|core-latency-*|jxrendermark-*|renaissance-*|openems-*|openvkl-*)
-			# 96 cpu, 128G memory tbox, run once cost about
-			# cyclictest-1.0.0: 2m
-			# cp2k-1.2.0: 30m
-			# renaissance-1.1.1: 6m
-			# llvm-test-suite-1.0.0: 15m
-			#
-			# 12 cpu, 16G memory tbox, run once cost about
-			# jxrendermark-1.2.4: 3m
-			# blender-1.9.0: 14m
-			# blender-4.0.0: 43m
-			#
-			# 96 cpu, 512G memory tbox, run once cost about
-			# openems-1.0.0: 22m
-			# openvkl-2.0.0: 12m
-			reduce_runtimes $test || die "failed to reduce run times when run $test"
-			;;
 		blogbench-*)
 			fixup_blogbench $test || die "failed to fixup test $test"
-			reduce_runtimes $test || die "failed to reduce run times when run $test"
 			;;
 		systemd-boot-total-*)
 			fixup_systemd_boot_total $test || die "failed to fixup test $test"
@@ -801,7 +787,6 @@ run_test()
 			;;
 		pgbench-*)
 			fixup_pgbench $test || die "failed to fixup pgbench"
-			reduce_runtimes $test || die "failed to reduce run times when run $test"
 			;;
 	esac
 

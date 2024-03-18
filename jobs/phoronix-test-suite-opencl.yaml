@@ -48,6 +48,8 @@ phoronix-test-suite:
       - OpenMP Stencil
       - OpenMP LBM
       # - Test All Options
+    times_to_run: 1
+
   - test: rodinia-1.3.2
     option_a:
       - 1 # OpenMP CFD Solver      [Fluid Dynamics]

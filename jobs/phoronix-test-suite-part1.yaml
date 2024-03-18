@@ -37,6 +37,8 @@ phoronix-test-suite:
       - Read
       - Write
       # - Test All Options
+    times_to_run: 1
+
   - test:
     - blosc-1.3.0
     - bork-1.0.1
@@ -56,7 +58,6 @@ phoronix-test-suite:
     - build-erlang-1.2.0
     # - build-firefox-1.0.0 # wait for newer version
     - build-ffmpeg-6.1.0
-    - build-gcc-1.4.0
     - build-gdb-1.1.0
     - build-gem5-1.1.0
     - build-godot-4.0.0
@@ -68,6 +69,9 @@ phoronix-test-suite:
     - build-nodejs-1.3.0
     - build-php-1.6.0
     # - build-webkitfltk-1.0.0 # the test costs more than 2h
+  - test: build-gcc-1.4.0
+    times_to_run: 1
+
   - test: build-python-1.0.0
     option_a:
       - Default
@@ -170,6 +174,7 @@ phoronix-test-suite:
       - 3 # clock_nanosleep TIME_ABSTIME, Interval 500 ms, 100000 Loops
       - 4 # POSIX Timer, Interval 500 ms, 100000 Loops
       # - Test All Options
+    times_to_run: 1
   # - test:
     # - cython-bench-1.1.0 # install failed
   - test: dacapobench-1.1.0
@@ -493,6 +498,7 @@ phoronix-test-suite:
       # - Write
       # - Read
       # - Test All Options
+    # times_to_run: 1
   - test: ior-1.1.1
     option_a: # Block Size
       - 2MB
@@ -832,6 +838,8 @@ phoronix-test-suite:
       - vklBenchmarkCPU ISPC
       - vklBenchmarkGPU Intel oneAPI SYCL
       # - Test All Options
+    times_to_run: 1
+
   - test: openssl-3.1.0
     option_a:
       - RSA4096
@@ -886,5 +894,6 @@ phoronix-test-suite:
 ---
 phoronix-test-suite:
   - test: openems-1.0.0
+    times_to_run: 1 # 96 cpu, 512G memory tbox, run once cost about 22m
 
 timeout: 30m
