@@ -101,6 +101,9 @@ need_kconfig:
 - FAT_KUNIT_TEST: m
 - FAT_FS: m
 
+- STRING_HELPERS_KUNIT_TEST: m
+- STRING_KUNIT_TEST: m
+
 # below are kunit test configs of bool type
 - DAMON_KUNIT_TEST: y
 - PM_QOS_KUNIT_TEST: y
