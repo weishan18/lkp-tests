@@ -410,15 +410,15 @@ phoronix-test-suite:
   - test:
     - gromacs-1.8.0
   - test: hackbench-1.0.0
-    option_a: # group count
+    option_a: # Count
       - 1
-      - 2
-      - 4
-      - 8
-      - 16
+      # - 2
+      # - 4
+      # - 8
+      # - 16
       - 32
       # - Test All Options
-    option_b:
+    option_b: # Type
       - Process
       - Thread
       # - Test All Options
