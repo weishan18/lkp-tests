@@ -532,12 +532,12 @@ phoronix-test-suite:
       - Unnamed Unix Domain Socket
       - TCP Socket
       # - Test All Options
-    option_b:
+    option_b: # Message Bytes
       - 128
-      - 256
-      - 512
-      - 1024
-      - 2048
+      # - 256
+      # - 512
+      # - 1024
+      # - 2048
       - 4096
       # - Test All Options
   - test:
