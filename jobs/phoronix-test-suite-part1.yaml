@@ -494,15 +494,15 @@ phoronix-test-suite:
       # - Read
       # - Test All Options
   - test: ior-1.1.1
-    option_a:
+    option_a: # Block Size
       - 2MB
-      - 4MB
-      - 8MB
-      - 16MB
-      - 32MB
-      - 64MB
-      - 256MB
-      - 512MB
+      # - 4MB
+      # - 8MB
+      # - 16MB
+      # - 32MB
+      # - 64MB
+      # - 256MB
+      # - 512MB
       - 1024MB
       # - Test All Options
     option_b:
