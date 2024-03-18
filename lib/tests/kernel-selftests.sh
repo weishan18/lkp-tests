@@ -266,11 +266,11 @@ fixup_net()
 
 	skip_specific_net_cases
 
-	# at v4.18-rc1, it introduces fib_tests.sh, which doesn't have execute permission
-	# here is to fix the permission
-	[[ -f $subtest/fib_tests.sh ]] && {
-		[[ -x $subtest/fib_tests.sh ]] || chmod +x $subtest/fib_tests.sh
-	}
+	# v4.18-rc1 introduces fib_tests.sh, which doesn't have execute permission
+	# Warning: file fib_tests.sh is not executable
+	# Warning: file test_ingress_egress_chaining.sh is not executable
+	chmod +x $subtest/*.sh
+
 	ulimit -l 10240
 	modprobe -q fou
 	modprobe -q nf_conntrack_broadcast
@@ -587,17 +587,8 @@ fixup_kvm()
 fixup_damon()
 {
 	# Warning: file debugfs_attrs.sh is not executable
-	# Warning: file debugfs_schemes.sh is not executable
-	# Warning: file debugfs_target_ids.sh is not executable
-	# Warning: file debugfs_empty_targets.sh is not executable
-	# Warning: file debugfs_huge_count_read_write.sh is not executable
-	# Warning: file debugfs_duplicate_context_creation.sh is not executable
-	# Warning: file debugfs_rm_non_contexts.sh is not executable
-	# Warning: file sysfs.sh is not executable
-	# Warning: file sysfs_update_removed_scheme_dir.sh is not executable
-	# Warning: file reclaim.sh is not executable
-	# Warning: file lru_sort.sh is not executable
-	chmod +x damon/*.sh
+	# Warning: file damos_apply_interval.py is not executable
+	chmod +x $subtest/*.sh $subtest/*.py
 }
 
 prepare_for_selftest()
