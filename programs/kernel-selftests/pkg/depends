@@ -93,3 +93,4 @@ attr
 pesign
 bc
 ndisc6
+liburing-dev
