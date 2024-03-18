@@ -63,7 +63,7 @@ stress-ng:
     - mmapfixed
     - mmapfork
     - mmapmany
-    - module
+    # - module # require open RUNTIME_TESTING_MENU and TEST_LKM
     - monte-carlo
     - mprotect
     - mpfr
