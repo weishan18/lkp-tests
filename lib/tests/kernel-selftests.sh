@@ -49,6 +49,13 @@ prepare_test_env()
 
 		mkdir -p "$linux_selftests_dir/tools/include/uapi/asm" || return
 		mount --bind $linux_headers_dir/include/asm $linux_selftests_dir/tools/include/uapi/asm || return
+
+		local build_link="/lib/modules/$(uname -r)/build"
+		ln -sf "$linux_selftests_dir" "$build_link"
+
+		local linux_headers_bpf_dir=(/usr/src/linux-headers*-bpf)
+		[[ $linux_headers_bpf_dir ]] || die "failed to find linux-headers-bpf package"
+		cp -af $linux_headers_bpf_dir/* $linux_selftests_dir/
 	elif [ -d "/tmp/build-kernel-selftests/linux" ]; then
 		# commit bb5ef9c change build directory to /tmp/build-$BM_NAME/xxx
 		linux_selftests_dir="/tmp/build-kernel-selftests/linux"
