@@ -30,3 +30,4 @@ libpython3: libpython3.9
 gcc: gcc-10
 libgsl: libgsl25
 libprocps: libprocps8
+liburing: liburing1
