@@ -24,16 +24,6 @@ phoronix-test-suite:
       - Add
       - Triad
       # - Test All Options
-  - test: svt-av1-2.3.0
-    option_a:
-      - Preset 8 [Fastest - Default]
-      - Preset 4 [Mid-Speed]
-      # - Test All Options
-    option_b:
-      - Bosphorus 1080p
-      - Bosphorus 4K
-      # - Test All Options
-    times_to_run: 1
 
   - test: svt-vp9-1.3.0
     option_a:
