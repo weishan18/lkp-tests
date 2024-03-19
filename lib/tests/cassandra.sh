@@ -4,9 +4,6 @@
 
 setup_java_home()
 {
-	java_home_candidates=(/usr/lib/jvm/java-*-openjdk*)
-	echo "java_home_candidates: ${java_home_candidates[@]}"
-
 	if [ -d /usr/lib/jvm/java-1.11.0-openjdk ]; then
 		export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
 		export CASSANDRA_USE_JDK11=true
