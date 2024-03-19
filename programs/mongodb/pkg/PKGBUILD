@@ -1,5 +1,5 @@
 pkgname=mongodb
-pkgver=r6.2.0
+pkgver=r7.3.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://www.mongodb.com/"
@@ -9,20 +9,15 @@ depends=()
 source=("https://github.com/mongodb/mongo.git#tag=$pkgver")
 sha256sums=('SKIP')
 
-build() {
-	local PIP=pip
-
-	which pip2 >/dev/null && PIP=$(which pip2)
-
+build()
+{
 	cd "${srcdir}/mongo"
 
-	# ImportError: 'module' object has no attribute 'check_specifier' on aliyun OS
-	$PIP install setuptools --upgrade
+	python3 -m venv /tmp/venv --prompt mongo
+	. /tmp/venv/bin/activate
 
-	for i in $(seq 1 10)
-	do
-		$PIP install --user -r etc/pip/dev-requirements.txt && break
-	done
+	python3 -m pip install 'poetry==1.5.1'
+	python3 -m poetry install --no-root --sync
 
 	[ "$DISTRO" = "centos" -o "$DISTRO" = "aliyun" ] && {
 		source $LKP_SRC/distro/$DISTRO
@@ -31,6 +26,8 @@ build() {
 	}
 
 	buildscripts/scons.py install-core --separate-debug --disable-warnings-as-errors -j $(nproc) $build_opts
+
+	deactivate
 }
 
 package() {
