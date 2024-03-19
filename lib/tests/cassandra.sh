@@ -1,7 +1,12 @@
 #!/bin/sh
 
+. $LKP_SRC/lib/debug.sh
+
 setup_java_home()
 {
+	java_home_candidates=(/usr/lib/jvm/java-*-openjdk*)
+	echo "java_home_candidates: ${java_home_candidates[@]}"
+
 	if [ -d /usr/lib/jvm/java-1.11.0-openjdk ]; then
 		export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk
 		export CASSANDRA_USE_JDK11=true
@@ -12,7 +17,11 @@ setup_java_home()
 		export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 	elif [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then
 		export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+	elif [ -d /usr/lib/jvm/java-17-openjdk-amd64 ]; then
+		export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 	else
-		echo "ERROR: NO avaliable JAVA_HOME" >&2 && exit 1
+		die "NO available JAVA_HOME"
 	fi
+
+	echo "JAVA_HOME=$JAVA_HOME"
 }
