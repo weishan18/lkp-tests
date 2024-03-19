@@ -11,3 +11,4 @@ libx32gcc-dev: libx32gcc-12-dev
 libipsec-mb: libipsec-mb1
 libpython3: libpython3.10
 libtirpc: libtirpc-common
+libssl1.1: libssl3
