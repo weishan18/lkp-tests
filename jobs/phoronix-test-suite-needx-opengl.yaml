@@ -14,3 +14,4 @@ phoronix-test-suite:
       - Fullscreen
       # - Windowed
       # - Test All Options
+    times_to_run: 1

@@ -30,14 +30,7 @@ phoronix-test-suite:
       - Material Tester
       # - Test All Options
   - test:
-    - asmfish-1.1.2
     - blake2-1.2.2
-  - test: blogbench-1.1.0
-    option_a:
-      - Read
-      - Write
-      # - Test All Options
-    times_to_run: 1
 
   - test:
     - blosc-1.3.0
@@ -59,18 +52,13 @@ phoronix-test-suite:
     # - build-firefox-1.0.0 # wait for newer version
     - build-ffmpeg-6.1.0
     - build-gdb-1.1.0
-    - build-gem5-1.1.0
     - build-godot-4.0.0
     - build-imagemagick-1.7.2
     - build-linux-kernel-1.15.0
-    - build-llvm-1.5.0
     - build-mesa-1.0.0
     - build-mplayer-1.5.0
-    - build-nodejs-1.3.0
     - build-php-1.6.0
     # - build-webkitfltk-1.0.0 # the test costs more than 2h
-  - test: build-gcc-1.4.0
-    times_to_run: 1
 
   - test: build-python-1.0.0
     option_a:
@@ -110,7 +98,6 @@ phoronix-test-suite:
     # - civilization-vi-1.0.1 # install failed
     - clomp-1.1.2
     - cloverleaf-1.2.0
-    - cockroach-1.0.2
     # - coh2-1.0.3 # install failed
     - comd-cl-1.0.0
   - test: compilebench-1.0.3
@@ -137,16 +124,7 @@ phoronix-test-suite:
     # - core-latency-1.0.0 # runtime > 10h
     - coremark-1.0.1
     # - cp2k-1.2.0 # install failed
-  - test: couchdb-1.3.0
-    option_a:
-      - 100
-      - 300
-      - 500
-      # - Test All Options
-    option_b:
-      - 1000
-      - 3000
-      # - Test All Options
+
   - test: cpp-perf-bench-1.0.0
     option_a:
       - Stepanov Abstraction
@@ -161,20 +139,7 @@ phoronix-test-suite:
     - crafty-1.4.5
     # - csgo-1.7.2 # install failed
     - ctx-clock-1.0.0
-  - test: cryptopp-1.1.0
-    option_a:
-      - Unkeyed Algorithms
-      - Keyed Algorithms
-      # - All Algorithms     [This option can be very time consuming.]
-      # - Test All Options
-  - test: cyclictest-1.0.0
-    option_a:
-      - 1 # clock_nanosleep TIME_ABSTIME, Interval 10000 ms, 10000 Loops
-      - 2 # POSIX Timer, Interval 10000 ms, 10000 Loops
-      - 3 # clock_nanosleep TIME_ABSTIME, Interval 500 ms, 100000 Loops
-      - 4 # POSIX Timer, Interval 500 ms, 100000 Loops
-      # - Test All Options
-    times_to_run: 1
+
   # - test:
     # - cython-bench-1.1.0 # install failed
   - test: dacapobench-1.1.0
@@ -212,31 +177,9 @@ phoronix-test-suite:
     # - dota2-1.2.7 # install failed
     # - dow3-1.0.1 # install failed
 
-  # - test: dragonflydb-1.1.0 # The test run did not produce a result.
-  #   option_a:
-  #     - 10
-  #     - 20
-  #     - 50
-  #     - 60
-  #     - 100
-  #     # - Test All Options
-  #   option_b:
-  #     - "1:100"
-  #     - "1:10"
-  #     - "1:5"
-  #     - "1:1"
-  #     - "5:1"
-  #     # - Test All Options
-
   - test:
-    - duckdb-1.0.0
     - ebizzy-1.0.4
-  - test: easywave-1.0.0
-    option_a:
-      - 1 # 240  [Intended for very slow systems or just a quick reference run.]
-      - 2 # 1200
-      - 3 # 2400 [Just intended for very large core count servers / HPC]
-      # - 4 # Test All Options
+
   - test: embree-1.6.1
     option_a:
       - Pathtracer
@@ -255,20 +198,7 @@ phoronix-test-suite:
     # - encode-opus-1.1.1 # this test profile is marked Deprecated
     - encode-wavpack-1.4.1
     - espeak-1.7.0
-  # - test: etcd-1.0.0 # Estimated Time To Completion: 49 Minutes
-    # option_a:
-      # - PUT
-      # - RANGE
-      # - Test All Options
-    # option_b:
-      # - 50
-      # - 100
-      # - 500
-      # - Test All Options
-    # option_c:
-      # - 100
-      # - 1000
-      # - Test All Options
+
   - test: etcpak-1.1.0
     option_a:
       - Single-Threaded
@@ -427,43 +357,17 @@ phoronix-test-suite:
       - Process
       - Thread
       # - Test All Options
-  # - test: hammerdb-mariadb-1.1.0
-    # option_a:
-      # - 8
-      # - 16
-      # - 32
-      # - 64
-      # - 128
-      # - 256
-      # - 512
-      # - Test All Options
-    # option_b:
-      # - 100
-      # - 250
-      # - 500
-      # - 1000
-      # - Test All Options
+
   - test:
     - hadoop-1.0.0
     - hammerdb-postgresql-1.1.1
     # - hashcat-1.1.1 # The test quit with a non-zero exit status.
-    - hdparm-read-1.0.0
     - heffte-1.1.0
     - himeno-1.3.0
     - hint-1.0.3
     - hmmer-1.3.0
     # - hpcc-1.2.8 # run time more than 2h on clear, install failed on debian
-  - test: hpcg-1.3.0
-    option_a:
-      - 104 104 104
-      - 144 144 144
-      - 160 160 160
-      - 192 192 192
-      # - Test All Options
-    option_b:
-      - 1 # 60   [Shorter run-time]
-      - 2 # 1800 [Official run-time]
-      # - 3 # Test All Options
+
   - test: idle-1.2.0
     option_a:
       - 1 # Enter Positive Number
@@ -475,30 +379,7 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - intel-mlc-1.1.0
-  # - test: interbench-1.0.1 # all the option combinations result in "no space left on device"
-    # option_a:
-      # - Gaming
-      # - Compile
-      # - Audio # run more than 40m on lkp-skl-nuc2
-      # - Video # Video-Compile combination writes more than 400G file to disk
-      # - X # run more than 3h on lkp-csl-2sp8
-      # - Burn
-      # - Memload
-      # - Write
-      # - Read
-      # - Test All Options
-    # option_b:
-      # - Gaming
-      # - Compile # Video-Compile combination writes more than 400G file to disk
-      # - Audio # no passed job in our env
-      # - Video
-      # - X
-      # - Burn
-      # - Memload
-      # - Write
-      # - Read
-      # - Test All Options
-    # times_to_run: 1
+
   - test: ior-1.1.1
     option_a: # Block Size
       - 2MB
@@ -590,21 +471,7 @@ phoronix-test-suite:
       - 4 # Super Fast
       - 5 # Ultra Fast
       # - 6 # Test All Options
-  - test: laghos-1.0.0
-    option_a:
-      - 1 # Sedov Blast Wave, ube_922_hex.mesh
-      - 2 # Triple Point Problem
-      # - 3 # Test All Options
-  - test: lammps-1.4.0
-    option_a:
-      - 1 # Rhodopsin Protein [Small input, runs very quickly on modern hardware.]
-      - 2 # 20k Atoms         [A larger input for large core-count systems.]
-      # - 3 # Test All Options
-  - test: lczero-1.7.0
-    option_a:
-      - BLAS
-      - Eigen
-      # - Test All Options
+
   - test:
     - libraw-1.0.0
     # - llvm-test-suite-1.0.1 # not an available test
@@ -698,7 +565,7 @@ phoronix-test-suite:
   - test:
     - mkl-dnn-1.3.1
     - mlpack-1.0.2
-    - mnn-2.1.0
+
   - test: mocassin-1.1.0
     option_a:
       - Dust 2D tau100.0
@@ -771,11 +638,7 @@ phoronix-test-suite:
   - test:
     - network-loopback-1.0.3
     - nginx-3.0.1
-  - test: ngspice-1.0.0
-    option_a:
-      - C2670
-      - C7552
-      # - Test All Options
+
   - test:
     - node-express-loadtest-1.0.1
     - node-octane-1.0.1
@@ -803,53 +666,16 @@ phoronix-test-suite:
   - test:
     # - numenta-nab-1.1.0 # install failed
     # - numpy-1.2.1 # run time more than 1h
-    - nwchem-1.1.1
     # - octave-benchmark-1.0.0 # not an available test
     - oidn-2.1.0
     - onnx-1.6.0
     - opencl-benchmark-1.0.0
-  - test: opencv-1.3.0
-    option_a:
-      - DNN - Deep Neural Network
-      - Features 2D
-      - Object Detection
-      - Core
-      - Graph API
-      - Image Processing
-      - Stitching
-      - Video
-      # - Test All Options
+
   - test:
     - opencv-bench-1.0.0
-  - test: openfoam-1.2.0
-    option_a:
-      - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
-      - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU]
-      - 3 # drivaerFastback, Medium Mesh Size [3M Cells]
-      - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming]
-      # - 5 # Test All Options
-  - test:
     - openjpeg-1.0.0
-    - openradioss-1.1.1
     # - open-porous-media-1.3.1 # 3rd party url is N/A
-  - test: openvkl-2.0.0
-    option_a:
-      - vklBenchmarkCPU Scalar
-      - vklBenchmarkCPU ISPC
-      - vklBenchmarkGPU Intel oneAPI SYCL
-      # - Test All Options
-    times_to_run: 1
 
-  - test: openssl-3.1.0
-    option_a:
-      - RSA4096
-      - SHA256
-      - SHA512
-      - AES-128-GCM
-      - AES-256-GCM
-      - ChaCha20
-      - ChaCha20-Poly1305
-      # - Test All Options
   # - test: opm-git-1.3.44 # not an available test
     # option_a:
       # - Upscale-Relperm # missing opm-upscaling/build/bin/upscale_relperm_benchmark
@@ -890,10 +716,3 @@ phoronix-test-suite:
   #     # - Test All Options
   - test:
     - ospray-studio-1.2.0
-
----
-phoronix-test-suite:
-  - test: openems-1.0.0
-    times_to_run: 1 # 96 cpu, 512G memory tbox, run once cost about 22m
-
-timeout: 30m

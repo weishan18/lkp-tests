@@ -1,0 +1,273 @@
+suite: phoronix-test-suite
+testcase: phoronix-test-suite
+category: benchmark
+
+need_memory: 8G
+times_to_run: 1
+
+phoronix-test-suite:
+  - test:
+    - build-gcc-1.4.0
+    - mnn-2.1.0
+    - openradioss-1.1.1
+    - openems-1.0.0 # 96 cpu, 512G memory tbox, run once cost about 22m
+    - petsc-1.0.0
+    - nwchem-1.1.1
+    - hdparm-read-1.0.0
+    - duckdb-1.0.0
+    - build-llvm-1.5.0
+    - build-gem5-1.1.0
+    - build-nodejs-1.3.0
+    - cockroach-1.0.2
+    - asmfish-1.1.2
+
+  - test: easywave-1.0.0
+    option_a:
+      - 1 # 240  [Intended for very slow systems or just a quick reference run.]
+      - 2 # 1200
+      - 3 # 2400 [Just intended for very large core count servers / HPC]
+      # - 4 # Test All Options
+
+  - test: openssl-3.1.0
+    option_a:
+      - RSA4096
+      - SHA256
+      - SHA512
+      - AES-128-GCM
+      - AES-256-GCM
+      - ChaCha20
+      - ChaCha20-Poly1305
+      # - Test All Options
+
+  # - test: dragonflydb-1.1.0 # The test run did not produce a result.
+  #   option_a:
+  #     - 10
+  #     - 20
+  #     - 50
+  #     - 60
+  #     - 100
+  #     # - Test All Options
+  #   option_b:
+  #     - "1:100"
+  #     - "1:10"
+  #     - "1:5"
+  #     - "1:1"
+  #     - "5:1"
+  #     # - Test All Options
+
+  - test: cryptopp-1.1.0
+    option_a:
+      - Unkeyed Algorithms
+      - Keyed Algorithms
+      # - All Algorithms     [This option can be very time consuming.]
+      # - Test All Options
+
+  # - test: etcd-1.0.0 # Estimated Time To Completion: 49 Minutes
+    # option_a:
+      # - PUT
+      # - RANGE
+      # - Test All Options
+    # option_b:
+      # - 50
+      # - 100
+      # - 500
+      # - Test All Options
+    # option_c:
+      # - 100
+      # - 1000
+      # - Test All Options
+
+  # - test: hammerdb-mariadb-1.1.0
+    # option_a:
+      # - 8
+      # - 16
+      # - 32
+      # - 64
+      # - 128
+      # - 256
+      # - 512
+      # - Test All Options
+    # option_b:
+      # - 100
+      # - 250
+      # - 500
+      # - 1000
+      # - Test All Options
+
+  - test: lczero-1.7.0
+    option_a:
+      - BLAS
+      - Eigen
+      # - Test All Options
+
+  - test: lammps-1.4.0
+    option_a:
+      - 1 # Rhodopsin Protein [Small input, runs very quickly on modern hardware.]
+      - 2 # 20k Atoms         [A larger input for large core-count systems.]
+      # - 3 # Test All Options
+
+  - test: ngspice-1.0.0
+    option_a:
+      - C2670
+      - C7552
+      # - Test All Options
+
+  - test: blogbench-1.1.0
+    option_a:
+      - Read
+      - Write
+      # - Test All Options
+
+  - test: laghos-1.0.0
+    option_a:
+      - 1 # Sedov Blast Wave, ube_922_hex.mesh
+      - 2 # Triple Point Problem
+      # - 3 # Test All Options
+
+  - test: cyclictest-1.0.0
+    option_a:
+      - 1 # clock_nanosleep TIME_ABSTIME, Interval 10000 ms, 10000 Loops
+      - 2 # POSIX Timer, Interval 10000 ms, 10000 Loops
+      - 3 # clock_nanosleep TIME_ABSTIME, Interval 500 ms, 100000 Loops
+      - 4 # POSIX Timer, Interval 500 ms, 100000 Loops
+      # - Test All Options
+
+  - test: couchdb-1.3.0
+    option_a:
+      - 100
+      - 300
+      - 500
+      # - Test All Options
+    option_b:
+      - 1000
+      - 3000
+      # - Test All Options
+
+  - test: hpcg-1.3.0
+    option_a:
+      - 104 104 104
+      - 144 144 144
+      - 160 160 160
+      - 192 192 192
+      # - Test All Options
+    option_b:
+      - 1 # 60   [Shorter run-time]
+      - 2 # 1800 [Official run-time]
+      # - 3 # Test All Options
+
+  # - test: interbench-1.0.1 # all the option combinations result in "no space left on device"
+    # option_a:
+      # - Gaming
+      # - Compile
+      # - Audio # run more than 40m on lkp-skl-nuc2
+      # - Video # Video-Compile combination writes more than 400G file to disk
+      # - X # run more than 3h on lkp-csl-2sp8
+      # - Burn
+      # - Memload
+      # - Write
+      # - Read
+      # - Test All Options
+    # option_b:
+      # - Gaming
+      # - Compile # Video-Compile combination writes more than 400G file to disk
+      # - Audio # no passed job in our env
+      # - Video
+      # - X
+      # - Burn
+      # - Memload
+      # - Write
+      # - Read
+      # - Test All Options
+
+  - test: opencv-1.3.0
+    option_a:
+      - DNN - Deep Neural Network
+      - Features 2D
+      - Object Detection
+      - Core
+      - Graph API
+      - Image Processing
+      - Stitching
+      - Video
+      # - Test All Options
+
+  - test: openfoam-1.2.0
+    option_a:
+      - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
+      - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU]
+      - 3 # drivaerFastback, Medium Mesh Size [3M Cells]
+      - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming]
+      # - 5 # Test All Options
+
+  - test: openvkl-2.0.0
+    option_a:
+      - vklBenchmarkCPU Scalar
+      - vklBenchmarkCPU ISPC
+      - vklBenchmarkGPU Intel oneAPI SYCL
+      # - Test All Options
+
+  - test: pgbench-1.14.0
+    option_a: # Scaling Factor
+      # - 1 # 1
+      # - 2 # 100
+      # - 3 # 1000
+      - 4 # 10000
+      # - 5 # 25000 [Intended for very large servers.]
+      # - 6 # Test All Options
+    option_b: # Clients
+      # - 1
+      # - 50
+      # - 100
+      # - 250
+      # - 500
+      - 800
+      # - 1000
+      # - 5000
+      # - Test All Options
+    option_c: # Mode
+      - Read Write
+      - Read Only
+      # - Test All Options
+
+  - test: renaissance-1.3.0
+    option_a:
+      - 1 # Akka Unbalanced Cobwebbed Tree
+      - 2 # Savina Reactors.IO
+      - 3 # Apache Spark ALS
+      - 4 # Random Forest
+      - 5 # Apache Spark Bayes
+      - 6 # Apache Spark PageRank
+      - 7 # In-Memory Database Shootout
+      - 8 # Scala Dotty
+      - 9 # Finagle HTTP Requests
+      - 10 # Genetic Algorithm Using Jenetics + Futures
+      - 11 # ALS Movie Lens
+      # - 12 # Test All Options
+
+  - test: startup-time-1.4.1
+    option_a: # Background I/O Mix
+      - Only Sequential Reads # need more than 1h
+      - Sequential Reads + Writes
+      - Test All Options
+    option_b: # Application To Start
+      - GNOME Terminal
+      # - xterm
+      # - LibreOffice Writer
+      - Test All Options
+    option_c: # Disk Target
+      - /opt/rootfs
+
+  - test: helsing-1.0.2
+    option_a:
+      - 12 digit
+      - 14 digit
+      # - Test All Options
+    
+  - test: webp2-1.2.1
+    option_a:
+      - Default
+      - 2 # Quality 75, Compression Effort 7
+      - 3 # Quality 95, Compression Effort 7
+      - 4 # Quality 100, Compression Effort 5
+      - 5 # Quality 100, Lossless Compression
+      # - Test All Options

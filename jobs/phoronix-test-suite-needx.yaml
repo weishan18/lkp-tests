@@ -16,7 +16,6 @@ phoronix-test-suite:
     - vkresample-1.0.2
     - xplane11-1.1.2
     - xplane12-1.0.1
-    - realsr-ncnn-1.0.0
     - riseofthetombraider-1.0.2
     - talos-principle-1.2.1
     - waifu2x-ncnn-1.0.0
@@ -25,8 +24,13 @@ phoronix-test-suite:
     - vkpeak-1.1.0
     - quake2rtx-1.6.1
     - madmax-1.2.1
-    - gravitymark-1.9.0
     - geexlab-rt-1.0.1
+
+  - test: gravitymark-1.9.0
+    times_to_run: 1
+
+  - test: realsr-ncnn-1.0.0
+    times_to_run: 1
 
   - test: apitest-1.1.1
     option_a:
@@ -280,6 +284,8 @@ phoronix-test-suite:
       - Fullscreen
       # - Windowed
       # - Test All Options
+    times_to_run: 1
+
   - test: unigine-tropics-1.6.4
     option_a:
       - 1024 x 768
