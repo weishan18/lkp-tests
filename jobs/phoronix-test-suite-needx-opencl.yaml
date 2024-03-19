@@ -43,7 +43,7 @@ phoronix-test-suite:
       - Integer
       # - Test All Options
 
-  # - test: shoc-1.2.0 # No supported options found for target
+  # - test: shoc-1.2.0 # No supported options found for target. "OpenCL unavailable" issue unable to fix yet
   #   option_a:
   #     - Bus Speed Download
   #     - Bus Speed Readback
