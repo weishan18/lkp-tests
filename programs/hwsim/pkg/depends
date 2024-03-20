@@ -1,6 +1,5 @@
 sudo
-gcc
-make
+build-essential
 zlib1g-dev
 iw
 bridge-utils

@@ -1,6 +1,4 @@
-gcc
 git
-make
 file
 autoconf
 pkg-config

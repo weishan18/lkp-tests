@@ -9,14 +9,8 @@ virt-what
 xfsprogs
 pciutils
 git
-make
-gcc
-libc6
-libc6-dev
 libc-bin
-libc-dev-bin
 build-essential
-linux-libc-dev
 init-system-helpers
 libgfapi0
 libgfrpc0

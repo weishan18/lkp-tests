@@ -4,8 +4,7 @@ libuuid1
 libkmod2
 kmod
 git
-make
-gcc
+build-essential
 autoconf
 autotools-dev
 automake

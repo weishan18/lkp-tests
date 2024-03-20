@@ -1,6 +1,5 @@
-gcc
+build-essential
 git
-make
 file
 autoconf
 pkg-config

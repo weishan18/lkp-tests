@@ -5,4 +5,3 @@ libssl-dev
 libelf-dev
 flex
 bison
-gcc

@@ -3,12 +3,10 @@ bison
 clang
 default-jdk
 flex
-g++
-gcc
+build-essential
 iproute2
 libaudit-dev
 libbabeltrace-dev
-libc6-dev
 libcap-dev
 libclang-dev
 libdw-dev
@@ -29,7 +27,6 @@ libunwind-dev
 libzstd-dev
 linux-perf
 llvm-dev
-make
 numactl
 patch
 python3

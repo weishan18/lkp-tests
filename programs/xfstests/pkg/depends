@@ -27,7 +27,7 @@ libcap2-bin
 libicu
 libgdbm-compat4
 man-db
-gcc
+build-essential
 fsverity
 udftools
 ocfs2-tools

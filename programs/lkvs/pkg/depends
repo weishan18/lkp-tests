@@ -1,15 +1,13 @@
 bison
 cmake
 flex
-g++
+build-essential
 g++-multilib
-gcc
 gcc-multilib
 git
 libelf1
 libelf-dev
 linux-perf
-make
 msr-tools
 stress
 trace-cmd

@@ -1,5 +1,4 @@
-make
-gcc
+build-essential
 libc-dev
 net-tools
 libtirpc-dev

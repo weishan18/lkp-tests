@@ -1,5 +1,4 @@
-gcc
-g++
+build-essential
 bc
 btrfs-tools
 cmake
