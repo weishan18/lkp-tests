@@ -211,7 +211,6 @@ phoronix-test-suite:
       - Fullscreen
       # - Test All Options
     option_c:
-      - Basic
       - Low
       - Medium
       - High
