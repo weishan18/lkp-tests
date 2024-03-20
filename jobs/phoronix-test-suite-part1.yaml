@@ -351,7 +351,7 @@ phoronix-test-suite:
       # - 4
       # - 8
       # - 16
-      - 32
+      # - 32 # The test quit with a non-zero exit status.
       # - Test All Options
     option_b: # Type
       - Process

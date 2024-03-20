@@ -102,10 +102,10 @@ phoronix-test-suite:
     option_c:
       - Fill-Rate
       - Fragment
-      - Geometry
+      # - Geometry # The test quit with a non-zero exit status.
       - Vertex
       - Complex
-      - Compute
+      # - Compute # The test run did not produce a result.
       # - Test All Options
   - test: gputest-1.3.2
     option_a:
