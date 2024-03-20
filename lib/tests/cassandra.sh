@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . $LKP_SRC/lib/debug.sh
+. $LKP_SRC/lib/env.sh
 
 setup_java_home()
 {
@@ -21,4 +22,20 @@ setup_java_home()
 	fi
 
 	echo "JAVA_HOME=$JAVA_HOME"
+}
+
+# mainly to resolve "/usr/bin/env: ‘python’: No such file or directory"
+setup_python()
+{
+	has_cmd python && return
+
+	if has_cmd python2; then
+		ln -sf $(cmd_path python2) /usr/bin/python
+	elif has_cmd python3; then
+		ln -sf $(cmd_path python3) /usr/bin/python
+	else
+		die "No python found"
+	fi
+
+	echo "python: $(ls -l /usr/bin/python)"
 }
