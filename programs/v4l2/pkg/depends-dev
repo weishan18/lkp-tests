@@ -1,9 +1,9 @@
 autoconf-archive
 autotools-dev
+build-essential
 debhelper
 dh-autoreconf
 doxygen
-build-essential
 git
 graphviz
 libasound2-dev

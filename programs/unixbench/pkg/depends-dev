@@ -1,4 +1,4 @@
 freeglut3-dev
-libglut-dev
 libgl1-mesa-dev
+libglut-dev
 libx11-dev

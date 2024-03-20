@@ -1,6 +1,6 @@
 bison
-flex
 build-essential
+flex
 git
 libelf-dev
 libssl-dev

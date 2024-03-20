@@ -1,5 +1,5 @@
 build-essential
-libc-dev
-net-tools
-libtirpc-dev
 gnuplot
+libc-dev
+libtirpc-dev
+net-tools

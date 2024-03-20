@@ -2,6 +2,7 @@ autopoint
 debhelper
 dh-autoreconf
 dh-strip-nondeterminism
+gcc-multilib (x86_64)
 gettext
 gettext-base
 groff-base
@@ -14,4 +15,3 @@ libtimedate-perl
 libxml2
 man-db
 po-debconf
-gcc-multilib (x86_64)
