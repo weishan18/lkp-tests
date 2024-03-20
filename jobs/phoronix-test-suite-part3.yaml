@@ -143,17 +143,17 @@ phoronix-test-suite:
       - 3000
       # - Test All Options
 
-  - test: hpcg-1.3.0
-    option_a:
-      - 104 104 104
-      - 144 144 144
-      - 160 160 160
-      - 192 192 192
-      # - Test All Options
-    option_b:
-      - 1 # 60   [Shorter run-time]
-      - 2 # 1800 [Official run-time]
-      # - 3 # Test All Options
+  # - test: hpcg-1.3.0 # oom
+  #   option_a:
+  #     - 104 104 104
+  #     - 144 144 144
+  #     - 160 160 160
+  #     - 192 192 192
+  #     # - Test All Options
+  #   option_b:
+  #     - 1 # 60   [Shorter run-time]
+  #     - 2 # 1800 [Official run-time]
+  #     # - 3 # Test All Options
 
   # - test: interbench-1.0.1 # all the option combinations result in "no space left on device"
     # option_a:

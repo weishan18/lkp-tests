@@ -331,7 +331,7 @@ phoronix-test-suite:
       # - Test All Options
   - test:
     - gpuowl-1.0.0
-    - graph500-1.0.1
+    # - graph500-1.0.1 # oom
   - test: graphics-magick-2.1.0
     option_a:
       - HWB Color Space
