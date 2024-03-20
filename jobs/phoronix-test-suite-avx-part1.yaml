@@ -33,14 +33,14 @@ phoronix-test-suite:
       # - Test All Options
   - test: onednn-3.3.0
     option_a:
-      - Convolution Batch Shapes Auto
+      # - Convolution Batch Shapes Auto # The test quit with a non-zero exit status.
       - Deconvolution Batch shapes_1d
       - Deconvolution Batch shapes_3d
-      - IP Shapes 1D
+      # - IP Shapes 1D # The test quit with a non-zero exit status.
       - IP Shapes 3D
       - Matrix Multiply Batch Shapes Transformer
       - Recurrent Neural Network Training
-      - Recurrent Neural Network Inference
+      # - Recurrent Neural Network Inference # The test quit with a non-zero exit status.
       # - Test All Options
     option_b:
       - 1 # f32

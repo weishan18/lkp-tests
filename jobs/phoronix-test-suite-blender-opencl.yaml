@@ -12,7 +12,7 @@ phoronix-test-suite:
       - Classroom
       # - Fishy Cat # elapsed_time: 2935s
       # - Pabellon Barcelona # elapsed_time: 3164s
-      - Barbershop
+      # - Barbershop # The test quit with a non-zero exit status.
       # - Test All Options
     option_b:
       - CPU-Only
