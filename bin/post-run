@@ -35,7 +35,7 @@ wait_for_bg_procs()
 
 	echo wait for background processes: $(cat $pidfile $TMP/.name-wait-bg-procs)
 
-	for i in 1 2 3 4 5
+	for i in $(seq 15)
 	do
 		sleep $i
 		any_pid_alive $pidfile && continue
