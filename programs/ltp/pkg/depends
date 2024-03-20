@@ -37,11 +37,9 @@ gdb
 xfsprogs
 xfslibs-dev
 uuid-runtime
-gcc
-libc6-dev
+build-essential
 git
 patch
-make
 automake
 udisks2
 dosfstools
