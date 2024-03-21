@@ -95,7 +95,7 @@ phoronix-test-suite:
     option_a:
       - Sequential Fill
       - Random Fill
-      # - Random Fill Sync # The test quit with a non-zero exit status.
+      - Random Fill Sync
       - Random Read
       - Read While Writing
       # - Test All Options
