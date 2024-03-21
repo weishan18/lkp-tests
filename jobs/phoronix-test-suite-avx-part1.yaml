@@ -37,7 +37,7 @@ phoronix-test-suite:
       - Deconvolution Batch shapes_1d
       - Deconvolution Batch shapes_3d
       # - IP Shapes 1D # The test quit with a non-zero exit status.
-      - IP Shapes 3D
+      # - IP Shapes 3D # The test quit with a non-zero exit status.
       - Matrix Multiply Batch Shapes Transformer
       - Recurrent Neural Network Training
       # - Recurrent Neural Network Inference # The test quit with a non-zero exit status.

@@ -325,7 +325,7 @@ phoronix-test-suite:
   - test: go-benchmark-1.1.4
     option_a:
       - build
-      - http
+      # - http # The test quit with a non-zero exit status.
       - json
       - garbage
       # - Test All Options
@@ -428,9 +428,9 @@ phoronix-test-suite:
       - 4096
       # - Test All Options
   - test:
-      - iperf-1.2.0
+      # - iperf-1.2.0 # The test quit with a non-zero exit status.
       - java-gradle-perf-1.1.0
-      - java-jmh-1.0.1
+      # - java-jmh-1.0.1 # The test run did not produce a result.
   - test: java-scimark2-1.2.0
     option_a:
       - Composite

@@ -237,7 +237,7 @@ phoronix-test-suite:
       - 4 # Random Forest
       - 5 # Apache Spark Bayes
       - 6 # Apache Spark PageRank
-      - 7 # In-Memory Database Shootout
+      # - 7 # In-Memory Database Shootout # The test run did not produce a result.
       - 8 # Scala Dotty
       - 9 # Finagle HTTP Requests
       - 10 # Genetic Algorithm Using Jenetics + Futures

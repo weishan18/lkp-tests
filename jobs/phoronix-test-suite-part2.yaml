@@ -306,12 +306,12 @@ phoronix-test-suite:
     # - trislam-1.0.0 # install failed
     # - tscp-1.2.2 # The test quit with a non-zero exit status.
     - ttsiod-renderer-1.7.0
-  - test: tungsten-1.0.0
-    option_a:
-      # - Hair # The test quit with a non-zero exit status.
-      - Water Caustic
-      # - Non-Exponential # The test quit with a non-zero exit status.
-      - Volumetric Caustic
+  # - test: tungsten-1.0.0 # The test quit with a non-zero exit status.
+    # option_a:
+      # - Hair
+      # - Water Caustic
+      # - Non-Exponential
+      # - Volumetric Caustic
       # - Test All Options
   - test:
     - unpack-firefox-1.0.0
