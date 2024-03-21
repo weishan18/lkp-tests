@@ -24,7 +24,7 @@ phoronix-test-suite:
     - vkpeak-1.1.0
     - quake2rtx-1.6.1
     - madmax-1.2.1
-    - geexlab-rt-1.0.1
+    # - geexlab-rt-1.0.1 # The test run did not produce a result.
 
   - test: apitest-1.1.1
     option_a:
@@ -45,12 +45,12 @@ phoronix-test-suite:
       - UntexturedObjects GLMapUnsynchronized
       - UntexturedObjects GLMapPersistent
       - UntexturedObjects GLTexCoord
-      - TexturedQuadsProblem GLBindless
+      # - TexturedQuadsProblem GLBindless # The test run did not produce a result.
       - TexturedQuadsProblem GLNaive
       - TexturedQuadsProblem GLNaiveUniform
       - TexturedQuadsProblem GLNoTex
       - TexturedQuadsProblem GLNoTexUniform
-      - TexturedQuadsProblem GLSBTA
+      # - TexturedQuadsProblem GLSBTA # The test run did not produce a result.
       - TexturedQuadsProblem GLTextureArray
       # - Test All Options
   - test: cairo-perf-trace-1.0.2

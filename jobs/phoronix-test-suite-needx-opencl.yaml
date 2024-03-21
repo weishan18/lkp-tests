@@ -38,9 +38,9 @@ phoronix-test-suite:
       # - Test All Options
   - test: mixbench-1.0.0
     option_a:
-      - Single Precision
+      # - Single Precision # The test quit with a non-zero exit status.
       - Double Precision
-      - Integer
+      # - Integer # The test quit with a non-zero exit status.
       # - Test All Options
 
   # - test: shoc-1.2.0 # No supported options found for target. "OpenCL unavailable" issue unable to fix yet

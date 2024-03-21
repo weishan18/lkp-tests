@@ -195,7 +195,7 @@ phoronix-test-suite:
     option_a:
       - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
       - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU]
-      - 3 # drivaerFastback, Medium Mesh Size [3M Cells]
+      # - 3 # drivaerFastback, Medium Mesh Size [3M Cells] # The test quit with a non-zero exit status.
       # - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming] # The test quit with a non-zero exit status.
       # - 5 # Test All Options
 

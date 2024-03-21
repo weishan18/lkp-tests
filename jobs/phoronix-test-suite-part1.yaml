@@ -11,8 +11,8 @@ phoronix-test-suite:
     # - ai-benchmark-1.0.1 # install failed
     - aobench-1.0.1
     # - aom-av1-2.0.2 # not an available test
-    - apache-3.0.0
-    - apache-iotdb-1.2.0
+    # - apache-3.0.0 # The test quit with a non-zero exit status.
+    # - apache-iotdb-1.2.0 # The test quit with a non-zero exit status.
   # - test: apache-siege-1.0.5 # not an available test
     # option_a: # cocurrent users
       # - 1
@@ -290,7 +290,7 @@ phoronix-test-suite:
       # - /opt/rootfs
       # - Test All Options
   - test:
-    - fluidx3d-1.2.0
+    # - fluidx3d-1.2.0 # The test quit with a non-zero exit status.
   - test: fs-mark-1.0.3
     option_a:
       - 1 # 1000 Files, 1MB Size
@@ -326,7 +326,7 @@ phoronix-test-suite:
     option_a:
       # - build # The test quit with a non-zero exit status.
       # - http # The test quit with a non-zero exit status.
-      - json
+      # - json # The test quit with a non-zero exit status.
       - garbage
       # - Test All Options
   - test:
@@ -458,7 +458,7 @@ phoronix-test-suite:
   - test:
     - jpegxl-decode-1.5.0
     # - keydb-1.2.0 # install failed
-    - kripke-1.2.0
+    # - kripke-1.2.0 # The test quit with a non-zero exit status.
   - test: kvazaar-1.2.0
     option_a:
       - Bosphorus 1080p
@@ -636,12 +636,12 @@ phoronix-test-suite:
       - chacha
       # - Test All Options
   - test:
-    - network-loopback-1.0.3
+    # - network-loopback-1.0.3 # The test quit with a non-zero exit status.
     - nginx-3.0.1
 
   - test:
     # - node-express-loadtest-1.0.1 # The test run did not produce a result.
-    - node-octane-1.0.1
+    # - node-octane-1.0.1 # The test quit with a non-zero exit status.
     # - noise-level-1.1.0 # not an available test
   - test: npb-1.4.5
     option_a:

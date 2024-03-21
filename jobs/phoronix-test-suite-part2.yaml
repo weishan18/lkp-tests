@@ -157,7 +157,7 @@ phoronix-test-suite:
   - test:
     - sqlite-speedtest-1.0.1
     - srsran-2.1.0
-    - stargate-1.1.0
+    # - stargate-1.1.0 # The test quit with a non-zero exit status.
     - stockfish-1.4.0
     - stream-dynamic-1.0.0
   - test: stress-ng-1.11.0
