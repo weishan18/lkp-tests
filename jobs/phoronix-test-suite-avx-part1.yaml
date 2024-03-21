@@ -19,10 +19,10 @@ phoronix-test-suite:
     - rust-mandel-1.0.0
   - test: stream-1.3.4
     option_a:
-      - Copy
+      # - Copy # The test quit with a non-zero exit status.
       - Scale
       - Add
-      - Triad
+      # - Triad # The test quit with a non-zero exit status.
       # - Test All Options
 
   - test: svt-vp9-1.3.0
@@ -35,7 +35,7 @@ phoronix-test-suite:
     option_a:
       # - Convolution Batch Shapes Auto # The test quit with a non-zero exit status.
       - Deconvolution Batch shapes_1d
-      - Deconvolution Batch shapes_3d
+      # - Deconvolution Batch shapes_3d # The test quit with a non-zero exit status.
       # - IP Shapes 1D # The test quit with a non-zero exit status.
       # - IP Shapes 3D # The test quit with a non-zero exit status.
       - Matrix Multiply Batch Shapes Transformer

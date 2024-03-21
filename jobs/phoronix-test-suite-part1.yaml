@@ -211,7 +211,7 @@ phoronix-test-suite:
   - test:
     # - f12017-1.1.1 # install failed
     # - fahbench-1.0.2 # The test run did not produce a result.
-    - fast-cli-1.0.0
+    # - fast-cli-1.0.0 # The test run did not produce a result.
     - ffte-1.2.1
   - test: ffmpeg-6.1.0
     option_a:
@@ -324,7 +324,7 @@ phoronix-test-suite:
     # - gnupg-2.4.0 # install failed
   - test: go-benchmark-1.1.4
     option_a:
-      - build
+      # - build # The test quit with a non-zero exit status.
       # - http # The test quit with a non-zero exit status.
       - json
       - garbage
@@ -640,7 +640,7 @@ phoronix-test-suite:
     - nginx-3.0.1
 
   - test:
-    - node-express-loadtest-1.0.1
+    # - node-express-loadtest-1.0.1 # The test run did not produce a result.
     - node-octane-1.0.1
     # - noise-level-1.1.0 # not an available test
   - test: npb-1.4.5

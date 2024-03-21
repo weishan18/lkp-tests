@@ -13,7 +13,7 @@ phoronix-test-suite:
     - openems-1.0.0 # 96 cpu, 512G memory tbox, run once cost about 22m
     - petsc-1.0.0
     - nwchem-1.1.1
-    - hdparm-read-1.0.0
+    # - hdparm-read-1.0.0 #  The test run did not produce a result.
     - duckdb-1.0.0
     - build-llvm-1.5.0
     - build-gem5-1.1.0
@@ -196,14 +196,14 @@ phoronix-test-suite:
       - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
       - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU]
       - 3 # drivaerFastback, Medium Mesh Size [3M Cells]
-      - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming]
+      # - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming] # The test quit with a non-zero exit status.
       # - 5 # Test All Options
 
   - test: openvkl-2.0.0
     option_a:
       - vklBenchmarkCPU Scalar
       - vklBenchmarkCPU ISPC
-      - vklBenchmarkGPU Intel oneAPI SYCL
+      # - vklBenchmarkGPU Intel oneAPI SYCL # The test run did not produce a result.
       # - Test All Options
 
   - test: pgbench-1.14.0

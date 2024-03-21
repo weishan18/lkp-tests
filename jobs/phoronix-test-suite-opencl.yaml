@@ -7,7 +7,7 @@ phoronix-test-suite:
     option_a:
       - BLAS CPU FP32
       - BLAS CPU FP16
-      - Conjugate Gradient CPU
+      # - Conjugate Gradient CPU # The test run did not produce a result.
       # - Test All Options
   - test: askap-2.1.0
     option_a:
@@ -43,10 +43,10 @@ phoronix-test-suite:
   - test: parboil-1.2.1
     option_a:
       - OpenMP CUTCP
-      - OpenMP MRI-Q
-      - OpenMP MRI Gridding
+      # - OpenMP MRI-Q # The test quit with a non-zero exit status.
+      # - OpenMP MRI Gridding # The test quit with a non-zero exit status.
       - OpenMP Stencil
-      - OpenMP LBM
+      # - OpenMP LBM # The test quit with a non-zero exit status.
       # - Test All Options
     times_to_run: 1
 

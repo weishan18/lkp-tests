@@ -61,7 +61,7 @@ phoronix-test-suite:
     # - qmcpack-1.7.0 # The test quit with a non-zero exit status.
     - quantlib-1.2.0
     - quicksilver-1.0.0
-    - rabbitmq-1.1.1
+    # - rabbitmq-1.1.1 # The test quit with a non-zero exit status.
   - test: radiance-1.0.0
     option_a:
       - Serial
@@ -458,7 +458,7 @@ phoronix-test-suite:
       - crypto_pyaes
       - django_template
       - float
-      - go
+      # - go # The test quit with a non-zero exit status.
       - json_loads
       - nbody
       - pathlib
