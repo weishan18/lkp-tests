@@ -64,6 +64,19 @@ while (line = $stdin.gets)
     else
       stats["#{test_name}.#{test_id}.Final"] = value
     end
+  when /Final: ([A-Z]+)/
+    result = $1.downcase
+
+    if is_begin_of_subtest
+      test_id += 1
+      is_begin_of_subtest = false
+    end
+
+    if !test_subname.empty?
+      stats["#{test_name}.#{test_subname.at(test_id)}.Final.#{result}"] = 1
+    else
+      stats["#{test_name}.#{test_id}.Final.#{result}"] = 1
+    end
   when /The following tests failed to properly run:/
     stats["#{test_name}.fail"] = 1
   when /(idle-[\d.]+seconds): ([\d.]+)/
