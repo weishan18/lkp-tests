@@ -40,7 +40,7 @@ describe 'filter/need_kernel_version.rb' do
         generate_context(compiler, version)
         job = generate_job compiler, <<-EOF
 need_kernel_version:
-- '>= v4.17, gcc'
+- '>= v4.16.1, gcc'
 - '>= v5.12, clang'
         EOF
         expect { job.expand_params }.to raise_error Job::ParamError
@@ -49,13 +49,13 @@ need_kernel_version:
   end
 
   context 'kernel is satisfied' do
-    { 'v5.0' => 'gcc', 'v5.12' => 'clang' }.each do |version, compiler|
+    { 'v5.0' => 'gcc', 'v5.12.112' => 'clang' }.each do |version, compiler|
       it "does not filters the job built with #{compiler}" do
         generate_context(compiler, version)
         job = generate_job compiler, <<-EOF
 need_kernel_version:
 - '>= v4.17, gcc'
-- '>= v5.12, clang'
+- '>= v5.12.112, clang'
         EOF
         job.expand_params
       end
