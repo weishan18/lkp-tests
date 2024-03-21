@@ -14,7 +14,7 @@ phoronix-test-suite:
     - petsc-1.0.0
     - nwchem-1.1.1
     # - hdparm-read-1.0.0 #  The test run did not produce a result.
-    - duckdb-1.0.0
+    # - duckdb-1.0.0 # The test quit with a non-zero exit status.
     - build-llvm-1.5.0
     - build-gem5-1.1.0
     - build-nodejs-1.3.0

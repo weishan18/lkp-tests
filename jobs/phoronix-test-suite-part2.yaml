@@ -464,7 +464,7 @@ phoronix-test-suite:
       - pathlib
       - pickle_pure_python
       # - python_startup # The test quit with a non-zero exit status.
-      - raytrace
+      # - raytrace # The test quit with a non-zero exit status.
       # - regex_compile # The test quit with a non-zero exit status.
       # - Test All Options
   # - test: rav1e-1.5.0 # install failed
