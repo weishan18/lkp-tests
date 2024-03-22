@@ -19,10 +19,10 @@ phoronix-test-suite:
     - rust-mandel-1.0.0
   - test: stream-1.3.4
     option_a:
-      # - Copy # The test quit with a non-zero exit status.
+      - Copy
       - Scale
       - Add
-      # - Triad # The test quit with a non-zero exit status.
+      - Triad
       # - Test All Options
 
   - test: svt-vp9-1.3.0
