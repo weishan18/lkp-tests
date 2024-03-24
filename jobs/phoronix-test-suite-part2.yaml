@@ -198,7 +198,6 @@ phoronix-test-suite:
       - Vector Floating Point
       - Vector Shuffle
       - Wide Vector Math
-      - Cloning
       - AVX-512 VNNI
       - Mixed Scheduler
       # - Test All Options
