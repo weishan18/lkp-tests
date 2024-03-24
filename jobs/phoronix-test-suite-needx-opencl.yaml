@@ -23,7 +23,7 @@ phoronix-test-suite:
       # - GPU
       # - CPU+GPU
       # - Test All Options
-  - test: luxmark-1.2.1
+  # - test: luxmark-1.2.1 # "OpenCL unavailable" issue unable to fix yet
   # - test: mandelbulbgpu-1.3.0 # "OpenCL unavailable" issue unable to fix yet
     # option_a:
       # - CPU
