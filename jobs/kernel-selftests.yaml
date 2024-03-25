@@ -11,11 +11,6 @@ need_memory: 2G
 
 kernel-selftests:
   group:
-    - rust
-
----
-kernel-selftests:
-  group:
     - group-00
     - group-03
     - livepatch
