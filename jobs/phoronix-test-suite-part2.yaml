@@ -419,7 +419,16 @@ phoronix-test-suite:
       - Scan
       - Increment
       # - Test All Options
-
+    option_c:
+      - 1 # 1
+      - 2 # 4
+      - 3 # 16
+      - 4 # 32
+      - 5 # 64
+      - 6 # 128
+      - 7 # 256
+      - 8 # 500
+      # - 9 # Test All Options
   - test: incompact3d-2.0.2
     option_a:
       - input.i3d 129 Cells Per Direction [Intended For Small Systems]
