@@ -11,8 +11,6 @@ phoronix-test-suite:
       # - Test All Options
   - test: askap-2.1.0
     option_a:
-      - tConvolve OpenCL
-      # - tConvolve CUDA # not supported and not display
       - tConvolve MPI
       - tConvolve OpenMP
       - tConvolve MT
