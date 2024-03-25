@@ -133,28 +133,6 @@ prepare_for_test()
 	command -v ip6tables >/dev/null || log_cmd ln -sf /usr/sbin/ip6tables-nft /usr/bin/ip6tables
 }
 
-# Get testing env kernel config file
-# Depending on your system, you'll find it in any one of these:
-# /proc/config.gz
-# /boot/config
-# /boot/config-$(uname -r)
-get_kconfig()
-{
-	local config_file="$1"
-	if [[ -e "/proc/config.gz" ]]; then
-		gzip -dc "/proc/config.gz" > "$config_file"
-	elif [[ -e "/boot/config-$(uname -r)" ]]; then
-		cat "/boot/config-$(uname -r)" > "$config_file"
-	elif [[ -e "/boot/config" ]]; then
-		cat "/boot/config" > "$config_file"
-	else
-		echo "Failed to get current kernel config"
-		return 1
-	fi
-
-	[[ -s "$config_file" ]]
-}
-
 check_kconfig()
 {
 	local dependent_config=$1
