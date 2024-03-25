@@ -28,6 +28,7 @@ nvml:
   group:
     - arch
     - checksum
+    - log
     - obj
     - out
     - pmem
