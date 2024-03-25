@@ -406,8 +406,8 @@ phoronix-test-suite:
     option_a:
       - 1 # 10000    [Quickest]
       - 2 # 1000000  [Hbase Default]
-      - 3 # 2000000
-      - 4 # 10000000 [Longest / most time consuming]
+      # - 3 # 2000000
+      # - 4 # 10000000 [Longest / most time consuming]
       # - 5 # Test All Options
     option_b:
       - Random Write
@@ -421,12 +421,12 @@ phoronix-test-suite:
       # - Test All Options
     option_c:
       - 1 # 1
-      - 2 # 4
-      - 3 # 16
-      - 4 # 32
-      - 5 # 64
-      - 6 # 128
-      - 7 # 256
+      # - 2 # 4
+      # - 3 # 16
+      # - 4 # 32
+      # - 5 # 64
+      # - 6 # 128
+      # - 7 # 256
       - 8 # 500
       # - 9 # Test All Options
   - test: incompact3d-2.0.2
