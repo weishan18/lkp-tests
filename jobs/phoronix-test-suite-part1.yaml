@@ -719,16 +719,14 @@ phoronix-test-suite:
       - Launch Programs
       - Memory Allocations
       # - Test All Options
-  # - test: ospray-2.12.0 # Wrong test option
-  #   option_a:
-  #     - Magnetic Reconnection
-  #     - XFrog Forest
-  #     - NASA Streamlines
-  #     - San Miguel
-  #     # - Test All Options
-  #   option_b:
-  #     - SciVis      [A fast ray-tracer for scientific visualizations.]
-  #     - 2 # Path Tracer [Supports soft shadows, indirect illumination and realistic materials.]
-  #     # - Test All Options
+  - test: ospray-2.12.0
+    option_a:
+      - gravity_spheres_volume/dim_512/ao/real_time
+      - gravity_spheres_volume/dim_512/scivis/real_time
+      - gravity_spheres_volume/dim_512/pathtracer/real_time
+      - particle_volume/ao/real_time
+      - particle_volume/scivis/real_time
+      - particle_volume/pathtracer/real_time
+      # - Test All Options
   - test:
     - ospray-studio-1.2.0
