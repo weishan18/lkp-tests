@@ -145,10 +145,26 @@ phoronix-test-suite:
   - test: dacapobench-1.1.0
     option_a:
       - Eclipse
-      - H2
+      - Avrora AVR Simulation Framework
+      - Batik SVG Toolkit
+      - FOP Print Formatter
+      - PMD Source Code Analyzer
+      - Apache Tomcat
+      - Apache Xalan XSLT
+      - Apache Lucene Search Index
+      - Apache Lucene Search Engine
+      - H2 Database Engine
       - Jython
       - Tradebeans
       - Tradesoap
+      - BioJava Biological Data Framework
+      - Apache Cassandra
+      - GraphChi
+      - H2O In-Memory Platform For Machine Learning
+      - jMonkeyEngine
+      - Apache Kafka
+      - Spring Boot
+      - Zxing 1D/2D Barcode Image Processing
       # - Test All Options
   - test: dav1d-1.14.0
     option_a:
