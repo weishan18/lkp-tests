@@ -56,14 +56,20 @@ def kernel_match_kconfig?(kernel_kconfigs, expected_kernel_kconfig)
   end
 end
 
+# constraints can be
+#   - 200
+#   - [200, 'x86_64']
+#   - 'y'
 def split_constraints(constraints)
-  # to_s is for "CMA_SIZE_MBYTES: 200"
-  constraints = constraints.to_s.split(',').map(&:strip)
+  constraints = if constraints.instance_of?(Array)
+                  constraints.map(&:to_s)
+                else
+                  constraints.to_s.split(',').map(&:strip)
+                end
 
   kernel_versions, constraints = constraints.partition { |constraint| constraint =~ /v\d+\.\d+/ }
   archs, constraints = constraints.partition { |constraint| constraint =~ /^(i386|x86_64)$/ }
 
-  # \d+ is for "CMA_SIZE_MBYTES: 200"
   types, constraints = constraints.partition { |constraint| constraint =~ /^(y|m|n|\d+|0[xX][A-Fa-f0-9]+)$/ }
   raise Job::SyntaxError, "Wrong syntax of kconfig setting: #{constraints}" if types.size > 1
 
