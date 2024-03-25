@@ -88,7 +88,6 @@ phoronix-test-suite:
 
   # - test: cassandra-1.2.0 # The test run did not produce a result.
   #   option_a:
-  #     - Reads
   #     - Writes
   #     - Mixed 1:1
   #     - Mixed 1:3
