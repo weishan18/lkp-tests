@@ -7,9 +7,11 @@ times_to_run: 1
 phoronix-test-suite:
   - test: svt-av1-2.3.0
     option_a:
-      - Preset 8 [Fastest - Default]
-      - Preset 4 [Mid-Speed]
-      # - Test All Options
+      - 1 # Preset 13 [Fastest]
+      - 2 # Preset 12
+      - 3 # Preset 8
+      - 4 # Preset 4  [Mid-Speed]
+      # - 5 # Test All Options
     option_b:
       - Bosphorus 1080p
       - Bosphorus 4K
