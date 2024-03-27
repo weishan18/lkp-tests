@@ -27,17 +27,19 @@ phoronix-test-suite:
       # - Transfer Bandwidth enqueueReadBuffer
       # - Kernel Latency
       # - Test All Options
-  - test: darktable-1.0.5
-    option_a:
-      - Boat
-      - Masskrug
-      - Server Room
-      - Server Rack
-      # - Test All Options
-    option_b:
-      - CPU-only
-      - OpenCL
-      # - Test All Options
+
+  # - test: darktable-1.0.5 # is not installed
+  #   option_a:
+  #     - Boat
+  #     - Masskrug
+  #     - Server Room
+  #     - Server Rack
+  #     # - Test All Options
+  #   option_b:
+  #     - CPU-only
+  #     - OpenCL
+  #     # - Test All Options
+
   - test: parboil-1.2.1
     option_a:
       - OpenMP CUTCP

@@ -13,6 +13,10 @@ phoronix-test-suite:
     # - aom-av1-2.0.2 # not an available test
     # - apache-3.0.0 # The test quit with a non-zero exit status.
     # - apache-iotdb-1.2.0 # The test quit with a non-zero exit status.
+    # - iperf-1.2.0 # The test quit with a non-zero exit status.
+    # - java-gradle-perf-1.1.0 # The test quit with a non-zero exit status.
+    # - java-jmh-1.0.1 # The test run did not produce a result.
+
   # - test: apache-siege-1.0.5 # not an available test
     # option_a: # cocurrent users
       # - 1
@@ -442,10 +446,6 @@ phoronix-test-suite:
       # - 2048
       - 4096
       # - Test All Options
-  - test:
-      # - iperf-1.2.0 # The test quit with a non-zero exit status.
-      - java-gradle-perf-1.1.0
-      # - java-jmh-1.0.1 # The test run did not produce a result.
   - test: java-scimark2-1.2.0
     option_a:
       - Composite

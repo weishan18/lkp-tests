@@ -465,7 +465,7 @@ phoronix-test-suite:
       - chaos
       - crypto_pyaes
       - django_template
-      - float
+      # - float # The test quit with a non-zero exit status.
       # - go # The test quit with a non-zero exit status.
       - json_loads
       - nbody
