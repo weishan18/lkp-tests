@@ -6,6 +6,7 @@ flex
 g++-multilib
 gcc-multilib
 git
+hwloc
 libelf-dev
 libelf1
 linux-perf
