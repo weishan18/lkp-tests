@@ -9,8 +9,6 @@ lkvs:
     - pt
     - ufs
     - ifs
-    - rapl-client
-    - rapl-server
     - tdx-compliance
     - umip
     - isst
@@ -20,10 +18,6 @@ lkvs:
     - xsave
     - fred
     - sdsi
-    - cstate-client
-    - cstate-server
-    - topology-client
-    - topology-server
     - pmu
     - splitlock
 

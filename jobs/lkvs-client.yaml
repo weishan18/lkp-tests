@@ -1,0 +1,11 @@
+suite: lkvs
+testcase: lkvs
+category: functional
+
+lkvs:
+  test:
+    - rapl-client
+    - cstate-client
+    - topology-client
+
+turbostat:
