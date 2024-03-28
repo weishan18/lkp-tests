@@ -5,7 +5,7 @@ category: benchmark
 times_to_run: 1
 
 phoronix-test-suite:
-  - test: svt-av1-2.3.0
+  - test: svt-av1-2.11.1
     option_a:
       - 1 # Preset 13 [Fastest]
       - 2 # Preset 12
