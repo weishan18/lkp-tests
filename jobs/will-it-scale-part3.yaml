@@ -4,7 +4,7 @@ category: benchmark
 
 nr_task:
   - 16
-  - 50%
+  # - 50%
   - 100%
 
 will-it-scale:
