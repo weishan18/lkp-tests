@@ -8,14 +8,12 @@ phoronix-test-suite:
       - BLAS CPU FP32
       - BLAS CPU FP16
       # - Conjugate Gradient CPU # The test run did not produce a result.
-      # - Test All Options
   - test: askap-2.1.0
     option_a:
       - tConvolve MPI
       - tConvolve OpenMP
       - tConvolve MT
       - Hogbom Clean OpenMP
-      # - Test All Options
   # - test: clpeak-1.1.0 # "OpenCL unavailable" issue unable to fix yet
     # option_a:
       # - Global Memory Bandwidth
@@ -26,7 +24,6 @@ phoronix-test-suite:
       # - Transfer Bandwidth enqueueWriteBuffer
       # - Transfer Bandwidth enqueueReadBuffer
       # - Kernel Latency
-      # - Test All Options
 
   # - test: darktable-1.0.5 # is not installed
   #   option_a:
@@ -34,11 +31,9 @@ phoronix-test-suite:
   #     - Masskrug
   #     - Server Room
   #     - Server Rack
-  #     # - Test All Options
   #   option_b:
   #     - CPU-only
   #     - OpenCL
-  #     # - Test All Options
 
   - test: parboil-1.2.1
     option_a:
@@ -47,7 +42,6 @@ phoronix-test-suite:
       # - OpenMP MRI Gridding # The test quit with a non-zero exit status.
       - OpenMP Stencil
       # - OpenMP LBM # The test quit with a non-zero exit status.
-      # - Test All Options
     times_to_run: 1
 
   - test: rodinia-1.3.2
@@ -66,7 +60,6 @@ phoronix-test-suite:
       # - GPU Apple Metal
       # - GPU NVIDIA CUDA # not supported and not display
       # - GPU Vulkan
-      # - Test All Options
   - test:
     - xsbench-cl-1.0.0
     # - x264-opencl-1.9.1 # this benchmark has build errors

@@ -12,7 +12,6 @@ phoronix-test-suite:
     option_a:
       - leblancbig
       - sedovbig
-      # - Test All Options
   - test: perf-bench-1.0.5
     option_a:
       - Sched Pipe
@@ -22,18 +21,15 @@ phoronix-test-suite:
       - Futex Hash
       - Futex Lock-Pi
       - Epoll Wait
-      # - Test All Options
   - test: perl-benchmark-1.0.1
     option_a:
       - Pod2html
       - Interpreter
-      # - Test All Options
 
   - test: php-1.0.0
     option_a:
       - Zend bench
       - Zend micro_bench
-      # - Test All Options
   - test:
     - phpbench-1.1.6
     - pjdfstest-1.0.1
@@ -45,7 +41,6 @@ phoronix-test-suite:
       - 3 Matrix Multiplications
       # - Correlation Computation # The test quit with a non-zero exit status.
       - Covariance Computation
-      # - Test All Options
   - test:
     - polyhedron-1.0.1
     - postmark-1.1.2
@@ -66,7 +61,6 @@ phoronix-test-suite:
     option_a:
       - Serial
       - SMP Parallel
-      # - Test All Options
   - test:
     - rays1bench-1.0.0
     - rbenchmark-1.0.3
@@ -77,12 +71,10 @@ phoronix-test-suite:
       - LPUSH
       - LPOP
       - SADD
-      # - Test All Options
     option_b:
       - 50
       - 500
       - 1000
-      # - Test All Options
   - test:
     - redshift-1.0.1
     - remhos-1.0.0
@@ -98,7 +90,6 @@ phoronix-test-suite:
       - Random Fill Sync
       - Random Read
       - Read While Writing
-      # - Test All Options
   - test: schbench-1.1.0
     option_a: # message threads
       - 2
@@ -107,7 +98,6 @@ phoronix-test-suite:
       # - 8
       # - 16
       - 32
-      # - Test All Options
     option_b: # workers per message thread
       - 2
       # - 4
@@ -116,7 +106,6 @@ phoronix-test-suite:
       # - 16
       # - 24
       - 32
-      # - Test All Options
   # - test:
     # - scikit-learn-1.1.0 # install failed
   - test: scimark2-1.3.2
@@ -127,7 +116,6 @@ phoronix-test-suite:
       - Monte Carlo
       - Sparse Matrix Multiply
       - Dense LU Matrix Factorization
-      # - Test All Options
   - test:
     - securemark-1.0.0
     # - serial-loopback-1.0.2 # need to really plug to serial ports
@@ -140,7 +128,6 @@ phoronix-test-suite:
       - Latency Under Load
       - Latency Ping Pong
       - Throughput
-      # - Test All Options
   - test:
     - spark-1.0.1
     # - speedb-1.0.1 # The test quit with a non-zero exit status.
@@ -200,7 +187,6 @@ phoronix-test-suite:
       - Wide Vector Math
       - AVX-512 VNNI
       - Mixed Scheduler
-      # - Test All Options
   - test:
     - stressapptest-1.0.1
     # - stresscpu2-1.0.1 # not performance test
@@ -212,7 +198,6 @@ phoronix-test-suite:
     option_a:
       - CPU
       - RAM / Memory
-      # - Test All Options
   - test:
     - system-decompress-bzip2-1.0.2
     # - system-decompress-gzip-1.1.1 # 3rd party url is N/A
@@ -226,7 +211,6 @@ phoronix-test-suite:
       - Kernel
       - Loader
       - Firmware
-      # - Test All Options
   # - test: system-libxml2-1.0.3 # install failed
     # option_a:
       # - 5 KB
@@ -253,17 +237,14 @@ phoronix-test-suite:
       # - 2 MB
       # - 3 MB
       # - 112 MB
-      # - Test All Options
   # - test: systester-1.0.0 # not an available test
     # option_a:
       # - Gauss-Legendre algorithm                  [Recommended.]
       # - Borwein's Quadratic Convergence algorithm [This Test Could take Hours to finish.]
-      # - Test All Options
     # option_b:
       # - 4 Million Digits
       # - 16 Million Digits [This Test could take a while to finish.]
       # - 64 Million Digits [This Test will take a long time to run.]
-      # - Test All Options
     # option_c:
       # - 1 thread   [Single Thread Test]
       # - 2 threads [2+ Cores Recommended]
@@ -272,7 +253,6 @@ phoronix-test-suite:
       # - 16 threads [8+ Cores Recommended]
       # - 32 threads [Recommended For Servers]
       # - 64 threads [Recommended For Servers]
-      # - Test All Options
   - test:
     - t-test1-1.0.1
     - tachyon-1.3.0
@@ -284,19 +264,16 @@ phoronix-test-suite:
       - Random Write
       - Read
       - Random Read
-      # - Test All Options
     option_b:
       - 32MB
       - 64MB
       # - 128MB
       # - 256MB
-      # - Test All Options
     option_c: # thread count
       - 4
       - 8
       # - 16
       # - 32
-      # - Test All Options
   - test:
     - tjbench-1.2.0
     - tnn-1.1.0
@@ -311,7 +288,6 @@ phoronix-test-suite:
       # - Water Caustic
       # - Non-Exponential
       # - Volumetric Caustic
-      # - Test All Options
   - test:
     - unpack-firefox-1.0.0
     - unpack-linux-1.2.0
@@ -326,7 +302,6 @@ phoronix-test-suite:
     option_b:
       - Bosphorus 1080p
       - Bosphorus 4K
-      # - Test All Options
   - test:
     - vvenc-1.9.1
     - webp-1.2.0
@@ -343,7 +318,6 @@ phoronix-test-suite:
       - Medium
       - Thorough
       - Exhaustive
-      # - Test All Options
   # - test: avifenc-1.1.1 # install failed
     # option_a:
       # - 1 # 0            [Slowest]
@@ -352,14 +326,12 @@ phoronix-test-suite:
       # - 4 # 6, Lossless  [Default Speed + Lossless]
       # - 5 # 10           [Fastest]
       # - 6 # 10, Lossless [Fastest]
-      # - Test All Options
   - test: basis-1.1.1
     option_a:
       - ETC1S
       - UASTC Level 0
       - UASTC Level 2
       - UASTC Level 3
-      # - Test All Options
   - test:
     # - brl-cad-1.1.2 # install failed
     - build2-1.2.0
@@ -367,7 +339,6 @@ phoronix-test-suite:
     # option_a:
       # - Square Plain C++
       # - Square Assembly Optimized
-      # - Test All Options
   # - test: cpuminer-opt-1.4.0 # install failed
     # option_a:
       # - 1 # Triple SHA-256, Onecoin
@@ -381,18 +352,15 @@ phoronix-test-suite:
       # - Deepcoin
       # - Skeincoin
       # - 11 # LBC, LBRY Credits
-      # - Test All Options
   - test: ethr-1.2.1
     option_a:
       # - TCP
       # - UDP
       - HTTP
-      # - Test All Options
     option_b:
       - Bandwidth
       # - Connections/s
       # - Latency
-      # - Test All Options
     option_c:
       - 1
       # - 2
@@ -401,7 +369,6 @@ phoronix-test-suite:
       # - 16
       # - 32
       # - 64
-      # - Test All Options
   - test: hbase-1.1.0
     option_a:
       - 1 # 10000    [Quickest]
@@ -418,7 +385,6 @@ phoronix-test-suite:
       - Sequential Read
       - Scan
       - Increment
-      # - Test All Options
     option_c:
       - 1 # 1
       # - 2 # 4
@@ -434,31 +400,26 @@ phoronix-test-suite:
       - input.i3d 129 Cells Per Direction [Intended For Small Systems]
       - input.i3d 193 Cells Per Direction
       # - X3D-benchmarking input.i3d        [Requires ~96GB of Available RAM]
-      # - Test All Options
   - test: intel-mpi-1.0.1
     option_a:
       - IMB-MPI1 PingPong
       - IMB-MPI1 Sendrecv
       - IMB-MPI1 Exchange
       - IMB-P2P PingPong
-      # - Test All Options
   - test: jpegxl-decode-1.5.0
     option_a:
       - 1
       - All
-      # - Test All Options
   - test: libgav1-1.2.1
     option_a:
       - Summer Nature 1080p
       - Summer Nature 4K
       - Chimera 1080p
       - Chimera 1080p 10-bit
-      # - Test All Options
   - test: ncnn-1.5.0
     option_a:
       - CPU
       - Vulkan GPU
-      # - Test All Options
   - test: pyperformance-1.0.2
     option_a:
       # - 2to3 # The test quit with a non-zero exit status.
@@ -474,11 +435,9 @@ phoronix-test-suite:
       # - python_startup # The test quit with a non-zero exit status.
       # - raytrace # The test quit with a non-zero exit status.
       # - regex_compile # The test quit with a non-zero exit status.
-      # - Test All Options
   # - test: rav1e-1.5.0 # install failed
     # option_a:
       # - 10 [Fastest]
       # - 6  [Default]
       # - 5  [Mid-Speed]
       # - 1  [Slowest / Best Quality]
-      # - Test All Options

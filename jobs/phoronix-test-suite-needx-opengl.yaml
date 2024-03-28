@@ -10,8 +10,6 @@ phoronix-test-suite:
     option_a:
       # - 800 x 600
       - 1024 x 768
-      # - Test All Options
     option_b:
       - Fullscreen
       # - Windowed
-      # - Test All Options

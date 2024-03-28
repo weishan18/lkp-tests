@@ -23,14 +23,12 @@ phoronix-test-suite:
       - Gradient+Temp Texture
       - 12pt Text Grayscale
       - 12pt Text LCD
-      # - Test All Options
     option_b:
       - 32x32
       # - 128x128
       # - 256x256
       # - 512x512
       - 1024x1024
-      # - Test All Options
 
   - test: unigine-sanctuary-1.6.4
     option_a:
@@ -38,4 +36,3 @@ phoronix-test-suite:
     option_b:
       - Fullscreen
       # - Windowed
-      # - Test All Options
