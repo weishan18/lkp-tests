@@ -222,8 +222,8 @@ phoronix-test-suite:
     option_a:
       - 1024 x 768
     option_b:
-      - Fullscreen
-      # - Windowed
+      # - Fullscreen # The test run did not produce a result
+      - Windowed
 
   - test: unigine-tropics-1.6.4
     option_a:
