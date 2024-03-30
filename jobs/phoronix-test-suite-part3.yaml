@@ -15,11 +15,14 @@ phoronix-test-suite:
     - nwchem-1.1.1
     # - hdparm-read-1.0.0 #  The test run did not produce a result.
     # - duckdb-1.0.0 # The test quit with a non-zero exit status.
+    - build-linux-kernel-1.15.0 # runtime > 40m on lkp-csl-2sp7
     - build-llvm-1.5.0
     - build-gem5-1.1.0
     - build-nodejs-1.3.0
+    - build-webkitfltk-1.0.0 # runtime > 2h
     - cockroach-1.0.2
     - asmfish-1.1.2
+    - numpy-1.2.1 # runtime > 1h
 
   - test: easywave-1.0.0
     option_a:
@@ -93,7 +96,6 @@ phoronix-test-suite:
     option_a:
       - 1 # Rhodopsin Protein [Small input, runs very quickly on modern hardware.]
       - 2 # 20k Atoms         [A larger input for large core-count systems.]
-      # - 3 # Test All Options
 
   - test: ngspice-1.0.0
     option_a:
@@ -109,7 +111,6 @@ phoronix-test-suite:
     option_a:
       - 1 # Sedov Blast Wave, ube_922_hex.mesh
       - 2 # Triple Point Problem
-      # - 3 # Test All Options
 
   - test: cyclictest-1.0.0
     option_a:
@@ -119,13 +120,13 @@ phoronix-test-suite:
       - 4 # POSIX Timer, Interval 500 ms, 100000 Loops
 
   - test: couchdb-1.3.0
-    option_a:
+    option_a: # Bulk Size
       - 100
       - 300
       - 500
-    option_b:
+    option_b: # Inserts
       - 1000
-      - 3000
+      # - 3000 # runtime > 98m on 500-3000 lkp-csl-2sp7
 
   # - test: hpcg-1.3.0 # oom
   #   option_a:
@@ -173,7 +174,7 @@ phoronix-test-suite:
   - test: openfoam-1.2.0
     option_a:
       - 1 # motorBike                         [Simple, not as demanding as drivaerFastback]
-      - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU]
+      - 2 # drivaerFastback, Small Mesh Size  [Less time consuming, still needs a powerful CPU] # The test quit with a non-zero exit status.
       # - 3 # drivaerFastback, Medium Mesh Size [3M Cells] # The test quit with a non-zero exit status.
       # - 4 # drivaerFastback, Large Mesh Size  [22.5M Cells, most time consuming] # The test quit with a non-zero exit status.
 
@@ -231,8 +232,8 @@ phoronix-test-suite:
   - test: helsing-1.0.2
     option_a:
       - 12 digit
-      - 14 digit
-    
+      # - 14 digit # runtime > 2h on lkp-csl-2sp7
+
   - test: webp2-1.2.1
     option_a:
       - Default

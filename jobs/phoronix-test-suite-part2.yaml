@@ -6,7 +6,86 @@ need_memory: 8G
 
 phoronix-test-suite:
   - test:
+    - amg-1.1.0
     - palabos-1.0.0
+    - phpbench-1.1.6
+    - pjdfstest-1.0.1
+    - pjsip-1.0.1
+    # - plaidml-1.0.4 # need to connect to internet
+    - pmbench-1.0.2
+    - polyhedron-1.0.1
+    - postmark-1.1.2
+    - povray-1.2.1
+    - primesieve-1.9.0
+    # - psstop-1.0.0 # not an available test
+    # - pts-self-test-1.0.4 # need to connect to internet and only for selftest
+    - pybench-1.1.3
+    - pyhpc-3.0.0
+    - pymongo-inserts-1.0.0
+    # - pyopencl-1.0.0 # 3rd party url is N/A
+    # - qe-1.3.1 # oom
+    # - qmcpack-1.7.0 # The test quit with a non-zero exit status.
+    # - quantlib-1.2.0 # The test quit with a non-zero exit status.
+    - quicksilver-1.0.0
+    # - rabbitmq-1.1.1 # The test quit with a non-zero exit status.
+    - rays1bench-1.0.0
+    - rbenchmark-1.0.3
+    # - scikit-learn-1.1.0 # install failed
+    - redshift-1.0.1
+    - remhos-1.0.0
+    - rnnoise-1.0.2
+    # - rust-prime-1.0.0 # install failed
+    # - sample-program-1.1.1 # not an available test
+    - securemark-1.0.0
+    # - serial-loopback-1.0.2 # need to really plug to serial ports
+    - simdjson-2.0.1
+    - smallpt-1.2.1
+    # - smart-1.0.0 # depending on the health of hard disk, may cost long time
+    - smhasher-1.1.0
+    - spark-1.0.1
+    # - speedb-1.0.1 # The test quit with a non-zero exit status.
+    # - speedtest-cli-1.0.0 # The test quit with a non-zero exit status.
+    - sqlite-speedtest-1.0.1
+    # - srsran-2.1.0 # The test quit with a non-zero exit status
+    # - stargate-1.1.0 # The test quit with a non-zero exit status.
+    - stockfish-1.4.0
+    - stream-dynamic-1.0.0
+    - stressapptest-1.0.1
+    # - stresscpu2-1.0.1 # not performance test
+    - sudokut-1.0.1
+    - sunflow-1.1.3
+    - swet-1.0.0
+    - synthmark-1.0.1
+    - system-decompress-bzip2-1.0.2
+    # - system-decompress-gzip-1.1.1 # 3rd party url is N/A
+    - system-decompress-xz-1.0.2
+    # - systemd-boot-kernel-1.0.1 # too old to run, use systemd-boot-total instead
+    # - systemd-boot-userspace-1.0.1 # too old to run, use systemd-boot-total instead
+    - t-test1-1.0.1
+    - tachyon-1.3.0
+    # - thronesofbritannia-1.0.0 # install failed
+    - tinymembench-1.0.2
+    - tjbench-1.2.0
+    - tnn-1.1.0
+    - toktx-1.0.1
+    # - toybrot-1.2.0 # install failed
+    # - trislam-1.0.0 # install failed
+    # - tscp-1.2.2 # The test quit with a non-zero exit status.
+    - ttsiod-renderer-1.7.0
+    - unpack-firefox-1.0.0
+    - unpack-linux-1.2.0
+    - uvg266-1.0.0
+    # - v-ray-1.0.2 # 3rd party url is N/A
+    - viennacl-1.1.0
+    - vvenc-1.9.1
+    - webp-1.2.0
+    # - whisper-cpp-1.0.0 # The test quit with a non-zero exit status.
+    # - x264-2.5.0 # not an available test
+    # - x265-1.3.0 # install failed
+    - xmrig-1.2.0
+    - xsbench-1.0.0
+    # - yugabytedb-1.0.0 # The test run did not produce a result.
+    # - y-cruncher-1.1.0 # install failed
 
   - test: pennant-1.1.0
     option_a:
@@ -30,40 +109,18 @@ phoronix-test-suite:
     option_a:
       - Zend bench
       - Zend micro_bench
-  - test:
-    - phpbench-1.1.6
-    - pjdfstest-1.0.1
-    - pjsip-1.0.1
-    # - plaidml-1.0.4 # need to connect to internet
-    - pmbench-1.0.2
+
   - test: polybench-c-1.2.0
     option_a:
       - 3 Matrix Multiplications
       # - Correlation Computation # The test quit with a non-zero exit status.
       - Covariance Computation
-  - test:
-    - polyhedron-1.0.1
-    - postmark-1.1.2
-    - povray-1.2.1
-    - primesieve-1.9.0
-    # - psstop-1.0.0 # not an available test
-    # - pts-self-test-1.0.4 # need to connect to internet and only for selftest
-    - pybench-1.1.3
-    - pyhpc-3.0.0
-    - pymongo-inserts-1.0.0
-    # - pyopencl-1.0.0 # 3rd party url is N/A
-    # - qe-1.3.1 # oom
-    # - qmcpack-1.7.0 # The test quit with a non-zero exit status.
-    # - quantlib-1.2.0 # The test quit with a non-zero exit status.
-    - quicksilver-1.0.0
-    # - rabbitmq-1.1.1 # The test quit with a non-zero exit status.
+
   - test: radiance-1.0.0
     option_a:
       - Serial
       - SMP Parallel
-  - test:
-    - rays1bench-1.0.0
-    - rbenchmark-1.0.3
+
   - test: redis-1.4.0
     option_a:
       - SET
@@ -75,14 +132,7 @@ phoronix-test-suite:
       - 50
       - 500
       - 1000
-  - test:
-    - redshift-1.0.1
-    - remhos-1.0.0
 
-  - test:
-    - rnnoise-1.0.2
-    # - rust-prime-1.0.0 # install failed
-    # - sample-program-1.1.1 # not an available test
   - test: rocksdb-1.5.0
     option_a:
       - Sequential Fill
@@ -106,8 +156,7 @@ phoronix-test-suite:
       # - 16
       # - 24
       - 32
-  # - test:
-    # - scikit-learn-1.1.0 # install failed
+
   - test: scimark2-1.3.2
     option_a:
       - Composite
@@ -116,22 +165,13 @@ phoronix-test-suite:
       - Monte Carlo
       - Sparse Matrix Multiply
       - Dense LU Matrix Factorization
-  - test:
-    - securemark-1.0.0
-    # - serial-loopback-1.0.2 # need to really plug to serial ports
-    - simdjson-2.0.1
-    - smallpt-1.2.1
-    # - smart-1.0.0 # depending on the health of hard disk, may cost long time
-    - smhasher-1.1.0
+
   - test: sockperf-1.1.0
     option_a:
       - Latency Under Load
       - Latency Ping Pong
       - Throughput
-  - test:
-    - spark-1.0.1
-    # - speedb-1.0.1 # The test quit with a non-zero exit status.
-    # - speedtest-cli-1.0.0 # The test quit with a non-zero exit status.
+
   - test: sqlite-2.2.0
     option_a: # Threads / Copies
       - 1 # 1
@@ -139,14 +179,7 @@ phoronix-test-suite:
       # - 3 # 4
       # - 4 # 8
       - 5 # 12
-      # - 6 # Test All Options
 
-  - test:
-    - sqlite-speedtest-1.0.1
-    # - srsran-2.1.0 # The test quit with a non-zero exit status
-    # - stargate-1.1.0 # The test quit with a non-zero exit status.
-    - stockfish-1.4.0
-    - stream-dynamic-1.0.0
   - test: stress-ng-1.11.0
     option_a:
       - CPU Stress
@@ -187,23 +220,12 @@ phoronix-test-suite:
       - Wide Vector Math
       - AVX-512 VNNI
       - Mixed Scheduler
-  - test:
-    - stressapptest-1.0.1
-    # - stresscpu2-1.0.1 # not performance test
-    - sudokut-1.0.1
-    - sunflow-1.1.3
-    - swet-1.0.0
-    - synthmark-1.0.1
+
   - test: sysbench-1.1.0
     option_a:
       - CPU
       - RAM / Memory
-  - test:
-    - system-decompress-bzip2-1.0.2
-    # - system-decompress-gzip-1.1.1 # 3rd party url is N/A
-    - system-decompress-xz-1.0.2
-    # - systemd-boot-kernel-1.0.1 # too old to run, use systemd-boot-total instead
-    # - systemd-boot-userspace-1.0.1 # too old to run, use systemd-boot-total instead
+
   - test: systemd-boot-total-1.0.6
     option_a:
       - Total
@@ -253,11 +275,7 @@ phoronix-test-suite:
       # - 16 threads [8+ Cores Recommended]
       # - 32 threads [Recommended For Servers]
       # - 64 threads [Recommended For Servers]
-  - test:
-    - t-test1-1.0.1
-    - tachyon-1.3.0
-    # - thronesofbritannia-1.0.0 # install failed
-    - tinymembench-1.0.2
+
   - test: tiobench-1.3.1
     option_a:
       - Write
@@ -274,45 +292,21 @@ phoronix-test-suite:
       - 8
       # - 16
       # - 32
-  - test:
-    - tjbench-1.2.0
-    - tnn-1.1.0
-    - toktx-1.0.1
-    # - toybrot-1.2.0 # install failed
-    # - trislam-1.0.0 # install failed
-    # - tscp-1.2.2 # The test quit with a non-zero exit status.
-    - ttsiod-renderer-1.7.0
   # - test: tungsten-1.0.0 # The test quit with a non-zero exit status.
     # option_a:
       # - Hair
       # - Water Caustic
       # - Non-Exponential
       # - Volumetric Caustic
-  - test:
-    - unpack-firefox-1.0.0
-    - unpack-linux-1.2.0
-    - uvg266-1.0.0
-    # - v-ray-1.0.2 # 3rd party url is N/A
-    - viennacl-1.1.0
+
   - test: vpxenc-3.2.0
     option_a:
       - 1 # Speed 5 [Fastest - Default]
       - 2 # Speed 0 [Slowest]
-      # - 3 # Test All Options
     option_b:
       - Bosphorus 1080p
       - Bosphorus 4K
-  - test:
-    - vvenc-1.9.1
-    - webp-1.2.0
-    # - whisper-cpp-1.0.0 # The test quit with a non-zero exit status.
-    # - x264-2.5.0 # not an available test
-    # - x265-1.3.0 # install failed
-    - xmrig-1.2.0
-    - xsbench-1.0.0
-    # - yugabytedb-1.0.0 # The test run did not produce a result.
-    # - y-cruncher-1.1.0 # install failed
-    - amg-1.1.0
+
   - test: astcenc-1.4.0
     option_a:
       - Medium
@@ -369,32 +363,7 @@ phoronix-test-suite:
       # - 16
       # - 32
       # - 64
-  - test: hbase-1.1.0
-    option_a:
-      - 1 # 10000    [Quickest]
-      - 2 # 1000000  [Hbase Default]
-      # - 3 # 2000000
-      # - 4 # 10000000 [Longest / most time consuming]
-      # - 5 # Test All Options
-    option_b:
-      - Random Write
-      - Async Random Write
-      - Random Read
-      - Async Random Read
-      - Sequential Write
-      - Sequential Read
-      - Scan
-      - Increment
-    option_c:
-      - 1 # 1
-      # - 2 # 4
-      # - 3 # 16
-      # - 4 # 32
-      # - 5 # 64
-      # - 6 # 128
-      # - 7 # 256
-      - 8 # 500
-      # - 9 # Test All Options
+
   - test: incompact3d-2.0.2
     option_a:
       - input.i3d 129 Cells Per Direction [Intended For Small Systems]
