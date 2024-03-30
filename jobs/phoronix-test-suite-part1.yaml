@@ -425,7 +425,7 @@ phoronix-test-suite:
       - 1 # 80
       - 2 # 90  [Default]
       - 3 # 100 [Lossless]
-      # - 4 # Test All Options
+
   - test:
     - jpegxl-decode-1.5.0
     # - keydb-1.2.0 # install failed
@@ -440,7 +440,6 @@ phoronix-test-suite:
       - 3 # Very Fast
       - 4 # Super Fast
       - 5 # Ultra Fast
-      # - 6 # Test All Options
 
   - test:
     - libraw-1.0.0

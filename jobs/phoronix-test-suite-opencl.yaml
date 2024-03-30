@@ -51,7 +51,7 @@ phoronix-test-suite:
       - 3 # OpenMP Leukocyte       [Medical Imaging]
       - 4 # OpenMP Streamcluster   [Data Mining]
       - 5 # OpenMP HotSpot3D       [Physics Simulation]
-      # - 6 # Test All Options
+
   # - test: geekbench-6.1.0 # requires registration for a license
     # option_a:
       # - CPU Single Core

@@ -40,7 +40,7 @@ phoronix-test-suite:
       - 1 # f32
       - 2 # u8s8f32      [Optimized For AVX-512]
       - 3 # bf16bf16bf16 [Optimized For AVX-512 + VNNI]
-      # - 4 # Test All Options
+
   - test:
     - svt-hevc-1.2.0
     - tensorflow-1.1.0
