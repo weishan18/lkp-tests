@@ -146,6 +146,7 @@ module Git
         show('localversion-next').first
       rescue Git::GitExecuteError
         # ignore error to return nil
+        nil
       end
 
       def version_tag
