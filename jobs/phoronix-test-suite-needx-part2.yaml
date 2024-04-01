@@ -7,7 +7,6 @@ times_to_run: 1
 
 phoronix-test-suite:
   - test:
-    # - gravitymark-1.9.0 # The test run did not produce a result.
     - realsr-ncnn-1.0.0
 
   - test: jxrendermark-1.2.4
