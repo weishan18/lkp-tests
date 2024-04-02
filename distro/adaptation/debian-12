@@ -4,7 +4,6 @@
 winpdb:
 python3-gobject:
 xfsdump:
-python-setuptools:
 crda:
 libpython2.7:
 freeglut3:
@@ -58,3 +57,4 @@ libssl1.1: libssl3
 python-tox: tox
 liburing: liburing2
 libpolly-dev: libpolly-14-dev
+python-setuptools: python3-setuptools
