@@ -404,11 +404,12 @@ phoronix-test-suite:
     option_b:
       - Default Test Directory
       # - /opt/rootfs # don't touch the rootfs dir
-  - test: iozone-1.9.5
+  - test: iozone-1.9.6
     option_a:
       - 4Kb
       # - 64Kb
       - 1MB
+      # - 2MB
     option_b:
       - 512MB
       - 2GB
