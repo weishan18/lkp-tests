@@ -8,3 +8,4 @@ libedit-dev
 libelf-dev
 llvm-dev
 zlib1g-dev
+libpolly-dev
