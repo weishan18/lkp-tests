@@ -17,14 +17,14 @@ if [[ "$group" = "group-00" ]]; then
 	            "drm_format_helper_test" "drm_format_test" "drm_framebuffer_test" "drm_plane_helper_test" "drm_rect_test"\
 	            "clk-gate_test" "clk_test" "cpumask_kunit" "cros_kunit_proto_test" "hid-uclogic-test" "iio-test-format" \
 	            "iio-test-rescale" "overflow_kunit" "soc-utils-test" "stackinit_kunit" "is_signed_type_kunit" \
-	            "siphash_kunit" "strscpy_kunit" "soc-topology-test" "fat_test")
+	            "siphash_kunit" "strscpy_kunit" "soc-topology-test" "fat_test" "string_kunit" "string_helpers_kunit")
 elif [[ "$group" = "group-01" ]]; then
-	test_array=("test_string" "test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" \
+	test_array=("test_div64" "test_bpf" "test_min_heap" "test_user_copy" "test_static_key_base" \
 	            "test_scanf" "test_bitmap" "test_uuid" "test_xarray" "test_rhashtable" "test_memcat_p" "dmabuf_selftests" "test_kprobes" "dmapool_test" \
 	            "test_udelay" "test_klp_livepatch" "test_klp_shadow_vars" "test_hmm" "test_free_pages" "test_fpu" "test_rslib" "ntb_msi_test" "kprobe_event_gen_test" \
 	            "test_bitops" "test_async_driver_probe" "spi-loopback-test" "globtest" "test_ref_tracker" "test_lockup" "scftorture" \
 		    "preemptirq_delay_test" "test_blackhole_dev" \
-	            "test_kstrtox" "test_string_helpers" "test_overflow" "test_ida" "udelay_test" "utf8-selftest" "test_dhry" "synth_event_gen_test"  \
+	            "test_kstrtox" "test_overflow" "test_ida" "udelay_test" "utf8-selftest" "test_dhry" "synth_event_gen_test"  \
 	            "test_vmalloc" "test_klp_state" "test_meminit" "test_printf" "test_maple_tree" "thunderbolt_dma_test" "clocksource-wdtest" \
 	            "crc32test" "atomic64_test" "snd-soc-avs-i2s-test" "test_dynamic_debug" "raid6test" "backtracetest")
 elif [[ "$group" = "group-03" ]]; then

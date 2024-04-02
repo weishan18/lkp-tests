@@ -1,4 +1,4 @@
+libc-bin
+libc6
 make
 strace
-libc6
-libc-bin

@@ -211,7 +211,7 @@ swapin\.throughput: 1
 sysbench\-.+\.throughput_events\/s: 1
 sysbench\-.+\.throughput_MB\/s: 1
 sysbench\-.+\.throughput_ops\/s: 1
-tbench\.throughput-MB\/sec: 1
+tbench\.throughput_MB\/s: 1
 tcrypt\.async\..+\.decryption: 1
 tcrypt\.async\..+\.encryption: 1
 thrulay\.jitter: -1

@@ -1,6 +1,6 @@
 autoconf
-libpcre3
+bc
 libevent-2.1-6
+libpcre3
 pkg-config
 zlib1g
-bc

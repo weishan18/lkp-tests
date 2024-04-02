@@ -2,6 +2,8 @@ url: https://gitee.com/OpenCloudOS/OpenCloudOS-Kernel.git
 test_old_branches: .*
 arch_denylist: .*
 arch_allowlist: x86_64|arm64
+branch_allowlist: linux-5.4/lts/5.4.119-20.0009.spr|next
+branch_denylist: .*
 compiler: gcc
 mail_to:
 - jasperwang@tencent.com

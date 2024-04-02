@@ -182,3 +182,4 @@
 ^kmsg\.attempting_acpi
 ^kmsg\.driver_probe_device
 ^kmsg\.obsolete_checksetup
+^lkvs\..*\.na

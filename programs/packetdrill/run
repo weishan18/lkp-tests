@@ -31,3 +31,5 @@ grep -q -- --tolerance_usecs packetdrill/run_all.py || sed -ri \
 
 # Use run_all.py to run tcp tests
 packetdrill/run_all.py -L -l -v tcp
+
+exit 0

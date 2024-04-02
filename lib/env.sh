@@ -108,3 +108,25 @@ is_docker()
 {
 	[ -f /.dockerenv ]
 }
+
+# Get testing env kernel config file
+# Depending on your system, you'll find it in any one of these:
+# /proc/config.gz
+# /boot/config
+# /boot/config-$(uname -r)
+get_kconfig()
+{
+	local config_file="$1"
+	if [[ -e "/proc/config.gz" ]]; then
+		gzip -dc "/proc/config.gz" > "$config_file"
+	elif [[ -e "/boot/config-$(uname -r)" ]]; then
+		cat "/boot/config-$(uname -r)" > "$config_file"
+	elif [[ -e "/boot/config" ]]; then
+		cat "/boot/config" > "$config_file"
+	else
+		echo "Failed to get current kernel config"
+		return 1
+	fi
+
+	[[ -s "$config_file" ]]
+}

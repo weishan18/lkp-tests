@@ -1,5 +1,5 @@
-make
-git
 gcc-multilib
+git
+make
 python-pkg-resources
 python3

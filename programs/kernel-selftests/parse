@@ -321,33 +321,29 @@ class NetStater < Stater
       # empty @test_subcase when get new @test_case
       @test_subcase = nil if @test_script == 'fib_tests.sh'
     when /^#\s+(PASS|SKIP|FAIL): (.*)/
-      if @test_case
-        # selftests: net: vrf_route_leaking.sh
-        #
-        # ###########################################################################
-        # IPv4 (sym route): VRF ICMP error route lookup traceroute
-        # ###########################################################################
-        #
-        # SKIP: Could not run IPV4 test without traceroute
-        stats.add "#{@test_prefix}.#{@test_case}.#{$2}", $1
-      else
-        # selftests: net: netdevice.sh
-        # SKIP: eth0: interface already up
-        @result = $1
-        @test_case = $2
+      stats_key = if @test_case
+                    # selftests: net: vrf_route_leaking.sh
+                    #
+                    # ###########################################################################
+                    # IPv4 (sym route): VRF ICMP error route lookup traceroute
+                    # ###########################################################################
+                    #
+                    # SKIP: Could not run IPV4 test without traceroute
+                    "#{@test_case}.#{$2}"
+                  elsif $2 == 'fdb get tests: iproute2 too old'
+                    # selftests: net: netdevice.sh
+                    # SKIP: eth0: interface already up
 
-        if @test_case == 'fdb get tests: iproute2 too old'
-          # below rtnetlink.sh's subtest will repeate twice thus cause duplication
-          # SKIP: fdb get tests: iproute2 too old
-          # and it's passed stat will be
-          # PASS: bridge fdb get
-          stats.add "#{@test_prefix}.bridge_fdb_get", @result unless stats.key? "#{@test_prefix}.bridge_fdb_get"
-        else
-          stats.add "#{@test_prefix}.#{@test_case}", $1
-        end
-        @test_case = nil
-        @result = nil
-      end
+                    # below rtnetlink.sh's subtest will repeate twice thus cause duplication
+                    # SKIP: fdb get tests: iproute2 too old
+                    # and it's passed stat will be
+                    # PASS: bridge fdb get
+                    'bridge_fdb_get'
+                  else
+                    $2
+                  end
+
+      stats.add "#{@test_prefix}.#{stats_key}", $1 unless stats.key? "#{@test_prefix}.#{stats_key}"
     when /^# \[\s*(OK|FAIL|SKIP)\s*\]\s+(.*)/
       # selftests: net: tls
       # [       OK ] tls_basic.base_base
@@ -460,22 +456,22 @@ class NetStater < Stater
         # TEST: IPv6 nexthop with IPv4 route                                  [ OK ]
         # TEST: IPv4 route with mixed v4-v6 multipath route                   [ OK ]
         # TEST: IPv6 nexthop with IPv4 route                                  [ OK ]
-        if @test_prefix == 'net.ioam6.sh'
-          # Here we use the mode of '11' as the mode of '12' to avoid duplication
-          # TEST: Trace type with bit 11 only (inline mode)                     [ OK ]
-          # TEST: Trace type with bit 12 only                                   [ OK ]
-          # ...
-          # TEST: Trace type with bit 11 only (encap mode)                      [ OK ]
-          # TEST: Trace type with bit 12 only                                   [ OK ]
-          if @test_subcase3 =~ /(inline mode|encap mode)/
-            stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase3}", @subcase_stat
-            @old_mode = $1
-          else
-            stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase3} (#{@old_mode})", @subcase_stat
-          end
+
+        # Here we use the mode of '11' as the mode of '12' to avoid duplication
+        # TEST: Trace type with bit 11 only (inline mode)                     [ OK ]
+        # TEST: Trace type with bit 12 only                                   [ OK ]
+        # ...
+        # TEST: Trace type with bit 11 only (encap mode)                      [ OK ]
+        # TEST: Trace type with bit 12 only                                   [ OK ]
+        stats_key = "#{@test_prefix}.#{@test_case}.#{@test_subcase3}"
+        if @test_subcase3 =~ /(inline mode|encap mode)/
+          @old_mode = $1
         else
-          stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase3}", @subcase_stat unless %w(fib_nexthops.sh).include? @test_script
+          stats_key += " (#{@old_mode})"
         end
+
+        stats.add stats_key, @subcase_stat unless %w(fib_nexthops.sh).include? @test_script
+
       else
         # selftests: net: pmtu.sh
         # TEST: ipv4: PMTU exceptions                                        [ OK ]

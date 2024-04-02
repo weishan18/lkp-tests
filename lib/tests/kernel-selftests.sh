@@ -49,6 +49,15 @@ prepare_test_env()
 
 		mkdir -p "$linux_selftests_dir/tools/include/uapi/asm" || return
 		mount --bind $linux_headers_dir/include/asm $linux_selftests_dir/tools/include/uapi/asm || return
+
+		local build_link="/lib/modules/$(uname -r)/build"
+		ln -sf "$linux_selftests_dir" "$build_link"
+
+		local linux_headers_bpf_dir=(/usr/src/linux-headers*-bpf)
+		[[ $linux_headers_bpf_dir ]] || die "failed to find linux-headers-bpf package"
+		cp -af $linux_headers_bpf_dir/* $linux_selftests_dir/
+
+		get_kconfig $linux_selftests_dir/.config
 	elif [ -d "/tmp/build-kernel-selftests/linux" ]; then
 		# commit bb5ef9c change build directory to /tmp/build-$BM_NAME/xxx
 		linux_selftests_dir="/tmp/build-kernel-selftests/linux"
@@ -122,28 +131,6 @@ prepare_for_test()
 	command -v iptables >/dev/null || log_cmd ln -sf /usr/sbin/iptables-nft /usr/bin/iptables
 	# fix ip6tables: command not found
 	command -v ip6tables >/dev/null || log_cmd ln -sf /usr/sbin/ip6tables-nft /usr/bin/ip6tables
-}
-
-# Get testing env kernel config file
-# Depending on your system, you'll find it in any one of these:
-# /proc/config.gz
-# /boot/config
-# /boot/config-$(uname -r)
-get_kconfig()
-{
-	local config_file="$1"
-	if [[ -e "/proc/config.gz" ]]; then
-		gzip -dc "/proc/config.gz" > "$config_file"
-	elif [[ -e "/boot/config-$(uname -r)" ]]; then
-		cat "/boot/config-$(uname -r)" > "$config_file"
-	elif [[ -e "/boot/config" ]]; then
-		cat "/boot/config" > "$config_file"
-	else
-		echo "Failed to get current kernel config"
-		return 1
-	fi
-
-	[[ -s "$config_file" ]]
 }
 
 check_kconfig()
@@ -259,11 +246,11 @@ fixup_net()
 
 	skip_specific_net_cases
 
-	# at v4.18-rc1, it introduces fib_tests.sh, which doesn't have execute permission
-	# here is to fix the permission
-	[[ -f $subtest/fib_tests.sh ]] && {
-		[[ -x $subtest/fib_tests.sh ]] || chmod +x $subtest/fib_tests.sh
-	}
+	# v4.18-rc1 introduces fib_tests.sh, which doesn't have execute permission
+	# Warning: file fib_tests.sh is not executable
+	# Warning: file test_ingress_egress_chaining.sh is not executable
+	chmod +x $subtest/*.sh
+
 	ulimit -l 10240
 	modprobe -q fou
 	modprobe -q nf_conntrack_broadcast
@@ -580,17 +567,8 @@ fixup_kvm()
 fixup_damon()
 {
 	# Warning: file debugfs_attrs.sh is not executable
-	# Warning: file debugfs_schemes.sh is not executable
-	# Warning: file debugfs_target_ids.sh is not executable
-	# Warning: file debugfs_empty_targets.sh is not executable
-	# Warning: file debugfs_huge_count_read_write.sh is not executable
-	# Warning: file debugfs_duplicate_context_creation.sh is not executable
-	# Warning: file debugfs_rm_non_contexts.sh is not executable
-	# Warning: file sysfs.sh is not executable
-	# Warning: file sysfs_update_removed_scheme_dir.sh is not executable
-	# Warning: file reclaim.sh is not executable
-	# Warning: file lru_sort.sh is not executable
-	chmod +x damon/*.sh
+	# Warning: file damos_apply_interval.py is not executable
+	chmod +x $subtest/*.sh $subtest/*.py
 }
 
 prepare_for_selftest()
@@ -606,7 +584,7 @@ prepare_for_selftest()
 	elif [ "$group" = "group-02" ]; then
 		# m* is slow
 		# pidfd caused soft_timeout in kernel-selftests.splice.short_splice_read.sh.fail.v5.9-v5.10-rc1.2020-11-06.132952
-		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^rseq -e ^resctrl -e ^mm -e ^net -e ^netfilter -e ^rcutorture -e ^pidfd -e ^memory-hotplug)
+		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^rseq -e ^resctrl -e ^mm -e ^net -e ^netfilter -e ^rcutorture -e ^pidfd -e ^memory-hotplug -e ^rust)
 	elif [ "$group" = "group-03" ]; then
 		selftest_mfs=$(ls -d [t-z]*/Makefile | grep -v -e ^x86 -e ^tc-testing -e ^vm -e ^user_events)
 	elif [ "$group" = "mptcp" ]; then
@@ -616,7 +594,7 @@ prepare_for_selftest()
 	elif [ "$group" = "memory-hotplug" ]; then
 		selftest_mfs=$(ls -d memory-hotplug/Makefile)
 	else
-		# bpf cpufreq cgroup firmware kvm lib livepatch lkdtm net netfilter pidfd rcutorture resctrl rseq tc-testing user_events mm(vm) x86
+		# bpf cpufreq cgroup firmware kvm lib livepatch lkdtm net netfilter pidfd rcutorture resctrl rseq tc-testing user_events mm(vm) x86 rust
 		selftest_mfs=$(ls -d $group/Makefile)
 	fi
 }

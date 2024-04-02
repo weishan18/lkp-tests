@@ -1,9 +1,9 @@
 libopenmpi3
-openmpi-bin
+netcat-openbsd
 ocfs2-tools
-winpdb
-sudo
+openmpi-bin
 python-pip
 python-setuptools
 python-wheel
-netcat-openbsd
+sudo
+winpdb

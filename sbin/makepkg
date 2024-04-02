@@ -1728,7 +1728,8 @@ patch_source()
 {
 	echo "PWD=$PWD, startdir=$startdir, pkgname=$pkgname, srcdir=$srcdir"
 
-	local patches=$(ls $startdir/*.patch 2>/dev/null) || return 0
+	local patches=$(ls $startdir/*.patch 2>/dev/null)
+	[ -z "$patches" ] && return 0
 	echo "patches="$patches
 
 	ls -lrt ${srcdir}

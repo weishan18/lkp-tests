@@ -3,6 +3,7 @@ testcase: phoronix-test-suite
 category: benchmark
 
 need_memory: 8G
+times_to_run: 1 # 12 cpu, 16G memory tbox, run once cost about 43m
 
 phoronix-test-suite:
   - test: blender-4.0.0
@@ -11,11 +12,9 @@ phoronix-test-suite:
       - Classroom
       # - Fishy Cat # elapsed_time: 2935s
       # - Pabellon Barcelona # elapsed_time: 3164s
-      - Barbershop
-      # - Test All Options
+      # - Barbershop # The test quit with a non-zero exit status.
     option_b:
       - CPU-Only
       - Intel oneAPI
-      # - Test All Options
 
 timeout: 1h

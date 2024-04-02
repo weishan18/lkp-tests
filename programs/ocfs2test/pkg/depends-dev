@@ -1,10 +1,9 @@
-libopenmpi-dev
-openmpi-bin
-libopenmpi-dev
-libaio-dev
-pkg-config
-e2fslibs-dev
-ocfs2-tools-dev
 bison
+e2fslibs-dev
+libaio-dev
+libopenmpi-dev
+ocfs2-tools-dev
+openmpi-bin
+pkg-config
 python-pip
 python-setuptools

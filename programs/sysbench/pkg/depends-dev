@@ -1,9 +1,8 @@
-pkg-config
-libmariadb-dev
 automake
-make
-libtool
-pkg-config
 libaio-dev
-libssl-dev
+libmariadb-dev
 libpq-dev
+libssl-dev
+libtool
+make
+pkg-config

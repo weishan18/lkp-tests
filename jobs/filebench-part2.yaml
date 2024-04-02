@@ -27,6 +27,6 @@ filebench-setup:
     - filemicro_seqwriterand.f
     - filemicro_seqwriterandvargam.f
     - filemicro_seqwriterandvartab.f
-    - filemicro_statfile.f
+    # - filemicro_statfile.f # runtime ~55m on ext4-nfsv4 lkp-csl-2sp3
     - filemicro_writefsync.f
 filebench:

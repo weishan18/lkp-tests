@@ -17,13 +17,13 @@ filebench-setup:
     - copyfiles.f
     - createfiles.f
     - fileserver.f
-    - openfiles.f
+    # - openfiles.f # >1.5h on nfsv4
     - ratelimcopyfiles.f
     - randomfileaccess.f
     - randomread.f
     - randomrw.f
     - randomwrite.f
-    - listdirs.f
+    # - listdirs.f # ~1h on nfsv4
     - makedirs.f
     - removedirs.f
     - singlestreamreaddirect.f

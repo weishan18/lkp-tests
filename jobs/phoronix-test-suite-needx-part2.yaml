@@ -1,0 +1,37 @@
+suite: phoronix-test-suite
+testcase: phoronix-test-suite
+category: benchmark
+
+need_x: true
+times_to_run: 1
+
+phoronix-test-suite:
+  - test:
+    - realsr-ncnn-1.0.0
+
+  - test: jxrendermark-1.2.4
+    option_a:
+      - Rects Composition
+      - Put Composition
+      - Simple Blit
+      - Transformed Blit Linear
+      - Transformed Blit Bilinear
+      - Transformed Texture Paint
+      - Linear Gradient Blend
+      - Radial Gradient Paint
+      - Gradient+Temp Texture
+      - 12pt Text Grayscale
+      - 12pt Text LCD
+    option_b:
+      - 32x32
+      # - 128x128
+      # - 256x256
+      # - 512x512
+      - 1024x1024
+
+  - test: unigine-sanctuary-1.6.4
+    option_a:
+      - 1024 x 768
+    option_b:
+      - Fullscreen
+      # - Windowed
