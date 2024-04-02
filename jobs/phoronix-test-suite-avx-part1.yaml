@@ -22,11 +22,14 @@ phoronix-test-suite:
       - Add
       - Triad
 
-  - test: svt-vp9-1.3.0
+  - test: svt-vp9-1.3.1
     option_a:
-      - Visual Quality Optimized
-      - PSNR/SSIM Optimized      [Default]
-      - VMAF Optimized
+      - 1 # Visual Quality Optimized
+      - 2 # PSNR/SSIM Optimized      [Default]
+      - 3 # VMAF Optimized
+    option_b:
+      - Bosphorus 1080p
+      - Bosphorus 4K
   - test: onednn-3.3.0
     option_a:
       # - Convolution Batch Shapes Auto # The test quit with a non-zero exit status.
