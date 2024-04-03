@@ -43,8 +43,14 @@ phoronix-test-suite:
       - 1 # f32
       - 2 # u8s8f32      [Optimized For AVX-512]
       - 3 # bf16bf16bf16 [Optimized For AVX-512 + VNNI]
-
+  - test: svt-hevc-1.2.1
+    option_a:
+      - 1 # 1  [Higher Quality]
+      - 2 # 7  [Default]
+      - 3 # 10 [Higher Density]
+    option_b:
+      - Bosphorus 1080p
+      - Bosphorus 4K
   - test:
-    - svt-hevc-1.2.0
     - tensorflow-1.1.0
     - tensorflow-lite-1.1.0
