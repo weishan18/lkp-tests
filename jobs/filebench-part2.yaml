@@ -15,7 +15,7 @@ fs2:
 filebench-setup:
   test:
     - filemicro_create.f
-    - filemicro_createfiles.f
+    # - filemicro_createfiles.f # runtie > 45m on 1HDD-ext4-nfsv4 lkp-csl-2sp3
     - filemicro_createrand.f
     - filemicro_delete.f
     - filemicro_rread.f
