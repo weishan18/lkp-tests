@@ -10,7 +10,7 @@ ip:
 
 runtime: 300s
 nr_threads:
-  - 1
+  # - 1
   - 50%
   - 200%
 
