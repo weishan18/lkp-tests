@@ -17,13 +17,13 @@ filebench-setup:
     - copyfiles.f
     - createfiles.f
     - fileserver.f
-    # - openfiles.f # >1.5h on nfsv4
+    # - openfiles.f # runtime > 1.5h on nfsv4
     - ratelimcopyfiles.f
     - randomfileaccess.f
     - randomread.f
     - randomrw.f
     - randomwrite.f
-    # - listdirs.f # ~1h on nfsv4
+    # - listdirs.f # runtime ~ 1h on nfsv4
     - makedirs.f
     - removedirs.f
     - singlestreamreaddirect.f
@@ -38,5 +38,5 @@ filebench-setup:
     - cvar_example.f
     - webproxy.f
     - webserver.f
-    # - netsfs.f # more than 1h 20m
+    # - netsfs.f # runtime > 1h 20m on nfsv4
 filebench:
