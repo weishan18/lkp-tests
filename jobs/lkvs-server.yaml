@@ -7,5 +7,3 @@ lkvs:
     - rapl-server
     - cstate-server
     - topology-server
-
-turbostat:

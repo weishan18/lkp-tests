@@ -5,5 +5,3 @@ category: functional
 lkvs:
   test:
     - splitlock
-
-turbostat:

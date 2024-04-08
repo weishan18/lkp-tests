@@ -7,5 +7,3 @@ lkvs:
     - rapl-client
     - cstate-client
     - topology-client
-
-turbostat:
