@@ -62,6 +62,8 @@
 586
 # execution time > 2h
 587
+# execution time > 6000s
+588
 # execution time > 2h
 590
 # execution time > 1000s
