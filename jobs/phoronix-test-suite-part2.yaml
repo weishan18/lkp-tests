@@ -49,7 +49,7 @@ phoronix-test-suite:
     # - srsran-2.1.0 # The test quit with a non-zero exit status
     # - stargate-1.1.0 # The test quit with a non-zero exit status.
     - stockfish-1.4.0
-    - stream-dynamic-1.0.0
+    # - stream-dynamic-1.0.0 # for AMD CPU only
     - stressapptest-1.0.1
     # - stresscpu2-1.0.1 # not performance test
     - sudokut-1.0.1
