@@ -41,8 +41,6 @@ sed -i '/\[vmx_pf_exception_test_reduced_maxphyaddr\]/a\timeout = 240' x86/unitt
 
 setup_test_environment || die "failed to setup test environment"
 
-check_ignored_cases
-
 run_tests
 [ $? -ne 0 ] && dump_qemu
 

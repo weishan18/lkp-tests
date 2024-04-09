@@ -37,17 +37,6 @@ remove_case()
 	fi
 }
 
-check_ignored_cases()
-{
-	local ignored_by_lkp=$(get_pkg_dir $testcase)/addon/ignored_by_lkp
-	[ -f "$ignored_by_lkp" ] || return
-
-	for ignore in $(cat $ignored_by_lkp | grep -v '^#')
-	do
-		remove_case "$ignore" && echo "ignored_by_lkp: $ignore"
-	done
-}
-
 # fix issue:
 # SKIP access-reduced-maxphyaddr (/sys/module/kvm_intel/parameters/allow_smaller_maxphyaddr not equal to Y)
 # SKIP pmu_emulation (/sys/module/kvm/parameters/force_emulation_prefix not equal to Y)
