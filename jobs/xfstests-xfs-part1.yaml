@@ -14,6 +14,7 @@ xfstests:
     - xfs-external
     - xfs-083
     - xfs-132
+    - xfs-211
     - xfs-244
     - xfs-275
     - xfs-437
