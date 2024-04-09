@@ -5,8 +5,6 @@ testcase=$(basename $0)
 log_msg=$(tail -10 $RESULT_ROOT/$testcase)
 if [[ "$log_msg" =~ "$testcase success" ]]; then
 	echo "${testcase}.pass: 1"
-elif [[ "$log_msg" =~ "$testcase ignored_by_lkp" ]]; then
-	echo "${testcase}.ignored_by_lkp: 1"
 else
 	echo "${testcase}.fail: 1"
 fi

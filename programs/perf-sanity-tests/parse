@@ -14,8 +14,6 @@ while (line = $stdin.gets)
     stats.add $2, 'pass'
   when /([\d.]+:) (.*): (Skip$|Skip .*)/
     stats.add $2, 'skip'
-  when /ignored_by_lkp: (.*)/
-    stats.add $1, 'ignored_by_lkp'
   when /make perf passed/
     stats.add 'perf.make', 'pass'
   when /make perf failed/
