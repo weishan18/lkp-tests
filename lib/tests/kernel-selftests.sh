@@ -623,13 +623,6 @@ pack_selftests()
 	[[ $arch ]] && mv "/lkp/benchmarks/${BM_NAME}.cgz" "/lkp/benchmarks/${BM_NAME}-${arch}.cgz"
 }
 
-fixup_resctrl()
-{
-	log_cmd make -j${nr_cpu} -C resctrl >/dev/null || return
-	log_cmd resctrl/resctrl_tests 2>&1
-	return 1
-}
-
 fixup_test_group()
 {
 	local group=$1

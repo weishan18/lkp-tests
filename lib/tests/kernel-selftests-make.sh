@@ -88,6 +88,8 @@ run_tests()
 		elif [[ $test =~ ^protection_keys ]]; then
 			echo "# selftests: mm: $test"
 			log_cmd mm/$test 2>&1
+		elif [[ $group = resctrl ]]; then
+			log_cmd resctrl/resctrl_tests 2>&1
 		elif [[ $group = bpf ]]; then
 			# Order correspond to 'make run_tests' order
 			# TEST_GEN_PROGS = test_verifier test_tag test_maps test_lru_map test_lpm_map test_progs \
