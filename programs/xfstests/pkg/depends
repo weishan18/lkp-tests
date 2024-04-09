@@ -32,3 +32,4 @@ sed
 thin-provisioning-tools
 udftools
 uuid-runtime
+xfsdump
