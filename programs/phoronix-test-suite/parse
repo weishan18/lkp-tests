@@ -34,6 +34,14 @@ while (line = $stdin.gets)
       stats["#{test_name}.#{subtest_name}.#{$2}"] = $1
     end
     next
+  when 'intel-mlc'
+    case line
+    when /Test: (.+) - (.+):/
+      subtest_name = "#{$1}.#{$2}".gsub(/\s+/, '')
+    when /Average: ([0-9.]+) (.*)/
+      stats["#{test_name}.#{subtest_name}.#{$2}"] = $1
+    end
+    next
   end
 
   case line
