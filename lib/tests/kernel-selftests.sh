@@ -181,11 +181,6 @@ check_ignore_case()
 	# the test of filesystems waits for the events from file, it will not never stop.
 	[ $casename = "filesystems" ] && return
 
-	# test tpm2 need hardware tpm
-	ls "/dev/tpm*" 2>/dev/null || {
-		[ $casename = "tpm2" ] && return
-	}
-
 	return 1
 }
 
@@ -291,10 +286,6 @@ fixup_pstore()
 		# So we chagne ecc=0 instead, that's good to both skylake and sand bridge.
 		# NOTE: the root cause is not clear
 		modprobe ramoops mem_address=0x8000000 ecc=0 mem_size=1000000 2>&1
-		[[ -e /dev/pmsg0 ]] || {
-			echo "LKP SKIP pstore | no /dev/pmsg0"
-			return 1
-		}
 	}
 }
 
@@ -442,24 +433,6 @@ fixup_bpf()
 		sed -i 's/if ping -6/if ping6/g' bpf/test_skb_cgroup_id.sh 2>/dev/null
 		sed -i 's/ping -${1}/ping${1%4}/g' bpf/test_sock_addr.sh 2>/dev/null
 	}
-	## ths test needs special device /dev/lircN
-	sed -i 's/test_lirc_mode2_user//' bpf/Makefile
-	echo "LKP SKIP bpf.test_lirc_mode2_user"
-
-	# ./test_lirc_mode2.sh: line 32: ./test_lirc_mode2_user: No such file or director
-	sed -i 's/test_lirc_mode2.sh//' bpf/Makefile
-	echo "LKP SKIP bpf.test_lirc_mode2.sh"
-
-	## test_tc_tunnel runs well but hang on perl process
-	sed -i 's/test_tc_tunnel.sh//' bpf/Makefile
-	echo "LKP SKIP bpf.test_tc_tunnel.sh"
-
-	sed -i 's/test_lwt_seg6local.sh//' bpf/Makefile
-	echo "LKP SKIP bpf.test_lwt_seg6local.sh"
-
-	## /test_xsk.sh causes soft_timeout due to commit 710ad98c363a (veth: Do not record rx queue hint in veth_xmit)
-	sed -i 's/test_xsk.sh//' bpf/Makefile
-	echo "LKP SKIP bpf.test_xsk.sh"
 
 	# some sh scripts actually need bash
 	# ./test_libbpf.sh: 9: ./test_libbpf.sh: 0: not found
@@ -477,12 +450,6 @@ fixup_bpf()
 	fi
 	# tools/testing/selftests/bpf/tools/sbin/bpftool
 	export PATH=$linux_selftests_dir/tools/testing/selftests/bpf/tools/sbin:$PATH
-
-	if is_kernel_version_ge 5.15; then
-		# skip test_kmod.sh because test execution time > 5 hours
-		sed -i "s/test_kmod.sh//" bpf/Makefile
-		echo "LKP SKIP test_kmod.sh"
-	fi
 
 	sed -i 's/\/redirect_map_0/\/xdp_redirect_map_0/g' bpf/test_xdp_veth.sh
 	sed -i 's/\/redirect_map_1/\/xdp_redirect_map_1/g' bpf/test_xdp_veth.sh
@@ -648,21 +615,8 @@ platform_is_skylake_or_snb()
 	([[ $model -ge 85 ]] && [[ $model -le 94 ]]) || [[ $model -eq 42 ]]
 }
 
-fixup_breakpoints()
-{
-	platform_is_skylake_or_snb && grep -qw step_after_suspend_test breakpoints/Makefile && {
-		sed -i 's/step_after_suspend_test//' breakpoints/Makefile
-		echo "LKP SKIP breakpoints.step_after_suspend_test"
-	}
-}
-
 fixup_x86()
 {
-	is_virt && grep -qw mov_ss_trap x86/Makefile && {
-		sed -i 's/mov_ss_trap//' x86/Makefile
-		echo "LKP SKIP x86.mov_ss_trap"
-	}
-
 	# List cpus that supported SGX
 	# https://ark.intel.com/content/www/us/en/ark/search/featurefilter.html?productType=873&2_SoftwareGuardExtensions=Yes%20with%20Intel%C2%AE%20ME&1_Filter-UseConditions=3906
 	# If cpu support SGX, also need open SGX in bios
@@ -673,14 +627,6 @@ fixup_x86()
 	# Fix error /usr/bin/ld: /tmp/lkp/cc6bx6aX.o: relocation R_X86_64_32S against `.text' can not be used when making a shared object; recompile with -fPIC
 	# https://www.spinics.net/lists/stable/msg229853.html
 	grep -qw '\-no\-pie' x86/Makefile || sed -i '/^CFLAGS/ s/$/ -no-pie/' x86/Makefile
-}
-
-fixup_ptp()
-{
-	[[ -e "/dev/ptp0" ]] || {
-		echo "LKP SKIP ptp.testptp"
-		return 1
-	}
 }
 
 fixup_livepatch()
@@ -768,9 +714,7 @@ pack_selftests()
 fixup_subtest()
 {
 	local subtest=$1
-	if [[ "$subtest" = "breakpoints" ]]; then
-		fixup_breakpoints
-	elif [[ $subtest = "bpf" ]]; then
+	if [[ $subtest = "bpf" ]]; then
 		fixup_bpf || die "fixup_bpf failed"
 	elif [[ $subtest = "dma" ]]; then
 		fixup_dma || die "fixup_dma failed"
@@ -816,8 +760,6 @@ fixup_subtest()
 		fixup_ftrace
 	elif [[ "$subtest" = "kmod" ]]; then
 		fixup_kmod
-	elif [[ "$subtest" = "ptp" ]]; then
-		fixup_ptp || return
 	elif [[ "$subtest" = "mount_setattr" ]]; then
 		fixup_mount_setattr
 	elif [[ "$subtest" = "tc-testing" ]]; then
