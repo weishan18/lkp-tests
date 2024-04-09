@@ -1,11 +1,7 @@
-# execution time 677s
-001
 # execution time > 100m
 002
 # execution time > 1000s
 030
-# execution time 628s
-062
 # the filesystem has valuable metadata changes in a log which needs to 11 be replayed
 083
 # reflink not supported by test filesystem type: xfs
@@ -18,10 +14,6 @@
 141
 # execution time > 800s
 152
-# execution time 680s
-170
-# execution time > 10m
-182
 # Reflink not supported by scratch filesystem type: xfs
 211
 # execution time > 20m
@@ -42,8 +34,6 @@
 437
 # It run cmd ./ltp/fsstress -w -d /fs/scratch -n 100000 -p 4, execution time > 30m
 442
-# execution time 712s
-507
 # execution time > 20m
 517
 # execution time > 2h
