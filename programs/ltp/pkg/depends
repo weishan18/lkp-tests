@@ -65,5 +65,6 @@ unzip
 update-inetd
 uuid-runtime
 vsftpd
+wireguard
 xfslibs-dev
 xfsprogs
