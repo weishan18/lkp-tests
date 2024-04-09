@@ -31,18 +31,6 @@ run_one()
 	return $ret_value
 }
 
-check_ignored_by_lkp()
-{
-	local test=$1
-	local ignored_by_lkp=$(get_pkg_dir pm-qa)/addon/ignored_by_lkp
-	[ -f $ignored_by_lkp ] || return
-
-	for ignore in $(cat $ignored_by_lkp | grep -v ^#)
-	do
-		[ -f "$test/$ignore".sh ] && mv $test/$ignore.sh $test/$ignore.sh.bak && echo "$ignore: ignored_by_lkp"
-	done
-}
-
 # remove the noise module
 # this module will create /sys/devices/virtual/thermal/thermal_zone2 dir, but it will not create
 # file: /sys/devices/virtual/thermal/thermal_zone2/mode which is expected by the tests
@@ -51,10 +39,8 @@ rmmod x86_pkg_temp_thermal 2>/dev/null
 if [ "$test" = 'all' ]; then
 	for i in cpufreq cpuhotplug cputopology cpuidle thermal
 	do
-		check_ignored_by_lkp $i
 		run_one $i
 	done
 else
-	check_ignored_by_lkp $test
 	run_one $test
 fi
