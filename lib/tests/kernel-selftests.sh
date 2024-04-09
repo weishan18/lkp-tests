@@ -174,25 +174,8 @@ check_makefile()
 	}
 }
 
-check_ignore_case()
-{
-	local casename=$1
-
-	# the test of filesystems waits for the events from file, it will not never stop.
-	[ $casename = "filesystems" ] && return
-
-	return 1
-}
-
 fixup_dma()
 {
-	[[ -f $linux_selftests_dir/include/linux/map_benchmark.h ]] && {
-		# /usr/include/linux/map_benchmark.h:19:2: error: unknown type name ‘__u64’
-		sed  -i '1i #include <linux/types.h>' $linux_selftests_dir/include/linux/map_benchmark.h
-		# dma_map_benchmark.c:13:10: fatal error: linux/map_benchmark.h: No such file or directory
-		cp $linux_selftests_dir/include/linux/map_benchmark.h /usr/include/linux
-	}
-
 	# need to bind a device to dma_map_benchmark driver
 	# for PCI devices
 	local name=$(ls /sys/bus/pci/devices/ | head -1)
@@ -326,31 +309,6 @@ fixup_gpio()
 	export CFLAGS="-I../../../../usr/include"
 }
 
-fixup_proc()
-{
-	# proc-fsconfig-hidepid.c:25:17: error: ‘__NR_fsopen’ undeclared (first use in this function); did you mean ‘fsopen’?
-	export CFLAGS="-I../../../../usr/include"
-}
-
-fixup_move_mount_set_group()
-{
-	libc_version_ge 2.32 && return
-
-	# libc version lower than libc-2.32 do not define SYS_move_mount.
-	# move_mount_set_group_test.c:221:16: error: ‘SYS_move_mount’ undeclared (first use in this function); did you mean ‘SYS_mount’?
-	export CFLAGS="-DSYS_move_mount=__NR_move_mount"
-	sed -ie "s/CFLAGS = /CFLAGS += /g" move_mount_set_group/Makefile
-}
-
-fixup_landlock()
-{
-	libc_version_ge 2.32 && return
-
-	# libc version lower than libc-2.32 do not define SYS_move_mount.
-	# fs_test.c:1304:23: error: 'SYS_move_mount' undeclared (first use in this function); did you mean 'SYS_mount'?
-	export CFLAGS="-DSYS_move_mount=__NR_move_mount"
-}
-
 fixup_netfilter()
 {
 	# RULE_APPEND failed (No such file or directory): rule in chain BROUTING.
@@ -391,26 +349,6 @@ fixup_memfd()
 	# here is to fix the permission
 	[[ -f $subtest/run_tests.sh ]] && {
 		[[ -x $subtest/run_tests.sh ]] || chmod +x $subtest/run_tests.sh
-	}
-
-	# memfd_test.c:783:27: error: 'F_SEAL_FUTURE_WRITE' undeclared (first use in this function); did you mean 'F_SEAL_WRITE'?
-	#  mfd_assert_add_seals(fd, F_SEAL_FUTURE_WRITE);
-	# git diff
-	# diff --git a/tools/testing/selftests/memfd/memfd_test.c b/tools/testing/selftests/memfd/memfd_test.c
-	# index 74baab83fec3..71275b722832 100644
-	# --- a/tools/testing/selftests/memfd/memfd_test.c
-	# +++ b/tools/testing/selftests/memfd/memfd_test.c
-	# @@ -20,6 +20,10 @@
-	# #include <unistd.h>
-	#  
-	# #include "common.h"
-	# +#ifndef F_SEAL_FUTURE_WRITE
-	# +#define F_SEAL_FUTURE_WRITE 0x0010
-	# +#endif
-	libc_version_ge 2.32 || {
-		sed -i '/^#include "common.h"/a #ifndef F_SEAL_FUTURE_WRITE\n#define F_SEAL_FUTURE_WRITE 0x0010\n#endif\n' $subtest/memfd_test.c
-		# fuse_test.c:63:8: error: unknown type name '__u64'
-		sed -i '/^#include "common.h"/a typedef unsigned long long __u64;' $subtest/fuse_test.c
 	}
 
 	# before v4.13-rc1, we need to compile fuse_mnt first
@@ -509,11 +447,6 @@ fixup_user_events()
 		# avoid REMOVE usr/include/linux/user_events.h when make headers_install
 		sed -i 's/headers_install\: headers/headers_install\:/' ../../../Makefile
 	}
-
-	# #  RUN           user.size_types ...
-	# # dyn_test.c:91:size_types:Expected -1 (-1) != Append("u:__test_event struct custom a 20") (-1)
-	# <-- block at here and reach timeout at last
-	sed -i 's/dyn_test//' user_events/Makefile
 }
 
 fixup_kvm()
@@ -564,9 +497,6 @@ fixup_mm()
 	#   baa489fabd01 selftests/vm: rename selftests/vm to selftests/mm
 	# the test script is still "run_vmtests.sh" after rename to mm selftests.
 
-	# has too many errors now
-	sed -i 's/hugetlbfstest//' mm/Makefile
-
 	local run_vmtests="run_vmtests.sh"
 	[[ -f mm/run_vmtests ]] && run_vmtests="run_vmtests"
 	# we need to adjust two value in vm/run_vmtests accroding to the nr_cpu
@@ -607,14 +537,6 @@ fixup_mm()
 	echo 'timeout=600' > mm/settings
 }
 
-platform_is_skylake_or_snb()
-{
-	# FIXME: Model number: snb: 42, ivb: 58, haswell: 60, skl: [85, 94]
-	local model=$(lscpu | grep 'Model:' | awk '{print $2}')
-	[[ -z "$model" ]] && die "FIXME: unknown platform cpu model number"
-	([[ $model -ge 85 ]] && [[ $model -le 94 ]]) || [[ $model -eq 42 ]]
-}
-
 fixup_x86()
 {
 	# List cpus that supported SGX
@@ -623,10 +545,6 @@ fixup_x86()
 	grep -qw sgx x86/Makefile && {
 		grep -qw sgx /proc/cpuinfo || echo "Current host doesn't support sgx"
 	}
-
-	# Fix error /usr/bin/ld: /tmp/lkp/cc6bx6aX.o: relocation R_X86_64_32S against `.text' can not be used when making a shared object; recompile with -fPIC
-	# https://www.spinics.net/lists/stable/msg229853.html
-	grep -qw '\-no\-pie' x86/Makefile || sed -i '/^CFLAGS/ s/$/ -no-pie/' x86/Makefile
 }
 
 fixup_livepatch()
@@ -724,12 +642,6 @@ fixup_subtest()
 		log_cmd touch ./$subtest/pipe || die "touch pipe failed"
 	elif [[ $subtest = "gpio" ]]; then
 		fixup_gpio || return
-	elif [[ $subtest = "proc" ]]; then
-		fixup_proc || return
-	elif [[ $subtest = "move_mount_set_group" ]]; then
-		fixup_move_mount_set_group || return
-	elif [[ $subtest = "landlock" ]]; then
-		fixup_landlock || return
 	elif [[ $subtest = "netfilter" ]]; then
 		fixup_netfilter || return
 	elif [[ $subtest = "lkdtm" ]]; then
@@ -792,8 +704,6 @@ check_subtest()
 	[[ -s "$subtest_config" ]] && {
 		check_kconfig "$subtest_config" "$kernel_config"
 	}
-
-	check_ignore_case $subtest && echo "LKP SKIP $subtest" && return 1
 
 	# media_tests: requires special peripheral and it can not be run with "make run_tests"
 	# watchdog: requires special peripheral
