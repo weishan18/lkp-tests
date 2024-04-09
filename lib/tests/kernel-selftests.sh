@@ -639,13 +639,6 @@ fixup_resctrl()
 	return 1
 }
 
-fixup_ir()
-{
-	# Ignore RCMM infrared remote controls related tests.
-	sed -i 's/{ RC_PROTO_RCMM/\/\/{ RC_PROTO_RCMM/g' ir/ir_loopback.c
-	echo "LKP SKIP ir.ir_loopback_rcmm"
-}
-
 fixup_test_group()
 {
 	local group=$1
