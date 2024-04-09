@@ -11,13 +11,6 @@ kernel-selftests:
   group:
     - net
   test:
-    - tls
-
----
-kernel-selftests:
-  group:
-    - net
-  test:
     - fcnal-test.sh
   test_atomic:
     - ipv4_ping
@@ -39,5 +32,7 @@ kernel-selftests:
   group:
     - net
   test:
+    - tls
+    - fib_nexthops.sh
     - xfrm_policy.sh
     - pmtu.sh
