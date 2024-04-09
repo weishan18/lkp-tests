@@ -165,15 +165,6 @@ check_kconfig()
 	done < $dependent_config
 }
 
-check_makefile()
-{
-	subtest=$1
-	grep -E -q -m 1 "^TARGETS \+?=  ?$subtest" Makefile || {
-		echo "${subtest} test: not in Makefile"
-		return 1
-	}
-}
-
 fixup_dma()
 {
 	# need to bind a device to dma_map_benchmark driver
@@ -652,27 +643,31 @@ fixup_test_group()
 	fi
 }
 
-check_subtest()
+check_test_group_kconfig()
 {
-	local subtest_config="$subtest/config"
+	local group=$1
+
+	local group_config="$group/config"
 	local kernel_config="/lkp/kernel-selftests-kernel-config"
 
-	[[ -s "$subtest_config" ]] && get_kconfig "$kernel_config" && {
-		check_kconfig "$subtest_config" "$kernel_config"
+	[[ -s "$group_config" ]] && get_kconfig "$kernel_config" && {
+		check_kconfig "$group_config" "$kernel_config"
 	}
 
 	# bpf/config.x86_64
-	subtest_config="$subtest/config.x86_64"
-	[[ -s "$subtest_config" ]] && {
-		check_kconfig "$subtest_config" "$kernel_config"
+	group_config="$group/config.x86_64"
+	[[ -s "$group_config" ]] && {
+		check_kconfig "$group_config" "$kernel_config"
 	}
 
 	return 0
 }
 
-cleanup_subtest()
+cleanup_test_group()
 {
-	if [[ "$subtest" = "firmware" ]]; then
+	local group=$1
+
+	if [[ "$group" = "firmware" ]]; then
 		cleanup_for_firmware
 	fi
 }

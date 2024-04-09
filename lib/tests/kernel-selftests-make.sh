@@ -25,12 +25,7 @@ prepare_tests()
 	[ -n "$selftest_mfs" ] || die "empty selftest_mfs"
 }
 
-make_group_tests()
-{
-	log_cmd make -j${nr_cpu} -C $subtest 2>&1
-}
-
-# it will touch the Makefile, overwrite target
+# it touches the Makefile and overwrites the target
 #@@ -40,6 +40,9 @@ TEST_GEN_PROGS = reuseport_bpf reuseport_bpf_cpu reuseport_bpf_numa
 # TEST_GEN_PROGS += reuseport_dualstack reuseaddr_conflict tls
 #
@@ -41,11 +36,13 @@ make_group_tests()
 #  +TEST_GEN_FILES =
 #  +TEST_PROGS = tls
 #    include ../lib.mk
-keep_only_specific_test()
+fixup_test()
 {
-	local makefile=$subtest/Makefile
+	[[ "$test" ]] || return 0
 
-	[[ "$test" ]] || return
+	local group=$1
+
+	local makefile=$group/Makefile
 	[[ -f $makefile ]] || return
 
 	# keep specific $test only
@@ -54,10 +51,11 @@ keep_only_specific_test()
 	sed -i "/^include .*\/lib.mk/i TEST_PROGS = $test" $makefile
 
 	[[ $test = "fcnal-test.sh" ]] && {
-		echo "timeout=2000" >> $subtest/settings
+		echo "timeout=2000" >> $group/settings
 	}
+
 	[[ $test = "fib_nexthops.sh" ]] && {
-		echo "timeout=3600" >> $subtest/settings
+		echo "timeout=3600" >> $group/settings
 	}
 }
 
@@ -69,17 +67,20 @@ run_tests()
 	[[ -e kselftest/runner.sh ]] && log_cmd sed -i 's/default_timeout=45/default_timeout=300/' kselftest/runner.sh
 
 	for mf in $selftest_mfs; do
-		subtest=${mf%/Makefile}
-		check_subtest || continue
+		local group=${mf%/Makefile}
+
+		check_test_group_kconfig $group
 
 		(
-		fixup_test_group $subtest || die "fixup_$subtest failed"
+		fixup_test_group $group || die "fixup_$group failed"
 
-		check_makefile $subtest || log_cmd make -j${nr_cpu} TARGETS=$subtest 2>&1
+		if grep -E -q -m 1 "^TARGETS \+?=  ?$group" Makefile; then
+			log_cmd make -j${nr_cpu} -C $group 2>&1
+		else
+			log_cmd make -j${nr_cpu} TARGETS=$group 2>&1
+		fi
 
-		make_group_tests
-
-		keep_only_specific_test
+		[[ "$test" ]] && fixup_test $group
 
 		# vmalloc performance and stress, can not use 'make run_tests' to run
 		if [[ $test =~ ^vmalloc\-(performance|stress)$ ]]; then
@@ -88,7 +89,7 @@ run_tests()
 		elif [[ $test =~ ^protection_keys ]]; then
 			echo "# selftests: mm: $test"
 			log_cmd mm/$test 2>&1
-		elif [[ $subtest = bpf ]]; then
+		elif [[ $group = bpf ]]; then
 			# Order correspond to 'make run_tests' order
 			# TEST_GEN_PROGS = test_verifier test_tag test_maps test_lru_map test_lpm_map test_progs \
 			# 		test_verifier_log test_dev_cgroup \
@@ -106,7 +107,7 @@ run_tests()
 				sed -i 's/test_progs-no_alu32/test_lpm_map/' bpf/Makefile
 			fi
 
-			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
+			log_cmd make quicktest=1 run_tests -C $group 2>&1
 
 			if [[ -f bpf/test_progs && -f bpf/test_progs-no_alu32 ]]; then
 				cd bpf
@@ -121,12 +122,12 @@ run_tests()
 				echo "build bpf/test_progs or bpf/test_progs-no_alu32 failed" >&2
 			fi
 		elif [[ $category = "functional" ]]; then
-			log_cmd make quicktest=1 run_tests -C $subtest 2>&1
+			log_cmd make quicktest=1 run_tests -C $group 2>&1
 		else
-			log_cmd make run_tests -C $subtest 2>&1
+			log_cmd make run_tests -C $group 2>&1
 		fi
 
-		cleanup_subtest
+		cleanup_test_group $group
 		)
 	done
 }
