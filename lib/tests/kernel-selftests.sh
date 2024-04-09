@@ -337,12 +337,6 @@ cleanup_for_firmware()
 	}
 }
 
-subtest_in_skip_filter()
-{
-	local filter=$@
-	echo "$filter" | grep -w -q "$subtest" && echo "LKP SKIP $subtest"
-}
-
 fixup_memfd()
 {
 	# at v4.14-rc1, it introduces run_tests.sh, which doesn't have execute permission
@@ -462,11 +456,16 @@ fixup_damon()
 	chmod +x $subtest/*.sh $subtest/*.py
 }
 
+# media_tests: requires special peripheral and it can not be run with "make run_tests"
+# watchdog: requires special peripheral
+# 	1. requires /dev/watchdog device, but not all tbox have this device
+# 	2. /dev/watchdog: need support open/ioctl etc file ops, but not all watchdog support it
+# 	3. this test will not complete until issue Ctrl+C to abort it
 prepare_for_selftest()
 {
 	if [ "$group" = "group-00" ]; then
 		# bpf is slow
-		selftest_mfs=$(ls -d [a-b]*/Makefile | grep -v ^bpf)
+		selftest_mfs=$(ls -d [a-b]*/Makefile | grep -v -e ^amd-pstate -e ^bpf -e ^arm64)
 	elif [ "$group" = "group-01" ]; then
 		# subtest lib cause kselftest incomplete run, it's a kernel issue
 		# report [LKP] [software node] 7589238a8c: BUG:kernel_NULL_pointer_dereference,address
@@ -475,17 +474,16 @@ prepare_for_selftest()
 	elif [ "$group" = "group-02" ]; then
 		# m* is slow
 		# pidfd caused soft_timeout in kernel-selftests.splice.short_splice_read.sh.fail.v5.9-v5.10-rc1.2020-11-06.132952
-		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^rseq -e ^resctrl -e ^mm -e ^net -e ^netfilter -e ^rcutorture -e ^pidfd -e ^memory-hotplug -e ^rust)
+		selftest_mfs=$(ls -d [m-r]*/Makefile | grep -v -e ^media_tests -e ^rseq -e ^resctrl -e ^mm -e ^net -e ^netfilter -e ^rcutorture -e ^powerpc -e ^pidfd -e ^memory-hotplug -e ^rust)
 	elif [ "$group" = "group-03" ]; then
-		selftest_mfs=$(ls -d [t-z]*/Makefile | grep -v -e ^x86 -e ^tc-testing -e ^vm -e ^user_events)
+		selftest_mfs=$(ls -d [t-z]*/Makefile | grep -v -e ^x86 -e ^tc-testing -e ^vm -e ^user_events -e ^watchdog)
 	elif [ "$group" = "mptcp" ]; then
 		selftest_mfs=$(ls -d net/mptcp/Makefile)
 	elif [ "$group" = "group-s" ]; then
-		selftest_mfs=$(ls -d s*/Makefile | grep -v sgx)
+		selftest_mfs=$(ls -d s*/Makefile | grep -v -e ^sgx -e ^sparc64)
 	elif [ "$group" = "memory-hotplug" ]; then
 		selftest_mfs=$(ls -d memory-hotplug/Makefile)
 	else
-		# bpf cpufreq cgroup firmware kvm lib livepatch lkdtm net netfilter pidfd rcutorture resctrl rseq tc-testing user_events mm(vm) x86 rust
 		selftest_mfs=$(ls -d $group/Makefile)
 	fi
 }
@@ -705,14 +703,6 @@ check_subtest()
 		check_kconfig "$subtest_config" "$kernel_config"
 	}
 
-	# media_tests: requires special peripheral and it can not be run with "make run_tests"
-	# watchdog: requires special peripheral
-	# 1. requires /dev/watchdog device, but not all tbox have this device
-	# 2. /dev/watchdog: need support open/ioctl etc file ops, but not all watchdog support it
-	# 3. this test will not complete until issue Ctrl+C to abort it
-	# sched: https://www.spinics.net/lists/kernel/msg4062205.html
-	skip_filter="arm64 sparc64 powerpc media_tests watchdog sched amd-pstate"
-	subtest_in_skip_filter "$skip_filter" && return 1
 	return 0
 }
 
