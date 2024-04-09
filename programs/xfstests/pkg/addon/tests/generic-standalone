@@ -32,11 +32,6 @@
 387
 # execution time ~ 15m
 410
-# current xfsprogs package(i.e v4.9) has a bug of xfs_io command
-# and makes generic/430, generic/431 and generic/434 hang
-430
-431
-434
 # execution time 2491s on btrfs
 449
 # execution time > 1582s
