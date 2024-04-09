@@ -73,7 +73,7 @@ run_tests()
 		check_subtest || continue
 
 		(
-		fixup_subtest $subtest || exit
+		fixup_test_group $subtest || die "fixup_$subtest failed"
 
 		check_makefile $subtest || log_cmd make -j${nr_cpu} TARGETS=$subtest 2>&1
 

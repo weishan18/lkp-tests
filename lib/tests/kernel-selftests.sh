@@ -227,7 +227,7 @@ fixup_net()
 	# v4.18-rc1 introduces fib_tests.sh, which doesn't have execute permission
 	# Warning: file fib_tests.sh is not executable
 	# Warning: file test_ingress_egress_chaining.sh is not executable
-	chmod +x $subtest/*.sh
+	chmod +x net/*.sh
 
 	ulimit -l 10240
 	modprobe -q fou
@@ -341,14 +341,14 @@ fixup_memfd()
 {
 	# at v4.14-rc1, it introduces run_tests.sh, which doesn't have execute permission
 	# here is to fix the permission
-	[[ -f $subtest/run_tests.sh ]] && {
-		[[ -x $subtest/run_tests.sh ]] || chmod +x $subtest/run_tests.sh
+	[[ -f memfd/run_tests.sh ]] && {
+		[[ -x memfd/run_tests.sh ]] || chmod +x memfd/run_tests.sh
 	}
 
 	# before v4.13-rc1, we need to compile fuse_mnt first
 	# check whether there is target "fuse_mnt" at Makefile
-	grep -wq '^fuse_mnt:' $subtest/Makefile || return 0
-	make fuse_mnt -C $subtest
+	grep -wq '^fuse_mnt:' memfd/Makefile || return 0
+	make fuse_mnt -C memfd
 }
 
 fixup_bpf()
@@ -405,6 +405,11 @@ fixup_fpu()
 	modprobe test_fpu
 }
 
+fixup_exec()
+{
+	log_cmd touch ./exec/pipe
+}
+
 fixup_kexec()
 {
 	# test_kexec_load.sh: 126: [: x86_64: unexpected operator
@@ -453,7 +458,7 @@ fixup_damon()
 {
 	# Warning: file debugfs_attrs.sh is not executable
 	# Warning: file damos_apply_interval.py is not executable
-	chmod +x $subtest/*.sh $subtest/*.py
+	chmod +x damon/*.sh damon/*.py
 }
 
 # media_tests: requires special peripheral and it can not be run with "make run_tests"
@@ -627,65 +632,31 @@ pack_selftests()
 	[[ $arch ]] && mv "/lkp/benchmarks/${BM_NAME}.cgz" "/lkp/benchmarks/${BM_NAME}-${arch}.cgz"
 }
 
-fixup_subtest()
+fixup_resctrl()
 {
-	local subtest=$1
-	if [[ $subtest = "bpf" ]]; then
-		fixup_bpf || die "fixup_bpf failed"
-	elif [[ $subtest = "dma" ]]; then
-		fixup_dma || die "fixup_dma failed"
-	elif [[ $subtest = "efivarfs" ]]; then
-		fixup_efivarfs || return
-	elif [[ $subtest = "exec" ]]; then
-		log_cmd touch ./$subtest/pipe || die "touch pipe failed"
-	elif [[ $subtest = "gpio" ]]; then
-		fixup_gpio || return
-	elif [[ $subtest = "netfilter" ]]; then
-		fixup_netfilter || return
-	elif [[ $subtest = "lkdtm" ]]; then
-		fixup_lkdtm || return
-	elif [[ "$subtest" = "pstore" ]]; then
-		fixup_pstore || return
-	elif [[ "$subtest" = "firmware" ]]; then
-		fixup_firmware || return
-	elif [[ "$subtest" = "net" ]]; then
-		fixup_net || return
-	elif [[ "$subtest" = "ir" ]]; then
-		## Ignore RCMM infrared remote controls related tests.
-		sed -i 's/{ RC_PROTO_RCMM/\/\/{ RC_PROTO_RCMM/g' ir/ir_loopback.c
-		echo "LKP SKIP ir.ir_loopback_rcmm"
-	elif [[ "$subtest" = "memfd" ]]; then
-		fixup_memfd
-	elif [[ "$subtest" = "mm" ]]; then
-		fixup_mm
-	elif [[ "$subtest" = "x86" ]]; then
-		fixup_x86
-	elif [[ "$subtest" = "resctrl" ]]; then
-		log_cmd make -j${nr_cpu} -C resctrl >/dev/null || return
-		log_cmd resctrl/resctrl_tests 2>&1
-		return 1
-	elif [[ "$subtest" = "livepatch" ]]; then
-		fixup_livepatch
-	elif [[ "$subtest" = "ftrace" ]]; then
-		fixup_ftrace
-	elif [[ "$subtest" = "kmod" ]]; then
-		fixup_kmod
-	elif [[ "$subtest" = "mount_setattr" ]]; then
-		fixup_mount_setattr
-	elif [[ "$subtest" = "tc-testing" ]]; then
-		fixup_tc_testing # ignore return value so that doesn't abort the rest tests
-	elif [[ "$subtest" = "fpu" ]]; then
-		fixup_fpu
-	elif [[ "$subtest" = "kexec" ]]; then
-		fixup_kexec
-	elif [[ "$subtest" = "user_events" ]]; then
-		fixup_user_events
-	elif [[ "$subtest" = "kvm" ]]; then
-		fixup_kvm
-	elif [[ "$subtest" = "damon" ]]; then
-		fixup_damon
+	log_cmd make -j${nr_cpu} -C resctrl >/dev/null || return
+	log_cmd resctrl/resctrl_tests 2>&1
+	return 1
+}
+
+fixup_ir()
+{
+	# Ignore RCMM infrared remote controls related tests.
+	sed -i 's/{ RC_PROTO_RCMM/\/\/{ RC_PROTO_RCMM/g' ir/ir_loopback.c
+	echo "LKP SKIP ir.ir_loopback_rcmm"
+}
+
+fixup_test_group()
+{
+	local group=$1
+
+	if [[ "$group" = "tc-testing" ]]; then
+		fixup_tc_testing
+	elif [[ $(type -t "fixup_${group}") = function ]]; then
+		fixup_${group}
+	else
+		return 0
 	fi
-	return 0
 }
 
 check_subtest()
