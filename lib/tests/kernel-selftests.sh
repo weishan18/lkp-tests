@@ -450,10 +450,6 @@ fixup_bpf()
 	sed -i 's/test_lirc_mode2.sh//' bpf/Makefile
 	echo "LKP SKIP bpf.test_lirc_mode2.sh"
 
-	## this test caused soft timeout in v6.0-rc1 ~ v6.0-rc3, test ok in v6.0-rc4 v6.0-rc5.
-	sed -i 's/test_sockmap//' bpf/Makefile
-	echo "LKP SKIP bpf.test_sockmap"
-
 	## test_tc_tunnel runs well but hang on perl process
 	sed -i 's/test_tc_tunnel.sh//' bpf/Makefile
 	echo "LKP SKIP bpf.test_tc_tunnel.sh"
