@@ -91,7 +91,12 @@ phoronix-test-suite:
     - hint-1.0.3
     - hmmer-1.3.0
     # - hpcc-1.2.8 # run time more than 2h on clear, install failed on debian
-    - intel-mlc-1.1.0
+  - test: intel-mlc-1.1.0
+    option_a:
+      - Peak Injection Bandwidth
+      - Max Bandwidth
+      - Idle Latency
+  - test:
     - jpegxl-decode-1.5.0
     # - keydb-1.2.0 # install failed
     # - kripke-1.2.0 # The test quit with a non-zero exit status.
