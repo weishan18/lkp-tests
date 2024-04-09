@@ -7,6 +7,8 @@ require "#{LKP_SRC}/lib/log"
 
 stats = {}
 test_subname = []
+test_name = ''
+subtest_name = ''
 test_id = -1
 is_begin_of_subtest = false
 
@@ -14,6 +16,17 @@ while (line = $stdin.gets)
   line = line.resolve_invalid_bytes
              .gsub(/.\[1;(\d+)m|.\[0m/, '') # remove color control info
              .chomp
+
+  case test_name
+  when 'mnn'
+    case line
+    when /Model: (.+):/
+      subtest_name = $1
+    when /Average: ([0-9.]+) (.*)/
+      stats["#{test_name}.#{subtest_name}.#{$2}"] = $1
+    end
+    next
+  end
 
   case line
   when /The test quit with a non-zero exit status|Wrong test option|testname is empty|PHP Parse error/
