@@ -1,4 +1,3 @@
-.*\.ignored_by_lkp
 Modules_linked_in
 Spectre_v2_mitigation
 ^aim7\.cpu
