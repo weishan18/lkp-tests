@@ -1,9 +1,3 @@
-ignored_by_lkp: BPF filter
-ignored_by_lkp: LLVM search and compile
-ignored_by_lkp: Add vfs_getname probe to get syscall args filenames
-ignored_by_lkp: Use vfs_getname probe to get syscall args filenames
-ignored_by_lkp: Check open filename arg using perf trace + vfs_getname
-ignored_by_lkp: builtin clang support
 2021-02-10 21:30:00 sudo /usr/bin/perf test 31
 31: Lookup mmap thread                                              : FAILED!
 2021-02-10 21:30:02 sudo /usr/bin/perf test 32
