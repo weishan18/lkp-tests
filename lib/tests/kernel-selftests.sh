@@ -20,13 +20,6 @@ build_selftests()
 	cd ../../..
 }
 
-# don't auto-reboot when panic
-prepare_for_lkdtm()
-{
-	echo 0 >/proc/sys/kernel/panic_on_oops
-	echo 1800 >/proc/sys/kernel/panic
-}
-
 prepare_test_env()
 {
 	has_cmd make || return
@@ -103,9 +96,6 @@ prepare_for_test()
 	export PATH=$BENCHMARK_ROOT/kernel-selftests/kernel-selftests/dropwatch/bin:$PATH
 	# workaround hugetlbfstest.c open_file() error
 	mkdir -p /hugepages
-
-	[[ "$group" = "bpf" || "$group" = "net" ]] && prepare_for_bpf
-	[[ "$group" = "lkdtm" ]] && prepare_for_lkdtm
 
 	# temporarily workaround compile error on gcc-6
 	command -v gcc-5 >/dev/null && log_cmd ln -sf /usr/bin/gcc-5 /usr/bin/gcc
@@ -209,6 +199,8 @@ recover_sysctl_output()
 
 fixup_net()
 {
+	prepare_for_bpf
+
 	# udpgro tests need enable bpf firstly
 	# Missing xdp_dummy helper. Build bpf selftest first
 	log_cmd make -j${nr_cpu} -C bpf 2>&1
@@ -317,6 +309,10 @@ fixup_netfilter()
 
 fixup_lkdtm()
 {
+	# don't auto-reboot when panic
+	echo 0 >/proc/sys/kernel/panic_on_oops
+	echo 1800 >/proc/sys/kernel/panic
+
 	# Enable UNWINDER_FRAME_POINTER will fix lkdtm USERCOPY_STACK_FRAME_TO and USERCOPY_STACK_FRAME_FROM fail.
 	# But the kernel's overall performance will degrade by roughly 5-10%.
 	# So instead of enable UNWINDER_FRAME_POINTER, comment out USERCOPY_STACK_FRAME_TO and USERCOPY_STACK_FRAME_FROM.
@@ -349,6 +345,8 @@ fixup_memfd()
 
 fixup_bpf()
 {
+	prepare_for_bpf
+
 	log_cmd make -j${nr_cpu} -C ../../../tools/bpf/bpftool 2>&1 || return
 	log_cmd make install -C ../../../tools/bpf/bpftool 2>&1 || return
 	type ping6 && {
