@@ -10,7 +10,6 @@
 ## See: https://www.kernel.org/doc/Documentation/kselftest.txt
 
 . $LKP_SRC/lib/tests/kernel-selftests.sh
-. $LKP_SRC/lib/tests/kernel-selftests-make.sh
 
 shopt -s nullglob
 
