@@ -176,7 +176,7 @@ fixup_dma()
 	echo $name > /sys/bus/pci/drivers/dma_map_benchmark/bind || return
 }
 
-skip_specific_net_cases()
+skip_standalone_net_tests()
 {
 	[ "$test" ] && return # test will be run standalone
 
@@ -212,7 +212,7 @@ fixup_net()
 	# Missing xdp_dummy helper. Build bpf selftest first
 	log_cmd make -j${nr_cpu} -C bpf 2>&1
 
-	skip_specific_net_cases
+	skip_standalone_net_tests
 
 	# v4.18-rc1 introduces fib_tests.sh, which doesn't have execute permission
 	# Warning: file fib_tests.sh is not executable
