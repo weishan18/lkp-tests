@@ -366,11 +366,7 @@ fixup_bpf()
 	if [[ "$python_version" =~ "3.5" ]] && [[ -e "bpf/test_bpftool.py" ]]; then
 		sed -i "s/res)/res.decode('utf-8'))/" bpf/test_bpftool.py
 	fi
-	if [[ -e kselftest/runner.sh ]]; then
-		sed -i "48aCMD='./\$BASENAME_TEST'" kselftest/runner.sh
-		sed -i "49aecho \$BASENAME_TEST | grep test_progs && CMD='./\$BASENAME_TEST -b mmap'" kselftest/runner.sh
-		sed -i "s/tap_timeout .\/\$BASENAME_TEST/eval \$CMD/" kselftest/runner.sh
-	fi
+
 	# tools/testing/selftests/bpf/tools/sbin/bpftool
 	export PATH=$linux_selftests_dir/tools/testing/selftests/bpf/tools/sbin:$PATH
 
