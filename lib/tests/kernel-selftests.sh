@@ -507,12 +507,6 @@ fixup_mm()
 		sed -i "s#needmem=262144#needmem=$memory#" mm/$run_vmtests
 	}
 
-	# /usr/include/bits/mman-linux.h:# define MADV_PAGEOUT     21/* Reclaim these pages.  */
-	# it doesn't exist in a old glibc<=2.28
-	grep -qw MADV_PAGEOUT /usr/include/x86_64-linux-gnu/bits/mman-linux.h 2>/dev/null || {
-		export EXTRA_CFLAGS="-DMADV_PAGEOUT=21"
-	}
-
 	# vmalloc stress prepare
 	if [[ $test = "vmalloc-stress" ]]; then
 		# iterations or nr_threads if not set, use default value
