@@ -225,7 +225,12 @@ fixup_net()
 	modprobe -q nf_conntrack_broadcast
 
 	[ "$test" = "fcnal-test.sh" ] && [ "$test_atomic" ] && setup_fcnal_test_atomic
-	[ "$test" = "fcnal-test.sh" ] && recover_sysctl_output
+	[ "$test" = "fcnal-test.sh" ] && {
+		recover_sysctl_output
+		echo "timeout=2000" >> $group/settings
+	}
+
+	[[ $test = "fib_nexthops.sh" ]] && echo "timeout=3600" >> $group/settings
 
 	export CCINCLUDE="-I../bpf/tools/include"
 	log_cmd make -j${nr_cpu} -C net 2>&1 || return
@@ -618,12 +623,31 @@ fixup_test_group()
 	local group=$1
 
 	if [[ "$group" = "tc-testing" ]]; then
-		fixup_tc_testing
+		fixup_tc_testing || return
 	elif [[ $(type -t "fixup_${group}") = function ]]; then
-		fixup_${group}
-	else
-		return 0
+		fixup_${group} || return
 	fi
+
+	# update Makefile to run the specified $test only
+	[[ "$test" ]] || return 0
+
+	local makefile=$group/Makefile
+	[[ -f $makefile ]] || return
+
+	# it overwrites the target in Makefile to keep the specified $test only
+	#@@ -40,6 +40,9 @@ TEST_GEN_PROGS = reuseport_bpf reuseport_bpf_cpu reuseport_bpf_numa
+	# TEST_GEN_PROGS += reuseport_dualstack reuseaddr_conflict tls
+	#
+	#  TEST_FILES := settings
+	#
+	#   KSFT_KHDR_INSTALL := 1
+	#  +TEST_GEN_PROGS =
+	#  +TEST_GEN_FILES =
+	#  +TEST_PROGS = tls
+	#    include ../lib.mk
+	sed -i "/^include .*\/lib.mk/i TEST_GEN_PROGS =" $makefile
+	sed -i "/^include .*\/lib.mk/i TEST_GEN_FILES =" $makefile
+	sed -i "/^include .*\/lib.mk/i TEST_PROGS = $test" $makefile
 }
 
 check_test_group_kconfig()

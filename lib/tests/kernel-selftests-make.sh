@@ -25,40 +25,6 @@ prepare_tests()
 	[ -n "$selftest_mfs" ] || die "empty selftest_mfs"
 }
 
-# it touches the Makefile and overwrites the target
-#@@ -40,6 +40,9 @@ TEST_GEN_PROGS = reuseport_bpf reuseport_bpf_cpu reuseport_bpf_numa
-# TEST_GEN_PROGS += reuseport_dualstack reuseaddr_conflict tls
-#
-#  TEST_FILES := settings
-#
-#   KSFT_KHDR_INSTALL := 1
-#  +TEST_GEN_PROGS =
-#  +TEST_GEN_FILES =
-#  +TEST_PROGS = tls
-#    include ../lib.mk
-fixup_test()
-{
-	[[ "$test" ]] || return 0
-
-	local group=$1
-
-	local makefile=$group/Makefile
-	[[ -f $makefile ]] || return
-
-	# keep specific $test only
-	sed -i "/^include .*\/lib.mk/i TEST_GEN_PROGS =" $makefile
-	sed -i "/^include .*\/lib.mk/i TEST_GEN_FILES =" $makefile
-	sed -i "/^include .*\/lib.mk/i TEST_PROGS = $test" $makefile
-
-	[[ $test = "fcnal-test.sh" ]] && {
-		echo "timeout=2000" >> $group/settings
-	}
-
-	[[ $test = "fib_nexthops.sh" ]] && {
-		echo "timeout=3600" >> $group/settings
-	}
-}
-
 run_tests()
 {
 	local selftest_mfs=$@
@@ -73,7 +39,6 @@ run_tests()
 
 		(
 		fixup_test_group $group || die "fixup_$group failed"
-		[[ "$test" ]] && fixup_test $group
 
 		if grep -E -q -m 1 "^TARGETS \+?=  ?$group" Makefile; then
 			log_cmd make -j${nr_cpu} -C $group 2>&1
