@@ -1,24 +1,14 @@
 #!/bin/bash
 
 . $LKP_SRC/lib/debug.sh
-. $LKP_SRC/lib/tests/update-llvm.sh
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/reproduce-log.sh
 
 prepare_tests()
 {
-	prepare_test_env || die "prepare test env failed"
-
-	# Only update llvm for bpf test
-	[ "$group" = "bpf" -o "$group" = "net" -o "$group" = "tc-testing" ] && {
-		cd / && {
-			prepare_for_llvm || die "install newest llvm failed"
-	    }
-	}
-
 	cd $linux_selftests_dir/tools/testing/selftests || die
 
-	prepare_for_test
+	prepare_test_env || die "prepare test env failed"
 
 	prepare_for_selftest
 

@@ -3,6 +3,7 @@
 . $LKP_SRC/lib/env.sh
 . $LKP_SRC/lib/debug.sh
 . $LKP_SRC/lib/tests/version.sh
+. $LKP_SRC/lib/tests/update-llvm.sh
 
 build_selftests()
 {
@@ -60,6 +61,13 @@ prepare_test_env()
 	else
 		linux_selftests_dir="/lkp/benchmarks/kernel-selftests"
 	fi
+
+	# Only update llvm for bpf test
+	[ "$group" = "bpf" -o "$group" = "net" -o "$group" = "tc-testing" ] && {
+		prepare_for_llvm || die "install newest llvm failed"
+	}
+
+	prepare_for_commands
 }
 
 prepare_for_bpf()
@@ -90,7 +98,7 @@ prepare_for_bpf()
 	fi
 }
 
-prepare_for_test()
+prepare_for_commands()
 {
 	export PATH=/lkp/benchmarks/kernel-selftests/kernel-selftests/iproute2-next/sbin:$PATH
 	export PATH=$BENCHMARK_ROOT/kernel-selftests/kernel-selftests/dropwatch/bin:$PATH
