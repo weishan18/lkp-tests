@@ -7,3 +7,4 @@ libgcc-dev: libgcc-6-dev
 openjdk: openjdk-11-jdk
 mysql-server: default-mysql-server
 gtk3: gir1.2-gtk-3.0
+libunwind: libunwind8

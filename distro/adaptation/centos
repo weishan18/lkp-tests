@@ -184,7 +184,6 @@ libubsan0:
 libudev-dev: systemd-devel
 libudev1: systemd-libs
 libunwind-dev: libunwind-devel
-libunwind8: libunwind
 libuuid1: libuuid
 libuv1-dev: libuv-devel
 libvirt-clients: libvirt-client

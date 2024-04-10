@@ -13,7 +13,7 @@ libpng12-dev:
 libtraceevent-dev: libtraceevent-devel 
 libtraceevent1: 
 libunwind-dev:
-libunwind8:
+libunwind:
 llvm-dev: llvm-devel
 pkg-config:
 python-dev:

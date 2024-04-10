@@ -26,7 +26,7 @@ libssl-dev
 libtraceevent-dev
 libtraceevent1
 libunwind-dev
-libunwind8
+libunwind
 libzstd-dev
 linux-perf
 llvm-dev
