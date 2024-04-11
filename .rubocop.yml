@@ -123,9 +123,6 @@ Layout/LineLength:
 Layout/FirstArrayElementIndentation:
   Enabled: false
 
-Layout/CommentIndentation:
-  Enabled: false
-
 # Layout/IndentHeredoc:
 #   Enabled: false
 

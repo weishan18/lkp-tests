@@ -609,8 +609,8 @@ def __get_changed_stats(a, b, is_incomplete_run, options)
         next if options['regression-only'] ||
                 (!LKP::DmesgKillPattern.instance.contain?(k) && options['all-critical'])
       end
-        # this relies on the fact dmesg.* comes ahead
-        # of kmsg.* in etc/default_stats.yaml
+      # this relies on the fact dmesg.* comes ahead
+      # of kmsg.* in etc/default_stats.yaml
       next if has_boot_fix && k =~ /^kmsg\./
     end
 

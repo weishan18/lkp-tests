@@ -104,9 +104,6 @@ Lint/UnneededDisable:
 Lint/BlockAlignment:
   Enabled: false
 
-Layout/CommentIndentation:
-  Enabled: false
-
 Layout/IndentHeredoc:
   Enabled: false
 

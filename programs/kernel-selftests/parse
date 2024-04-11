@@ -1611,8 +1611,8 @@ while (line = $stdin.gets)
     # selftests: mm: run_vmtests
     stater = VmStater.new($1, $2)
   when /^# selftests: memory-hotplug: (.*\.sh)/,
-    # selftests: memory-hotplug: mem-on-off-test.sh
        /\.\/(.*\.sh).*memory-hotplug/
+    # selftests: memory-hotplug: mem-on-off-test.sh
     # ./mem-on-off-test.sh -r 2 || echo "selftests: memory-hotplug [FAIL]"
     stater = MemoryHotplugStater.new('memory-hotplug', $1)
   when /gcc -Wall -O2 (.*).c -o/
