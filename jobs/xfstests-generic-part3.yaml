@@ -18,7 +18,6 @@ fs:
 xfstests:
   test:
     # - generic-409 # runtime > 20m
-    - generic-410
     - generic-464
     - generic-logwrites
     - generic-group-37
