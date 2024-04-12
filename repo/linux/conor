@@ -7,3 +7,4 @@ subsystems:
 - riscv
 mail_to: Conor Dooley <conor+lkp@kernel.org>
 branch_denylist: linux-6.6.y-rt
+test_old_branches: .*
