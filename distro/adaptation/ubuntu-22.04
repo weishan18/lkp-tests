@@ -6,7 +6,7 @@ dh-systemd: debhelper
 exfat-utils: exfatprogs
 python: python-is-python3
 python-gobject:
-python-tox: tox
+python3-tox: tox
 python3-crypto: python3-pycryptodome
 libunwind: libunwind-14
 libunwind-dev: libunwind-14-dev

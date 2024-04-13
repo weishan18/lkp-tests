@@ -7,5 +7,5 @@ libudev-dev
 ninja-build
 pandoc
 pkg-config
-python3-docutils
+python-docutils
 valgrind

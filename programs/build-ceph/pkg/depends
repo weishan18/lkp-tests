@@ -65,8 +65,6 @@ python-six
 python-sphinx
 python-tox
 python-werkzeug
-python3-all-dev
-python3-setuptools
 ragel
 socat
 systemtap-sdt-dev
