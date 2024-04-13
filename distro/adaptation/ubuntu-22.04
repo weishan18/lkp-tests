@@ -32,3 +32,4 @@ libhwloc5: libhwloc15
 libgsl: libgsl27
 libevent-2.1-6: libevent-2.1-7
 mariadb-server:mariadb-server-10.6
+fuse: fuse3
