@@ -10,6 +10,6 @@ libiberty-dev
 libmpfr6
 libpci3
 libsigsegv2
-libssl1.1
+libssl
 libudev1
 openssl

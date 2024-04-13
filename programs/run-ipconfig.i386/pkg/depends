@@ -1,2 +1,2 @@
-initramfs-tools-core:i386
-klibc-utils:i386
+initramfs-tools-core:i386 (x86_64)
+klibc-utils:i386 (x86_64)

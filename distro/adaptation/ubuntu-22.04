@@ -1,6 +1,13 @@
 # jammy
 
+crda:
+cython:
+dh-systemd: debhelper
+exfat-utils: exfatprogs
 python: python-is-python3
+python-gobject:
+python-tox: tox
+python3-crypto: python3-pycryptodome
 libunwind: libunwind-14
 libunwind-dev: libunwind-14-dev
 libperl5: libperl5.34
@@ -11,4 +18,17 @@ libx32gcc-dev: libx32gcc-12-dev
 libipsec-mb: libipsec-mb1
 libpython3: libpython3.10
 libtirpc: libtirpc-common
-libssl1.1: libssl3
+libssl: libssl3
+winpdb:
+qt5-default: qtbase5-dev
+openjdk: openjdk-17-jdk
+mcelog: rasdaemon
+libreadline5: readline-common
+libprocps: libproc2-0
+libpolly-dev: libpolly-14-dev
+libntfs: libntfs-3g89
+libldap-2.4-2: libldap-2.5-0
+libjson: libjson-c5
+libhwloc5: libhwloc15
+libgsl: libgsl27
+libevent-2.1-6: libevent-2.1-7
