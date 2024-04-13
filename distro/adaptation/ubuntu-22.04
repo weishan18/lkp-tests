@@ -24,8 +24,8 @@ qt5-default: qtbase5-dev
 openjdk: openjdk-17-jdk
 mcelog: rasdaemon
 libreadline5: readline-common
-libprocps: libproc2-0
-libpolly-dev: libpolly-14-dev
+libprocps: libprocps8
+libpolly-dev:
 libntfs: libntfs-3g89
 libldap-2.4-2: libldap-2.5-0
 libjson: libjson-c5
