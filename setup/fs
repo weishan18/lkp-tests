@@ -31,8 +31,11 @@ fs_options() {
 		# mkfs.xfs v5.10.0 would set reflink=1 by default, and conflict with DAX mount option, so need to set reflink=0 explicitly
 		ensure_mkfs='-f -mreflink=0'
 		;;
-	ext*)
+	ext2)
 		ensure_mkfs='-q -F'
+		;;
+	ext4)
+		ensure_mkfs='-q -E lazy_itable_init=0,lazy_journal_init=0 -F'
 		;;
 	btrfs)
 		;;
