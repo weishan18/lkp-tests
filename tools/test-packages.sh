@@ -46,5 +46,7 @@ fi
 
 packages=$(map_packages)
 
-echo "$LKP_SRC/distro/installer/$distro" 1>&2
-$LKP_SRC/distro/installer/$distro $packages
+[[ "$distro" =~ (debian|ubuntu) ]] && opt_dry_run="--dry-run"
+
+echo "$LKP_SRC/distro/installer/$distro $opt_dry_run" 1>&2
+$LKP_SRC/distro/installer/$distro $opt_dry_run $packages
