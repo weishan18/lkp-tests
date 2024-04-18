@@ -56,3 +56,4 @@ python3-tox: tox
 liburing: liburing2
 libpolly-dev: libpolly-14-dev
 python-setuptools: python3-setuptools
+fuse: fuse3
