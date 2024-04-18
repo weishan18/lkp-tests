@@ -85,7 +85,7 @@ libc-bin: glibc-common
 libc-dev-bin: glibc-common
 libc-dev: glibc-devel
 libc-dev:i386: glibc-devel.i686
-libc6-dbg: glibc-debuginfo
+libc6-dbg:
 libc6-dev-i386: glibc-devel.i686 glibc-static.i686
 libc6-dev-x32:
 libc6-dev: glibc-devel glibc-static
