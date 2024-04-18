@@ -42,11 +42,12 @@ libaio1: libaio
 libapparmor-dev:
 libapparmor1:
 libarchive-dev: libarchive-devel
+libarchive-tools: libarchive
 libarchive13: libarchive
+libasound2-dev: alsa-lib-devel
 libattr1-dev: libattr-devel
 libattr1: libattr
 libaudit-dev: audit-libs-devel
-libasound2-dev: alsa-lib-devel
 libbabeltrace-dev:
 libbinutils:
 libblas3: blas
@@ -57,13 +58,13 @@ libbz2-dev: bzip2-devel
 libc-bin: glibc-common
 libc-dev-bin: glibc-common
 libc-dev: glibc-devel
+libc6-dbg:
 libc6-dev-i386: 
 libc6-dev-x32:
 libc6-dev: glibc-devel glibc-static
 libc6-dev:i386: glibc-devel.i686 glibc-static.i686
-libc6: 
-libc6-dbg:
 libc6-i386: 
+libc6:
 libcairo2-dev: cairo-devel
 libcap-dev: libcap-devel
 libcap-ng-dev: libcap-ng-devel
@@ -122,8 +123,8 @@ libmariadb-dev: mysql-devel
 libmariadb3: mariadb-connector-c
 libmnl-dev: libmnl-devel
 libmount-dev: libmount-devel
-libmpx2:
 libmpfr6: mpfr
+libmpx2:
 libncurses5-dev: ncurses-devel
 libnl-3-200: libnl3
 libnl-3-dev: libnl3-devel
