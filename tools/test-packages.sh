@@ -45,4 +45,4 @@ fi
 packages=$(map_packages)
 
 echo "$LKP_SRC/distro/installer/$distro" 1>&2
-$LKP_SRC/distro/installer/$distro --dry-run $packages
+$LKP_SRC/distro/installer/$distro $packages
