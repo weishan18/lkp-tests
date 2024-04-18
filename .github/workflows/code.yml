@@ -18,7 +18,6 @@ permissions:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,8 +35,13 @@ jobs:
 
   test-packages:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: ['fedora/38', 'ubuntu/jammy']
 
     steps:
       - uses: actions/checkout@v3
-      - name: Test packages
-        run: tools/test-packages.sh
+      - name: Build ${{ matrix.image }} image
+        run: docker build . -f docker/${{ matrix.image }}/Dockerfile -t lkp-tests/${{ matrix.image }}
+      - name: Test packages on ${{ matrix.image }}
+        run: docker run --rm --entrypoint '' lkp-tests/${{ matrix.image }} tools/test-packages.sh
