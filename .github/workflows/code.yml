@@ -42,6 +42,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build ${{ matrix.image }} image
-        run: docker build . -f docker/${{ matrix.image }}/Dockerfile -t lkp-tests/${{ matrix.image }} --build-arg DEBIAN_FRONTEND=noninteractive
+        run: docker build . -f docker/${{ matrix.image }}/Dockerfile -t lkp-tests/${{ matrix.image }}
       - name: Test packages on ${{ matrix.image }}
-        run: docker run --rm --entrypoint '' lkp-tests/${{ matrix.image }} tools/test-packages.sh
+        run: docker run -e DEBIAN_FRONTEND=noninteractive --rm --entrypoint '' lkp-tests/${{ matrix.image }} tools/test-packages.sh
