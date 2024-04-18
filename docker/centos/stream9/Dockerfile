@@ -10,7 +10,7 @@ WORKDIR /lkp/lkp-tests
 
 COPY . ./
 
-RUN RUN dnf upgrade -y && \
+RUN dnf upgrade -y && \
     dnf install -y \
     # kernel-tools installs turbostat
     kernel-tools \
