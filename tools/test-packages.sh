@@ -26,6 +26,8 @@ map_packages()
 	# do a general mapping from python-pkg to python3-pkg
 	[[ "$distro-$_system_version" =~ ubuntu-2[0-9].* ]] && map_python2_to_python3
 
+	[[ "$distro-$_system_version" =~ fedora-[3][8-9] ]] && map_python2_to_python3
+
 	adapt_packages | sort | uniq
 }
 
