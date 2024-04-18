@@ -37,6 +37,7 @@ libapparmor-dev:
 libapparmor1:
 libarchive-dev: libarchive-devel
 libarchive13: libarchive
+libarchive-tools: libarchive
 libasound2-dev: alsa-lib-devel
 libattr1-dev: libattr-devel
 libattr1: libattr
