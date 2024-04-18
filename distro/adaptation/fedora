@@ -1,3 +1,4 @@
+acct:
 apache2: httpd
 apt-file:
 arping: iputils
@@ -5,29 +6,49 @@ autopoint: gettext
 autotools-dev: autoconf
 bind9: bind
 binutils-dev: binutils-devel
+bsdextrautils:
+bsdmainutils:
 btrfs-tools: btrfs-progs
 build-essential: make automake gcc gcc-c++ kernel-devel rpm-build
 cgroup-bin: libcgroup
 cgroup-tools: libcgroup-tools
 cgroupfs-mount:
 cron: cronie
+cryptsetup-bin: cryptsetup
 dbench=4.0-2: dbench
+dc: bc
 default-jdk: java-1.8.0-openjdk-devel
+dh-exec:
+dh-python:
+dh-strip-nondeterminism:
+dh-systemd:
+dh:
 dpkg-dev: dpkg-devel
+e2fslibs-dev:
 exfat-fuse: exfat-utils
+exfat-utils: exfatprogs
+freeglut3-dev: freeglut
 freeglut3: freeglut
 fsmark: fs_mark
+fsverity: fsverity-utils
+g++-multilib:
 gcc-4.9: gcc
 gcc-5: gcc
 gcc-6: gcc
 gcc-multilib: libgcc.i686
 gdbserver: gdb-gdbserver
+gettext-base: gettext
 gfortran: gcc-gfortran
+glibc-debuginfo:
 hpcc:
+init-system-helpers:
 initramfs-tools: dracut
 install-info: info
+intltool-debian: intltool
 iozone3:
 iproute2: iproute
+iputils-clockdiff: iputils
+iputils-tracepath: iputils
 junit4: junit
 klibc-utils:
 libacl1-dev: libacl-devel
@@ -36,8 +57,8 @@ libaio1: libaio
 libapparmor-dev:
 libapparmor1:
 libarchive-dev: libarchive-devel
-libarchive13: libarchive
 libarchive-tools: libarchive
+libarchive13: libarchive
 libasound2-dev: alsa-lib-devel
 libattr1-dev: libattr-devel
 libattr1: libattr
@@ -119,6 +140,7 @@ libmnl-dev: libmnl-devel
 libmount-dev: libmount-devel
 libmpfr6: mpfr
 libncurses5-dev: ncurses-devel
+libndctl-dev: ndctl-devel
 libnl-3-200: libnl3
 libnl-3-dev: libnl3-devel
 libnl-genl-3-200: libnl3
@@ -194,14 +216,21 @@ netpipe-tcp: NetPIPE
 network-manager: NetworkManager
 nfs-common: nfs-utils
 nfs-kernel-server: nfs-utils
-openbsd-inetd: xinetd
+nilfs-tools: nilfs-utils
+ocfs2-tools-dev: ocfs2-tools
+openbsd-inetd:
 openjdk: java-1.8.0-openjdk-devel
+openmpi-bin: openmpi
+openvswitch-common: openvswitch
+openvswitch-switch: openvswitch
+peg:
 perl-base: perl
 perl-modules-5: perl
 pkg-config: pkgconfig
 plzip:
 postmark:
 protobuf-compiler: protobuf
+python-all-dev:
 python-dev: python3-devel
 python-gi-cairo:
 python-gi:
@@ -209,18 +238,31 @@ python-minimal: python2
 python-pkg-resources: python-setuptools
 python2-libs:
 python3-dev: python3-devel
+qemu-system: qemu
+qt5-default: qt5-qtbase
+qtbase5-dev: qt5-qtbase
+reiserfsprogs:
 rng-tools5: rng-tools
+rpcsvc-proto: rpcsvc-proto-devel
 rstatd: rusers-server
 rt-tests: numactl-devel
 ruby-dev: ruby-devel
 rusersd: rusers-server
+samba-dev: samba
+sendip:
 sg3-utils: sg3_utils
+snmp: net-snmp
 systemtap-sdt-dev: systemtap-sdt-devel
+telnetd-ssl:
+thin-provisioning-tools:
 tshark: wireshark
 update-inetd:
 uuid-dev: libuuid-devel
 uuid-runtime: util-linux
+wireguard: wireguard-tools
+wireshark-common: wireshark
 wpasupplicant: wpa_supplicant
+x11-apps:
 xfslibs-dev: xfsprogs-devel
 xinit: xorg-x11-xinit
 xorg:

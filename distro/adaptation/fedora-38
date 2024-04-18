@@ -1,2 +1,11 @@
 # reason (3)
 python-minimal: python3
+python3-venv: python3-virtualenv
+python3-openssl: python3-pyOpenSSL
+python3-cherrypy3: python3-cherrypy
+cython3: python3-cython
+netpipe-lam:
+netpipe-mpich2:
+netpipe-openmpi:
+netpipe-pvm:
+netpipe-tcp:
