@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image: ['fedora/38', 'ubuntu/jammy']
+        image: ['fedora/39', 'ubuntu/jammy']
 
     steps:
       - uses: actions/checkout@v3
