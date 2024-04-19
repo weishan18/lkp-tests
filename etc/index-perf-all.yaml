@@ -26,7 +26,6 @@ dd\..+_time_ms: -1
 ebizzy\.throughput: 1
 exit-free\.duration: -1
 filebench\.sum_operations\/s: 1
-sysbench-fileio\..+_operations\/s: 1
 fio\..+_bw_MBps: 1
 fio\..+_iops: 1
 fsmark\.app_overhead: -1
@@ -106,6 +105,7 @@ phoronix-test-suite\..+\.global_score: 1
 phoronix-test-suite\..+\.gmpbench_score: 1
 phoronix-test-suite\..+\.hydro_cycle_time_-_seconds: -1
 phoronix-test-suite\..+\.h_s: 1
+phoronix-test-suite\..+\.images_sec: 1
 phoronix-test-suite\..+\.images___sec: 1
 phoronix-test-suite\..+\.iops: 1
 phoronix-test-suite\..+\.ips: 1
@@ -208,6 +208,7 @@ stress-ng\..+_per_item: 1
 stress-ng\..+_per_sec: 1
 stress-ng\..+_per_seek: 1
 swapin\.throughput: 1
+sysbench-fileio\..+_operations\/s: 1
 sysbench\-.+\.throughput_events\/s: 1
 sysbench\-.+\.throughput_MB\/s: 1
 sysbench\-.+\.throughput_ops\/s: 1
