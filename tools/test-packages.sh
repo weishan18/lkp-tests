@@ -28,6 +28,8 @@ map_packages()
 
 	[[ "$distro-$_system_version" =~ fedora-[3][8-9] ]] && map_python2_to_python3
 
+	[[ "$distro-$_system_version" =~ centos-[9] ]] && map_python2_to_python3
+
 	adapt_packages | sort | uniq
 }
 
