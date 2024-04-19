@@ -1,12 +1,16 @@
-which: debianutils
+btrfs-tools: btrfs-progs
+gtk3: gir1.2-gtk-3.0
 iblz4-1: liblz4-dev
 libbz2-1.0: libbz2-dev
 libcpupower-dev:
 libevent-2: libevent-dev
 libgcrypt-dev: libgcrypt20-dev
 libgflags2v5: libgflags-dev
+libglut-dev: freeglut3-dev
+libglut3: freeglut3
 libhugetlbfs: libhugetlbfs0
 libicu: libicu-dev
+libjpeg62-turbo: libjpeg-turbo8
 libntfs: libntfs-3g88
 libperl5: libperl5.26
 libsnappy1v5: libsnappy-dev
@@ -16,12 +20,8 @@ libtool-bin:
 libzmq: libzmq5
 linux-perf: linux-tools-common
 linux-tools: linux-tools-generic
+nasm: nasm
 perl-modules-5: perl-modules-5.26
 pmdk: pmdk-tools
+which: debianutils
 zlib1g: zlib1g-dev
-nasm: nasm
-btrfs-tools: btrfs-progs
-gtk3: gir1.2-gtk-3.0
-libjpeg62-turbo: libjpeg-turbo8
-libglut3: freeglut3
-libglut-dev: freeglut3-dev  
