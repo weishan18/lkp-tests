@@ -2,4 +2,4 @@ gcc-multilib
 git
 make
 python-pkg-resources
-python3
+python

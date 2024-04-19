@@ -2,4 +2,4 @@ build-essential
 gawk
 gdb
 gdbserver
-python3
+python

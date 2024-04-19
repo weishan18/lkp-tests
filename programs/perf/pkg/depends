@@ -34,7 +34,7 @@ numactl
 patch
 python-dev
 python-setuptools
-python3
+python
 rng-tools5
 sudo
 systemtap-sdt-dev

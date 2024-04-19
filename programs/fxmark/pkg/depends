@@ -3,8 +3,7 @@ dbench
 f2fs-tools
 jfsutils
 nilfs-tools
-python2
-python3
+python
 reiserfsprogs
 sudo
 xfsprogs

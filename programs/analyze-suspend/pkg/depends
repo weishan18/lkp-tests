@@ -2,7 +2,7 @@ iw
 net-tools
 network-manager
 pciutils
-python3
+python
 rfkill
 usbutils
 vim
