@@ -66,7 +66,7 @@ libarchive-tools: libarchive
 libarchive-zip-perl:
 libarchive13: libarchive
 libasound2-dev: alsa-lib-devel
-libasound2:
+libasound2: alsa-lib
 libattr1-dev: libattr-devel
 libattr1: libattr
 libaudit-dev: audit-libs-devel
@@ -201,7 +201,7 @@ libmariadb-dev: mysql-devel
 libmariadb3: mariadb-connector-c
 libmnl-dev: libmnl-devel
 libmount-dev: libmount-devel
-libmpfr-dev:
+libmpfr-dev: mpfr-devel
 libmpfr6: mpfr
 libncurses5-dev: ncurses-devel
 libncursesw5-dev:
@@ -240,7 +240,7 @@ libperl5: perl-libs
 libpfm4-dev: libpfm-devel
 libpfm4: libpfm
 libpipeline1: libpipeline
-libpixman-1-0:
+libpixman-1-0: pixman
 libpixman-1-dev: pixman-devel
 libpmem-dev: libpmem-devel
 libpmem1: libpmem
@@ -268,13 +268,13 @@ libsctp-dev: lksctp-tools-devel
 libsctp1: lksctp-tools
 libseccomp2: libseccomp2
 libselinux1-dev: libselinux-devel
-libselinux1:
+libselinux1: libselinux
 libsigsegv2:
 libslang2-dev: slang-devel
 libsmbclient-dev:
 libsnappy-dev: snappy-devel
 libsnappy1v5: snappy
-libsqlite3-0:
+libsqlite3-0: libsqlite3x
 libsqlite3-dev: libsqlite3x-devel
 libssl-dev: openssl-devel
 libssl: openssl-devel
@@ -345,7 +345,7 @@ network-manager: NetworkManager
 nfs-common: nfs-utils
 nfs-kernel-server: nfs-utils
 nilfs-tools: nilfs-utils
-ocfs2-tools-dev: ocfs2-tools
+ocfs2-tools-dev: ocfs2-tools-devel
 openbsd-inetd:
 openjdk: java-1.8.0-openjdk-devel
 openmpi-bin: openmpi
@@ -368,7 +368,7 @@ python2-libs:
 python3-dev: python3-devel
 qemu-system: qemu
 qt5-default: qt5-qtbase
-qtbase5-dev: qt5-qtbase
+qtbase5-dev: qt5-qtbase-devel
 reiserfsprogs:
 rng-tools5: rng-tools
 rpcsvc-proto: rpcsvc-proto-devel
