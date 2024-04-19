@@ -14,6 +14,7 @@ cgroupfs-mount:
 clang-6.0: clang.x86_64
 cmake: cmake cmake3
 cron: cronie
+curl: curl-minimal
 dbench=4.0-2: dbench
 dc: bc
 default-jdk: java-1.8.0-openjdk-devel 
