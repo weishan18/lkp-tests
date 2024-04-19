@@ -1,10 +1,10 @@
-which: debianutils
-libgcrypt-dev: libgcrypt20-dev
-libtirpc: libtirpc1
-libssl: libssl1.1
+gtk3: gir1.2-gtk-3.0
 libasan: libasan3
 libgcc-dev: libgcc-6-dev
-openjdk: openjdk-11-jdk
-mysql-server: default-mysql-server
-gtk3: gir1.2-gtk-3.0
+libgcrypt-dev: libgcrypt20-dev
+libssl: libssl1.1
+libtirpc: libtirpc1
 libunwind: libunwind8
+mysql-server: default-mysql-server
+openjdk: openjdk-11-jdk
+which: debianutils
