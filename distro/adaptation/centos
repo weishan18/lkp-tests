@@ -1,4 +1,3 @@
-
 apache2: httpd
 apt-file:
 arping: iputils
@@ -142,7 +141,7 @@ libgfrpc0:
 libgfxdr0:
 libgl1-mesa-dev: mesa-libGL-devel
 libgl1-mesa-dri:
-libglib2.0-0: glib
+libglib2.0-0: glib2
 libglib2.0-dev: glib2-devel
 libglu-dev: mesa-libGLU-devel
 libglusterfs0:
