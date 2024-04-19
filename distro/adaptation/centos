@@ -1,3 +1,4 @@
+
 apache2: httpd
 apt-file:
 arping: iputils
@@ -141,6 +142,7 @@ libgfrpc0:
 libgfxdr0:
 libgl1-mesa-dev: mesa-libGL-devel
 libgl1-mesa-dri:
+libglib2.0-0: glib
 libglib2.0-dev: glib2-devel
 libglu-dev: mesa-libGLU-devel
 libglusterfs0:
@@ -345,15 +347,14 @@ netpipe-tcp:
 network-manager: NetworkManager
 nfs-common: nfs-utils
 nfs-kernel-server: nfs-utils
-nilfs-tools: nilfs-utils
-ocfs2-tools-dev: ocfs2-tools-devel
-ocfs2-tools-devel:
+nilfs-tools:
+ocfs2-tools-dev:
 ocfs2-tools:
 openbsd-inetd: xinetd
 openjdk: java-1.8.0-openjdk-devel
 openmpi-bin:
-openvswitch-common: openvswitch
-openvswitch-switch: openvswitch
+openvswitch-common:
+openvswitch-switch:
 peg:
 perl-base: perl
 perl-modules-5: perl
@@ -369,13 +370,8 @@ python-minimal: python2
 python-numpy: numpy
 python-openssl: pyOpenSSL
 python-pkg-resources: python-setuptools
-python2-libs:
 python3-mako: python-pyramid-mako
 python3-markupsafe: python34-markupsafe
-python3-numpy: python36-numpy
-python3-six: python36-six
-python3: python34
-python: python2
 qemu-system: qemu-kvm
 qemu-utils: qemu-img
 qemu: qemu-kvm
