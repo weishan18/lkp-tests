@@ -1,29 +1,36 @@
+autopoint: gettext-devel
 btrfs-tools: btrfs-progs
 cmake: cmake cmake3
 klibc-utils:
 libbabeltrace-ctf1:
+libbabeltrace-dev:
+libbsd-dev:
+libbsd0:
 libc6-dev-x32:
 libcairo2-dev: cairo-devel
-libcap2: libcap
 libcap-dev: libcap-devel
+libcap2: libcap
 libdw-dev: libdwarf-devel
 libelf-dev: elfutils-libelf-devel
 libgles2-mesa: mesa-libGLES
+libipc-run-perl: perl-IPC-Run
 libmariadb3:
 libobjc-7-dev: libobjc
 libopencryptoki0: opencryptoki-libs
 libpng12-dev: libpng12-devel
 libstdc++-7-dev: 
 libtsan0: 
-libvirt-dev: libvirt-devel
-libvirt-daemon-system: libvirt-client libvirt-daemon
 libvirt-clients: libvirt-client
+libvirt-daemon-system: libvirt-client libvirt-daemon
+libvirt-dev: libvirt-devel
 libzstd-dev: zlib-devel
+linux-libc-dev: kernel-headers
 mysql-server: mariadb
 network-manager: NetworkManager
 openbsd-inetd: xinetd
-pixz: pxzperl-modules-5: perl-CPAN
+pixz:
 pkg-config: pkgconfig
+pxzperl-modules-5: perl-CPAN
 python-numpy: numpy
 python-pkg-resources: python-setuptools
 qemu-utils: qemu-img
@@ -38,9 +45,3 @@ update-inetd: xinetd
 wireless-regdb: crda
 wpasupplicant: wpa_supplicant
 xutils-dev: imake xorg-x11-util-macros
-libbabeltrace-dev:
-libbsd0:
-libbsd-dev: 
-autopoint: gettext-devel
-libipc-run-perl: perl-IPC-Run
-linux-libc-dev: kernel-headers

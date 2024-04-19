@@ -1,24 +1,31 @@
 autopoint: gettext
 btrfs-tools:
 gfortran: gcc-gfortran
+libbabeltrace-ctf-dev: libbabeltrace-devel
 libbabeltrace-ctf1: libbabeltrace
+libbabeltrace-dev: libbabeltrace-devel
+libbsd-dev: libbsd-devel
+libbsd0: libbsd
 libc6-dev-x32:
 libcairo2-dev: cairo-devel
-libcap2: libcap
 libcap-dev: libcap-devel
+libcap2: libcap
 libdw-dev: elfutils-devel
 libelf-dev: elfutils-devel
 libgles2-mesa: 
+libmariadb3: mariadb-connector-c
 libopencryptoki0: 
 libpng12-dev: 
 libreadline5: compat-readline5
 libssl: openssl-devel
 libstdc++-7-dev: libstdc++-devel libstdc++-static
 libtsan0: libtsan
-libvirt-dev: 
-libvirt-daemon-system: 
 libvirt-clients:
+libvirt-daemon-system:
+libvirt-dev:
 libyaml-cpp-dev: yaml-cpp-devel
+libzstd-dev: libzstd-devel
+linux-libc-dev: kernel-headers
 mysql-server: 
 network-manager: 
 openbsd-inetd: 
@@ -26,18 +33,11 @@ perl-modules-5: perl
 pkg-config:
 python-pkg-resources: 
 rstatd: 
-rusersd:
 ruby-dev: 
+rusersd:
 sg3-utils:
 stress-ng: stress-ng
 tshark: 
 update-inetd:
 wpasupplicant: 
 xutils-dev: 
-libbsd0: libbsd
-libbsd-dev: libbsd-devel
-libzstd-dev: libzstd-devel
-libbabeltrace-dev: libbabeltrace-devel
-libbabeltrace-ctf-dev: libbabeltrace-devel
-libmariadb3: mariadb-connector-c
-linux-libc-dev: kernel-headers
