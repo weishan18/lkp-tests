@@ -130,6 +130,8 @@ Spectre_v2_mitigation
 ^dmesg\.WARNING:at_lib/dynamic_debug\.c:\#ddebug_add_module
 ^dmesg\.WARNING:at_lib/refcount\.c:\#refcount_warn_saturate
 ^dmesg\.WARNING:at_lib/refcount\.c:\#stack_depot_dec_count
+^dmesg\.WARNING:at_lib/ref_tracker\.c:\#ref_tracker_dir_exit
+^dmesg\.WARNING:at_lib/ref_tracker\.c:\#ref_tracker_free
 ^dmesg\.WARNING:at_mm/debug_vm_pgtable\.c:\#hugetlb_basic_tests
 ^dmesg\.WARNING:at_mm/debug_vm_pgtable\.c:\#pmd_basic_tests
 ^dmesg\.WARNING:at_net/sysctl_net\.c:\#register_net_sysctl
