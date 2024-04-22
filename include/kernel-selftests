@@ -87,7 +87,7 @@ need_kconfig:
 - NFT_CHAIN_NAT_IPV4: m
 - NET_SCH_FQ: m
 - NET_SCH_ETF: m
-- NET_SCH_NETEM: y
+- NET_SCH_NETEM
 - TEST_BLACKHOLE_DEV: m
 - KALLSYMS: y
 - BAREUDP: m
@@ -310,7 +310,7 @@ need_kconfig:
 - NET_SCH_INGRESS: m
 - NET_SCH_MQPRIO: m
 - NET_SCH_MULTIQ: m
-- NET_SCH_NETEM: m
+- NET_SCH_NETEM
 - NET_SCH_PIE: m
 - NET_SCH_PLUG: m
 - NET_SCH_PRIO: m
