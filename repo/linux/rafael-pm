@@ -1,6 +1,7 @@
 url: https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git
 integration_testing_branches:
 - linux-next
+- bleeding-edge
 - acpi-bus
 - devprop
 mail_cc:
