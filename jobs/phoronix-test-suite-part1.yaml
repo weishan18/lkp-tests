@@ -165,8 +165,8 @@ phoronix-test-suite:
 
   - test: build-python-1.0.0
     option_a:
-      - Default
-      - Released Build, PGO + LTO Optimized
+      - 1 # Default
+      - 2 # Released Build, PGO + LTO Optimized
   - test: bullet-1.2.2
     option_a:
       - 3000 Fall
