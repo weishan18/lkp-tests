@@ -23,7 +23,7 @@ phoronix-test-suite:
     # - bioshock-infinite-1.0.2 # The test run did not produce a result.
     - vkpeak-1.1.0
     - quake2rtx-1.6.1
-    - madmax-1.2.1
+    # - madmax-1.2.1 # The test run did not produce a result.
     # - geexlab-rt-1.0.1 # The test run did not produce a result.
 
   - test: apitest-1.1.1
