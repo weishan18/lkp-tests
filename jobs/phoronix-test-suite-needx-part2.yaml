@@ -29,6 +29,14 @@ phoronix-test-suite:
       # - 512x512
       - 1024x1024
 
+  - test: paraview-1.3.0
+    option_a:
+      - Many Spheres
+      - Wavelet Contour
+      - Wavelet Volume
+    option_b:
+      - 1024 x 768
+
   - test: unigine-sanctuary-1.6.4
     option_a:
       - 1024 x 768
