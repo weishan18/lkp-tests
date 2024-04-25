@@ -19,7 +19,7 @@ phoronix-test-suite:
     - build-llvm-1.5.0
     - build-gem5-1.1.0
     - build-nodejs-1.3.0
-    - build-webkitfltk-1.0.0 # runtime > 2h
+    # - build-webkitfltk-1.1.0 # deprecated
     - cockroach-1.0.2
     - asmfish-1.1.2
     - numpy-1.2.1 # runtime > 1h
