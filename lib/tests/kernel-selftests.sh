@@ -641,11 +641,9 @@ fixup_test_group()
 	#
 	#   KSFT_KHDR_INSTALL := 1
 	#  +TEST_GEN_PROGS =
-	#  +TEST_GEN_FILES =
 	#  +TEST_PROGS = tls
 	#    include ../lib.mk
 	sed -i "/^include .*\/lib.mk/i TEST_GEN_PROGS =" $makefile
-	sed -i "/^include .*\/lib.mk/i TEST_GEN_FILES =" $makefile
 	sed -i "/^include .*\/lib.mk/i TEST_PROGS = $test" $makefile
 }
 
