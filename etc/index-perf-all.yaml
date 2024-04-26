@@ -124,6 +124,7 @@ phoronix-test-suite\..+\.marks: 1
 phoronix-test-suite\..+\.mbits_sec: 1
 phoronix-test-suite\..+\.mbytes_s: 1
 phoronix-test-suite\..+\.mbyte_s: 1
+phoronix-test-suite\..+\.MB\/s: 1
 phoronix-test-suite\..+\.mb_s: 1
 phoronix-test-suite\..+\.megapixels_sec: 1
 phoronix-test-suite\..+\.mflops: 1
