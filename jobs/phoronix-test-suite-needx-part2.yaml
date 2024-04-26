@@ -35,11 +35,13 @@ phoronix-test-suite:
       - Wavelet Contour
       - Wavelet Volume
     option_b:
-      - 1024 x 768
+      - 800 x 600
+      # - 1024 x 768
 
   - test: unigine-sanctuary-1.6.4
     option_a:
-      - 1024 x 768
+      - 800 x 600
+      # - 1024 x 768
     option_b:
       - Fullscreen
       # - Windowed
