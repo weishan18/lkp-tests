@@ -186,7 +186,7 @@ need_kconfig:
 - BTRFS_FS: m
 - CHECKPOINT_RESTORE: y
 - DRM_DEBUG_SELFTEST: m
-- EFIVAR_FS: y
+- EFIVAR_FS
 - EXPERT: y
 - LEDS_CLASS_MULTICOLOR: y
 
@@ -207,7 +207,7 @@ need_kconfig:
 - TEST_BITMAP
 - TEST_KMOD: m
 - TEST_LKM: m
-- TEST_PRINTF
+- TEST_PRINTF: m
 - TUN: m
 - WW_MUTEX_SELFTEST: m
 - XFS_FS: m
@@ -282,8 +282,8 @@ need_kconfig:
 - X86_CPU_RESCTRL: y
 - PROC_CPU_RESCTRL: y
 % elsif ___.group == "tc-testing"
-- DUMMY: y
-- VETH: y
+- DUMMY
+- VETH
 - NETFILTER_ADVANCED: y
 - NF_CONNTRACK: m
 - NF_CONNTRACK_MARK: y
