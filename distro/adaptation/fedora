@@ -322,6 +322,7 @@ libzmq3-dev:
 libzmq5:
 libzstd-dev: libzstd-devel
 linux-base:
+linux-cpupower: kernel-tools
 linux-libc-dev-amd64-cross:
 linux-libc-dev: kernel-headers
 linux-libc-dev:i386: kernel-headers

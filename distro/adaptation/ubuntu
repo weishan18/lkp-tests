@@ -18,6 +18,7 @@ libssl: libssl1.1
 libtirpc: libtirpc1
 libtool-bin:
 libzmq: libzmq5
+linux-cpupower: linux-tools-generic
 linux-perf: linux-tools-common
 linux-tools: linux-tools-generic
 nasm: nasm
