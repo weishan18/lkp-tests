@@ -62,7 +62,7 @@ libapache2-mpm-itk:
 libapparmor-dev:
 libapparmor1:
 libarchive-dev: libarchive-devel
-libarchive-tools: libarchive
+libarchive-tools: libarchive bsdtar
 libarchive-zip-perl:
 libarchive13: libarchive
 libasound2-dev: alsa-lib-devel
