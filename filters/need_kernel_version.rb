@@ -21,4 +21,4 @@ def check_kernel_version
   raise Job::ParamError, "kernel version not satisfied: #{kernel_version}" unless kernel_match_version?(kernel_version, Array(need_version.split(',').first))
 end
 
-check_kernel_version if self['need_kernel_version'] && self['kernel']
+check_kernel_version if self['LKP_LOCAL_RUN'] != 1 && self['need_kernel_version'] && self['kernel']
