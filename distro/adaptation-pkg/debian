@@ -54,18 +54,18 @@ otc_ddt::
 packetdrill::
 pbzip2::
 pepc::
-perf::
-perf-bench-futex: perf
-perf-c2c: perf
+perf: linux-perf
+perf-bench-futex: linux-perf
+perf-c2c: linux-perf
 perf-event-tests::
-perf-mem: perf
-perf-node: perf
-perf-probe: perf
-perf-profile: perf
-perf-record-report: perf
-perf-report-srcline: perf
-perf-sanity-tests: perf
-perf-stat: perf
+perf-mem: linux-perf
+perf-node: linux-perf
+perf-probe: linux-perf
+perf-profile: linux-perf
+perf-record-report: linux-perf
+perf-report-srcline: linux-perf
+perf-sanity-tests: linux-perf
+perf-stat: linux-perf
 pft::
 phpbench::
 piglit::
@@ -111,7 +111,7 @@ autonuma-benchmark::
 pixz::
 mutilate::
 v4l2::
-energy: perf
+energy: linux-perf
 tlbflush::
 nvml::
 build-nvml: nvml
