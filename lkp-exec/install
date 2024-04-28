@@ -156,7 +156,6 @@ verify_install() {
 	# unnecessary re-installation that requires clone the linux repo.
 	[ -f /.dockerenv -a $DISTRO = debian ] && {
 		[ "$pkg" = perf ] && pkg=linux-perf
-		[ "$pkg" = turbostat ] && pkg=linux-cpupower
 	}
 
 	case $DISTRO in
