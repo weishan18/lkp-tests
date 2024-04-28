@@ -78,6 +78,12 @@ setup_test_env()
 
 single_node_test()
 {
+	[[ $runtime ]] && {
+		# extend the runtime
+		sed -i "s/RUNTIME=300/RUNTIME=$runtime/" $OCFS2TEST_HOME/ocfs2/bin/single_run-WIP.sh
+		sed -i "s/runtime=300/runtime=$runtime/" $OCFS2TEST_HOME/ocfs2/bin/single_run-WIP.sh
+	}
+
 	local test_dir="$(get_pkg_dir ocfs2test)/addon/tests"
 	while read -r test_name
 	do
