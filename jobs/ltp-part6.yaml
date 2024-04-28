@@ -1,0 +1,16 @@
+suite: ltp
+testcase: ltp
+category: functional
+
+need_memory: 21G
+
+disk: 1HDD
+fs:
+  - ext4
+  - xfs
+  - btrfs
+  - f2fs
+
+ltp:
+  test:
+    - fs-00
