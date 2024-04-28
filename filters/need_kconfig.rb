@@ -168,7 +168,7 @@ def arch_constraints
   end
 end
 
-if self['kernel']
+if self['LKP_LOCAL_RUN'] != 1 && self['kernel']
   needed_kconfigs = Array(___)
 
   needed_kconfigs << arch_constraints
