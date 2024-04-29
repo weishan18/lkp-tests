@@ -45,3 +45,39 @@ phoronix-test-suite:
     option_b:
       - Fullscreen
       # - Windowed
+
+  - test: supertuxkart-1.6.0
+    option_a:
+      - 800 x 600
+      # - 1024 x 768
+    option_b:
+      # - Windowed
+      - Fullscreen
+    option_c: # Graphics Effects
+      - Low
+      - Medium
+      # - High # runtime > 3h on 1024_x_768-Fullscreen-High-1-2 lkp-csl-2sp7
+      # - Ultimate
+    option_d: # number of karts
+      - 1
+      # - 2
+      # - 3
+      # - 4
+      # - 5
+      # - 6
+      # - 7
+      # - 8
+    option_e:
+      - 1 # Candela City          [Approximately 400k triangles; advanced graphics]
+      - 2 # Cocoa Temple          [Approximately 300k triangles; advanced graphics]
+      - 3 # Gran Paradiso Island  [Approximately 275k triangles; advanced graphics]
+      - 4 # Around the Lighthouse [Approximately 65k triangles]
+      - 5 # Zen Garden            [Low poly]
+
+  - test: unigine-heaven-1.6.5
+    option_a:
+      - 800 x 600
+      # - 1024 x 768
+    option_b:
+      # - Fullscreen # The test run did not produce a result
+      - Windowed
