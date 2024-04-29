@@ -58,6 +58,8 @@ class Stater
     end
   end
 
+  alias default_stat stat
+
   def parse_ok_result(test_case, result, stats)
     return unless %w{cgroup seccomp sigaltstack syscall_user_dispatch core landlock}.include? @test
 
@@ -122,102 +124,108 @@ end
 
 class NetStater < Stater
   def stat(line, stats)
-    if @test_script == 'udpgro_fwd.sh'
-      if @test_case && !@test_subcase && line !~ /perf/ && line =~ /^# (.*GRO.*)/
-        # No GRO                                  exec of "iptables-save" failed: No such file or directory
-        @test_subcase = $1.split("\s\s\s").first
-        @test_result = $1.split("\s\s\s").last
-        if @test_result =~ /(ok$|fail |skip )/
-          # No GRO                                   ok
-          stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
-          @test_subcase = nil
-        end
-        return
-      end
+    case @test_script
+    when 'udpgro_fwd.sh'
+      stat_udpgro_fwd(line, stats)
+    when 'veth.sh'
+      stat_veth(line, stats)
+    when 'test_vxlan_mdb.sh'
+      stat_test_vxlan_mdb(line, stats)
+    else
+      stat_others(line, stats)
+    end
+  end
 
-      case line
-      when /^# (IPv4|IPv6)$/
-        # IPv4
-        @test_case = $1
+  def stat_veth(line, stats)
+    # selftests: net: veth.sh
+    case line
+    when /^# (\s+?) - (.+?)\s+\b(ok|fail)\b/
+      #         - peer gro flag                                      ok
+      @test_subcase = $2
+      result = $3
+      test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
+    when /^# (.+?) - (.+?)\s+\b(ok|fail)\b/
+      # default - gro flag                                           ok
+      @test_case = $1
+      @test_subcase = $2
+      result = $3
+      test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
+    when /^# (.*?)\s+\b(ok|fail)\b/
+      # default channels                                             fail rx:1:1 tx:1:1 combined:n/a:0
+      @test_case = $1
+      result = $2
+      test_name = "#{@test_prefix}.#{@test_case}"
+    when /^(ok|not ok) .* selftests: net: veth.sh/
+      test_name = @test_prefix
+      result = $1
+    end
+
+    return unless test_name
+
+    stats.add test_name, result unless stats.key? test_name
+  end
+
+  def stat_udpgro_fwd(line, stats)
+    if @test_case && !@test_subcase && line !~ /perf/ && line =~ /^# (.*GRO.*)/
+      # No GRO                                  exec of "iptables-save" failed: No such file or directory
+      @test_subcase = $1.split("\s\s\s").first
+      @test_result = $1.split("\s\s\s").last
+      if @test_result =~ /(ok$|fail |skip )/
+        # No GRO                                   ok
+        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
         @test_subcase = nil
-      when /^#\s+(ok$|fail |skip )/
-        if @test_case && @test_subcase
-          stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
-          @test_subcase = nil
-        end
+      end
+
+      return
+    end
+
+    case line
+    when /^# (IPv4|IPv6)$/
+      # IPv4
+      @test_case = $1
+      @test_subcase = nil
+    when /^#\s+(ok$|fail |skip )/
+      if @test_case && @test_subcase
+        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
+        @test_subcase = nil
+      end
+    else
+      default_stat(line, stats)
+    end
+  end
+
+  def stat_test_vxlan_mdb(line, stats)
+    # selftests: net: test_vxlan_mdb.sh
+    case line
+    when /^# TEST: (Flush by unspecified UDP destination port)\s+\[\s*(OK|FAIL|SKIP)\s*\]/,
+         /^# TEST: (Flush by unspecified destination VNI)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
+      # Control path: Flush
+      # -------------------
+      # TEST: Flush by unspecified destination IP - IPv6                    [ OK ]
+      # TEST: Flush by specified UDP destination port                       [ OK ]
+      # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
+      # TEST: Flush by device's UDP destination port                        [ OK ]
+      # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
+      # TEST: Flush by specified destination VNI                            [ OK ]
+      # TEST: Flush by specified destination VNI                            [ OK ]
+      stat_name = "#{@test_prefix}.#{@test_case}.#{$1}"
+      if stats.key? stat_name
+        stats.add "#{stat_name}_1", $2
       else
-        super(line, stats)
+        stats.add stat_name, $2
       end
-
-      return
+    when /^# TEST: (.+?)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
+      # TEST: IP multicast - first VTEP                                     [ OK ]
+      stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2
+    when /^# (.+: .+)$/
+      # Data path: (*, G) INCLUDE - IR - IPv4 overlay / IPv4 underlay
+      @test_case = $1
+    when /^(ok|not ok) .* selftests: net: test_vxlan_mdb.sh/
+      stats.add @test_prefix, $1
     end
+  end
 
-    if @test_script == 'veth.sh'
-      # selftests: net: veth.sh
-      case line
-      when /^# (\s+?) - (.+?)\s+\b(ok|fail)\b/
-        #         - peer gro flag                                      ok
-        @test_subcase = $2
-        result = $3
-        test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
-      when /^# (.+?) - (.+?)\s+\b(ok|fail)\b/
-        # default - gro flag                                           ok
-        @test_case = $1
-        @test_subcase = $2
-        result = $3
-        test_name = "#{@test_prefix}.#{@test_case}.#{@test_subcase}"
-      when /^# (.*?)\s+\b(ok|fail)\b/
-        # default channels                                             fail rx:1:1 tx:1:1 combined:n/a:0
-        @test_case = $1
-        result = $2
-        test_name = "#{@test_prefix}.#{@test_case}"
-      when /^(ok|not ok) .* selftests: net: veth.sh/
-        test_name = @test_prefix
-        result = $1
-      end
-
-      return unless test_name
-
-      stats.add test_name, result unless stats.key? test_name
-      return
-    end
-
-    if @test_script == 'test_vxlan_mdb.sh'
-      # selftests: net: test_vxlan_mdb.sh
-      case line
-      when /^# TEST: (Flush by unspecified UDP destination port)\s+\[\s*(OK|FAIL|SKIP)\s*\]/,
-           /^# TEST: (Flush by unspecified destination VNI)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
-        # Control path: Flush
-        # -------------------
-        # TEST: Flush by unspecified destination IP - IPv6                    [ OK ]
-        # TEST: Flush by specified UDP destination port                       [ OK ]
-        # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
-        # TEST: Flush by device's UDP destination port                        [ OK ]
-        # TEST: Flush by unspecified UDP destination port                     [ OK ]   <--
-        # TEST: Flush by specified destination VNI                            [ OK ]
-        # TEST: Flush by specified destination VNI                            [ OK ]
-        # TEST: Flush by unspecified destination VNI                          [ OK ]   <--
-        # TEST: Flush by destination VNI equal to source VNI                  [ OK ]
-        # TEST: Flush by unspecified destination VNI                          [ OK ]   <--
-        # TEST: Flush by VLAN ID                                              [ OK ]
-        stat_name = "#{@test_prefix}.#{@test_case}.#{$1}"
-        if stats.key? stat_name
-          stats.add "#{stat_name}_1", $2
-        else
-          stats.add stat_name, $2
-        end
-      when /^# TEST: (.+?)\s+\[\s*(OK|FAIL|SKIP)\s*\]/
-        # TEST: IP multicast - first VTEP                                     [ OK ]
-        stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2
-      when /^# (.+: .+)$/
-        # Data path: (*, G) INCLUDE - IR - IPv4 overlay / IPv4 underlay
-        @test_case = $1
-      when /^(ok|not ok) .* selftests: net: test_vxlan_mdb.sh/
-        stats.add @test_prefix, $1
-      end
-      return
-    end
-
+  def stat_others(line, stats)
     case line
     # begain for net.fcnal-test.sh
     when /(IPv4 ping|IPv4\/TCP|IPv4\/UDP|IPv4 Netfilter)/,
@@ -471,7 +479,6 @@ class NetStater < Stater
         end
 
         stats.add stats_key, @subcase_stat unless %w(fib_nexthops.sh).include? @test_script
-
       else
         # selftests: net: pmtu.sh
         # TEST: ipv4: PMTU exceptions                                        [ OK ]
@@ -574,7 +581,7 @@ class NetStater < Stater
       # 6408 # setting invalid channels nr                                  ok
       stats.add test_name, $2 unless stats.key?(test_name)
     else
-      super(line, stats)
+      default_stat(line, stats)
     end
   end
 end
