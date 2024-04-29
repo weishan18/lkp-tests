@@ -166,29 +166,14 @@ class NetStater < Stater
   end
 
   def stat_udpgro_fwd(line, stats)
-    if @test_case && !@test_subcase && line !~ /perf/ && line =~ /^# (.*GRO.*)/
-      # No GRO                                  exec of "iptables-save" failed: No such file or directory
-      @test_subcase = $1.split("\s\s\s").first
-      @test_result = $1.split("\s\s\s").last
-      if @test_result =~ /(ok$|fail |skip )/
-        # No GRO                                   ok
-        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
-        @test_subcase = nil
-      end
-
-      return
-    end
-
     case line
     when /^# (IPv4|IPv6)$/
       # IPv4
       @test_case = $1
-      @test_subcase = nil
-    when /^#\s+(ok$|fail |skip )/
-      if @test_case && @test_subcase
-        stats.add "#{@test_prefix}.#{@test_case}.#{@test_subcase}", $1
-        @test_subcase = nil
-      end
+    when /^# (.*GRO.*)\s+(ok$|fail |skip )/
+      return unless @test_case
+
+      stats.add "#{@test_prefix}.#{@test_case}.#{$1}", $2
     else
       default_stat(line, stats)
     end
