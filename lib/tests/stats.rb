@@ -14,9 +14,9 @@ module LKP
       @stats.key? normalize(test_case)
     end
 
-    def add(test_case, test_result)
+    def add(test_case, test_result, overwrite: false)
       test_case = normalize(test_case)
-      raise "#{test_case} has already existed" if key?(test_case)
+      raise "#{test_case} has already existed" if !overwrite && key?(test_case)
 
       test_result = normalize(test_result.tr('.', '_').downcase) if test_result.instance_of? String
 
