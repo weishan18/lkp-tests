@@ -102,7 +102,7 @@ EOF
 	# setup passwd
 	(echo "pass"; echo "pass") | smbpasswd -s -a $(whoami)
 	# restart service
-	systemctl restart smbd
+	systemctl restart smb.service
 }
 
 mount_local_cifs()
