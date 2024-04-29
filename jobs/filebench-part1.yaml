@@ -29,7 +29,6 @@ filebench-setup:
     - singlestreamreaddirect.f
     - singlestreamread.f
     - singlestreamwritedirect.f
-    - singlestreamwrite.f
     - fivestreamreaddirect.f
     - fivestreamread.f
     - fivestreamwritedirect.f
