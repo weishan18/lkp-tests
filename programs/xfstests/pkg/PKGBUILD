@@ -102,6 +102,9 @@ generate_special_require_tests()
 	git grep -L "_require_realtime" $(git grep -L "_require_scratch_reflink" $(git grep -l "_require_xfs_scratch_rmapbt" | grep tests/xfs))  | awk -F/ '{print $3}' | grep -v -f <(cat $benchmark_path/tests/xfs-*) > $benchmark_path/tests/xfs-rmapbt
 	git grep -L "_require_realtime" $(git grep -L "_require_xfs_scratch_rmapbt" $(git grep -l "_require_scratch_reflink" | grep tests/xfs))  | awk -F/ '{print $3}' | grep -v -f <(cat $benchmark_path/tests/xfs-*) > $benchmark_path/tests/xfs-reflink
 
+	# run slowly on udf
+	collect "holetest" generic > $benchmark_path/tests/generic-holetest
+
 	# these tests requires a valid $LOGWRITES_DEV
 	# rli9 FIXME consider other fs that has this requirement
 	collect "_require_log_writes$" btrfs > $benchmark_path/tests/btrfs-logwrites
