@@ -14,7 +14,7 @@ need_memory: 1G
 
 ocfs2test:
   test:
-    - test-mmaptruncate
+    # - test-mmaptruncate # runtime > 1h on 1SSD lkp-skl-d08
     # - test-buildkernel # we have kernel build already, ignore
     # - test-tunefs # need a huge memory (up to 130GB at lkp-hsw-ep2)
     - test-sendfile
