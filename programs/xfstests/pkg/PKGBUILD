@@ -95,6 +95,7 @@ generate_special_require_tests()
 	done
 
 	collect _require_xfs_stress_online_repair xfs > $benchmark_path/tests/xfs-stress-online-repair
+	collect _require_xfs_stress_scrub xfs > $benchmark_path/tests/xfs-stress-scrub
 
 	collect _require_realtime xfs > $benchmark_path/tests/xfs-external
 	git grep -L "_require_realtime" $(git grep -l "_require_scratch_reflink" $(git grep -l "_require_xfs_scratch_rmapbt" | grep tests/xfs))  | awk -F/ '{print $3}' | grep -v -f <(cat $benchmark_path/tests/xfs-*) > $benchmark_path/tests/xfs-reflink-rmapbt

@@ -16,33 +16,7 @@
 233
 # it requires special configurations, which will break some other xfs tests
 275
-# execution time > 20m
-285
 # can't run find-api-violations.sh without WORKAREA set
 437
 # It run cmd ./ltp/fsstress -w -d /fs/scratch -n 100000 -p 4, execution time > 30m
 442
-# execution time > 20m
-517
-# execution time > 2h
-562
-# execution time > 20m
-570
-# execution time > 6000s
-571
-# execution time > 6000s
-572
-# execution time > 5000s
-582
-# execution time > 2h
-586
-# execution time > 2h
-587
-# execution time > 6000s
-588
-# execution time > 2h
-590
-# execution time > 5000s
-593
-# execution time > 4700s
-595
