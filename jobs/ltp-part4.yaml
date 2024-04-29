@@ -20,7 +20,6 @@ ltp:
     - fs_bind
     - fs_perms_simple
     - ltp-aiodio.part4-00
-    - ltp-aiodio.part4-01
     - ltp-aiodio.part4-DOR000
     - ltp-aiodio.part4-DOR001
     - ltp-aiodio.part4-DOR002

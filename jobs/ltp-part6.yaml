@@ -2,14 +2,20 @@ suite: ltp
 testcase: ltp
 category: functional
 
-need_memory: 21G
-
 disk: 1HDD
+
 fs:
   - ext4
   - xfs
   - btrfs
   - f2fs
+
+ltp:
+  test:
+    - ltp-aiodio.part4-01
+
+---
+need_memory: 21G
 
 ltp:
   test:
