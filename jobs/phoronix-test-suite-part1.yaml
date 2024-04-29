@@ -54,7 +54,7 @@ phoronix-test-suite:
     - ctx-clock-1.0.0
     # - cython-bench-1.1.0 # install failed
     # - dcraw-1.1.0 not an available test
-    - deeprec-1.0.2
+    # - deeprec-1.0.2 # The test run did not produce a result.
     - deepspeech-1.0.0
     # - deus-exmd-1.1.1 # install failed
     # - dirt-rally-1.1.0 # install failed
@@ -189,11 +189,11 @@ phoronix-test-suite:
   #     - Mixed 1:1
   #     - Mixed 1:3
 
-  - test: compilebench-1.0.3
-    option_a:
-      - Initial Create
-      - Compile
-      # - Read Compiled Tree # The test quit with a non-zero exit status.
+  # - test: compilebench-1.0.3 # The test quit with a non-zero exit status.
+  #   option_a:
+  #     - Initial Create
+  #     - Compile
+  #     - Read Compiled Tree
 
   - test: compress-lz4-1.0.0
     option_a:
@@ -528,11 +528,11 @@ phoronix-test-suite:
     # - metroll-redux-1.2.1 # install failed
     - minibude-1.0.0
 
-  - test: minife-1.0.0
-    option_a:
-      - Small
-      # - Medium # PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted
-      - Large
+  # - test: minife-1.0.0 # The test quit with a non-zero exit status.
+  #   option_a:
+  #     - Small
+  #     # - Medium # PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted
+  #     - Large
 
   # - test: minion-1.5.2 # install failed
     # option_a:

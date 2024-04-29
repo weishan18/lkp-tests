@@ -10,16 +10,16 @@ phoronix-test-suite:
     - quadray-1.0.0
     - sam2017-1.0.2
     # - shadowofthetombraider-1.1.0 # The test executable for pts/shadowofthetombraider-1.1.0 could not be located.
-    - ss3bfe-1.0.0
+    # - ss3bfe-1.0.0 # The test run did not produce a result.
     - unigine-super-1.0.8
     - vkmark-1.3.2
     - vkresample-1.0.2
-    - xplane11-1.1.2
+    # - xplane11-1.1.2 # The test run did not produce a result.
     # - xplane12-1.0.1 # The test run did not produce a result.
     # - riseofthetombraider-1.0.2 # A video game that needs to be downloaded from Steam platform
     - talos-principle-1.2.1
     - waifu2x-ncnn-1.0.0
-    - yquake2-1.3.0
+    # - yquake2-1.3.0 # The test quit with a non-zero exit status.
     # - bioshock-infinite-1.0.2 # The test run did not produce a result.
     - vkpeak-1.1.0
     - quake2rtx-1.6.1
