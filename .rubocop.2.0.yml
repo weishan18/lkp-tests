@@ -3,8 +3,18 @@ Metrics/MethodLength:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 40
-  Enabled: false
+  Max: 50
+  Exclude:
+    - lib/changed_stat.rb
+    - lib/compare.rb
+    - lib/dmesg.rb
+    - lib/hash.rb
+    - lib/job.rb
+    - lib/job2sh.rb
+    - lib/matrix.rb
+    - lib/plot.rb
+    - lib/stats.rb
+    - sbin/compare
 
 Metrics/BlockLength:
   Max: 50
@@ -15,10 +25,20 @@ Metrics/BlockLength:
   Enabled: false
 
 Metrics/CyclomaticComplexity:
-  Enabled: false
+  Max: 30 # 6 by default
+  Exclude:
+    - lib/job2sh.rb
+    - lib/matrix.rb
+    - lib/stats.rb
+    - sbin/compare
 
 Metrics/PerceivedComplexity:
-  Enabled: false
+  Max: 30
+  Exclude:
+    - lib/job2sh.rb
+    - lib/matrix.rb
+    - lib/stats.rb
+    - sbin/compare
 
 Metrics/BlockNesting:
   Exclude:
