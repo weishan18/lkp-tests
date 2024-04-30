@@ -82,8 +82,7 @@ def split_constraints(constraints)
   OpenStruct.new(kernel_versions: kernel_versions, archs: archs, types: types)
 end
 
-def load_kconfig_constraints
-  kconfigs_yaml = KernelTag.kconfigs_yaml
+def load_kconfig_constraints(kconfigs_yaml)
   return {} unless File.size? kconfigs_yaml
 
   YAML.load_file(kconfigs_yaml)
@@ -103,7 +102,9 @@ end
 
 def check_all(kernel_kconfigs, needed_kconfigs)
   context = load_kernel_context
-  kconfig_constraints = load_kconfig_constraints
+
+  kconfigs_yaml = KernelTag.kconfigs_yaml
+  kconfig_constraints = load_kconfig_constraints(kconfigs_yaml)
 
   uncompiled_kconfigs = needed_kconfigs.map do |e|
     config_name, config_options = parse_needed_kconfig(e)
