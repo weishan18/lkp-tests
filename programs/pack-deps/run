@@ -36,6 +36,8 @@ check_shared_package "$benchmark" && {
 
 fixup_distro_mirror
 
+setup_proxy
+
 update
 
 fixup_preinstall
