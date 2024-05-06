@@ -8,6 +8,7 @@ times_to_run: 1
 phoronix-test-suite:
   - test:
     - realsr-ncnn-1.0.0
+    - vkmark-1.3.2
 
   - test: jxrendermark-1.2.4
     option_a:
