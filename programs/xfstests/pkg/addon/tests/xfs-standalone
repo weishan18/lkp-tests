@@ -1,22 +1,12 @@
 # execution time > 100m
 002
-# the filesystem has valuable metadata changes in a log which needs to 11 be replayed
-083
-# reflink not supported by test filesystem type: xfs
-132
 # execution time ~ 80m
 136
 # execution time > 40m
 140
-# Reflink not supported by scratch filesystem type: xfs
-211
 # execution time > 20m
 227
 # execution time > 30m
 233
 # it requires special configurations, which will break some other xfs tests
 275
-# can't run find-api-violations.sh without WORKAREA set
-437
-# It run cmd ./ltp/fsstress -w -d /fs/scratch -n 100000 -p 4, execution time > 30m
-442
