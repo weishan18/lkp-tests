@@ -8,6 +8,7 @@ times_to_run: 1
 phoronix-test-suite:
   - test:
     - realsr-ncnn-1.0.0
+
   - test: vkmark-1.3.2
     option_a:
       - 800 x 600
@@ -15,6 +16,14 @@ phoronix-test-suite:
     option_b:
       - 1 # Mailbox
       # - 2 # Immediate [Useful for NVIDIA driver compatibility]
+
+  - test: unigine-tropics-1.6.4
+    option_a:
+      - 800 x 600
+      # - 1024 x 768
+    option_b:
+      - Fullscreen
+      # - Windowed
 
   - test: jxrendermark-1.2.4
     option_a:

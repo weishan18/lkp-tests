@@ -194,13 +194,6 @@ phoronix-test-suite:
     # - ue4-matinee-1.1.0 # block by known issues
     # - ue4-mountains-1.1.0 # block by known issue
 
-  - test: unigine-tropics-1.6.4
-    option_a:
-      - 800 x 600
-      # - 1024 x 768
-    option_b:
-      - Fullscreen
-      # - Windowed
   - test: urbanterror-1.3.0
     # - unvanquished-1.8.0 # this test profile is currently marked Broken
     option_a:
