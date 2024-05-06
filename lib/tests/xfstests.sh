@@ -346,9 +346,16 @@ run_test()
 	log_echo $all_tests_cmd
 	all_tests=$(eval "$all_tests_cmd")
 
+	[ "${test#*-}" = "all" ] || [ -n "$all_tests" ] || {
+		echo "no test found"
+		return 1
+	}
+
 	if is_fs2_tests; then
 		run_fs2_tests
 	else
 		run_fs_tests
 	fi
+
+	return 0
 }
