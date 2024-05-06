@@ -54,4 +54,3 @@ python: python3
 qemu: 
 qt5-default: qtbase5-dev
 winpdb:
-xfsdump:
