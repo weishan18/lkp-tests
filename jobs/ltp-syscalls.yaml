@@ -20,7 +20,6 @@ ltp:
     - syscalls-02
     - syscalls-03
     - syscalls-04
-    - syscalls-05
     - syscalls-06
     - syscalls-07
     - writev03.writev03 # run standalone

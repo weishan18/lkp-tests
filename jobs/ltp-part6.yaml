@@ -15,8 +15,10 @@ ltp:
     - ltp-aiodio.part4-01
 
 ---
-need_memory: 21G
+need_memory: 32G
 
 ltp:
   test:
-    - fs-00
+    - fs-00 # 21G
+    - fs-02 # 31G
+    - syscalls-05 # 24G
