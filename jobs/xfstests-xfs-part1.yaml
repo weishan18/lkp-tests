@@ -34,4 +34,4 @@ xfstests:
     - xfs-group-12
     - xfs-group-13
     - xfs-group-14
-    - xfs-no-bug-assert
+    - xfs-no-bug-on-assert

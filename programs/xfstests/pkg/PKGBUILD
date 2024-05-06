@@ -94,6 +94,7 @@ generate_special_require_tests()
 		grep "dangerous_fuzzers" tests/$fs/group.list | cut -d' ' -f1 > $benchmark_path/tests/$fs-dangerous_fuzzers
 	done
 
+	collect _require_no_xfs_bug_on_assert xfs > $benchmark_path/tests/xfs-no-bug-on-assert
 	collect _require_xfs_stress_online_repair xfs > $benchmark_path/tests/xfs-stress-online-repair
 	collect _require_xfs_stress_scrub xfs > $benchmark_path/tests/xfs-stress-scrub
 
