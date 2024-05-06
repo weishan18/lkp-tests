@@ -121,17 +121,22 @@ fixup_sqlite()
 	sed -i "s,pts_config::read_user_config('PhoronixTestSuite\/Options\/TestResultValidation\/MinimalTestTime'\, 2),0," "$target"
 }
 
-# reduce run times to avoid soft_timeout
-fixup_times_to_run()
+# force run times to avoid soft_timeout and auto-increase runs
+force_times_to_run()
 {
-	[[ $times_to_run ]] || return 0
+	if [[ $times_to_run ]]; then
+		export FORCE_TIMES_TO_RUN=$times_to_run
+	else
+		[[ -n "$environment_directory" ]] || return
 
-	[ -n "$environment_directory" ] || return
-
-	local test=$1
-	local target=${environment_directory}/../test-profiles/pts/${test}/test-definition.xml
-	[ -f $target.bak ] || cp $target $target.bak
-	sed -i "s,<TimesToRun>.</TimesToRun>,<TimesToRun>${times_to_run}</TimesToRun>," "$target"
+		local target=${environment_directory}/../test-profiles/pts/${test}/test-definition.xml
+		if [[ -f $target ]]; then
+			local times_to_run=$(grep -oP '(?<=<TimesToRun>).*(?=</TimesToRun>)' $target)
+			[[ $times_to_run ]] && export FORCE_TIMES_TO_RUN=$times_to_run
+		else
+			export FORCE_TIMES_TO_RUN=3
+		fi
+	fi
 }
 
 # fix issue: [NOTICE] Undefined: min_result in pts_test_result_parser:478
@@ -780,7 +785,7 @@ run_test()
 	local test=$1
 	[ -n "$test" ] || die "testname is empty"
 
-	fixup_times_to_run $test || die "failed to fixup times to run of $test"
+	force_times_to_run $test || die "failed to force times to run of $test"
 	fixup_test $test || die die "failed to fixup $test"
 
 	export PTS_SILENT_MODE=1
