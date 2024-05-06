@@ -125,16 +125,16 @@ fixup_sqlite()
 force_times_to_run()
 {
 	if [[ $times_to_run ]]; then
-		export FORCE_TIMES_TO_RUN=$times_to_run
+		log_cmd export FORCE_TIMES_TO_RUN=$times_to_run
 	else
 		[[ -n "$environment_directory" ]] || return
 
 		local target=${environment_directory}/../test-profiles/pts/${test}/test-definition.xml
 		if [[ -f $target ]]; then
 			local times_to_run=$(grep -oP '(?<=<TimesToRun>).*(?=</TimesToRun>)' $target)
-			[[ $times_to_run ]] && export FORCE_TIMES_TO_RUN=$times_to_run
+			[[ $times_to_run ]] && log_cmd export FORCE_TIMES_TO_RUN=$times_to_run
 		else
-			export FORCE_TIMES_TO_RUN=3
+			log_cmd export FORCE_TIMES_TO_RUN=3
 		fi
 	fi
 }
