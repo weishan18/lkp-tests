@@ -12,17 +12,17 @@ phoronix-test-suite:
     - openradioss-1.1.1
     - openems-1.0.0 # 96 cpu, 512G memory tbox, run once cost about 22m
     - petsc-1.0.0
-    - nwchem-1.1.1
+    # - nwchem-1.1.1 # runtime > 1h on lkp-csl-2sp7
     # - hdparm-read-1.0.0 #  The test run did not produce a result.
     # - duckdb-1.0.0 # The test quit with a non-zero exit status.
-    - build-linux-kernel-1.15.0 # runtime > 40m on lkp-csl-2sp7
+    # - build-linux-kernel-1.15.0 # runtime > 40m on lkp-csl-2sp7
     - build-llvm-1.5.0
     - build-gem5-1.1.0
     - build-nodejs-1.3.0
     # - build-webkitfltk-1.1.0 # deprecated
     - cockroach-1.0.2
     - asmfish-1.1.2
-    - numpy-1.2.1 # runtime > 1h
+    # - numpy-1.2.1 # runtime > 1h
 
   - test: easywave-1.0.0
     option_a:
