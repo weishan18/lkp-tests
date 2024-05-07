@@ -15,6 +15,7 @@ gcc-multilib
 iperf3
 iproute2
 iptables
+ipv6toolkit
 ipvsadm
 jq
 lib32gcc-dev (x86_64)
@@ -76,8 +77,8 @@ openvswitch-common
 openvswitch-switch
 pesign
 pkg-config
-python-docutils
 python
+python-docutils
 python-scapy
 rsync
 sendip

@@ -50,6 +50,7 @@ iozone3:
 iproute2: iproute
 iputils-clockdiff: iputils
 iputils-tracepath: iputils
+ipv6toolkit: thc-ipv6
 isc-dhcp-server: dhcp-server
 javahelper:
 jfsutils:
