@@ -314,6 +314,13 @@ class NetStater < Stater
       # selftests: net: reuseport_addr_any.sh
       # UDP IPv4 ... pass
       stats.add "#{@test_prefix}.#{$1} #{$2}", $3
+    when /^# ok \d+ (.+) # SKIP$/
+      # selftests: net: bpf_offload.py
+      # # Failed importing `ynl` library from kernel sources
+      # # No module named 'net'
+      # ok 1 bpf_offload # SKIP
+      # ok 93 selftests: net: bpf_offload.py # SKIP
+      stats.add "#{@test_prefix}.#{$1}", 'skip'
     when /^# (ok|fail|skip|not ok) \d+ ([^#]+)/
       # selftests: net: reuseaddr_ports_exhausted.sh
       # ok 1 global.reuseaddr_ports_exhausted_unreusable
