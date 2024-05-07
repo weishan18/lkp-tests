@@ -242,27 +242,27 @@ phoronix-test-suite:
       - 4 # Quality 100, Compression Effort 5
       - 5 # Quality 100, Lossless Compression
 
-  # - test: hbase-1.1.0 # The test run did not produce a result.
-  #   option_a: # Rows
-  #     - 1 # 10000    [Quickest]
-  #     - 2 # 1000000  [Hbase Default]
-  #     # - 3 # 2000000
-  #     # - 4 # 10000000 [Longest / most time consuming]
-  #   option_b: # Test
-  #     - Random Write
-  #     - Async Random Write
-  #     - Random Read
-  #     - Async Random Read
-  #     - Sequential Write
-  #     - Sequential Read
-  #     - Scan
-  #     - Increment
-  #   option_c: # Clients
-  #     - 1 # 1
-  #     # - 2 # 4
-  #     # - 3 # 16
-  #     # - 4 # 32
-  #     # - 5 # 64
-  #     # - 6 # 128
-  #     # - 7 # 256
-  #     - 8 # 500
+  - test: hbase-1.1.0
+    option_a: # Rows
+      - 1 # 10000    [Quickest]
+      # - 2 # 1000000  [Hbase Default]
+      # - 3 # 2000000
+      # - 4 # 10000000 [Longest / most time consuming]
+    option_b: # Test
+      - Random Write
+      - Async Random Write
+      - Random Read
+      - Async Random Read
+      - Sequential Write
+      - Sequential Read
+      - Scan
+      - Increment
+    option_c: # Clients
+      - 1 # 1
+      # - 2 # 4
+      # - 3 # 16
+      # - 4 # 32
+      # - 5 # 64
+      # - 6 # 128
+      # - 7 # 256
+      - 8 # 500
