@@ -1,29 +1,33 @@
- -- System halted
- but this task is not holding: .*
- is exiting with locks still held!
- is freeing memory .*, with a lock still held there!
- is leaving the kernel with locks still held!
- is trying to contend lock \(.*\) at
- is trying to lock: .*
- is trying to release lock \(.*\) at
+\[ *[0-9.]+\] BUG: .*
+\[ {0,4}[A-Z][0-9]{1,5}\] BUG: .*
 32-bit relocation outside of kernel!
 64-bit relocation outside of kernel!
 assertion failed
+Assertion failed
 assertion failure
+Assertion failure
 audit: \(.*\) error: .*
+[a-zA-Z0-9_ #]+: [0-9a-f]{4} \[#[0-9]+\]
+[a-zA-Z0-9_ -]+: BUG: .*
+^BUG: .*
 BUG .* \(.*\): .*
+\[ BUG: [^b].*! \]
+ but this task is not holding: .*
+[^ ]*\.[ch]:[0-9]+ .*!$
 CPU[0-9]+: .* cpu clock throttled .*
 Destination address inappropriately aligned
 Destination address too large
-EIP is at [a-zA-Z0-9._]+\+0x.*/0x.*
+\[drm:.*\[i915\]\] 
 EIP: [a-zA-Z0-9._]+\+0x[a-f0-9]+/0x[a-f0-9]+
+EIP is at [a-zA-Z0-9._]+\+0x.*/0x.*
 Failed to allocate space for phdrs
 genirq: Flags mismatch irq .*
 getblk\(\): invalid block size [0-9]+ requested
 inconsistent \{.*\} -> \{.*\} usage\.
+INFO: 0x.*. First byte 0x.*
 INFO: .* cpu=.*
 INFO: .*detected stall.*
-INFO: 0x.*. First byte 0x.*
+\[ INFO: [^i].* \]
 INFO: Object 0x.*
 INFO: Slab 0x.*
 INFO: task .* blocked for more than .* seconds
@@ -31,10 +35,17 @@ INFO: trying to register non-static key.
 initcall .* returned with .*
 Initiating system reboot
 Initramfs unpacking failed: 
+rootfs image is not initramfs \(invalid magic at start of compressed archive\)
 invoked oom-killer: gfp_mask=0x
 IP-Config: Auto-configuration of network failed
-Kernel BUG at
+ is exiting with locks still held!
+ is freeing memory .*, with a lock still held there!
+ is leaving the kernel with locks still held!
+ is trying to contend lock \(.*\) at
+ is trying to lock: .*
+ is trying to release lock \(.*\) at
 kernel BUG at .*
+Kernel BUG at
 Kernel is not a valid ELF file
 Kernel panic - not syncing: .*
 KGDB: re-enter exception: ALL breakpoints killed
@@ -51,35 +62,26 @@ PANIC: double fault,
 PANIC: early exception 
 RIP: [0-9a-f]{4}:[a-zA-Z0-9._]+\+0x.*/0x.*
 RIP: [0-9a-f]{4}:\[.*\] [a-zA-Z0-9._]+\+0x.*/0x.*
-rootfs image is not initramfs \(invalid magic at start of compressed archive\)
 S0Box: more than 5 loops in s0box_interrupt
 segfault at .* ip .* sp .* error .* likely on CPU .*
 sysctl could not get directory: 
 sysctl duplicate entry: 
 sysctl link missing during unregister: 
 sysctl table check failed: 
-UBSAN: .*
+ -- System halted
 Unknown interrupt or fault at:
-WARNING: .* detected$
-WARNING: .* lock.*
+warn_alloc_failed\+0x
 WARNING: .*!$
-WARNING: .*/0x
 WARNING: at .*
 WARNING: chain_key collision
 WARNING: CPU: [0-9]+ PID: .+ at .*
+WARNING: .*/0x
 WARNING: dead process
+WARNING: .* detected$
 WARNING: kernel stack
+WARNING: .* lock.*
 WARNING: stack recursion
 WARNING: suspicious RCU usage
 WARNING: workqueue cpumask:
-warn_alloc_failed\+0x
 Wrong destination address
-[a-zA-Z0-9_ #]+: [0-9a-f]{4} \[#[0-9]+\]
-[a-zA-Z0-9_ -]+: BUG: .*
-[^ ]*\.[ch]:[0-9]+ .*!$
-\[ *[0-9.]+\] BUG: .*
-\[ BUG: [^b].*! \]
-\[ INFO: [^i].* \]
-\[ {0,4}[A-Z][0-9]{1,5}\] BUG: .*
-\[drm:.*\[i915\]\] 
-^BUG: .*
+UBSAN: .*
