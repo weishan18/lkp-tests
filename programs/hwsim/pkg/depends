@@ -21,6 +21,7 @@ libxml2-dev
 net-tools
 openssl
 psmisc
+python
 python-crypto
 python-dbus
 python-gi
@@ -29,7 +30,6 @@ python-gobject
 python-netifaces
 python-openssl
 python-pyrad
-python
 python-six
 sudo
 tcpdump

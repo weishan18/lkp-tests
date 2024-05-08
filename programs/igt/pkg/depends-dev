@@ -27,9 +27,9 @@ libxmlrpc-core-c3-dev
 make
 peg
 pkg-config
-python-docutils
 python
 python-dev
+python-docutils
 python-libvirt
 python-pip
 python-venv

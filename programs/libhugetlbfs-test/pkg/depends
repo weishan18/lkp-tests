@@ -1,5 +1,5 @@
 gcc-multilib
 git
 make
-python-pkg-resources
 python
+python-pkg-resources
