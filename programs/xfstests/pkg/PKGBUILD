@@ -106,6 +106,10 @@ generate_special_require_tests()
 	# run slowly on udf
 	collect "holetest" generic > $benchmark_path/tests/generic-holetest
 
+	# require CONFIG_FS_VERITY
+	collect _require_scratch_verity generic > $benchmark_path/tests/generic-scratch-verity
+	collect _require_scratch_verity btrfs > $benchmark_path/tests/btrfs-scratch-verity
+
 	# these tests requires a valid $LOGWRITES_DEV
 	# rli9 FIXME consider other fs that has this requirement
 	collect "_require_log_writes$" btrfs > $benchmark_path/tests/btrfs-logwrites
