@@ -39,7 +39,6 @@ openbsd-inetd:
 pkg-config:
 python-dev: python3-devel
 python-minimal: python3
-python-minimal: python3
 python-pkg-resources: 
 python-setuptools: python3-setuptools
 python3-all-dev:
