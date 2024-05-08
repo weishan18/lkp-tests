@@ -21,6 +21,7 @@ libreadline5: readline-common
 libssl: libssl3
 libtirpc: libtirpc-common
 libunwind: libunwind-15
+liburing: liburing2
 libx32gcc-dev: libx32gcc-12-dev
 libx32gcc1: libx32gcc-s1
 mariadb-server:mariadb-server-10.6
