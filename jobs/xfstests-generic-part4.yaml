@@ -37,6 +37,8 @@ xfstests:
     - generic-group-71
     - generic-group-72
     - generic-group-73
+    - generic-group-74
+    # - generic-scratch-verity
 
 ---
 fs:

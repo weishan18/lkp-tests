@@ -47,7 +47,6 @@ fs:
 
 xfstests:
   test:
-    - generic-299
     - generic-holetest # run slowly on udf
 
 ---

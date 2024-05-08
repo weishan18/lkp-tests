@@ -16,7 +16,6 @@ fs2:
 xfstests:
   test:
     - cifs
-    - generic-074
     - generic-group-00
     - generic-group-01
     - generic-group-02
@@ -37,7 +36,6 @@ xfstests:
     - generic-group-16
     - generic-311
     - generic-281
-    - generic-299
     # - generic-409 # runtime > 20m
     - generic-logwrites
     - generic-group-17
@@ -98,5 +96,7 @@ xfstests:
     - generic-group-71
     - generic-group-72
     - generic-group-73
+    - generic-group-74
     - generic-logdev
     - generic-525
+    # - generic-scratch-verity

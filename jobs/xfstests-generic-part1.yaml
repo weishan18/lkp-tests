@@ -49,16 +49,3 @@ fs:
 xfstests:
   test:
     - generic-387
-
----
-fs:
-  - ext2
-  - ext4
-  - xfs
-  - btrfs
-  - f2fs
-
-xfstests:
-  test:
-    # when fs=udf, generic-074 has used 42min, caused timeout
-    - generic-074
