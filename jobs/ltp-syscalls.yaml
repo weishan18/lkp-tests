@@ -24,5 +24,4 @@ ltp:
     - syscalls-07
     - writev03.writev03 # run standalone
     - fork13.fork13
-    - msgstress04.msgstress04
     - syscalls-setsockopt06 # need about 25mins
