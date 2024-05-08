@@ -1,7 +1,9 @@
 gtk3: gir1.2-gtk-3.0
 libasan: libasan3
+libfuse3: libfuse3-3
 libgcc-dev: libgcc-6-dev
 libgcrypt-dev: libgcrypt20-dev
+libiscsi: libiscsi7
 libssl: libssl1.1
 libtirpc: libtirpc1
 libunwind: libunwind8

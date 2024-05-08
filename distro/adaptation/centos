@@ -128,6 +128,7 @@ libfdt-dev:
 libffi-dev: libffi-devel
 libfile-stripnondeterminism-perl:
 libfuse-dev: fuse-devel
+libfuse3: fuse3-libs
 libgbm-dev: mesa-libgbm-devel
 libgbm1: mesa-libgbm
 libgcc-7-dev: libgcc.x86_64
@@ -173,6 +174,7 @@ libiniparser-dev:
 libipc-run-perl: perl-IPC-Run
 libipsec-mb-dev:
 libipsec-mb:
+libiscsi-dev: libiscsi-devel
 libjpeg-dev: libjpeg-turbo-devel
 libjpeg62-turbo: libjpeg-turbo
 libjson-c-dev: json-c-devel

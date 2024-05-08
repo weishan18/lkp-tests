@@ -5,9 +5,12 @@ libacl1-dev
 libaio-dev
 libattr1-dev
 libblkid-dev
+libfuse-dev
 libgdbm-dev
 libicu-dev
+libiscsi-dev
 libtool-bin
+liburing-dev
 libuuid1
 pkg-config
 uuid-dev

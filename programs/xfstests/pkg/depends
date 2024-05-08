@@ -17,11 +17,14 @@ gawk
 indent
 libaio1
 libcap2-bin
+libfuse3
 libgdbm-compat4
 libgdbm6
 libicu
+libiscsi
 libreadline5
 libssl
+liburing
 locales
 lvm2
 man-db
