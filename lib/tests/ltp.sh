@@ -272,8 +272,8 @@ cleanup_ltp()
 		dmesg -C || exit
 		;;
 	syscalls-0*)
-		[ "$relatime" != "" ] && mount -o remount,relatime /tmp
-		[ "$noatime" != "" ] && mount -o remount,noatime /tmp
+		[ "$relatime" != "" ] && mount -o remount,relatime,user_xattr /tmp
+		[ "$noatime" != "" ] && mount -o remount,noatime,user_xattr /tmp
 		;;
 	esac
 
